@@ -16,69 +16,82 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
-
  * @author Mitch van Wijngaarden
  */
 public class Company {
+
     @NotEmpty
-    @Length(min = 3, max = 100)
+    @JsonView(View.Public.class)
+    private int id;
+
+    @NotEmpty
+    @JsonView(View.Public.class)
+    private int companyAddressID;
+
+    @NotEmpty
+    @Length(min = 1, max = 100)
+    @JsonView(View.Public.class)
+    private String phoneNumber;
+
+    @NotEmpty
+    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
     private String companyName;
 
     @NotEmpty
-    @Length(min = 6, max = 7)
-    @JsonView(View.Public.class)
-    private String postcode;
-
-    @NotEmpty
-    @Length(min = 1, max = 10)
-    @JsonView(View.Public.class)
-    private String streetnumber;
-
-    @NotEmpty
     @Email
     @JsonView(View.Public.class)
-    private String emailAddress;
+    private String email;
+
+    @JsonView(View.Public.class)
+    private String tag;
 
 
-    public String getCompanyName()
-    {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCompanyAddressID() {
+        return companyAddressID;
+    }
+
+    public void setCompanyAddressID(int companyAddressID) {
+        this.companyAddressID = companyAddressID;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCompanyName() {
         return companyName;
     }
 
-    public void setCompanyName(String companyName)
-    {
+    public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
 
-    public String getPostcode()
-    {
-        return postcode;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPostcode(String postcode)
-    {
-        this.postcode = postcode;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getStreetnumber()
-    {
-        return streetnumber;
+    public String getTag() {
+        return tag;
     }
 
-    public void setStreetnumber(String streetnumber)
-    {
-        this.streetnumber = streetnumber;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
-
-    public String getEmailAddress()
-    {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress)
-    {
-        this.emailAddress = emailAddress;
-    }
-
 }

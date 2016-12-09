@@ -8,15 +8,21 @@
 
     <table class="table">
         <thead>
+        <th>ID</th>
+        <th>Bedrijf address ID</th>
         <th>Bedrijfsnaam</th>
-        <th>Postcode</th>
-        <th>Straat nummer</th>
+        <th>Telefoonnummer</th>
+        <th>Email</th>
+        <th>Tag</th>
         </thead>
         <tbody>
         <tr ng-repeat="company in companies">
+            <td>{{ company.id }}</td>
+            <td>{{ company.companyAddressID }}</td>
             <td>{{ company.companyName }}</td>
-            <td>{{ company.postcode }}</td>
-            <td>{{ company.streetnumber }}</td>
+            <td>{{ company.phoneNumber }}</td>
+            <td>{{ company.email }}</td>
+            <td>{{ company.tag }}</td>
         </tr>
         </tbody>
     </table>

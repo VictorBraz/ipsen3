@@ -17,18 +17,15 @@ public class CompanyDAO
     public CompanyDAO()
     {
         Company cm1 = new Company();
+        cm1.setId(1);
         cm1.setCompanyName("Test bedrijf");
-        cm1.setPostcode("2802KR");
-        cm1.setStreetnumber("10");
-
-        Company cm2 = new Company();
-        cm2.setCompanyName("Test dfsd");
-        cm2.setPostcode("1234AB");
-        cm2.setStreetnumber("15");
+        cm1.setCompanyAddressID(1);
+        cm1.setEmail("Test@test.com");
+        cm1.setPhoneNumber("435353");
+        cm1.setTag("Slechtziend");
 
         companies = new ArrayList<>();
         companies.add(cm1);
-        companies.add(cm2);
     }
 
     public List<Company> getAll()
