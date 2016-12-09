@@ -6,9 +6,9 @@ angular.module('workshop').controller('OverviewClientController', function($scop
 {
     var construct = function()
     {
-        clientService.getAll(function(users)
+        clientService.getAll(function(clients)
         {
-            $scope.users = users;
+            $scope.clients = clients;
         });
     };
 

@@ -1,0 +1,30 @@
+<h1>Bedrijven</h1>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Overzicht
+    </div>
+
+    <table class="table">
+        <thead>
+        <th>ID</th>
+        <th>Bedrijf address ID</th>
+        <th>Bedrijfsnaam</th>
+        <th>Telefoonnummer</th>
+        <th>Email</th>
+        <th>Tag</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="company in companies">
+            <td>{{ company.id }}</td>
+            <td>{{ company.companyAddressID }}</td>
+            <td>{{ company.companyName }}</td>
+            <td>{{ company.phoneNumber }}</td>
+            <td>{{ company.email }}</td>
+            <td>{{ company.tag }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
