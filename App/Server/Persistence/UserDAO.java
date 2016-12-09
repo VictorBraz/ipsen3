@@ -23,7 +23,7 @@ public class UserDAO
         user1.setStreetnumber("12");
         user1.setEmailAddress("first@user.com");
         user1.setPassword("first");
-        user1.setRoles(new String[] { "GUEST", "ADMIN" });
+        user1.setRoles(new String[] { "GUEST", "MEDEWERKER", "ADMIN" });
 
         User user2 = new User();
         user2.setFullName("Second user");

@@ -20,6 +20,11 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     {
         $location.path('/overview');
     };
+
+    $scope.gotoCompanies = function()
+    {
+        $location.path('/companies');
+    };
     
     $scope.logout = function()
     {

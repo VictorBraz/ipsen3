@@ -26,6 +26,13 @@
                 Overzicht
             </a>
         </li>
+
+        <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/companies') }">
+            <a ng-click="gotoCompanies()">
+                <span class="glyphicon glyphicon-th-list"></span>
+                Bedrijven
+            </a>
+        </li>
         
         <li role="presentation"  ng-if="authenticated">
             <a ng-click="logout()">

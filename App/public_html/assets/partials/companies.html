@@ -1,0 +1,24 @@
+<h1>Bedrijven</h1>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Overzicht
+    </div>
+
+    <table class="table">
+        <thead>
+        <th>Bedrijfsnaam</th>
+        <th>Postcode</th>
+        <th>Straat nummer</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="company in companies">
+            <td>{{ company.companyName }}</td>
+            <td>{{ company.postcode }}</td>
+            <td>{{ company.streetnumber }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
