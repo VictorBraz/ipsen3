@@ -8,13 +8,13 @@ package Server.Model;
 public class Client {
 
     private int id;
-    private int clientAddresId;
-    private String firstname;
-    private String Lastname;
-    private String birthdate;
+    private int clientAddressId;
+    private String firstName;
+    private String lastName;
+    private String birthDate;
     private String study;
-    private String emaill;
-    private String phonenumber;
+    private String email;
+    private String phoneNumber;
     private String tag;
 
     public Client(){
@@ -29,36 +29,36 @@ public class Client {
         this.id = id;
     }
 
-    public int getClientAddresId() {
-        return clientAddresId;
+    public int getClientAddressId() {
+        return clientAddressId;
     }
 
-    public void setClientAddresId(int clientAddresId) {
-        this.clientAddresId = clientAddresId;
+    public void setClientAddressId(int clientAddresId) {
+        this.clientAddressId = clientAddressId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return Lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        Lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getStudy() {
@@ -69,20 +69,20 @@ public class Client {
         this.study = study;
     }
 
-    public String getEmaill() {
-        return emaill;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmaill(String emaill) {
-        this.emaill = emaill;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getTag() {
