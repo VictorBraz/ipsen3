@@ -20,7 +20,13 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     {
         $location.path('/overview');
     };
-    
+
+    //Door Negin gemaakt
+    $scope.gotoOverviewCliënt = function()
+    {
+        $location.path('/overviewClient');
+    };
+
     $scope.logout = function()
     {
         authenticationService.deleteAuthentication();

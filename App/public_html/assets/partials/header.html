@@ -26,7 +26,7 @@
                 Overzicht
             </a>
         </li>
-        
+
         <li role="presentation"  ng-if="authenticated">
             <a ng-click="logout()">
                 <span class="glyphicon glyphicon-user"></span>
@@ -35,6 +35,14 @@
         </li>
         
         <!-- Voeg hier meer menu items toe -->
+
+        <!--Door Negin gemaakt-->
+        <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/overviewClient') }">
+            <a ng-click="goToOverviewClient()">
+                <span class="glyphicon glyphicon-th-list"></span>
+                Cliënts
+            </a>
+        </li>
 
     </ul>
 
