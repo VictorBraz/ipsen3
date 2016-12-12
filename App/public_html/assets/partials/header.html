@@ -33,6 +33,13 @@
                 Bedrijven
             </a>
         </li>
+
+        <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/clients') }">
+            <a ng-click="gotoClients()">
+                <span class="glyphicon glyphicon-th-list"></span>
+                Cliënten
+            </a>
+        </li>
         
         <li role="presentation"  ng-if="authenticated">
             <a ng-click="logout()">

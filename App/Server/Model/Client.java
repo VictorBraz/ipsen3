@@ -1,6 +1,9 @@
 package Server.Model;
 
 
+import Server.View;
+import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.validator.constraints.Length;
 
 /**
  * Created by Victor on 9-12-2016.
@@ -9,12 +12,27 @@ public class Client {
 
     private int id;
     private int clientAddresId;
+
+    @JsonView(View.Public.class)
     private String firstname;
-    private String Lastname;
+
+    @JsonView(View.Public.class)
+    private String lastname;
+
+    @JsonView(View.Public.class)
     private String birthdate;
+
+    @JsonView(View.Public.class)
     private String study;
+
+    @JsonView(View.Public.class)
     private String emaill;
+
+    @Length(max = 10)
+    @JsonView(View.Public.class)
     private String phonenumber;
+
+    @JsonView(View.Public.class)
     private String tag;
 
     public Client(){
@@ -46,11 +64,11 @@ public class Client {
     }
 
     public String getLastname() {
-        return Lastname;
+        return lastname;
     }
 
     public void setLastname(String lastname) {
-        Lastname = lastname;
+        lastname = lastname;
     }
 
     public String getBirthdate() {
