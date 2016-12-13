@@ -68,7 +68,7 @@ public class Client {
     }
 
     public void setLastname(String lastname) {
-        lastname = lastname;
+        this.lastname = lastname;
     }
 
     public String getBirthdate() {

@@ -10,13 +10,13 @@ angular.module('workshop').service('clientService', function($http)
         var uri = '/api/clients';
         var data =
             {
-                firstname: firstname,
+                /*firstname: firstname,
                 lastname: lastname,
                 birthdate: birthdate,
                 study: study,
                 email: email,
                 phonenumber: phonenumber,
-                tag: tag
+                tag: tag*/
             };
         $http.post(uri, data).then(function (response)
         {
