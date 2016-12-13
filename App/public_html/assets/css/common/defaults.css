@@ -5,10 +5,69 @@
 
 body
 {
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 a
 {
     cursor: pointer;
 }
+
+body {
+    background:#c33;
+}
+
+.panel-transparent {
+    background: none;
+}
+
+.panel-transparent .panel-heading{
+    background: rgba(122, 130, 136, 0.2)!important;
+}
+
+.panel-transparent .panel-body{
+    background: rgba(46, 51, 56, 0.2)!important;
+}
+.spacer {
+    margin-top: 40px; /* define margin as you see fit */
+ }
+
+body {
+    background-image: url('../../images/background.jpg');
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+}
+
+#emptyspace {
+    background-color: transparent;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+#loginscreen{
+padding-top: 40px;
+}
+
+#loginheader{
+    padding: 70px 15px 55px;
+}
+
+h3.panel-title {
+    font-size: 32px;
+}
+
+#loginformbottom{
+    padding:60px 0px 20px 5px;
+}
+
+@media (min-width: 768px) {
+    #loginscreen{
+        padding-top: 150px;
+    }
+}
+
+
+

@@ -33,9 +33,18 @@ public class UserDAO
         user2.setPassword("second");
         user2.setRoles(new String[] { "GUEST" });
 
+        User user3 = new User();
+        user3.setFullName("Second user");
+        user3.setPostcode("9876ZY");
+        user3.setStreetnumber("98");
+        user3.setEmailAddress("test@test.nl");
+        user3.setPassword("test");
+        user3.setRoles(new String[] { "GUEST" });
+
         users = new ArrayList();
         users.add(user1);
         users.add(user2);
+        users.add(user3);
     }
 
     public List<User> getAll()

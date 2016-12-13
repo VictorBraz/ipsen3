@@ -9,6 +9,7 @@
     // Other
     addScript('assets/libraries/base64.min.js');
 
+
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');

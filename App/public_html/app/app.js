@@ -4,6 +4,8 @@
     // Applicatie
     addScript('app/bootstrap.js');
     addScript('app/routes.js');
+    addScript('assets/materialdesign/scripts/abm.js');
+
 
     // Services
     addScript('app/services/AuthenticationService.js');
@@ -18,7 +20,8 @@
     addScript('app/controllers/RegistrationController.js');
     addScript('app/controllers/OverviewController.js');
     addScript('app/controllers/CompaniesController.js');
-    
+
+
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');
