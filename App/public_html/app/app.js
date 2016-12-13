@@ -12,6 +12,7 @@
     addScript('app/services/AddressService.js');
     addScript('app/services/UserService.js');
     addScript('app/services/CompanyService.js');
+    addScript('app/services/ClientService.js');
 
     // Controllers
     addScript('app/controllers/AppController.js');
@@ -19,7 +20,7 @@
     addScript('app/controllers/RegistrationController.js');
     addScript('app/controllers/OverviewController.js');
     addScript('app/controllers/CompaniesController.js');
-
+    addScript('app/controllers/ClientsController.js');
 
     function addScript(url)
     {

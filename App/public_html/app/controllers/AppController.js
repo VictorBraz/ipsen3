@@ -26,7 +26,12 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     {
         $location.path('/companies');
     };
-    
+
+    $scope.gotoClients = function ()
+    {
+        $location.path('/clients');
+    };
+
     $scope.logout = function()
     {
         authenticationService.deleteAuthentication();
