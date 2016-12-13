@@ -1,4 +1,4 @@
-<h1>Cliënts</h1>
+<h1>Cliënten</h1>
 
 <div class="panel panel-default">
 
@@ -8,28 +8,22 @@
 
     <table class="table">
         <thead>
-        <th>ID</th>
-        <th>Adres ID</th>
-        <th>Voornaam</th>
-        <th>Achternaam</th>
-        <th>Geboortedatum</th>
-        <th>E-mail</th>
-        <th>Nummer</th>
-        <th>Studie</th>
-        <th>Tags</th>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>Studie</th>
+            <th>Telefoonnummer</th>
+            <th>Email</th>
+            <th>Tag</th>
         </thead>
         <tbody>
-        <tr ng-repeat="company in companies">
-            <td>{{ Client.id }}</td>
-            <td>{{ Client.clientAddressId }}</td>
-            <td>{{ Client.firstName }}</td>
-            <td>{{ Client.lastName }}</td>
-            <td>{{ Client.birthDate }}</td>
-            <td>{{ Client.email }}</td>
-            <td>{{ Client.phoneNumber }}</td>
-            <td>{{ Client.study }}</td>
-            <td>{{ Client.tag }}</td>
-        </tr>
+            <tr ng-repeat="client in clients">
+                <td>{{ client.firstname }}</td>
+                <td>{{ client.lastname }}</td>
+                <td>{{ client.study }}</td>
+                <td>{{ client.phonenumber }}</td>
+                <td>{{ client.emailAddress }}</td>
+                <td>{{ client.tag }}</td>
+            </tr>
         </tbody>
     </table>
 

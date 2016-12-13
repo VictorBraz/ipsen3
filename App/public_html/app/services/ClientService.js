@@ -1,48 +1,44 @@
 /**
- * Created by Negin on 9-12-2016.
+ * Created by Victor on 12-12-2016.
  */
 
 angular.module('workshop').service('clientService', function($http)
 {
     var self = this;
 
-    self.create = function(/*id, clientAddressId, firstName, lastName, birthDate, email, phoneNumber, study, tag**/)
-    {
+    self.create = function (firstname, lastname, birthdate, study, email, phonenumber, tag, onCreated) {
+
         var uri = '/api/clients';
         var data =
+            {
+                /*firstname: firstname,
+                lastname: lastname,
+                birthdate: birthdate,
+                study: study,
+                email: email,
+                phonenumber: phonenumber,
+                tag: tag*/
+            };
+        $http.post(uri, data).then(function (response)
         {
-            // id: id,
-            // clientAddressId: clientAddressId,
-            // firstName: firstName,
-            // lastName: lastName,
-            // birthDate: birthDate,
-            // email : email,
-            // phoneNumber: phoneNumber,
-            // study: study,
-            // tag: tag
-        };
-
-        $http.post(uri, data).then(function(response)
-            {
-                onCreated(response.data);
-            },
-            function(message, status)
-            {
-                alert('Aanmaken mislukt: ' + message);
-            });
+            onCreated(response.data);
+        },
+        function (message, status)
+        {
+            alert('Aanmaken mislukt: ' + message);
+        });
     };
 
-    self.getAll = function(onReceived)
-    {
-        var uri = '/api/clients';
+    self.getAll = function (onReceived) {
+        var uri = 'api/clients';
 
-        $http.get(uri).then(function(response)
-            {
-                onReceived(response.data);
-            },
-            function(message, status)
-            {
-                alert('Ophalen mislukt: ' + message);
-            });
+        $http.get(uri).then(function(response){
+            onReceived(response.data);
+        },
+        function(message, status){
+            alert('Ophalen mislukt: ' + message);
+        });
+
     };
+
 });

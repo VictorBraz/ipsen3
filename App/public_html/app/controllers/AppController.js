@@ -21,15 +21,14 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
         $location.path('/overview');
     };
 
-    //Negin
-    $scope.gotoClients = function()
-    {
-        $location.path('/clients');
-    };
-
     $scope.gotoCompanies = function()
     {
         $location.path('/companies');
+    };
+
+    $scope.gotoClients = function ()
+    {
+        $location.path('/clients');
     };
 
     $scope.logout = function()

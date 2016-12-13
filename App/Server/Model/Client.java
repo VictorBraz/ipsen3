@@ -16,42 +16,28 @@ public class Client {
     @JsonView(View.Public.class)
     private int id;
 
-    @NotEmpty
-    @JsonView(View.Public.class)
-    private int clientAddressId;
+    private int clientAddresId;
 
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
-    private String firstName;
+    private String firstname;
 
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
-    private String lastName;
+    private String lastname;
 
-    @NotEmpty
     @JsonView(View.Public.class)
-    private String birthDate;
+    private String birthdate;
 
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
     private String study;
 
-    @NotEmpty
-    @Email
     @JsonView(View.Public.class)
-    private String email;
+    private String emaill;
 
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
-    private String phoneNumber;
+    private String phonenumber;
 
     @JsonView(View.Public.class)
     private String tag;
-
 
     public int getId() {
         return id;
@@ -61,36 +47,36 @@ public class Client {
         this.id = id;
     }
 
-    public int getClientAddressId() {
-        return clientAddressId;
+    public int getClientAddresId() {
+        return clientAddresId;
     }
 
-    public void setClientAddressId(int clientAddresId) {
-        this.clientAddressId = clientAddressId;
+    public void setClientAddresId(int clientAddresId) {
+        this.clientAddresId = clientAddresId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getStudy() {
@@ -101,20 +87,20 @@ public class Client {
         this.study = study;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmaill() {
+        return emaill;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmaill(String emaill) {
+        this.emaill = emaill;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getTag() {
