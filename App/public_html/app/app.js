@@ -4,7 +4,6 @@
     // Applicatie
     addScript('app/bootstrap.js');
     addScript('app/routes.js');
-    addScript('assets/materialdesign/scripts/abm.js');
 
 
     // Services
