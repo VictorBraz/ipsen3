@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -19,17 +18,31 @@
                     </a>
                 </li>
 
-                <li role="presentation" ng-if="!authenticated" ng-class="{ 'active': isLocation('/register') }">
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/register') }">
                     <a ng-click="gotoRegistration()">
                         <span class="glyphicon glyphicon-user"></span>
                         Aanmelden
                     </a>
                 </li>
 
-                <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/overview') }">
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/overview') }">
                     <a ng-click="gotoOverview()">
                         <span class="glyphicon glyphicon-th-list"></span>
                         Overzicht
+                    </a>
+                </li>
+
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/companies') }">
+                    <a ng-click="gotoCompanies()">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        Bedrijven
+                    </a>
+                </li>
+
+                <li role="presentation" ng-if="authenticated">
+                    <a ng-click="logout()">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Uitloggen
                     </a>
                 </li>
 
@@ -47,72 +60,10 @@
                     </a>
                 </li>
 
-                <li role="presentation"  ng-if="authenticated">
-                    <a ng-click="logout()">
-                        <span class="glyphicon glyphicon-user"></span>
-                        Uitloggen
-                    </a>
-                </li>
-
                 <!-- Voeg hier meer menu items toe -->
 
             </ul>
         </div>
     </div>
-<!--=======-->
-<!--<div class="jumbotron">-->
-
-    <!--<h1>Peters applicatie</h1>-->
-
-    <!--<p>Mooi toch?</p>-->
-
-    <!--<ul class="nav nav-pills">-->
-
-        <!--<li role="presentation" ng-class="{ 'active': isLocation('/') }">-->
-            <!--<a ng-click="gotoHome()">-->
-                <!--<span class="glyphicon glyphicon-home"></span>-->
-                <!--Home-->
-            <!--</a>-->
-        <!--</li>-->
-
-        <!--<li role="presentation" ng-if="!authenticated" ng-class="{ 'active': isLocation('/register') }">-->
-            <!--<a ng-click="gotoRegistration()">-->
-                <!--<span class="glyphicon glyphicon-user"></span>-->
-                <!--Aanmelden-->
-            <!--</a>-->
-        <!--</li>-->
-        <!---->
-        <!--<li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/overview') }">-->
-            <!--<a ng-click="gotoOverview()">-->
-                <!--<span class="glyphicon glyphicon-th-list"></span>-->
-                <!--Overzicht-->
-            <!--</a>-->
-        <!--</li>-->
-
-        <!--<li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/companies') }">-->
-            <!--<a ng-click="gotoCompanies()">-->
-                <!--<span class="glyphicon glyphicon-th-list"></span>-->
-                <!--Bedrijven-->
-            <!--</a>-->
-        <!--</li>-->
-
-        <!--<li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/clients') }">-->
-            <!--<a ng-click="gotoClients()">-->
-                <!--<span class="glyphicon glyphicon-th-list"></span>-->
-                <!--Cliënten-->
-            <!--</a>-->
-        <!--</li>-->
-        <!---->
-        <!--<li role="presentation"  ng-if="authenticated">-->
-            <!--<a ng-click="logout()">-->
-                <!--<span class="glyphicon glyphicon-user"></span>-->
-                <!--Uitloggen-->
-            <!--</a>-->
-        <!--</li>-->
-        <!---->
-        <!--&lt;!&ndash; Voeg hier meer menu items toe &ndash;&gt;-->
-
-    <!--</ul>-->
-<!--&gt;>>>>>> a4def08956e921e02e6bdc9eff29309e96b2f1a8-->
 
 </div>
