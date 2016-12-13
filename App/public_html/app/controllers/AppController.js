@@ -21,10 +21,10 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
         $location.path('/overview');
     };
 
-    //Door Negin gemaakt
-    $scope.gotoOverviewCliënt = function()
+    //Negin
+    $scope.gotoClients = function()
     {
-        $location.path('/overviewClient');
+        $location.path('/clients');
     };
 
     $scope.gotoCompanies = function()

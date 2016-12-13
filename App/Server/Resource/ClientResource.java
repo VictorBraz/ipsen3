@@ -2,7 +2,7 @@ package Server.Resource;
 
 import Server.Model.Client;
 import Server.Model.User;
-import Server.Service.ClientService;
+import Server.Service.WorkerService;
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Inject;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 /**
- * Created by Gebruiker on 9-12-2016.
+ * Created by Negin on 9-12-2016.
  */
 
 @Singleton
@@ -23,10 +23,10 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientResource {
 
-        private final ClientService service;
+        private final WorkerService service;
 
         @Inject
-        public ClientResource(ClientService service)
+        public ClientResource(WorkerService service)
         {
             this.service = service;
         }

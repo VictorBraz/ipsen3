@@ -9,11 +9,11 @@ import java.util.Collection;
 /**
  * Created by Negin Nafissi on 9-12-2016.
  */
-public class ClientService {
+public class WorkerService {
     private final ClientDAO dao;
 
     @Inject
-    public ClientService(ClientDAO dao)
+    public WorkerService(ClientDAO dao)
     {
         this.dao = dao;
     }

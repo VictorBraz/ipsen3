@@ -1,25 +1,57 @@
 package Server.Model;
 
 
+import Server.View;
+import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Created by Victor on 9-12-2016.
  */
 public class Client {
 
+    @NotEmpty
+    @JsonView(View.Public.class)
     private int id;
+
+    @NotEmpty
+    @JsonView(View.Public.class)
     private int clientAddressId;
+
+    @NotEmpty
+    @Length(min = 1, max = 100)
+    @JsonView(View.Public.class)
     private String firstName;
+
+    @NotEmpty
+    @Length(min = 1, max = 100)
+    @JsonView(View.Public.class)
     private String lastName;
+
+    @NotEmpty
+    @JsonView(View.Public.class)
     private String birthDate;
+
+    @NotEmpty
+    @Length(min = 1, max = 100)
+    @JsonView(View.Public.class)
     private String study;
+
+    @NotEmpty
+    @Email
+    @JsonView(View.Public.class)
     private String email;
+
+    @NotEmpty
+    @Length(min = 1, max = 100)
+    @JsonView(View.Public.class)
     private String phoneNumber;
+
+    @JsonView(View.Public.class)
     private String tag;
 
-    public Client(){
-
-    }
 
     public int getId() {
         return id;

@@ -2,7 +2,7 @@
  * Created by Negin Nafissi on 9-12-2016.
  */
 
-angular.module('workshop').controller('OverviewClientController', function($scope, clientService)
+angular.module('workshop').controller('ClientsController', function($scope, clientService)
 {
     var construct = function()
     {
