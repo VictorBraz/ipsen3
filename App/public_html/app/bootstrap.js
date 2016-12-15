@@ -6,6 +6,7 @@ angular.module('workshop',
 ])
 .config(function($httpProvider)
 {
+
     $httpProvider.interceptors.push('requestService');
 
     if(!$httpProvider.defaults.headers.get)
@@ -17,5 +18,6 @@ angular.module('workshop',
 {
     $locationProvider.html5Mode(true);
     $locationProvider.baseHref = '/';
-});
+
+})
 // Voeg hier meer configuraties toe

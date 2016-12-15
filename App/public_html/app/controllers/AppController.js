@@ -1,6 +1,7 @@
 
 angular.module('workshop').controller('AppController', function($scope, $location, authenticationService)
 {
+
     $scope.isLocation = function(location)
     {
         return $location.path() === location;

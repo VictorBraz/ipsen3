@@ -5,6 +5,7 @@
     addScript('app/bootstrap.js');
     addScript('app/routes.js');
 
+
     // Services
     addScript('app/services/AuthenticationService.js');
     addScript('app/services/RequestService.js');
@@ -20,7 +21,7 @@
     addScript('app/controllers/OverviewController.js');
     addScript('app/controllers/CompaniesController.js');
     addScript('app/controllers/ClientsController.js');
-    
+
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');
