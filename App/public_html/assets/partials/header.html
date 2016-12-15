@@ -41,6 +41,13 @@
             </a>
         </li>
 
+        <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/employees') }">
+            <a ng-click="gotoEmployees()">
+                <span class="glyphicon glyphicon-th-list"></span>
+                Medewerkers
+            </a>
+        </li>
+
         <li role="presentation"  ng-if="authenticated">
             <a ng-click="logout()">
                 <span class="glyphicon glyphicon-user"></span>
@@ -49,14 +56,6 @@
         </li>
         
         <!-- Voeg hier meer menu items toe -->
-
-        <!--Door Negin gemaakt-->
-        <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/clients') }">
-            <a ng-click="gotoclients()">
-                <span class="glyphicon glyphicon-th-list"></span>
-                Cliënts
-            </a>
-        </li>
 
     </ul>
 
