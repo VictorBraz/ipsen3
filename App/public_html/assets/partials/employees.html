@@ -1,0 +1,30 @@
+<h1>Medewerkers</h1>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Overzicht
+    </div>
+
+    <table class="table">
+        <thead>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>Studie</th>
+            <th>Telefoonnummer</th>
+            <th>Email</th>
+            <th>Tag</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees">
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.study }}</td>
+                <td>{{ employee.phoneNumber }}</td>
+                <td>{{ employee.emailAddress }}</td>
+                <td>{{ employee.tag }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

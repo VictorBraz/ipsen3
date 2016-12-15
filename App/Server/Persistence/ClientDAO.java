@@ -51,7 +51,7 @@ public class ClientDAO extends DatabaseDAO{
 
             addClient.executeUpdate();
 
-            addClient.close();
+//            addClient.close();
 
         }catch (Exception e){
 
@@ -74,10 +74,9 @@ public class ClientDAO extends DatabaseDAO{
                 client.setEmaill(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
-
                 clients.add(client);
             }
-            //getAll.close();
+//            getAll.close();
 
         }catch (Exception e){
 
@@ -102,7 +101,7 @@ public class ClientDAO extends DatabaseDAO{
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
             }
-            getClient.close();
+//            getClient.close();
         }catch (Exception e){
 
         }

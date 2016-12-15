@@ -47,6 +47,13 @@
                     </a>
                 </li>
 
+                <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/agenda') }">
+                    <a ng-click="gotoAgenda()">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        Agenda
+                    </a>
+                </li>
+
                 <li role="presentation" ng-if="authenticated">
                     <a ng-click="logout()">
                         <span class="glyphicon glyphicon-user"></span>
@@ -54,10 +61,11 @@
                     </a>
                 </li>
 
+
+
                 <!-- Voeg hier meer menu items toe -->
 
             </ul>
         </div>
     </div>
-
 </div>

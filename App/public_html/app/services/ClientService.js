@@ -1,6 +1,7 @@
 /**
  * Created by Victor on 12-12-2016.
  */
+
 angular.module('workshop').service('clientService', function($http)
 {
     var self = this;

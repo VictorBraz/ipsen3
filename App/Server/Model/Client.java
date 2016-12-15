@@ -3,14 +3,19 @@ package Server.Model;
 
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Created by Victor on 9-12-2016.
  */
 public class Client {
 
+    @NotEmpty
+    @JsonView(View.Public.class)
     private int id;
+
     private int clientAddresId;
 
     @JsonView(View.Public.class)
@@ -28,16 +33,11 @@ public class Client {
     @JsonView(View.Public.class)
     private String emaill;
 
-    @Length(max = 10)
     @JsonView(View.Public.class)
     private String phonenumber;
 
     @JsonView(View.Public.class)
     private String tag;
-
-    public Client(){
-
-    }
 
     public int getId() {
         return id;
