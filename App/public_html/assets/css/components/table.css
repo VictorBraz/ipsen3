@@ -1,0 +1,24 @@
+/*
+* Styling for the tables
+*
+*/
+
+.panel-heading {
+    padding: 24px;
+
+}
+
+thead {
+    font-size: 12px;
+    text-color: #000 54%;
+}
+
+h5.panel-title {
+    font-size: 20px;
+    text-color: #000 87%;
+
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #E0F7FA
+}

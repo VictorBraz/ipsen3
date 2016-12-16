@@ -38,12 +38,9 @@ body {
     /*background-attachment: fixed;*/
 }
 
-.table .table-hover {
 
-}
-.table-hover {
-    color
-}
+
+
 
 #emptyspace {
     background-color: transparent;
@@ -69,6 +66,10 @@ h3.panel-title {
 h1.panel-title {
     font-size: 42px;
 }
+
+
+
+
 
 #memorize {
     padding-top: 15px;
