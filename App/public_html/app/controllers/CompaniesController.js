@@ -24,6 +24,10 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
             companyService.getCompanyID();
         }
 
+        $scope.deleteCompany = function() {
+            companyService.getCompanyID();
+            companyService.deleteCompany();
+        }
     };
 
     construct();

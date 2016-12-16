@@ -62,4 +62,20 @@ angular.module('workshop').service('companyService', function($http)
                 alert('Ophalen mislukt: ' + message + status);
             });
     };
+
+
+    self.deleteCompany = function(onReceived)
+    {
+        var uri = '/api/companies/' + (self.selectedId - 1) + '';
+
+        $http.delete(uri)
+            .then(
+                function(response){
+                    console.log("Deleted")
+                },
+                function(response){
+                    // failure call back
+                }
+            );
+    };
 });
