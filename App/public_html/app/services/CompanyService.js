@@ -38,4 +38,17 @@ angular.module('workshop').service('companyService', function($http)
                 alert('Ophalen mislukt: ' + message);
             });
     };
+    self.getCompany = function(onReceived, id)
+    {
+        var uri = '/api/companies/' + id + '';
+
+        $http.get(uri).then(function(response)
+            {
+                onReceived(response.data);
+            },
+            function(message, status)
+            {
+                alert('Ophalen mislukt: ' + message + status);
+            });
+    };
 });

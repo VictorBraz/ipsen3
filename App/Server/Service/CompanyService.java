@@ -21,14 +21,15 @@ public class CompanyService extends BaseService<Company>
         this.dao = dao;
     }
 
-    public Collection<Company> getAll()
-    {
+    public Collection<Company> getAll() {
+        System.out.println("Get all companies called.");
         return dao.getAll();
     }
 
-    public Company get(int id)
-    {
+    public Company get(int id) {
+        System.out.println("Get company called.");
+        Company c = dao.get(id);
+        System.out.println(c.getCompanyName());
         return dao.get(id);
     }
-
 }
