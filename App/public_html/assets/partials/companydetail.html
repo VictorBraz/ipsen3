@@ -3,29 +3,35 @@
 <div class="panel panel-default">
 
     <div class="panel-heading">
-        [bedrijfsnaam]
+        <h2>
+            {{ company.companyName }}
+        </h2>
     </div>
 
-    <table class="table">
-        <thead>
-            <th>ID</th>
-            <th>Bedrijf address ID</th>
-            <th>Bedrijfsnaam</th>
-            <th>Telefoonnummer</th>
-            <th>Email</th>
-            <th>Tag</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{ testID.id }}</td>
-            <td>{{ testID.companyAddressID }}</td>
-            <td>{{ testID.companyName }}</td>
-            <td>{{ testID.phoneNumber }}</td>
-            <td>{{ testID.email }}</td>
-            <td>{{ testID.tag }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <span>{{ selectedcompany }}</span>
+    <div>
+        <label>Bedrijfsid:
+            <span>
+                {{ company.id }}
+            </span>
+        </label>
+        <label>Bedrijfsnaam:
+            <span>
+                {{ company.companyName }}
+            </span>
+        </label>
+        <span>
+            {{ company.companyAddressID }}
+        </span>
+
+        <span>
+            {{ company.phoneNumber }}
+        </span>
+        <span>
+            {{ company.email }}
+        </span>
+        <span>
+            {{ company.tag }}
+        </span>
+    </div>
 
 </div>
