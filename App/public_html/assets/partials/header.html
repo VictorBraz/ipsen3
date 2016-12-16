@@ -48,6 +48,13 @@
                     </a>
                 </li>
 
+                <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/notes') }">
+                    <a ng-click="gotoNotes()">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        Notes
+                    </a>
+                </li>
+
                 <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/agenda') }">
                     <a ng-click="gotoAgenda()">
                         <span class="glyphicon glyphicon-th-list"></span>

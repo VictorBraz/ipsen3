@@ -12,18 +12,26 @@ import io.dropwizard.auth.Auth;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Collection;
 
 /**
  * Created by Roel on 15-12-2016.
  */
 @Singleton
-@Path("/notities")
+@Path("/notes")
 @Produces(MediaType.APPLICATION_JSON)
 public class NoteResource {
     private final NoteService service;
 
     @Inject
     public NoteResource(NoteService service){this.service = service;}
+
+    @GET
+    @JsonView(View.Public.class)
+    @RolesAllowed("MEDEWERKER")
+    public Collection<Note> retrieveAll(){
+        return service.getAll();
+    }
 
     @GET
     @Path("/{id}")

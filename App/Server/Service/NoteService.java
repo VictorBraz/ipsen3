@@ -5,6 +5,8 @@ import Server.Persistence.NoteDAO;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import java.util.List;
+
 /**
  * Created by Roel on 15-12-2016.
  */
@@ -26,4 +28,7 @@ public class NoteService extends BaseService<Note>{
     public void edit(Note note){
         dao.editNote(note);
     }
+    public List<Note>getAll(){
+        System.out.println("Get all Notes");
+        return dao.getAll();}
 }

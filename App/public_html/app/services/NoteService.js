@@ -1,23 +1,31 @@
 /**
  * Created by Roel on 15-12-2016.
  */
-angular.module('workshop').service('noteService', function ($http) {
+angular.module('workshop').service('noteService', function($http)
+{
     var self = this;
 
-    self.create = function(ownerID, onCreated){
-        var uri = 'api/notities';
-        var data = {
-            /*ownerID = ownerID*/};
-        $http.post(uri,data).then(function (response) {
-            onCreated(response.data);
-        }),
-        function(message,status) {
-            alert('Aanmaken mislukt: '+ message);
-        }
-    }
+    self.create = function (id,text,ownerID, onCreated) {
+
+        var uri = '/api/notes';
+        var data =
+        {
+            /*id:id,
+             text:text,
+             ownerID:ownerID*/
+        };
+        $http.post(uri, data).then(function (response)
+            {
+                onCreated(response.data);
+            },
+            function (message, status)
+            {
+                alert('Aanmaken mislukt: ' + message);
+            });
+    };
 
     self.getAll = function (onReceived) {
-        var uri = 'api/notities';
+        var uri = 'api/notes';
 
         $http.get(uri).then(function(response){
                 onReceived(response.data);
@@ -27,4 +35,5 @@ angular.module('workshop').service('noteService', function ($http) {
             });
 
     };
-})
+
+});

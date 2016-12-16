@@ -5,6 +5,8 @@ import Server.Model.Note;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Roel on 13-12-2016.
@@ -13,6 +15,7 @@ public class NoteDAO extends DatabaseDAO {
     private PreparedStatement addNote;
     private PreparedStatement getNote;
     private PreparedStatement editNote;
+    private PreparedStatement getAll;
 
     public NoteDAO() throws Exception {
         super();
@@ -24,6 +27,7 @@ public class NoteDAO extends DatabaseDAO {
             addNote = conn.prepareStatement("INSERT INTO note(note,ownerID) VALUES(?,?)");
             getNote = conn.prepareStatement("SELECT * FROM note WHERE ownerID=?");
             editNote = conn.prepareStatement("UPDATE note SET note=? WHERE ownerID=?");
+            getAll = conn.prepareStatement("SELECT*FROM note");
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -67,6 +71,29 @@ public class NoteDAO extends DatabaseDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Note> getAll(){
+//        List<Note> notes = new ArrayList<>();
+//        try{
+//            ResultSet rs = getAll.executeQuery();
+//
+//            while (rs.next()){
+//               Note note = new Note();
+//                note.setId(rs.getInt(1));
+//                note.setText(rs.getString(2));
+//                note.setOwnerID(rs.getInt(3));
+//                notes.add(note);
+//            }
+//            getAll.close();
+
+//        }catch (Exception e){
+
+//        }
+        List<Note> notes = new ArrayList<>();
+        Note note = new Note(1,2,"Dit is een test");
+        notes.add(note);
+        return notes;
     }
 
     public void close(){
