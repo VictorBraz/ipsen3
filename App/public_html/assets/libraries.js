@@ -11,9 +11,10 @@
 
     // Other
     addScript('assets/libraries/base64.min.js');
+    addScript('assets/libraries/checklist-model.js');
 
     //materialdesign
-    addScript('assets/materialdesign/js/arrive.min.js')
+    addScript('assets/materialdesign/js/arrive.min.js');
     addScript('assets/materialdesign/js/material.min.js');
     addScript('assets/materialdesign/js/ripples.min.js');
     addScript('assets/materialdesign/js/initBootstrap.js');
