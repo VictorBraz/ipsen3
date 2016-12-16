@@ -5,6 +5,17 @@ angular.module('workshop').service('noteService', function($http)
 {
     var self = this;
 
+    self.selectedOwnerId = 0;
+
+    self.setNoteOwnerID = function(id){
+        self.selectedOwnerId = id;
+    };
+
+    self.getNoteOwnerID = function(){
+        console.log('test: ' + self.selectedOwnerId);
+        return self.selectedOwnerId;
+    };
+
     self.create = function (id,text,ownerID, onCreated) {
 
         var uri = '/api/notes';
@@ -36,4 +47,18 @@ angular.module('workshop').service('noteService', function($http)
 
     };
 
+    self.getNote = function(onReceived)
+    {
+        var uri = '/api/notes/' + (self.selectedOwnerId - 1)+ '';
+
+        $http.get(uri).then(function(response)
+            {
+                onReceived(response.data);
+                console.log("trying to get note id " + self.selectedOwnerId)
+            },
+            function(message, status)
+            {
+                alert('Ophalen mislukt: ' + message + status);
+            });
+    };
 });

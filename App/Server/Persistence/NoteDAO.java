@@ -16,10 +16,14 @@ public class NoteDAO extends DatabaseDAO {
     private PreparedStatement getNote;
     private PreparedStatement editNote;
     private PreparedStatement getAll;
+    private List<Note> notes;
 
     public NoteDAO() throws Exception {
         super();
+        notes = new ArrayList<>();
         prepareStatements();
+        Note note = new Note(1,1,"Dit is een test");
+        notes.add(note);
     }
 
     public void prepareStatements(){
@@ -45,20 +49,21 @@ public class NoteDAO extends DatabaseDAO {
     }
 
     public Note getNote(int ownerID){
-        Note note = new Note();
-        try {
-            getNote.setInt(1,ownerID);
-            ResultSet rs = getNote.executeQuery();
+        Note note = notes.get(0);
+//        try {
+//            getNote.setInt(1,ownerID);
+//            ResultSet rs = getNote.executeQuery();
 
-            while(rs.next()){
-                note.setId(rs.getInt(1));
-                note.setText(rs.getString(2));
-                note.setOwnerID(rs.getInt(3));
-            }
+//            while(rs.next()){
+//                note.setId(rs.getInt(1));
+//                note.setText(rs.getString(2));
+//                note.setOwnerID(rs.getInt(3));
+//            }
 
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+//        }catch (SQLException e){
+//            e.printStackTrace();
+//        }
+
         return note;
     }
 
@@ -90,9 +95,7 @@ public class NoteDAO extends DatabaseDAO {
 //        }catch (Exception e){
 
 //        }
-        List<Note> notes = new ArrayList<>();
-        Note note = new Note(1,2,"Dit is een test");
-        notes.add(note);
+
         return notes;
     }
 
