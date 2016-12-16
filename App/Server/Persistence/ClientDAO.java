@@ -77,7 +77,6 @@ public class ClientDAO extends DatabaseDAO{
                 clients.add(client);
             }
 //            getAll.close();
-
         }catch (Exception e){
 
         }
