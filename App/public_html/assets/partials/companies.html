@@ -6,12 +6,6 @@
         Overzicht
     </div>
 
-
-
-    <div>
-        <a href = "/company">View</a>
-    </div>
-
     <table class="table">
         <thead>
         <th></th>
@@ -43,6 +37,13 @@
         </tbody>
     </table>
 
-    <span> ID: {{ selectedcompanies.id }} </span>
+
+    <div class="pull-right">
+        <a href = "/company">View</a>
+        <a href = "#">Edit</a>
+        <a href = "#">Delete</a>
+    </div>
+
+    <span>Currently selected ID's: {{ selectedcompanies.id }} </span>
 
 </div>

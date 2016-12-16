@@ -9,16 +9,12 @@
     </div>
 
     <div>
-        <label>Bedrijfsid:
-            <span>
-                {{ company.id }}
-            </span>
-        </label>
-        <label>Bedrijfsnaam:
-            <span>
-                {{ company.companyName }}
-            </span>
-        </label>
+        <label>Bedrijfsid:</label>
+        <input type="text" value=" {{ company.id }}"/>
+
+        <label>Bedrijfsnaam:</label>
+        <input type="text" value="{{ company.companyName }}"/>
+
         <span>
             {{ company.companyAddressID }}
         </span>
