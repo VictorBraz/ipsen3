@@ -5,10 +5,14 @@ angular.module('workshop').controller('CompanyController', function($scope, comp
 {
     var construct = function()
     {
-        companyService.getAll(function (companytest) {
-            $scope.selectedcompany = 0;
-            $scope.companyding = companytest;
-            $scope.testID = companytest[0];
+
+
+        companyService.getCompanyID();
+
+        companyService.getCompany(function(test)
+        {
+            $scope.company = test;
+
         });
 
     };
