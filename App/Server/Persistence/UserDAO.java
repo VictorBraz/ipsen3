@@ -39,7 +39,7 @@ public class UserDAO
         user3.setStreetnumber("98");
         user3.setEmailAddress("test@test.nl");
         user3.setPassword("test");
-        user3.setRoles(new String[] { "GUEST" });
+        user3.setRoles(new String[] { "GUEST", "MEDEWERKER", "ADMIN" });
 
         users = new ArrayList();
         users.add(user1);

@@ -8,6 +8,7 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/clients', {templateUrl: 'assets/partials/clients.html', controller: 'ClientsController' });
     $routeProvider.when('/company', {templateUrl: 'assets/partials/companydetail.html', controller: 'CompanyController' });
 
+    $routeProvider.when('/employees', {templateUrl: 'assets/partials/employees.html', controller: 'EmployeesController' });
 
     // Voeg hier meer routes toe
     
