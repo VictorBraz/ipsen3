@@ -23,8 +23,7 @@
                     <label>
                         <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
                         <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
-                        <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedcompanies.id" checklist-value="company.id"> {{company.id}}
-                    </label>
+                        <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedcompanies.id" checklist-value="company.id"/>
                 </div>
             </td>
             <td>{{ company.id }}</td>
@@ -38,8 +37,8 @@
     </table>
 
     <div class="pull-right">
-        <a href = "/company">View</a>
-        <a href = "#">Edit</a>
+        <a href = "#">New</a>
+        <a href = "/company">View/Edit</a>
         <a ng-click="deleteCompany()">Delete</a>
     </div>
 
