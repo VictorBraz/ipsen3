@@ -6,8 +6,15 @@
         Overzicht
     </div>
 
+
+
+    <div>
+        {{user.roles}}
+    </div>
+
     <table class="table">
         <thead>
+        <th></th>
         <th>ID</th>
         <th>Bedrijf address ID</th>
         <th>Bedrijfsnaam</th>
@@ -17,6 +24,15 @@
         </thead>
         <tbody>
         <tr ng-repeat="company in companies">
+            <td>
+                <div class="checkbox">
+                    <label>
+                        <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
+                        <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
+                        <input type="checkbox" checklist-model="user.id" checklist-value="company.id"> {{company.id}}
+                    </label>
+                </div>
+            </td>
             <td>{{ company.id }}</td>
             <td>{{ company.companyAddressID }}</td>
             <td>{{ company.companyName }}</td>
@@ -26,5 +42,7 @@
         </tr>
         </tbody>
     </table>
+
+    <span> ID: {{ user.id }} </span>
 
 </div>

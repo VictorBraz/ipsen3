@@ -1,7 +1,8 @@
 
 angular.module('workshop',
 [
-    'ngRoute'
+    'ngRoute',
+    'checklist-model'
     // Voeg hier meer modules toe
 ])
 .config(function($httpProvider)

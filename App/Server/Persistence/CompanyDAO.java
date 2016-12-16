@@ -24,8 +24,14 @@ public class CompanyDAO
         cm1.setPhoneNumber("435353");
         cm1.setTag("Slechtziend");
 
+
+        Company cm2 = new Company();
+        cm2.setId(2);
+
+
         companies = new ArrayList<>();
         companies.add(cm1);
+        companies.add(cm2);
     }
 
     public List<Company> getAll()

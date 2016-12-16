@@ -21,6 +21,7 @@
     addScript('app/controllers/RegistrationController.js');
     addScript('app/controllers/OverviewController.js');
     addScript('app/controllers/CompaniesController.js');
+    addScript('app/controllers/CompanyController.js');
     addScript('app/controllers/ClientsController.js');
     addScript('app/controllers/ClientsController.js');
     addScript('app/controllers/EmployeesController.js');
