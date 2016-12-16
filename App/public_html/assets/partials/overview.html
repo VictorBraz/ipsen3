@@ -1,4 +1,4 @@
-<div class="container">
+<div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
 
         <div class="panel-heading">
@@ -8,13 +8,22 @@
         <table class="table table-hover">
             <thead>
 
-            <th>Volledige naam</th>
-            <th>Postcode</th>
-            <th>Huisnummer</th>
-            <th>E-mailadres</th>
+            <th></th>
+            <th><label>Volledige naam</label></th>
+            <th><label>Postcode</label></th>
+            <th><label>Huisnummer</label></th>
+            <th><label>E-mailadres</label></th>
             </thead>
             <tbody>
             <tr ng-repeat="user in users">
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checklist-model="user.id" checklist-value="user.id">
+                        </label>
+
+                    </div>
+                </td>
                 <td>{{ user.fullName}}</td>
                 <td>{{ user.postcode }}</td>
                 <td>{{ user.streetnumber }}</td>
