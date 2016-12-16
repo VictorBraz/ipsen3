@@ -7,6 +7,16 @@ angular.module('workshop').service('companyService', function($http)
 {
     var self = this;
 
+    self.selectedId = 0;
+
+    self.setCompanyID = function(id){
+        self.selectedId = id;
+    };
+
+    self.getCompanyID = function(){
+        console.log('test: ' + self.selectedId);
+    };
+
     self.create = function(name, postcode, streetnumber, email, password, onCreated)
     {
         var uri = '/api/companies';
@@ -38,13 +48,14 @@ angular.module('workshop').service('companyService', function($http)
                 alert('Ophalen mislukt: ' + message);
             });
     };
-    self.getCompany = function(onReceived, id)
+    self.getCompany = function(onReceived)
     {
-        var uri = '/api/companies/' + id + '';
+        var uri = '/api/companies/' + (self.selectedId - 1)+ '';
 
         $http.get(uri).then(function(response)
             {
                 onReceived(response.data);
+                console.log("trying to get" + self.selectedId)
             },
             function(message, status)
             {
