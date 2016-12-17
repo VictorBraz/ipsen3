@@ -1,11 +1,11 @@
 
-angular.module('workshop').service('userService', function($http)
+angular.module('workshop').service('accountService', function($http)
 {
     var self = this;
     
     self.authenticate = function(onSuccess)
     {
-        var uri = '/api/users/me';
+        var uri = '/api/accounts/me';
         
         $http.get(uri).then(function(response)
         {
@@ -17,15 +17,12 @@ angular.module('workshop').service('userService', function($http)
         });
     };
     
-    self.create = function(name, postcode, streetnumber, email, password, onCreated)
+    self.create = function(name, password, onCreated)
     {
-        var uri = '/api/users';
+        var uri = '/api/accounts';
         var data =
         {
-            fullName: name,
-            postcode: postcode,
-            streetnumber: streetnumber,
-            emailAddress: email,
+            accountname: name,
             password: password
         };
 
@@ -41,7 +38,7 @@ angular.module('workshop').service('userService', function($http)
     
     self.getAll = function(onReceived)
     {
-        var uri = '/api/users';
+        var uri = '/api/accounts';
         
         $http.get(uri).then(function(response)
         {

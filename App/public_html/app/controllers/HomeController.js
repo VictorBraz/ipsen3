@@ -1,11 +1,11 @@
 
-angular.module('workshop').controller('HomeController', function($scope, authenticationService, userService)
+angular.module('workshop').controller('HomeController', function($scope, authenticationService, accountService)
 {
     $scope.login = function()
     {
-        authenticationService.createAuthentication($scope.email, $scope.password);
+        authenticationService.createAuthentication($scope.name, $scope.password);
         
-        userService.authenticate(function(authenticator)
+        accountService.authenticate(function(authenticator)
         {
             authenticationService.setAuthenticator(authenticator);
             authenticationService.storeAuthentication($scope.remember);

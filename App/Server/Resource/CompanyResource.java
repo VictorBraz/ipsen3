@@ -1,7 +1,7 @@
 package Server.Resource;
 
+import Server.Model.Account;
 import Server.Model.Company;
-import Server.Model.User;
 import Server.Service.CompanyService;
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -60,9 +60,9 @@ public class CompanyResource
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @RolesAllowed("MEDEWERKER")
-    public void update(@PathParam("id") int id, @Auth User authenticator, User user)
+    public void update(@PathParam("id") int id, @Auth Account authenticator, Account account)
     {
-        //service.update(authenticator, id, user);
+        //service.update(authenticator, id, account);
     }
 
     @DELETE

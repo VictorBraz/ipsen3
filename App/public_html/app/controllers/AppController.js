@@ -19,7 +19,7 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     
     $scope.gotoOverview = function()
     {
-        $location.path('/overview');
+        $location.path('/accounts');
     };
 
     $scope.gotoCompanies = function()

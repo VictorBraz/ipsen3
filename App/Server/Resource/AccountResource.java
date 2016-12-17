@@ -1,5 +1,7 @@
 package Server.Resource;
 
+import Server.Model.Account;
+import Server.Service.AccountService;
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Singleton;
@@ -16,8 +18,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import Server.Service.UserService;
-import Server.Model.User;
 
 
 /**
@@ -27,14 +27,14 @@ import Server.Model.User;
  * @author Peter van Vliet
  */
 @Singleton
-@Path("/users")
+@Path("/accounts")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserResource
+public class AccountResource
 {
-    private final UserService service;
+    private final AccountService service;
 
     @Inject
-    public UserResource(UserService service)
+    public AccountResource(AccountService service)
     {
         this.service = service;
     }
@@ -42,7 +42,7 @@ public class UserResource
     @GET
     @JsonView(View.Public.class)
     @RolesAllowed("GUEST")
-    public Collection<User> retrieveAll()
+    public Collection<Account> retrieveAll()
     {
         return service.getAll();
     }
@@ -51,17 +51,17 @@ public class UserResource
     @Path("/{id}")
     @JsonView(View.Public.class)
     @RolesAllowed("GUEST")
-    public User retrieve(@PathParam("id") int id)
+    public Account retrieve(@PathParam("id") int id)
     {
-        return service.get(id);
+        return service.getAccount(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    public void create(User user)
+    public void create(Account account)
     {
-        service.add(user);
+        service.addAccount(account);
     }
 
     @PUT
@@ -69,9 +69,9 @@ public class UserResource
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @RolesAllowed("GUEST")
-    public void update(@PathParam("id") int id, @Auth User authenticator, User user)
+    public void update(@PathParam("id") int id, @Auth Account authenticator, Account account)
     {
-        service.update(authenticator, id, user);
+//        service.update(authenticator, id, account);
     }
 
     @DELETE
@@ -79,13 +79,13 @@ public class UserResource
     @RolesAllowed("ADMIN")
     public void delete(@PathParam("id") int id)
     {
-        service.delete(id);
+//        service.delete(id);
     }
 
     @GET
     @Path("/me")
     @JsonView(View.Private.class)
-    public User authenticate(@Auth User authenticator)
+    public Account authenticate(@Auth Account authenticator)
     {
         return authenticator;
     }

@@ -15,18 +15,18 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
         $scope.selectedCompanyID = id
     };
 
-    $scope.user = {
+    $scope.account = {
         id: []
     };
     $scope.checkAll = function() {
-        $scope.user.roles = $scope.roles.map(function(item) { return item.id; });
+        $scope.account.roles = $scope.roles.map(function(item) { return item.id; });
     };
     $scope.uncheckAll = function() {
-        $scope.user.roles = [];
+        $scope.account.roles = [];
     };
     $scope.checkFirst = function() {
-        $scope.user.roles.splice(0, $scope.user.roles.length);
-        $scope.user.roles.push(1);
+        $scope.account.roles.splice(0, $scope.account.roles.length);
+        $scope.account.roles.push(1);
     };
 
     construct();

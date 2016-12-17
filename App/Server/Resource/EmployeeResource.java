@@ -1,8 +1,8 @@
 package Server.Resource;
 
 
+import Server.Model.Account;
 import Server.Model.Employee;
-import Server.Model.User;
 import Server.Service.EmployeeService;
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -57,7 +57,7 @@ public class EmployeeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @RolesAllowed("MEDEWERKER")
-    public void update(@PathParam("id") int id, @Auth User authenticator, Employee employee){
+    public void update(@PathParam("id") int id, @Auth Account authenticator, Employee employee){
 
     }
 

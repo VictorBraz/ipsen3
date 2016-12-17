@@ -75,7 +75,6 @@ public class EmployeeDAO extends DatabaseDAO {
                 employees.add(employee);
             }
 //            getAll.close();
-
         }catch (Exception e) {
         }
 

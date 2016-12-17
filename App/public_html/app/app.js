@@ -10,7 +10,7 @@
     addScript('app/services/AuthenticationService.js');
     addScript('app/services/RequestService.js');
     addScript('app/services/AddressService.js');
-    addScript('app/services/UserService.js');
+    addScript('app/services/AccountService.js');
     addScript('app/services/CompanyService.js');
     addScript('app/services/ClientService.js');
     addScript('app/services/EmployeeService.js');
@@ -19,7 +19,7 @@
     addScript('app/controllers/AppController.js');
     addScript('app/controllers/HomeController.js');
     addScript('app/controllers/RegistrationController.js');
-    addScript('app/controllers/OverviewController.js');
+    addScript('app/controllers/AccountController.js');
     addScript('app/controllers/CompaniesController.js');
     addScript('app/controllers/CompanyController.js');
     addScript('app/controllers/ClientsController.js');

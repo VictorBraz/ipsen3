@@ -1,7 +1,7 @@
 package Server.Resource;
 
 import Server.Model.Client;
-import Server.Model.User;
+import Server.Model.Account;
 import Server.Service.ClientService;
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -54,7 +54,7 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @RolesAllowed("MEDEWERKER")
-    public void update(@PathParam("id") int id, @Auth User authenticator, Client client){
+    public void update(@PathParam("id") int id, @Auth Account authenticator, Client client){
 
     }
 

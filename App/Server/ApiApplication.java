@@ -13,7 +13,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import java.util.EnumSet;
 import javax.servlet.DispatcherType;
-import Server.Model.User;
+import Server.Model.Account;
 import Server.Service.AuthenticationService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -76,7 +76,7 @@ public class ApiApplication extends Application<ApiConfiguration>
         ApiUnauthorizedHandler unauthorizedHandler = guiceBundle.getInjector().getInstance(ApiUnauthorizedHandler.class);
 
         environment.jersey().register(new AuthDynamicFeature(
-                new BasicCredentialAuthFilter.Builder<User>()
+                new BasicCredentialAuthFilter.Builder<Account>()
                         .setAuthenticator(authenticationService)
                         .setAuthorizer(authenticationService)
                         .setRealm("SUPER SECRET STUFF")
@@ -85,7 +85,7 @@ public class ApiApplication extends Application<ApiConfiguration>
         );
 
         environment.jersey().register(RolesAllowedDynamicFeature.class);
-        environment.jersey().register(new AuthValueFactoryProvider.Binder(User.class));
+        environment.jersey().register(new AuthValueFactoryProvider.Binder(Account.class));
     }
 
     private void configureClientFilter(Environment environment)

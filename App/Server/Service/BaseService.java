@@ -2,7 +2,7 @@ package Server.Service;
 
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotFoundException;
-import Server.Model.User;
+import Server.Model.Account;
 
 /**
  *
@@ -21,9 +21,9 @@ public class BaseService<T>
         return model;
     }
 
-    public void assertSelf(User user1, User user2)
+    public void assertSelf(Account account1, Account account2)
     {
-        if (!user1.equals(user2))
+        if (!account1.equals(account2))
         {
             throw new ForbiddenException();
         }

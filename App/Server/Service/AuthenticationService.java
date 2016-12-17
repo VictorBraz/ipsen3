@@ -6,46 +6,48 @@
 package Server.Service;
 
 import java.util.Optional;
+
+import Server.Model.Account;
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.Authorizer;
 import io.dropwizard.auth.basic.BasicCredentials;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import Server.Model.User;
-import Server.Persistence.UserDAO;
+
+import Server.Persistence.AccountDAO;
 
 /**
  *
  * @author Peter van Vliet
  */
 @Singleton
-public class AuthenticationService implements Authenticator<BasicCredentials, User>, Authorizer<User>
+public class AuthenticationService implements Authenticator<BasicCredentials, Account>, Authorizer<Account>
 {
-    private final UserDAO userDAO;
+    private final AccountDAO accountDAO;
 
     @Inject
-    public AuthenticationService(UserDAO userDAO)
+    public AuthenticationService(AccountDAO accountDAO)
     {
-        this.userDAO = userDAO;
+        this.accountDAO = accountDAO;
     }
 
     @Override
-    public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException
+    public Optional<Account> authenticate(BasicCredentials credentials) throws AuthenticationException
     {
-        User user = userDAO.getByEmailAddress(credentials.getUsername());
+        Account account = accountDAO.getByAccountname(credentials.getUsername());
 
-        if (user != null && user.getPassword().equals(credentials.getPassword()))
+        if (account != null && account.getPassword().equals(credentials.getPassword()))
         {
-            return Optional.of(user);
+            return Optional.of(account);
         }
 
         return Optional.empty();
     }
 
     @Override
-    public boolean authorize(User user, String roleName)
+    public boolean authorize(Account account, String roleName)
     {
-        return user.hasRole(roleName);
+        return account.hasRole(roleName);
     }
 }

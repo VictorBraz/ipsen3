@@ -1,5 +1,5 @@
 
-angular.module('workshop').controller('RegistrationController', function($scope, addressService, userService)
+angular.module('workshop').controller('RegistrationController', function($scope, addressService, accountService)
 {
     $scope.checkAddress = function()
     {
@@ -12,17 +12,14 @@ angular.module('workshop').controller('RegistrationController', function($scope,
     
     $scope.register = function()
     {
-        userService.create(
+        accountService.create(
             $scope.name,
-            $scope.postcode,
-            $scope.streetnumber,
-            $scope.email,
             $scope.password,
-            userCreated
+            accoountCreated
         );
     };
     
-    var userCreated = function()
+    var accountCreated = function()
     {
         alert('Uw account is aangemaakt, u kunt nu inloggen');
         $scope.gotoHome();

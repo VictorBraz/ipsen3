@@ -51,9 +51,9 @@ public class CompanyDAO
         }
     }
 
-//    public User getByEmailAddress(String emailAddress)
+//    public Account getByEmailAddress(String emailAddress)
 //    {
-//        Optional<User> result = users.stream()
+//        Optional<Account> result = users.stream()
 //            .filter(user -> user.getEmailAddress().equals(emailAddress))
 //            .findAny();
 //
