@@ -1,48 +1,47 @@
-<h1>Bedrijven</h1>
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
 
-<div class="panel panel-default">
+        <div class="panel-heading">
+            <h5>Bedrijven</h5>
+        </div>
 
-    <div class="panel-heading">
-        Overzicht
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th><label>ID</label></th>
+            <th><label>Bedrijfsnaam</label></th>
+            <th><label>Telefoonnummer</label></th>
+            <th><label>Email</label></th>
+            <th><label>Tag</label></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="company in companies">
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
+                            <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
+                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedcompanies.id"
+                                   checklist-value="company.id"/>
+                        </label>
+                    </div>
+                </td>
+                <td>{{ company.id }}</td>
+                <td>{{ company.companyName }}</td>
+                <td>{{ company.phoneNumber }}</td>
+                <td>{{ company.email }}</td>
+                <td>{{ company.tag }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="pull-right">
+            <a href="#">New</a>
+            <a href="/company">View/Edit</a>
+            <a ng-click="deleteCompany()">Delete</a>
+        </div>
+
+        <span>Currently selected ID's: {{ selectedcompanies.id }} </span>
+
     </div>
-
-
-
-    <div>
-        {{user.roles}}
-    </div>
-
-    <table class="table">
-        <thead>
-        <th></th>
-        <th>ID</th>
-        <th>Bedrijf address ID</th>
-        <th>Bedrijfsnaam</th>
-        <th>Telefoonnummer</th>
-        <th>Email</th>
-        <th>Tag</th>
-        </thead>
-        <tbody>
-        <tr ng-repeat="company in companies">
-            <td>
-                <div class="checkbox">
-                    <label>
-                        <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
-                        <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
-                        <input type="checkbox" checklist-model="user.id" checklist-value="company.id"> {{company.id}}
-                    </label>
-                </div>
-            </td>
-            <td>{{ company.id }}</td>
-            <td>{{ company.companyAddressID }}</td>
-            <td>{{ company.companyName }}</td>
-            <td>{{ company.phoneNumber }}</td>
-            <td>{{ company.email }}</td>
-            <td>{{ company.tag }}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <span> ID: {{ user.id }} </span>
-
 </div>

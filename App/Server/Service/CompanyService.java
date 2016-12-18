@@ -32,4 +32,9 @@ public class CompanyService extends BaseService<Company>
         System.out.println(c.getCompanyName());
         return dao.get(id);
     }
+
+    public void delete(int id)
+    {
+        dao.delete(id);
+    }
 }

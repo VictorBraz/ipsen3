@@ -67,10 +67,9 @@ public class CompanyResource
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("ADMIN")
+    @RolesAllowed("MEDEWERKER")
     public void delete(@PathParam("id") int id)
     {
-        //service.delete(id);
+        service.delete(id);
     }
-
 }

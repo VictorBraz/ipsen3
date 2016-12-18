@@ -85,6 +85,7 @@ public class Client {
         this.study = study;
     }
 
+
     public String getEmail() {
         return email;
     }
