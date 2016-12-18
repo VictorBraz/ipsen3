@@ -3,7 +3,12 @@
 <div class="panel panel-default">
 
     <div class="panel-heading">
-        Overzicht
+        <li role="presentation" ng-class="{ 'active': isLocation('/') }">
+            <a ng-click="gotoEmployees()">
+                <span class="glyphicon glyphicon-th-list"></span>
+                Nieuw
+            </a>
+        </li>
     </div>
 
     <table class="table">
@@ -21,7 +26,7 @@
                 <td>{{ client.lastname }}</td>
                 <td>{{ client.study }}</td>
                 <td>{{ client.phonenumber }}</td>
-                <td>{{ client.emailAddress }}</td>
+                <td>{{ client.email }}</td>
                 <td>{{ client.tag }}</td>
             </tr>
         </tbody>

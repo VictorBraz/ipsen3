@@ -45,7 +45,7 @@ public class ClientDAO extends DatabaseDAO{
             addClient.setString(3, client.getLastname());
             addClient.setString(4, client.getBirthdate());
             addClient.setString(5, client.getStudy());
-            addClient.setString(6, client.getEmaill());
+            addClient.setString(6, client.getEmail());
             addClient.setString(7, client.getPhonenumber());
             addClient.setString(8, client.getTag());
 
@@ -71,7 +71,7 @@ public class ClientDAO extends DatabaseDAO{
                 client.setLastname(rs.getString(4));
                 client.setBirthdate(rs.getString(5));
                 client.setStudy(rs.getString(6));
-                client.setEmaill(rs.getString(7));
+                client.setEmail(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
                 clients.add(client);
@@ -97,7 +97,7 @@ public class ClientDAO extends DatabaseDAO{
                 client.setLastname(rs.getString(4));
                 client.setBirthdate(rs.getString(5));
                 client.setStudy(rs.getString(6));
-                client.setEmaill(rs.getString(7));
+                client.setEmail(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
             }

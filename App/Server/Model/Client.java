@@ -3,8 +3,6 @@ package Server.Model;
 
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -31,7 +29,7 @@ public class Client {
     private String study;
 
     @JsonView(View.Public.class)
-    private String emaill;
+    private String email;
 
     @JsonView(View.Public.class)
     private String phonenumber;
@@ -87,12 +85,12 @@ public class Client {
         this.study = study;
     }
 
-    public String getEmaill() {
-        return emaill;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmaill(String emaill) {
-        this.emaill = emaill;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhonenumber() {
