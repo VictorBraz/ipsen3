@@ -29,13 +29,25 @@ public class Client {
     private String study;
 
     @JsonView(View.Public.class)
-    private String emailAddress;
+    private String emailAddressClient;
 
     @JsonView(View.Public.class)
     private String phonenumber;
 
     @JsonView(View.Public.class)
     private String tag;
+
+    /*@JsonView(View.Public.class)
+    private String streetName;
+
+    @JsonView(View.Public.class)
+    private String cityName;*/
+
+    @JsonView(View.Public.class)
+    private String zipCode;
+
+    @JsonView(View.Public.class)
+    private String streetNumber;
 
     public int getId() {
         return id;
@@ -86,12 +98,12 @@ public class Client {
     }
 
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmailAddressClient() {
+        return emailAddressClient;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmailAddressClient(String emailAddressClient) {
+        this.emailAddressClient = emailAddressClient;
     }
 
     public String getPhonenumber() {
@@ -108,5 +120,37 @@ public class Client {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+  /*  public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+*/
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 }
