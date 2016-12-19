@@ -15,7 +15,7 @@ angular.module('workshop').service('clientService', function($http)
                 lastname: lastName,
                 birthdate: birthDate,
                 study: Study,
-                emailAddressClient: Email,
+                emailAddress: Email,
                 phonenumber: phoneNumber,
                 tag: Tag,
                 /*street: streetname,
