@@ -15,7 +15,7 @@ angular.module('workshop').service('employeeService', function($http)
              lastName: lastName,
              study: study,
              phoneNumber: phoneNumber,
-             emailAddressClient: email,
+             emailAddress: email,
              tag: tag*/
         };
         $http.post(uri, data).then(function (response)
