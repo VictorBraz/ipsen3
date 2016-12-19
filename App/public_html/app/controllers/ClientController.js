@@ -24,7 +24,7 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.lastname,
             $scope.birthdate,
             $scope.study,
-            $scope.email,
+            $scope.emailAddressClient,
             $scope.phonenumber,
             $scope.tag,
             clientCreated

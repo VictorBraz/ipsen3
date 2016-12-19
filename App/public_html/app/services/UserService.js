@@ -25,7 +25,7 @@ angular.module('workshop').service('userService', function($http)
             fullName: name,
             postcode: postcode,
             streetnumber: streetnumber,
-            emailAddress: email,
+            emailAddressClient: email,
             password: password
         };
 

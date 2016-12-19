@@ -29,7 +29,7 @@ public class Client {
     private String study;
 
     @JsonView(View.Public.class)
-    private String email;
+    private String emailAddress;
 
     @JsonView(View.Public.class)
     private String phonenumber;
@@ -86,12 +86,12 @@ public class Client {
     }
 
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getPhonenumber() {
