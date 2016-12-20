@@ -4,8 +4,15 @@
         <div class="panel-heading">
             <h5>Cliënten</h5>
 
+    <div class="panel-heading">
+        <li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
+            <a ng-click="gotoAddClient()">
+                <span class="glyphicon glyphicon-plus"></span>
+                Nieuw
+            </a>
+        </li>
+    </div>
         </div>
-
         <table class="table table-hover">
             <thead>
             <th></th>
@@ -30,7 +37,7 @@
                 <td>{{ client.lastname }}</td>
                 <td>{{ client.study }}</td>
                 <td>{{ client.phonenumber }}</td>
-                <td>{{ client.email}}</td>
+                <td>{{ client.emailAddress }}</td>
                 <td>{{ client.tag }}</td>
             </tr>
             </tbody>

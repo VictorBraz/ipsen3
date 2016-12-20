@@ -11,7 +11,7 @@ angular.module('workshop').service('addressService', function($http)
             + '&streetnumber=' + streetnumber
             + '&ref=domeinnaam.nl'
             + '&type=json';
-    
+
         $http.get(url).then(function(response)
         {
             var data = response.data;
@@ -22,7 +22,7 @@ angular.module('workshop').service('addressService', function($http)
             }
             else
             {
-                handleError();
+                //handleError();
             }
         }, handleError);
     };

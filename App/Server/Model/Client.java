@@ -3,8 +3,6 @@ package Server.Model;
 
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -31,13 +29,25 @@ public class Client {
     private String study;
 
     @JsonView(View.Public.class)
-    private String email;
+    private String emailAddress;
 
     @JsonView(View.Public.class)
     private String phonenumber;
 
     @JsonView(View.Public.class)
     private String tag;
+
+    /*@JsonView(View.Public.class)
+    private String streetName;
+
+    @JsonView(View.Public.class)
+    private String cityName;*/
+
+    @JsonView(View.Public.class)
+    private String zipCode;
+
+    @JsonView(View.Public.class)
+    private String streetNumber;
 
     public int getId() {
         return id;
@@ -87,12 +97,13 @@ public class Client {
         this.study = study;
     }
 
-    public String getEmaill() {
-        return email;
+
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String emaill) {
-        this.email = emaill;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getPhonenumber() {
@@ -109,5 +120,37 @@ public class Client {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+  /*  public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+*/
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 }

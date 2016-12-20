@@ -40,7 +40,6 @@ public class AddressDAO extends DatabaseDAO{
                 address.setCity(rs.getString(4));
             }
 
-            getAddress.close();
 
         }catch (Exception e){
 
@@ -62,8 +61,12 @@ public class AddressDAO extends DatabaseDAO{
             addAddress.setString(2, address.getZipcode());
             addAddress.setString(3, address.getCity());
 
-            addAddress.execute();
-
+            int rowInserted = addAddress.executeUpdate();
+            ResultSet rs = addAddress.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                address.setId(id);
+            }
             addAddress.close();
         }catch(Exception e){
 
