@@ -20,10 +20,8 @@ public class NoteDAO extends DatabaseDAO {
 
     public NoteDAO() throws Exception {
         super();
-        notes = new ArrayList<>();
+
         prepareStatements();
-        Note note = new Note(1,1,"Dit is een test");
-        notes.add(note);
     }
 
     public void prepareStatements(){
@@ -49,21 +47,20 @@ public class NoteDAO extends DatabaseDAO {
     }
 
     public Note getNote(int ownerID){
-        Note note = notes.get(0);
-//        try {
-//            getNote.setInt(1,ownerID);
-//            ResultSet rs = getNote.executeQuery();
+        Note note = new Note();
+        try {
+            getNote.setInt(1,ownerID);
+            ResultSet rs = getNote.executeQuery();
 
-//            while(rs.next()){
-//                note.setId(rs.getInt(1));
-//                note.setText(rs.getString(2));
-//                note.setOwnerID(rs.getInt(3));
-//            }
+            while(rs.next()){
+                note.setId(rs.getInt(1));
+                note.setText(rs.getString(2));
+                note.setOwnerID(rs.getInt(3));
+            }
 
-//        }catch (SQLException e){
-//            e.printStackTrace();
-//        }
-
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return note;
     }
 
@@ -79,22 +76,22 @@ public class NoteDAO extends DatabaseDAO {
     }
 
     public List<Note> getAll(){
-//        List<Note> notes = new ArrayList<>();
-//        try{
-//            ResultSet rs = getAll.executeQuery();
-//
-//            while (rs.next()){
-//               Note note = new Note();
-//                note.setId(rs.getInt(1));
-//                note.setText(rs.getString(2));
-//                note.setOwnerID(rs.getInt(3));
-//                notes.add(note);
-//            }
-//            getAll.close();
+        List<Note> notes = new ArrayList<>();
+        try{
+            ResultSet rs = getAll.executeQuery();
 
-//        }catch (Exception e){
+            while (rs.next()){
+                Note note = new Note();
+                note.setId(rs.getInt(1));
+                note.setText(rs.getString(2));
+                note.setOwnerID(rs.getInt(3));
+                notes.add(note);
+            }
+            getAll.close();
 
-//        }
+        }catch (Exception e){
+
+        }
 
         return notes;
     }

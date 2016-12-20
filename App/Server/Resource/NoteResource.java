@@ -53,6 +53,6 @@ public class NoteResource {
     @JsonView(View.Protected.class)
     @RolesAllowed("MEDEWERKER")
     public void update(@PathParam("id") int id, @Auth User authenticator, Note note){
-
+        service.edit(note);
     }
 }
