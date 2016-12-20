@@ -33,7 +33,7 @@ public class EmployeeResource {
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public Collection<Employee> retrieveAll(){
         return service.getAll();
     }
@@ -56,14 +56,14 @@ public class EmployeeResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public void update(@PathParam("id") int id, @Auth User authenticator, Employee employee){
 
     }
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("ADMIN")
+    @RolesAllowed("1")
     public void delete(@PathParam("id") int id)
     {
 

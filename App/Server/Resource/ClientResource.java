@@ -30,7 +30,7 @@ public class ClientResource {
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public Collection<Client> retrieveAll(){
         return service.getAll();
     }
@@ -46,6 +46,7 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     public void create(Client client){
+        System.out.println("-------->>>>>>>>" + client.getFirstname());
         service.add(client);
     }
 
@@ -53,14 +54,14 @@ public class ClientResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public void update(@PathParam("id") int id, @Auth User authenticator, Client client){
 
     }
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("ADMIN")
+    @RolesAllowed("1")
     public void delete(@PathParam("id") int id)
     {
 

@@ -41,6 +41,10 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
         $location.path('/notes');
     };
 
+    $scope.gotoAddClient = function () {
+        $location.path('/addclient');
+    }
+
     $scope.logout = function()
     {
         authenticationService.deleteAuthentication();

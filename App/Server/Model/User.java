@@ -12,29 +12,18 @@ import org.hibernate.validator.constraints.NotEmpty;
  * Meer informatie over validatie:
  *  http://hibernate.org/validator/
  *
- * @author Peter van Vliet
+ * @author Peter van Vliet, Negin Nafissi
  */
 public class User implements Principal
 {
     @NotEmpty
-    @Length(min = 3, max = 100)
     @JsonView(View.Public.class)
-    private String fullName;
-
-    @NotEmpty
-    @Length(min = 6, max = 7)
-    @JsonView(View.Public.class)
-    private String postcode;
-
-    @NotEmpty
-    @Length(min = 1, max = 10)
-    @JsonView(View.Public.class)
-    private String streetnumber;
+    private int id;
 
     @NotEmpty
     @Email
     @JsonView(View.Public.class)
-    private String emailAddress;
+    private String accountName;
 
     @NotEmpty
     @Length(min = 8)
@@ -42,46 +31,29 @@ public class User implements Principal
     private String password;
 
     @JsonView(View.Private.class)
-    private String[] roles;
+    private String privilege;
 
-    public String getFullName()
+    @JsonView(View.Private.class)
+    private int userID;
+
+    public int setId(int id)
     {
-        return fullName;
+        return id;
     }
 
-    public void setFullName(String fullName)
+    public void getId()
     {
-        this.fullName = fullName;
+        this.id = id;
     }
 
-    public String getPostcode()
+    public String getAccountName()
     {
-        return postcode;
+        return accountName;
     }
 
-    public void setPostcode(String postcode)
+    public void setAccountName(String accountName)
     {
-        this.postcode = postcode;
-    }
-
-    public String getStreetnumber()
-    {
-        return streetnumber;
-    }
-
-    public void setStreetnumber(String streetnumber)
-    {
-        this.streetnumber = streetnumber;
-    }
-
-    public String getEmailAddress()
-    {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress)
-    {
-        this.emailAddress = emailAddress;
+        this.accountName = accountName;
     }
 
     public String getPassword()
@@ -94,41 +66,43 @@ public class User implements Principal
         this.password = password;
     }
 
+    public String getPrivilege()
+    {
+        return privilege;
+    }
+
+    public void setPrivilege(String privilege)
+    {
+        this.privilege = privilege;
+    }
+
+    public int getUserID()
+    {
+        return userID;
+    }
+
+    public void setUserID(int userID)
+    {
+        this.userID = userID;
+    }
+
     @Override
     @JsonIgnore
     public String getName()
     {
-        return fullName;
+        return null;
     }
 
-    public String[] getRoles()
-    {
-        return roles;
-    }
 
-    public void setRoles(String[] roles)
-    {
-        this.roles = roles;
-    }
-
-    public boolean hasRole(String roleName)
-    {
-        if (roles != null)
-        {
-            for(String role : roles)
-            {
-                if(roleName.equals(role))
-                {
-                    return true;
-                }
-            }
+    public boolean hasRole(String roleName){
+        if(roleName.equals(privilege)) {
+            return true;
         }
-
         return false;
     }
 
     public boolean equals(User user)
     {
-        return emailAddress.equals(user.getEmailAddress());
+        return accountName.equals(user.getAccountName());
     }
 }

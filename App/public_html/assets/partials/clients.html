@@ -1,22 +1,38 @@
-<h1>Cliënten</h1>
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
 
-<div class="panel panel-default">
+        <div class="panel-heading">
+            <h5>Cliënten</h5>
 
     <div class="panel-heading">
-        Overzicht
+        <li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
+            <a ng-click="gotoAddClient()">
+                <span class="glyphicon glyphicon-plus"></span>
+                Nieuw
+            </a>
+        </li>
     </div>
-
-    <table class="table">
-        <thead>
-            <th>Voornaam</th>
-            <th>Achternaam</th>
-            <th>Studie</th>
-            <th>Telefoonnummer</th>
-            <th>Email</th>
-            <th>Tag</th>
-        </thead>
-        <tbody>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th><label>Voornaam</label></th>
+            <th><label>Achternaam</label></th>
+            <th><label>Studie</label></th>
+            <th><label>Telefoonnummer</label></th>
+            <th><label>Email</label></th>
+            <th><label>Tag</label></th>
+            </thead>
+            <tbody>
             <tr ng-repeat="client in clients">
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checklist-model="user.id" checklist-value="user.id">
+                        </label>
+
+                    </div>
+                </td>
                 <td>{{ client.firstname }}</td>
                 <td>{{ client.lastname }}</td>
                 <td>{{ client.study }}</td>
@@ -24,7 +40,8 @@
                 <td>{{ client.emailAddress }}</td>
                 <td>{{ client.tag }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
+    </div>
 </div>

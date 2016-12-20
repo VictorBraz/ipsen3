@@ -38,13 +38,6 @@ body {
     /*background-attachment: fixed;*/
 }
 
-.table .table-hover {
-
-}
-.table-hover {
-    color
-}
-
 #emptyspace {
     background-color: transparent;
 }
@@ -83,9 +76,7 @@ h1.panel-title {
     padding:30px 0px 20px 5px;
 }
 
-.checkbox label {
-    padding-left:10px;
-}
+
 
 @media (min-width: 768px) {
     #loginscreen{
