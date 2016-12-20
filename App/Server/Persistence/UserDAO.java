@@ -1,5 +1,8 @@
 package Server.Persistence;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,71 +11,83 @@ import Server.Model.User;
 
 /**
  *
- * @author Peter van Vliet
+ * @author Peter van Vliet, Negin Nafissi
  */
 @Singleton
-public class UserDAO
+public class UserDAO extends DatabaseDAO
 {
-    private final List<User> users;
+    private PreparedStatement getUser;
+    private PreparedStatement addUser;
+    private PreparedStatement getAll;
+    private List<User> users;
 
-    public UserDAO()
-    {
-        User user1 = new User();
-        user1.setFullName("First user");
-        user1.setPostcode("1234AB");
-        user1.setStreetnumber("12");
-        user1.setEmailAddress("first@user.com");
-        user1.setPassword("first");
-        user1.setRoles(new String[] { "GUEST", "MEDEWERKER", "ADMIN" });
+    public UserDAO() throws Exception {
+        super();
+        prepareStatements();
+        getAll();
+    }
 
-        User user2 = new User();
-        user2.setFullName("Second user");
-        user2.setPostcode("9876ZY");
-        user2.setStreetnumber("98");
-        user2.setEmailAddress("second@user.com");
-        user2.setPassword("second");
-        user2.setRoles(new String[] { "GUEST" });
-
-        User user3 = new User();
-        user3.setFullName("Second user");
-        user3.setPostcode("9876ZY");
-        user3.setStreetnumber("98");
-        user3.setEmailAddress("test@test.nl");
-        user3.setPassword("test");
-        user3.setRoles(new String[] { "GUEST", "MEDEWERKER", "ADMIN" });
-
-        users = new ArrayList();
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
+    private void prepareStatements() {
+        try {
+            getUser = conn.prepareStatement("SELECT * FROM account WHERE id=?");
+            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid) VALUES (?, ?, ?, ?, ?)");
+            getAll = conn.prepareStatement("SELECT * FROM account");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<User> getAll()
     {
+        users = new ArrayList<>();
+        try {
+            ResultSet rs = getAll.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt(1));
+                user.setAccountName(rs.getString(2));
+                user.setPassword(rs.getString(3));
+                user.setPrivilege(String.valueOf(rs.getInt(4)));
+                user.setUserID(rs.getInt(5));
+                users.add(user);
+            }
+            getAll.close();
+
+        } catch (Exception e) {
+        }
         return users;
     }
 
-    public User get(int id)
+    public User getUser(int id)
     {
-        try
-        {
-            return users.get(id);
-        }
-        catch(IndexOutOfBoundsException exception)
-        {
+        User user = new User();
+        try {
+            getUser.setInt(1, id);
+            ResultSet rs = getUser.executeQuery();
+
+            while (rs.next()) {
+                user.setId(rs.getInt(1));
+                user.setAccountName(rs.getString(2));
+                user.setPassword(rs.getString(3));
+                user.setPrivilege(rs.getString(4));
+                user.setUserID(rs.getInt(5));
+                users.add(user);
+            }
+//            getEmployee.close();
+        } catch (Exception e) {
             return null;
         }
+        return users.get(id);
     }
 
-    public User getByEmailAddress(String emailAddress)
-    {
-        Optional<User> result = users.stream()
-                .filter(user -> user.getEmailAddress().equals(emailAddress))
-                .findAny();
+    public User getByEmailAddress(String accountName) {
 
-        return result.isPresent()
-                ? result.get()
-                : null;
+            Optional<User> result = users.stream().filter(user -> user.getAccountName().equals(accountName)).findAny();
+
+            return result.isPresent()
+                    ? result.get()
+                    : null;
     }
 
     public void add(User user)

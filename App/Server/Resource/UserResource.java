@@ -24,7 +24,7 @@ import Server.Model.User;
  * Meer informatie over resources:
  *  https://jersey.java.net/documentation/latest/user-guide.html#jaxrs-resources
  *
- * @author Peter van Vliet
+ * @author Peter van Vliet, Negin Nafissi
  */
 @Singleton
 @Path("/users")
@@ -41,7 +41,7 @@ public class UserResource
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("GUEST")
+    @RolesAllowed("3")
     public Collection<User> retrieveAll()
     {
         return service.getAll();
@@ -50,7 +50,7 @@ public class UserResource
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    @RolesAllowed("GUEST")
+    @RolesAllowed("3")
     public User retrieve(@PathParam("id") int id)
     {
         return service.get(id);
@@ -68,7 +68,7 @@ public class UserResource
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("GUEST")
+    @RolesAllowed("3")
     public void update(@PathParam("id") int id, @Auth User authenticator, User user)
     {
         service.update(authenticator, id, user);
@@ -76,7 +76,7 @@ public class UserResource
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("ADMIN")
+    @RolesAllowed("1")
     public void delete(@PathParam("id") int id)
     {
         service.delete(id);

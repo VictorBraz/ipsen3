@@ -32,7 +32,7 @@ public class CompanyResource
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public Collection<Company> retrieveAll()
     {
         return service.getAll();
@@ -41,7 +41,7 @@ public class CompanyResource
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public Company retrieve(@PathParam("id") int id)
     {
         return service.get(id);
@@ -59,7 +59,7 @@ public class CompanyResource
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public void update(@PathParam("id") int id, @Auth User authenticator, User user)
     {
         //service.update(authenticator, id, user);
@@ -67,7 +67,7 @@ public class CompanyResource
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("MEDEWERKER")
+    @RolesAllowed("3")
     public void delete(@PathParam("id") int id)
     {
         service.delete(id);

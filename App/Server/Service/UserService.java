@@ -8,7 +8,7 @@ import Server.Persistence.UserDAO;
 
 /**
  *
- * @author Peter van Vliet
+ * @author Peter van Vliet, Negin Nafissi
  */
 @Singleton
 public class UserService extends BaseService<User>
@@ -28,12 +28,13 @@ public class UserService extends BaseService<User>
 
     public User get(int id)
     {
-        return requireResult(dao.get(id));
+        return requireResult(dao.getUser(id));
     }
 
     public void add(User user)
     {
-        user.setRoles(new String[] { "GUEST" });
+        //Guest is 3
+        user.setPrivilege("3");
 
         dao.add(user);
     }
@@ -43,7 +44,8 @@ public class UserService extends BaseService<User>
         // Controleren of deze gebruiker wel bestaat
         User oldUser = get(id);
 
-        if (!authenticator.hasRole("ADMIN"))
+        //Admin is 1
+        if (!authenticator.hasRole("1"))
         {
             // Vaststellen dat de geauthenticeerde gebruiker
             // zichzelf aan het aanpassen is
