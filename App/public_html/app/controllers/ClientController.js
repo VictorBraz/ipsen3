@@ -27,10 +27,10 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.emailAddress,
             $scope.phonenumber,
             $scope.tag,
-            $scope.street,
+            /*$scope.street,
             $scope.city,
             $scope.postcode,
-            $scope.streetnumber,
+            $scope.streetnumber,*/
             clientCreated
         );
 
