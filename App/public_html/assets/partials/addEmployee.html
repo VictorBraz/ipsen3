@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<div class="col-md-10 col-md-offset-1">
+    <h1>Toevoegen Medewerker</h1>
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            Gegevens
+        </div>
+
+        <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
+
+            <div class="form-group">
+                <label class="control-label">Voornaam</label>
+                <input type="text" class="form-control" ng-model="firstname" placeholder="Bijv. Pietje " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Achternaam</label>
+                <input type="text" class="form-control" ng-model="lastname" placeholder="Bijv Puk " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Geboortedatum</label>
+                <input type="text" class="form-control" ng-model="birthdate" placeholder="Bijv Puk " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Studie</label>
+                <input type="text" class="form-control" ng-model="study" placeholder="Bijv Puk " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Postcode</label>
+                <input type="text" class="form-control" ng-model="zipCode" placeholder="Bijv. 1234AB" ng-required="false" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Huisnummer</label>
+                <input type="text" class="form-control" ng-model="streetNumber" placeholder="Bijv. 29a" ng-required="false" />
+            </div>
+
+            <p>
+                <a ng-click="checkAddress()">Adres controleren</a>
+            </p>
+
+            <div class="form-group">
+                <label class="control-label">Straatnaam</label>
+                <input type="text" class="form-control" ng-model="street" disabled ng-required="false" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Woonplaats</label>
+                <input type="text" class="form-control" ng-model="city" disabled ng-required="false" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">E-mailadres</label>
+                <input type="emailAddress" class="form-control" ng-model="emailAddress" placeholder="Bijv. info@domein.nl" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Telefoon</label>
+                <input type="text" class="form-control" ng-model="phonenumber" placeholder="06-12345678" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Tags</label>
+                <input type="text" class="form-control" ng-model="tag" placeholder="Rolstoel, Slechtziend" ng-required="true" />
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Aanmaken" ng-disabled="registrationForm.$invalid" />
+
+        </form>
+
+    </div>
+</div>
