@@ -22,7 +22,7 @@ angular.module('workshop').service('addressService', function($http)
             }
             else
             {
-                //handleError();
+                handleError();
             }
         }, handleError);
     };

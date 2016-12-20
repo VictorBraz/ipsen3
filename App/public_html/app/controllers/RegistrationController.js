@@ -9,7 +9,7 @@ angular.module('workshop').controller('RegistrationController', function($scope,
             $scope.city = address.city;
         });
     };
-    
+
     $scope.register = function()
     {
         userService.create(
@@ -21,7 +21,7 @@ angular.module('workshop').controller('RegistrationController', function($scope,
             userCreated
         );
     };
-    
+
     var userCreated = function()
     {
         alert('Uw account is aangemaakt, u kunt nu inloggen');

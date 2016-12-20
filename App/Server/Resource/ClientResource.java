@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import io.dropwizard.auth.Auth;
+
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -30,7 +32,8 @@ public class ClientResource {
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("3")
+    //@RolesAllowed("3")
+    @PermitAll
     public Collection<Client> retrieveAll(){
         return service.getAll();
     }
@@ -54,7 +57,7 @@ public class ClientResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("3")
+    @PermitAll
     public void update(@PathParam("id") int id, @Auth User authenticator, Client client){
 
     }

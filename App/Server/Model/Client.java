@@ -37,11 +37,11 @@ public class Client {
     @JsonView(View.Public.class)
     private String tag;
 
-    /*@JsonView(View.Public.class)
-    private String streetName;
+    @JsonView(View.Public.class)
+    private String street;
 
     @JsonView(View.Public.class)
-    private String cityName;*/
+    private String city;
 
     @JsonView(View.Public.class)
     private String zipCode;
@@ -122,22 +122,21 @@ public class Client {
         this.tag = tag;
     }
 
-  /*  public String getStreetName() {
-        return streetName;
+    public String getStreetName() {
+        return street;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
+    public void setStreetName(String street) {
+        this.street = street;
     }
 
     public String getCityName() {
-        return cityName;
+        return city;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityName(String city) {
+        this.city = city;
     }
-*/
     public String getZipCode() {
         return zipCode;
     }
