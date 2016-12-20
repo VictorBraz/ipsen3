@@ -46,6 +46,7 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     public void create(Client client){
+        System.out.println("-------->>>>>>>>" + client.getFirstname());
         service.add(client);
     }
 
