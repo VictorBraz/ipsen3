@@ -45,4 +45,27 @@ angular.module('workshop').service('clientService', function($http)
 
     };
 
+    self.selectedClient = 0;
+
+    self.setSelected = function(id){
+        self.selectedClient = id;
+        console.log("SELECTED: " + self.selectedClient);
+    };
+
+    self.getSelected = function () {
+        console.log('test: ' + self.selectedId);
+    };
+
+    self.getClient = function (onReceived) {
+        var uri = 'api/clients/' + self.selectedClient + '';
+
+        $http.get(uri).then(function(response){
+            onReceived(response.data);
+            console.log("trying to get" + self.selectedClient)
+        },
+        function (message, status) {
+            alert('Ophalen mislukt: ' + message + status);
+        });
+    };
+
 });

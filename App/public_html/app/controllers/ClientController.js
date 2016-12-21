@@ -36,6 +36,18 @@ angular.module('workshop').controller('ClientController', function($scope, addre
 
     };
 
+    $scope.selectedClient = {
+        id: []
+    };
+
+    $scope.selectClient = function () {
+        clientService.setSelected($scope.selectedClient.id[0]);
+        /*clientService.getClient(function (client) {
+            $scope.selected = client;
+            console.log("Firstname: " + client.firstname);
+        });*/
+    };
+
     var clientCreated = function()
     {
         alert('Er is een nieuw cliënt toegevoegd');
