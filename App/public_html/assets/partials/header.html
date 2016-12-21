@@ -47,18 +47,16 @@
                         Cliënten
                     </a>
                 </li>
-
-                <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/agenda') }">
-                    <a ng-click="gotoAgenda()">
-                        <span class="glyphicon glyphicon-th-list"></span>
-                        Agenda
-                    </a>
-                </li>
-
                 <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/overview') }">
                     <a ng-click="gotoOverview()">
                         <span class="glyphicon glyphicon-th-list"></span>
                         Accounts
+                    </a>
+                </li>
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/calender') }">
+                    <a ng-click="gotoCalender()">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        Agenda
                     </a>
                 </li>
 

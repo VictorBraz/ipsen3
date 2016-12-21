@@ -14,6 +14,7 @@
     addScript('app/services/CompanyService.js');
     addScript('app/services/ClientService.js');
     addScript('app/services/EmployeeService.js');
+    addScript('app/services/CalenderService.js');
 
     // Controllers
     addScript('app/controllers/AppController.js');
@@ -24,6 +25,7 @@
     addScript('app/controllers/CompanyController.js');
     addScript('app/controllers/ClientController.js');
     addScript('app/controllers/EmployeesController.js');
+    addScript('app/controllers/CalenderController.js');
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');
