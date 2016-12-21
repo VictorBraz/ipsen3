@@ -39,7 +39,11 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
 
     $scope.gotoAddClient = function () {
         $location.path('/addclient');
-    }
+    };
+
+    $scope.gotoEditClient = function () {
+        $location.path('/editClient');
+    };
 
     $scope.logout = function()
     {

@@ -16,6 +16,7 @@
     addScript('app/services/EmployeeService.js');
 
     // Controllers
+    addScript('app/controllers/EditClientController.js');
     addScript('app/controllers/AppController.js');
     addScript('app/controllers/HomeController.js');
     addScript('app/controllers/RegistrationController.js');

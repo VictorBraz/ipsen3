@@ -12,6 +12,14 @@
             </a>
         </li>
     </div>
+            <div class="panel-heading">
+                <li role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
+                    <a ng-click="gotoEditClient()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Edit
+                    </a>
+                </li>
+            </div>
         </div>
         <table class="table table-hover">
             <thead>

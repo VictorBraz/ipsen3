@@ -1,6 +1,7 @@
 package Server.Service;
 
 import Server.Model.Client;
+import Server.Model.User;
 import Server.Persistence.ClientDAO;
 
 import javax.inject.Inject;
@@ -27,6 +28,9 @@ public class ClientService extends BaseService<Client>{
     }
     public void add(Client client){
         dao.addClient(client);
+    }
+    public void update(Client client) {
+        dao.update(client);
     }
 
 }

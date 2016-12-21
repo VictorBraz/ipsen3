@@ -68,4 +68,15 @@ angular.module('workshop').service('clientService', function($http)
         });
     };
 
+    self.update = function (client, onReceived) {
+        var uri = 'api/clients/' + client.id + '';
+        console.log("voornaam: " + client.firstname);
+        $http.put(uri, client).then(function (response) {
+            onReceived(response.data);
+        },
+        function (message, status) {
+            alert('Aanpassen mislukt: ' + message + status);
+        });
+    };
+
 });
