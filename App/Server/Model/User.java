@@ -34,7 +34,7 @@ public class User implements Principal
     private String privilege;
 
     @JsonView(View.Private.class)
-    private int userID;
+    private int userId;
 
     public int setId(int id)
     {
@@ -76,14 +76,14 @@ public class User implements Principal
         this.privilege = privilege;
     }
 
-    public int getUserID()
+    public int getUserId()
     {
-        return userID;
+        return userId;
     }
 
-    public void setUserID(int userID)
+    public void setUserId(int userId)
     {
-        this.userID = userID;
+        this.userId = userId;
     }
 
     @Override

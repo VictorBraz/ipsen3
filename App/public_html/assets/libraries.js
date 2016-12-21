@@ -19,7 +19,13 @@
     addScript('assets/materialdesign/js/ripples.min.js');
     addScript('assets/materialdesign/js/initBootstrap.js');
 
-
+    //calender
+    addScript('https://cdn.rawgit.com/bradberger/angular-material-calendar/master/dist/angular-material-calendar.js');
+    addScript('assets/libraries/angular-animate.min.js');
+    addScript('assets/libraries/angular-aria.min.js');
+    addScript('assets/libraries/angular-material-calendar.js');
+    addScript('assets/libraries/angular-material.min.js');
+    addScript('assets/libraries/angular-sanitize.min.js');
 
     function addScript(url)
     {

@@ -6,17 +6,20 @@ angular.module('workshop').service('employeeService', function($http)
 {
     var self = this;
 
-    self.create = function (firstName, lastName, study, phoneNumber, email, tag, onCreated) {
+    self.create = function (firstName, lastName, study, birthDate, phoneNumber, email, tag, onCreated) {
 
         var uri = '/api/employees';
         var data =
         {
-             /*firstName: firstName,
-             lastName: lastName,
-             study: study,
-             phoneNumber: phoneNumber,
-             emailAddress: email,
-             tag: tag*/
+            firstName: firstName,
+            lastName: lastName,
+            study: study,
+            birthDate: birthDate,
+            phoneNumber: phoneNumber,
+            email: email,
+            tag: tag,
+            /*zipCode: "",
+            streetNumber: ""**/
         };
         $http.post(uri, data).then(function (response)
             {

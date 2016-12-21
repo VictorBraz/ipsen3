@@ -49,10 +49,10 @@ public class UserDAO extends DatabaseDAO
                 user.setAccountName(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(String.valueOf(rs.getInt(4)));
-                user.setUserID(rs.getInt(5));
+                user.setUserId(rs.getInt(5));
                 users.add(user);
             }
-            getAll.close();
+//            getAll.close();
 
         } catch (Exception e) {
         }
@@ -71,7 +71,7 @@ public class UserDAO extends DatabaseDAO
                 user.setAccountName(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(rs.getString(4));
-                user.setUserID(rs.getInt(5));
+                user.setUserId(rs.getInt(5));
                 users.add(user);
             }
 //            getEmployee.close();

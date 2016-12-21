@@ -4,6 +4,15 @@
 
     <div class="panel-heading">
         <h5>Medewerkers</h5>
+
+        <div class="panel-heading">
+            <li role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
+                <a ng-click="gotoAddEmployee()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Nieuw
+                </a>
+            </li>
+        </div>
     </div>
 
     <table class="table table-hover">
