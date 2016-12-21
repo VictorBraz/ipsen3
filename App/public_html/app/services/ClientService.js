@@ -6,7 +6,7 @@ angular.module('workshop').service('clientService', function($http)
 {
     var self = this;
 
-    self.create = function (firstName, lastName, birthDate, Study, Email, phoneNumber, Tag, /*streetname, cityname,*/ /*zipcode, streetnumber,*/ onCreated) {
+    self.create = function (firstName, lastName, birthDate, Study, Email, phoneNumber, Tag, /*streetname, cityname, zipcode, streetnumber,*/ onCreated) {
 
         var uri = '/api/clients';
         var data =
@@ -19,9 +19,9 @@ angular.module('workshop').service('clientService', function($http)
                 phonenumber: phoneNumber,
                 tag: Tag,
                 /*street: streetname,
-                city: cityname,*/
-                /*zipCode: zipcode,
-                streetNumber: streetnumber,*/
+                city: cityname,
+                postcode: zipcode,
+                streetnumber: streetnumber,*/
             };
         $http.post(uri, data).then(function (response)
         {
@@ -43,6 +43,29 @@ angular.module('workshop').service('clientService', function($http)
             alert('Ophalen mislukt: ' + message);
         });
 
+    };
+
+    self.selectedClient = 0;
+
+    self.setSelected = function(id){
+        self.selectedClient = id;
+        console.log("SELECTED: " + self.selectedClient);
+    };
+
+    self.getSelected = function () {
+        console.log('test: ' + self.selectedId);
+    };
+
+    self.getClient = function (onReceived) {
+        var uri = 'api/clients/' + self.selectedClient + '';
+
+        $http.get(uri).then(function(response){
+            onReceived(response.data);
+            console.log("trying to get" + self.selectedClient)
+        },
+        function (message, status) {
+            alert('Ophalen mislukt: ' + message + status);
+        });
     };
 
 });
