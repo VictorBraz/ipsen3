@@ -5,17 +5,12 @@ angular.module('workshop').controller('CompanyController', function($scope, comp
 {
     var construct = function()
     {
-
         companyService.getCompanyID();
         noteService.setNoteOwnerID(companyService.getCompanyID());
         companyService.getCompany(function(test)
         {
             $scope.company = test;
         });
-        noteService.getNote(function (test2) {
-            $scope.note = test2
-        })
-
     };
 
     construct();

@@ -5,7 +5,7 @@ angular.module('workshop').service('noteService', function($http)
 {
     var self = this;
 
-    self.selectedOwnerId = 0;
+    self.selectedOwnerId = null;
 
     self.setNoteOwnerID = function(id){
         self.selectedOwnerId = id;
@@ -61,4 +61,12 @@ angular.module('workshop').service('noteService', function($http)
                 alert('Ophalen mislukt: ' + message + status);
             });
     };
+
+    self.updateNote = function (text,note,OnReceived) {
+        var uri = '/api/notes/'
+        var data = {
+
+        }
+
+    }
 });
