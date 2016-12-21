@@ -9,9 +9,7 @@
             <thead>
 
             <th></th>
-            <th><label>Volledige naam</label></th>
-            <th><label>Postcode</label></th>
-            <th><label>Huisnummer</label></th>
+            <th><label>ID</label></th>
             <th><label>E-mailadres</label></th>
             </thead>
             <tbody>
@@ -24,10 +22,8 @@
 
                     </div>
                 </td>
-                <td>{{ user.fullName}}</td>
-                <td>{{ user.postcode }}</td>
-                <td>{{ user.streetnumber }}</td>
-                <td>{{ user.emailAddress }}</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.accountName }}</td>
             </tr>
             </tbody>
         </table>
