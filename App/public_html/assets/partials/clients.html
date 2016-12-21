@@ -28,9 +28,8 @@
                 <td>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" checklist-model="user.id" checklist-value="user.id">
+                            <input type="checkbox" ng-click="selectClient()" checklist-model="selectedClient.id" checklist-value="client.id">
                         </label>
-
                     </div>
                 </td>
                 <td>{{ client.firstname }}</td>
@@ -42,6 +41,5 @@
             </tr>
             </tbody>
         </table>
-
     </div>
 </div>

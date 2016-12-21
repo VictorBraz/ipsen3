@@ -10,6 +10,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import io.dropwizard.auth.Auth;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -33,7 +34,7 @@ public class EmployeeResource {
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("3")
+    @PermitAll
     public Collection<Employee> retrieveAll(){
         return service.getAll();
     }
@@ -56,7 +57,7 @@ public class EmployeeResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("3")
+    @PermitAll
     public void update(@PathParam("id") int id, @Auth User authenticator, Employee employee){
 
     }

@@ -12,7 +12,7 @@ angular.module('workshop').controller('ClientController', function($scope, addre
     };
 
     $scope.checkAddress = function () {
-        addressService.get($scope.zipCode, $scope.streetNumber, function (address) {
+        addressService.get($scope.postcode, $scope.streetnumber, function (address) {
             $scope.street = address.street;
             $scope.city = address.city;
         });
@@ -28,12 +28,24 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.phonenumber,
             $scope.tag,
             /*$scope.street,
-            $scope.city,*/
-            /*$scope.zipCode,
-            $scope.streetNumber,*/
+            $scope.city,
+            $scope.postcode,
+            $scope.streetnumber,*/
             clientCreated
         );
 
+    };
+
+    $scope.selectedClient = {
+        id: []
+    };
+
+    $scope.selectClient = function () {
+        clientService.setSelected($scope.selectedClient.id[0]);
+        /*clientService.getClient(function (client) {
+            $scope.selected = client;
+            console.log("Firstname: " + client.firstname);
+        });*/
     };
 
     var clientCreated = function()
