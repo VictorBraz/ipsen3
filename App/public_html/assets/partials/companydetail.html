@@ -28,6 +28,13 @@
         <span>
             {{ company.tag }}
         </span>
+        <form name="noteForm" class="panel-body" ng-submit="updateNote()" ng-controller="NoteController" novalidate>
+            <div class="form-group">
+                <label class="control-label">Notitie</label>
+                <input type="text" class="form-control" ng-model="note.text"/>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Opslaan"/>
+        </form>
     </div>
 
 </div>
