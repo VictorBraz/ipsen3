@@ -36,14 +36,28 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     {
         $location.path('/employees');
     };
+    
+    $scope.gotoNotes = function () {
+        $location.path('/notes');
+    };
+
+    $scope.gotoAddEmployee = function ()
+    {
+        $location.path('/addEmployee');
+    };
 
     $scope.gotoAddClient = function () {
         $location.path('/addclient');
+
     };
 
     $scope.gotoEditClient = function () {
         $location.path('/editClient');
     };
+
+    $scope.gotoCalender = function () {
+        $location.path('/calender');
+    }
 
     $scope.logout = function()
     {
