@@ -264,7 +264,7 @@ angular.module("materialCalendar").directive("calendarMd", ["$compile", "$parse"
             };
 
             $scope.isDisabled = function (date,startDateOfMonth,noOfDays) {
-                if (noOfDays!=0 && angular.isDefined(noOfDays)) { 
+                if (noOfDays!=0 && angular.isDefined(noOfDays)) {
                     var dateStart = new Date($scope.calendar.year,$scope.calendar.month,startDateOfMonth);
                     var dateEnd = angular.copy(dateStart);
                     dateEnd.setDate(dateStart.getDate()+parseInt(noOfDays));
