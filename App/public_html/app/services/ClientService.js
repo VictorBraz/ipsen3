@@ -6,7 +6,7 @@ angular.module('workshop').service('clientService', function($http)
 {
     var self = this;
 
-    self.create = function (firstName, lastName, birthDate, Study, Email, phoneNumber, Tag, /*streetname, cityname, zipcode, streetnumber,*/ onCreated) {
+    self.create = function (firstName, lastName, birthDate, Study, Email, phoneNumber, Tag, address, cityname, zipcode, onCreated) {
 
         var uri = '/api/clients';
         var data =
@@ -18,10 +18,9 @@ angular.module('workshop').service('clientService', function($http)
                 emailAddress: Email,
                 phonenumber: phoneNumber,
                 tag: Tag,
-                /*street: streetname,
+                address: address,
                 city: cityname,
                 postcode: zipcode,
-                streetnumber: streetnumber,*/
             };
         $http.post(uri, data).then(function (response)
         {

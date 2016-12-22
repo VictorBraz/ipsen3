@@ -8,6 +8,14 @@ angular.module('workshop').controller('OverviewController', function($scope, use
             $scope.users = users;
         });
     };
-    
+
+    $scope.selectedUser = {
+        accountName: []
+    };
+
+    $scope.selectUser = function () {
+        userService.setSelected($scope.selectedUser.accountName[0]);
+    };
+
     construct();
 });

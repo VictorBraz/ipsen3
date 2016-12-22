@@ -42,7 +42,7 @@ angular.module('workshop').service('userService', function($http)
     self.getAll = function(onReceived)
     {
         var uri = '/api/users';
-        
+
         $http.get(uri).then(function(response)
         {
             onReceived(response.data);
@@ -51,5 +51,24 @@ angular.module('workshop').service('userService', function($http)
         {
             alert('Ophalen mislukt: ' + message);
         });
+    };
+
+    self.selectedUser = 0;
+
+    self.setSelected = function(accName){
+        self.selectedUser = accName;
+        console.log("SELECTED: " + self.selectedUser);
+    };
+
+    self.getUser = function (onReceived) {
+        var uri = 'api/clients/' + self.selectedUser + '';
+
+        $http.get(uri).then(function(response){
+                onReceived(response.data);
+                console.log("trying to get" + self.selectedUser);
+            },
+            function (message, status) {
+                alert('Ophalen mislukt: ' + message + status);
+            });
     };
 });
