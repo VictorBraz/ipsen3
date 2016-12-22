@@ -2,7 +2,10 @@
 angular.module('workshop',
 [
     'ngRoute',
-    'checklist-model'
+    'checklist-model',
+    'ngMaterial',
+    'materialCalendar'
+
     // Voeg hier meer modules toe
 ])
 .config(function($httpProvider)
@@ -21,4 +24,10 @@ angular.module('workshop',
     $locationProvider.baseHref = '/';
 
 })
+    .config(function($mdThemingProvider) {
+    $mdThemingProvider
+        .theme("default")
+        .primaryPalette("cyan")
+        .accentPalette("light-green");
+});
 // Voeg hier meer configuraties toe

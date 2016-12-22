@@ -1,15 +1,8 @@
 /**
  * Created by vedadpiric on 21-12-16.
  */
-angular.module("materialExample", ["ngMaterial", "materialCalendar"]);
-angular.module("materialExample").config(function($mdThemingProvider) {
-    $mdThemingProvider
-        .theme("default")
-        .primaryPalette("cyan")
-        .accentPalette("light-green");
-});
 
-angular.module("materialExample").controller("CalenderController", function($scope, $filter, $q, $timeout, $log, MaterialCalendarData) {
+angular.module("workshop").controller('CalenderController', function($scope, $filter, $q, $timeout, $log) {
 
     $scope.selectedDate = new Date();
     $scope.weekStartsOn = 0;
@@ -17,30 +10,6 @@ angular.module("materialExample").controller("CalenderController", function($sco
     $scope.tooltips = true;
     $scope.disableFutureDates = false;
 
-    $scope.fullscreen = function() {
-        var elem = document.querySelector("#calendar-demo");
-        if(!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            } else if (elem.mozRequestFullScreen) {
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            }
-        }
-    };
 
     $scope.setDirection = function(direction) {
         $scope.direction = direction;
@@ -59,10 +28,7 @@ angular.module("materialExample").controller("CalenderController", function($sco
         $scope.msg = "You clicked (next) month " + data.month + ", " + data.year;
     };
 
-    $scope.setContentViaService = function() {
-        var today = new Date();
-        MaterialCalendarData.setDayContent(today, '<span> :oD </span>')
-    }
+
 
     var holidays ={
         "2015-01-01":[

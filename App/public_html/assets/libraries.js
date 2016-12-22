@@ -2,7 +2,7 @@
 (function()
 {
     //Jquery
-    addScript('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js');
+    addScript('assets/libraries/jquery-3.1.1.min.js');
 
     // AngularJs
     addScript('assets/libraries/angular.min.js');
@@ -20,7 +20,7 @@
     addScript('assets/materialdesign/js/initBootstrap.js');
 
     //calender
-    addScript('https://cdn.rawgit.com/bradberger/angular-material-calendar/master/dist/angular-material-calendar.js');
+
     addScript('assets/libraries/angular-animate.min.js');
     addScript('assets/libraries/angular-aria.min.js');
     addScript('assets/libraries/angular-material-calendar.js');
