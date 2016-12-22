@@ -59,8 +59,9 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void update(@PathParam("id") int id, @Auth User authenticator, Client client){
-
+    public void update(Client client){
+        service.update(client);
+        System.out.println(client.getFirstname());
     }
 
     @DELETE

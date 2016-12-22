@@ -49,7 +49,7 @@ angular.module('workshop').service('clientService', function($http)
 
     self.setSelected = function(id){
         self.selectedClient = id;
-        console.log("SELECTED: " + self.selectedClient);
+        //console.log("SELECTED: " + self.selectedClient);
     };
 
     self.getSelected = function () {
@@ -65,6 +65,17 @@ angular.module('workshop').service('clientService', function($http)
         },
         function (message, status) {
             alert('Ophalen mislukt: ' + message + status);
+        });
+    };
+
+    self.update = function (client, onReceived) {
+        var uri = 'api/clients/' + client.id + '';
+        console.log("voornaam: " + client.firstname);
+        $http.put(uri, client).then(function (response) {
+            onReceived(response.data);
+        },
+        function (message, status) {
+            alert('Aanpassen mislukt: ' + message + status);
         });
     };
 

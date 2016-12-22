@@ -16,6 +16,7 @@ public class ClientDAO extends DatabaseDAO{
     private PreparedStatement getClient;
     private PreparedStatement addClient;
     private PreparedStatement getAll;
+    private PreparedStatement updateClient;
 
     public ClientDAO() throws Exception{
         super();
@@ -32,6 +33,7 @@ public class ClientDAO extends DatabaseDAO{
             getClient = conn.prepareStatement("SELECT * FROM client WHERE id=?");
             addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname, lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)");
             getAll = conn.prepareStatement("SELECT * FROM client");
+            updateClient = conn.prepareStatement("UPDATE client SET clientaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
 
         }catch (Exception e){
 
@@ -115,6 +117,27 @@ public class ClientDAO extends DatabaseDAO{
 
         }
         return client;
+    }
+
+    public void update(Client client){
+
+        try {
+            updateClient.setInt(1, 1);
+            updateClient.setString(2, client.getFirstname());
+            updateClient.setString(3, client.getLastname());
+            updateClient.setString(4, client.getBirthdate());
+            updateClient.setString(5, client.getStudy());
+            updateClient.setString(6, client.getEmailAddress());
+            updateClient.setString(7, client.getPhonenumber());
+            updateClient.setString(8, client.getTag());
+
+            updateClient.setInt(9, client.getId());
+            updateClient.executeUpdate();
+
+
+        }catch (Exception e){
+
+        }
     }
 
 }

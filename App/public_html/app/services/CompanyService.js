@@ -15,6 +15,7 @@ angular.module('workshop').service('companyService', function($http)
 
     self.getCompanyID = function(){
         console.log('test: ' + self.selectedId);
+        return self.selectedId;
     };
 
     self.create = function(name, postcode, streetnumber, email, password, onCreated)
