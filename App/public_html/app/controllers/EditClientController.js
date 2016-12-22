@@ -15,7 +15,13 @@ angular.module('workshop').controller('EditClientController', function($scope, c
     };
 
     $scope.update = function () {
-        clientService.update($scope.client, onUpdated);
+        var confirmation = confirm("Weet u zeker dat u de gegevens wilt aanpassen?");
+        if (confirmation == true) {
+            clientService.update($scope.client, onUpdated);
+        }
+        else{
+            alert('Gegevens niet aangepast!');
+        }
     };
 
     var onUpdated = function()
