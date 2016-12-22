@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <div class="col-md-10 col-md-offset-1">
-    <h1>Aanpassen cliënt</h1>
+
 
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            Gegevens
+            <h5>Aanpassen cliënt</h5>
         </div>
 
         <form name="editForm" class="panel-body" ng-submit="update()" novalidate>
@@ -67,6 +67,7 @@
             </div>
 
             <input type="submit" class="btn btn-primary" value="Aanpassen" ng-disabled="registrationForm.$invalid" />
+            <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
 
         </form>
 

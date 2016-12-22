@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <div class="col-md-10 col-md-offset-1">
-    <h1>Toevoegen cliënt</h1>
 
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            Gegevens
+            <h5>Toevoegen cliënt</h5>
         </div>
 
         <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
@@ -56,7 +55,7 @@
 
             <div class="form-group">
                 <label class="control-label">E-mailadres</label>
-                <input type="emailAddress" class="form-control" ng-model="emailAddress" placeholder="Bijv. info@domein.nl" ng-required="true" />
+                <input type="email" class="form-control" ng-model="emailAddress" placeholder="Bijv. info@domein.nl" ng-required="true" />
             </div>
 
             <div class="form-group">
@@ -70,6 +69,7 @@
             </div>
 
             <input type="submit" class="btn btn-primary" value="Aanmaken" ng-disabled="registrationForm.$invalid" />
+            <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
 
         </form>
 
