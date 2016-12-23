@@ -9,20 +9,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Address {
 
     private int id;
+
     @JsonView(View.Public.class)
     private String address;
 
     @JsonView(View.Public.class)
-    private String zipcode;
+    private String postcode;
 
     @JsonView(View.Public.class)
     private String city;
 
-    @JsonView(View.Public.class)
-    private String street;
-
-    @JsonView(View.Public.class)
-    private String streetnumber;
     public int getId() {
         return id;
     }
@@ -31,37 +27,20 @@ public class Address {
         this.id = id;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getStreetnumber() {
-        return streetnumber;
-    }
-
-    public void setStreetnumber(String streetnumber) {
-        this.streetnumber = streetnumber;
-    }
-
     public String getAddress() {
-        return address = street + " " + streetnumber;
-
+        return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getPostcode() {
+        return postcode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 
     public String getCity() {

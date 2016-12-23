@@ -50,7 +50,6 @@ public class ClientResource {
     @JsonView(View.Protected.class)
     @PermitAll
     public void create(Client client){
-        System.out.println("-------->>>>>>>>" + client.getFirstname());
         service.add(client);
     }
 

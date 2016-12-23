@@ -38,16 +38,13 @@ public class Client {
     private String tag;
 
     @JsonView(View.Public.class)
-    private String street;
+    private String address;
 
     @JsonView(View.Public.class)
     private String city;
 
     @JsonView(View.Public.class)
-    private String zipCode;
-
-    @JsonView(View.Public.class)
-    private String streetNumber;
+    private String postcode;
 
     public int getId() {
         return id;
@@ -122,34 +119,28 @@ public class Client {
         this.tag = tag;
     }
 
-    public String getStreetName() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreetName(String street) {
-        this.street = street;
+    public void setAddress(String street) {
+        this.address = street;
     }
 
-    public String getCityName() {
+    public String getCity() {
         return city;
     }
 
-    public void setCityName(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
-    public String getZipCode() {
-        return zipCode;
+
+    public String getPostcode() {
+        return postcode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-    }
 }
