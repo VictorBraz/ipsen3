@@ -13,6 +13,7 @@ public class AddressDAO extends DatabaseDAO{
 
     private PreparedStatement getAddress;
     private PreparedStatement addAddress;
+    private PreparedStatement updateAddress;
 
     public AddressDAO() throws Exception{
         super();
@@ -21,8 +22,9 @@ public class AddressDAO extends DatabaseDAO{
 
     private void prepareStatements(){
         try{
-            getAddress = conn.prepareStatement("SELECT * FROM address WHERE id=?");
+            getAddress = conn.prepareStatement("SELECT * FROM address WHERE addressid=?");
             addAddress = conn.prepareStatement("INSERT INTO address (address, zipcode, city) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            updateAddress = conn.prepareStatement("UPDATE address SET address = ? , zipcode = ?, city = ? WHERE addressid = ?");
         }catch (Exception e){
 
         }
@@ -33,6 +35,7 @@ public class AddressDAO extends DatabaseDAO{
         try{
             getAddress.setInt(1, id);
             ResultSet rs = getAddress.executeQuery();
+
             while(rs.next()){
                 address.setId(rs.getInt(1));
                 address.setAddress(rs.getString(2));
@@ -72,5 +75,18 @@ public class AddressDAO extends DatabaseDAO{
 
         }
         return address;
+    }
+
+    public void UpdateAddress(Address address){
+
+        try{
+            updateAddress.setString(1, address.getAddress());
+            updateAddress.setString(2, address.getPostcode());
+            updateAddress.setString(3, address.getCity());
+            updateAddress.setInt(4, address.getId());
+            updateAddress.executeQuery();
+        }catch(Exception e){
+
+        }
     }
 }

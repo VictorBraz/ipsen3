@@ -36,7 +36,7 @@ public class Address {
     }
 
     public String getPostcode() {
-        return postcode;
+        return this.postcode;
     }
 
     public void setPostcode(String postcode) {
