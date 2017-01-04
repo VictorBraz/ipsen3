@@ -46,6 +46,7 @@ public class UserDAO extends DatabaseDAO
             while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt(1));
+                System.out.println("//////////////////" + rs.getInt(1));
                 user.setAccountName(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(String.valueOf(rs.getInt(4)));

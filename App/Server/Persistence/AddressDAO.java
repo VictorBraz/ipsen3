@@ -13,6 +13,7 @@ public class AddressDAO extends DatabaseDAO{
 
     private PreparedStatement getAddress;
     private PreparedStatement addAddress;
+    private PreparedStatement updateAddress;
 
     public AddressDAO() throws Exception{
         super();
@@ -21,8 +22,9 @@ public class AddressDAO extends DatabaseDAO{
 
     private void prepareStatements(){
         try{
-            getAddress = conn.prepareStatement("SELECT * FROM address WHERE id=?");
-            addAddress = conn.prepareStatement("INSERT INTO address (address, zipcode, city) VALUES (?,?,?)");
+            getAddress = conn.prepareStatement("SELECT * FROM address WHERE addressid=?");
+            addAddress = conn.prepareStatement("INSERT INTO address (address, zipcode, city) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            updateAddress = conn.prepareStatement("UPDATE address SET address = ? , zipcode = ?, city = ? WHERE addressid = ?");
         }catch (Exception e){
 
         }
@@ -33,10 +35,11 @@ public class AddressDAO extends DatabaseDAO{
         try{
             getAddress.setInt(1, id);
             ResultSet rs = getAddress.executeQuery();
+
             while(rs.next()){
                 address.setId(rs.getInt(1));
                 address.setAddress(rs.getString(2));
-                address.setZipcode(rs.getString(3));
+                address.setPostcode(rs.getString(3));
                 address.setCity(rs.getString(4));
             }
 
@@ -55,19 +58,33 @@ public class AddressDAO extends DatabaseDAO{
         return addresses;
     }
 
-    public void addAddress(Address address){
+    public Address addAddress(Address address){
         try{
             addAddress.setString(1, address.getAddress());
-            addAddress.setString(2, address.getZipcode());
+            addAddress.setString(2, address.getPostcode());
             addAddress.setString(3, address.getCity());
 
-            int rowInserted = addAddress.executeUpdate();
+            addAddress.executeUpdate();
             ResultSet rs = addAddress.getGeneratedKeys();
             if (rs.next()) {
                 int id = rs.getInt(1);
                 address.setId(id);
             }
             addAddress.close();
+        }catch(Exception e){
+
+        }
+        return address;
+    }
+
+    public void UpdateAddress(Address address){
+
+        try{
+            updateAddress.setString(1, address.getAddress());
+            updateAddress.setString(2, address.getPostcode());
+            updateAddress.setString(3, address.getCity());
+            updateAddress.setInt(4, address.getId());
+            updateAddress.executeQuery();
         }catch(Exception e){
 
         }

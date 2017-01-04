@@ -9,21 +9,20 @@
             <thead>
 
             <th></th>
-            <th><label>ID</label></th>
             <th><label>E-mailadres</label></th>
+            <th><label>Wachtwoord</label></th>
             </thead>
             <tbody>
             <tr ng-repeat="user in users">
                 <td>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" checklist-model="user.id" checklist-value="user.id">
+                            <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.accountName" checklist-value="user.accountName">
                         </label>
-
                     </div>
                 </td>
-                <td>{{ user.id }}</td>
                 <td>{{ user.accountName }}</td>
+                <td>{{ user.password }}</td>
             </tr>
             </tbody>
         </table>

@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import io.dropwizard.auth.Auth;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -32,7 +33,7 @@ public class CompanyResource
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("3")
+    @PermitAll
     public Collection<Company> retrieveAll()
     {
         return service.getAll();
@@ -41,7 +42,7 @@ public class CompanyResource
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    @RolesAllowed("3")
+    @PermitAll
     public Company retrieve(@PathParam("id") int id)
     {
         return service.get(id);
@@ -59,7 +60,7 @@ public class CompanyResource
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("3")
+    @RolesAllowed("1")
     public void update(@PathParam("id") int id, @Auth User authenticator, User user)
     {
         //service.update(authenticator, id, user);
@@ -67,7 +68,7 @@ public class CompanyResource
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("3")
+    @RolesAllowed("1")
     public void delete(@PathParam("id") int id)
     {
         service.delete(id);

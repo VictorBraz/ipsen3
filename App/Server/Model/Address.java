@@ -1,13 +1,22 @@
 package Server.Model;
 
+import Server.View;
+import com.fasterxml.jackson.annotation.JsonView;
+
 /**
  * Created by Victor on 9-12-2016.
  */
 public class Address {
 
     private int id;
+
+    @JsonView(View.Public.class)
     private String address;
-    private String zipcode;
+
+    @JsonView(View.Public.class)
+    private String postcode;
+
+    @JsonView(View.Public.class)
     private String city;
 
     public int getId() {
@@ -26,12 +35,12 @@ public class Address {
         this.address = address;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getPostcode() {
+        return this.postcode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 
     public String getCity() {

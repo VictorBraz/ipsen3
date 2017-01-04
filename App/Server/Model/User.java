@@ -36,12 +36,12 @@ public class User implements Principal
     @JsonView(View.Private.class)
     private int userId;
 
-    public int setId(int id)
+    public int getId()
     {
         return id;
     }
 
-    public void getId()
+    public void setId(int id)
     {
         this.id = id;
     }
