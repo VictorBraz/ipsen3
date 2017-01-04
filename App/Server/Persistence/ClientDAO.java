@@ -1,5 +1,6 @@
 package Server.Persistence;
 
+import Server.Model.Address;
 import Server.Model.Client;
 
 import java.sql.PreparedStatement;
@@ -43,13 +44,12 @@ public class ClientDAO extends DatabaseDAO{
     public void addClient(Client client){
 
         try {
-            /*Address address = new Address();
-            address.setAddress(client.getStreetName() + " " + client.getStreetNumber());
-            address.setCity(client.getCityName());
-            address.setZipcode(client.getZipCode());
+            Address address = new Address();
+            address.setAddress(client.getAddress());
+            address.setCity(client.getCity());
+            address.setPostcode(client.getPostcode());
 
-            addressDAO.addAddress(address);*/
-            client.setClientAddresId(1);
+            client.setClientAddresId(addressDAO.addAddress(address).getId());
 
             addClient.setInt(1, client.getClientAddresId());
             addClient.setString(2, client.getFirstname());
@@ -75,6 +75,7 @@ public class ClientDAO extends DatabaseDAO{
             ResultSet rs = getAll.executeQuery();
 
             while (rs.next()){
+
                 Client client = new Client();
                 client.setId(rs.getInt(1));
                 client.setClientAddresId(rs.getInt(2));
@@ -85,6 +86,13 @@ public class ClientDAO extends DatabaseDAO{
                 client.setEmailAddress(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
+
+                Address address = addressDAO.getAddress(rs.getInt(2));
+
+                client.setAddress(address.getAddress());
+                client.setCity(address.getCity());
+                client.setPostcode(address.getPostcode());
+
                 clients.add(client);
             }
 //            getAll.close();
@@ -104,6 +112,13 @@ public class ClientDAO extends DatabaseDAO{
             while (rs.next()) {
                 client.setId(rs.getInt(1));
                 client.setClientAddresId(rs.getInt(2));
+
+                Address address = addressDAO.getAddress(client.getClientAddresId());
+                client.setAddress(address.getAddress());
+                client.setCity(address.getCity());
+                client.setPostcode(address.getPostcode());
+
+
                 client.setFirstname(rs.getString(3));
                 client.setLastname(rs.getString(4));
                 client.setBirthdate(rs.getString(5));
@@ -111,8 +126,8 @@ public class ClientDAO extends DatabaseDAO{
                 client.setEmailAddress(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
+
             }
-//            getClient.close();
         }catch (Exception e){
 
         }
@@ -120,9 +135,17 @@ public class ClientDAO extends DatabaseDAO{
     }
 
     public void update(Client client){
+        Address address = new Address();
+        address.setAddress(client.getAddress());
+        address.setCity(client.getCity());
+        address.setPostcode(client.getPostcode());
+        address.setId(client.getClientAddresId());
 
         try {
-            updateClient.setInt(1, 1);
+
+            addressDAO.UpdateAddress(address);
+
+            updateClient.setInt(1, client.getClientAddresId());
             updateClient.setString(2, client.getFirstname());
             updateClient.setString(3, client.getLastname());
             updateClient.setString(4, client.getBirthdate());

@@ -27,10 +27,9 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.emailAddress,
             $scope.phonenumber,
             $scope.tag,
-            /*$scope.street,
+            $scope.address,
             $scope.city,
             $scope.postcode,
-            $scope.streetnumber,*/
             clientCreated
         );
 
