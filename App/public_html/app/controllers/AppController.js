@@ -59,6 +59,18 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
         $location.path('/calender');
     }
 
+    $scope.gotoAddCompany = function () {
+        $location.path('/addcompany');
+    }
+
+    $scope.gotoEditCompany = function () {
+        $location.path('/editcompany');
+    }
+
+    $scope.gotoDeleteCompany = function () {
+        $location.path('/deletecompany');
+    }
+
     $scope.logout = function()
     {
         authenticationService.deleteAuthentication();

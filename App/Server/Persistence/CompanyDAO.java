@@ -1,79 +1,152 @@
 package Server.Persistence;
 
+import Server.Model.Address;
 import Server.Model.Company;
 import com.google.inject.Singleton;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Mitch on 12/9/2016.
+ * @author Bernd
  */
-@Singleton
-public class CompanyDAO
-{
-    private final List<Company> companies;
-
-    public CompanyDAO()
-    {
-        Company cm1 = new Company();
-        cm1.setId(1);
-        cm1.setCompanyName("Test bedrijf");
-        cm1.setCompanyAddressID(1);
-        cm1.setEmail("Test@test.com");
-        cm1.setPhoneNumber("435353");
-        cm1.setTag("Slechtziend");
 
 
-        Company cm2 = new Company();
-        cm2.setId(2);
+public class CompanyDAO extends DatabaseDAO {
+
+    private AddressDAO addressDAO;
+    private PreparedStatement getCompany;
+    private PreparedStatement addCompany;
+    private PreparedStatement getAll;
+    private PreparedStatement updateCompany;
 
 
-        companies = new ArrayList<>();
-        companies.add(cm1);
-        companies.add(cm2);
+    public CompanyDAO() throws Exception {
+        super();
+        preparStatements();
+        this.addressDAO =  new AddressDAO();
+
+
     }
 
-    public List<Company> getAll()
-    {
+    private void preparStatements() {
+        try {
+            getCompany = conn.prepareStatement("SELECT * FROM company WHERE id =?");
+            addCompany = conn.prepareStatement("INSERT INTO company (companyaddressid, companyname, contactperson," +
+                    "phonenumber, email, tag ) VALUES (?,?,?,?,?,?)");
+            getAll = conn.prepareStatement("SELECT * FROM company");
+            updateCompany = conn.prepareStatement("UPDATE company SET companyaddressid=?, companyname=?, contactperson=?," +
+                    "phonenumber=?, email=?, tag=? WHERE id =?");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addCompany(Company company) {
+        Address address = new Address();
+        address.setAddress(company.getAddress());
+        address.setCity(company.getCity());
+        address.setPostcode(company.getPostcode());
+
+        company.setCompanyAddressID(addressDAO.addAddress(address).getId());
+
+        try {
+            addCompany.setInt(1, company.getCompanyAddressID());
+            addCompany.setString(2, company.getCompanyName());
+            addCompany.setString(3, company.getContactPerson());
+            addCompany.setString(4, company.getPhoneNumber());
+            addCompany.setString(5, company.getEmail());
+            addCompany.setString(6, company.getTag());
+
+            addCompany.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List <Company> getAll() {
+        List<Company> companies = new ArrayList<>();
+
+        try {
+            ResultSet result =getAll.executeQuery();
+
+            while (result.next()) {
+                Company company = new Company();
+                company.setId(result.getInt(1));
+                company.setCompanyAddressID(result.getInt(2));
+                company.setCompanyName(result.getString(3));
+                company.setContactPerson(result.getString(4));
+                company.setPhoneNumber(result.getString(5));
+                company.setEmail(result.getString(6));
+                company.setTag(result.getString(7));
+
+                Address address = addressDAO.getAddress(result.getInt(2));
+                company.setAddress(address.getAddress());
+                company.setCity(address.getCity());
+                company.setPostcode(address.getPostcode());
+
+                companies.add(company);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return companies;
     }
 
-    public Company get(int id)
-    {
-        try
-        {
-            return companies.get(id);
+    public Company getCompany(int id) {
+        Company company = new Company();
+
+        try {
+            getCompany.setInt(1, id);
+            ResultSet result = getCompany.executeQuery();
+
+            while (result.next()) {
+                company.setId(result.getInt(1));
+                company.setCompanyAddressID(result.getInt(2));
+                company.setCompanyName(result.getString(3));
+                company.setContactPerson(result.getString(4));
+                company.setPhoneNumber(result.getString(5));
+                company.setEmail(result.getString(6));
+                company.setTag(result.getString(7));
+
+                Address address = addressDAO.getAddress(company.getCompanyAddressID());
+                company.setAddress(address.getAddress());
+                company.setCity(address.getCity());
+                company.setPostcode(address.getPostcode());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        catch(IndexOutOfBoundsException exception)
-        {
-            return null;
+        return company;
+
+    }
+
+    public void update(Company company) {
+        Address address = new Address();
+        address.setAddress(company.getAddress());
+        address.setCity(company.getCity());
+        address.setPostcode(company.getPostcode());
+        address.setId(company.getCompanyAddressID());
+
+        addressDAO.UpdateAddress(address);
+
+        try {
+            updateCompany.setInt(1, company.getCompanyAddressID());
+            updateCompany.setString(2, company.getCompanyName());
+            updateCompany.setString(3, company.getContactPerson());
+            updateCompany.setString(4, company.getPhoneNumber());
+            updateCompany.setString(5, company.getEmail());
+            updateCompany.setString(6, company.getTag());
+
+            updateCompany.setInt(7, company.getId());
+            updateCompany.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-//    public User getByEmailAddress(String emailAddress)
-//    {
-//        Optional<User> result = users.stream()
-//            .filter(user -> user.getEmailAddress().equals(emailAddress))
-//            .findAny();
-//
-//        return result.isPresent()
-//            ? result.get()
-//            : null;
-//    }
-
-    public void add(Company company)
-    {
-        companies.add(company);
-    }
-
-    public void update(int id, Company company)
-    {
-        companies.set(id, company);
-    }
-
-    public void delete(int id)
-    {
-        companies.remove(id);
-    }
 }

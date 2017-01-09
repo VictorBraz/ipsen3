@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<div class="col-md-10 col-md-offset-1">
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h5>Organisatie toevoegen</h5>
+        </div>
+
+        <form name="registrationForm" class="panel-body" ng-submit="create()" novalidate>
+
+            <div class="form-group">
+                <label class="control-label">Organisatie naam</label>
+                <input type="text" class="form-control" ng-model="companyname" placeholder="Bijv. Hogeschool Leiden " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Contactpersoon</label>
+                <input type="text" class="form-control" ng-model="contact" placeholder="Bijv. Puk " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Telefoon nummer</label>
+                <input type="text" class="form-control" ng-model="telnum" placeholder="Bijv. 071 518 8800 " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">E-mailadres</label>
+                <input type="text" class="form-control" ng-model="email" placeholder="Bijv. info@domein.nl " ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Adres</label>
+                <input type="text" class="form-control" ng-model="address" placeholder="Bijv. Zernikdreef 11" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Postcode</label>
+                <input type="text" class="form-control" ng-model="postcode" placeholder="Bijv. 1234AB" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Plaatsnaam</label>
+                <input type="text" class="form-control" ng-model="city" placeholder="Bijv. Leiden" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Tags</label>
+                <input type="text" class="form-control" ng-model="tag" placeholder="Bijv. Rolstoel, Slechtziend" ng-required="true" />
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Aanmaken" ng-disabled="registrationForm.$invalid" />
+            <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
+
+        </form>
+
+    </div>
+</div>
