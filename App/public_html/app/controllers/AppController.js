@@ -36,10 +36,6 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     {
         $location.path('/employees');
     };
-    
-    $scope.gotoNotes = function () {
-        $location.path('/notes');
-    };
 
     $scope.gotoAddEmployee = function ()
     {
@@ -57,6 +53,18 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
 
     $scope.gotoCalender = function () {
         $location.path('/calender');
+    }
+
+    $scope.gotoAddCompany = function () {
+        $location.path('/addcompany');
+    }
+
+    $scope.gotoEditCompany = function () {
+        $location.path('/editcompany');
+    }
+
+    $scope.gotoDeleteCompany = function () {
+        $location.path('/deletecompany');
     }
 
     $scope.logout = function()

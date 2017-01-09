@@ -64,7 +64,7 @@ public class NoteDAO extends DatabaseDAO {
         return note;
     }
 
-    public void editNote(Note note){
+    public void update(Note note){
         try {
             editNote.setString(1,note.getText());
             editNote.setInt(2,note.getOwnerID());
@@ -90,9 +90,8 @@ public class NoteDAO extends DatabaseDAO {
             getAll.close();
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
-
         return notes;
     }
 
