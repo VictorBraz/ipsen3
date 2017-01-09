@@ -12,12 +12,12 @@ angular.module('workshop').controller('EmployeesController', function($scope, ad
         });
     };
 
-    $scope.checkAddress = function () {
-        addressService.get($scope.zipCode, $scope.streetNumber, function (address) {
-            $scope.street = address.street;
-            $scope.city = address.city;
-        });
-    };
+    // $scope.checkAddress = function () {
+    //     addressService.get($scope.zipCode, $scope.streetNumber, function (address) {
+    //         $scope.street = address.street;
+    //         $scope.city = address.city;
+    //     });
+    // };
 
     $scope.register = function () {
         employeeService.create(
@@ -28,12 +28,19 @@ angular.module('workshop').controller('EmployeesController', function($scope, ad
             $scope.email,
             $scope.phoneNumber,
             $scope.tag,
-            /*$scope.street,
-            $scope.city,*/
-            /*$scope.zipCode,
-            $scope.streetNumber,**/
+            $scope.address,
+            $scope.city,
+            $scope.postcode,
             employeeCreated
         );
+    };
+
+    $scope.selectedEmployee = {
+        id: []
+    };
+
+    $scope.selectEmployee = function () {
+        employeeService.setSelected($scope.selectedEmployee.id[0]);
     };
 
     var employeeCreated = function() {

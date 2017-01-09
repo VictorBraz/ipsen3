@@ -1,5 +1,6 @@
 package Server.Persistence;
 
+import Server.Model.Address;
 import Server.Model.Employee;
 
 import java.sql.PreparedStatement;
@@ -16,7 +17,9 @@ public class EmployeeDAO extends DatabaseDAO {
     private AddressDAO addressDAO;
     private PreparedStatement getEmployee;
     private PreparedStatement addEmployee;
+    private PreparedStatement updateEmployee;
     private PreparedStatement getAll;
+
 
     public EmployeeDAO() throws Exception {
         super();
@@ -33,6 +36,7 @@ public class EmployeeDAO extends DatabaseDAO {
             getEmployee = conn.prepareStatement("SELECT * FROM student WHERE id=?");
             addEmployee = conn.prepareStatement("INSERT INTO student (studentaddressid, firstName, lastName, birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             getAll = conn.prepareStatement("SELECT * FROM student");
+            updateEmployee = conn.prepareStatement("UPDATE student SET studentaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,6 +45,13 @@ public class EmployeeDAO extends DatabaseDAO {
 
     public void addEmployee(Employee employee){
         try {
+            Address address = new Address();
+            System.out.println("-----------------"+employee.getAddress() + " " + employee.getCity() + employee.getPostcode());
+            address.setAddress(employee.getAddress());
+            address.setCity(employee.getCity());
+            address.setPostcode(employee.getPostcode());
+            employee.setEmployeeAddressID(addressDAO.addAddress(address).getId());
+            System.out.println("-----------------"+employee.getEmployeeAddressID());
             addEmployee.setInt(1, employee.getEmployeeAddressID());
             addEmployee.setString(2, employee.getFirstName());
             addEmployee.setString(3, employee.getLastName());
@@ -63,6 +74,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
             while (rs.next()){
                 Employee employee = new Employee();
+
                 employee.setId(rs.getInt(1));
                 employee.setEmployeeAddressID(rs.getInt(2));
                 employee.setFirstName(rs.getString(3));
@@ -72,13 +84,18 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setEmail(rs.getString(7));
                 employee.setPhoneNumber(rs.getString(8));
                 employee.setTag(rs.getString(9));
+
+                Address address = addressDAO.getAddress(rs.getInt(2));
+                employee.setAddress(address.getAddress());
+                employee.setCity(address.getCity());
+                employee.setPostcode(address.getPostcode());
+
                 employees.add(employee);
             }
 //            getAll.close();
 
         }catch (Exception e) {
         }
-
         return employees;
     }
 
@@ -98,10 +115,45 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setEmail(rs.getString(7));
                 employee.setPhoneNumber(rs.getString(8));
                 employee.setTag(rs.getString(9));
+
+                Address address = addressDAO.getAddress(employee.getEmployeeAddressID());
+                employee.setAddress(address.getAddress());
+                employee.setCity(address.getCity());
+                employee.setPostcode(address.getPostcode());
+
             }
 //            getEmployee.close();
         }catch (Exception e){
         }
         return employee;
+    }
+
+    public void update(Employee employee){
+        Address address = new Address();
+        address.setAddress(employee.getAddress());
+        address.setCity(employee.getCity());
+        address.setPostcode(employee.getPostcode());
+        address.setId(employee.getEmployeeAddressID());
+
+        try {
+
+            addressDAO.UpdateAddress(address);
+
+            updateEmployee.setInt(1, employee.getEmployeeAddressID());
+            updateEmployee.setString(2, employee.getFirstName());
+            updateEmployee.setString(3, employee.getLastName());
+            updateEmployee.setString(4, employee.getBirthDate());
+            updateEmployee.setString(5, employee.getStudy());
+            updateEmployee.setString(6, employee.getEmail());
+            updateEmployee.setString(7, employee.getPhoneNumber());
+            updateEmployee.setString(8, employee.getTag());
+            updateEmployee.setInt(9, employee.getId());
+
+            updateEmployee.executeUpdate();
+
+
+        }catch (Exception e){
+
+        }
     }
 }
