@@ -34,8 +34,7 @@ public class CompanyResource
     @GET
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Company> retrieveAll()
-    {
+    public Collection<Company> retrieveAll() {
         return service.getAll();
     }
 
@@ -71,6 +70,6 @@ public class CompanyResource
     @RolesAllowed("1")
     public void delete(@PathParam("id") int id)
     {
-        service.delete(id);
+
     }
 }

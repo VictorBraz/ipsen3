@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 angular.module('workshop').controller('CompaniesController', function($scope, companyService)
 {
@@ -48,3 +49,44 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
 });
 
 
+=======
+//
+// angular.module('workshop').controller('CompaniesController', function($scope, companyService)
+// {
+//     $scope.selectedcompanies = {
+//         id: []
+//     };
+//
+//     var construct = function()
+//     {
+//         companyService.getAll(function(companies)
+//         {
+//             $scope.companies = companies;
+//
+//         });
+//
+//         companyService.getAll(function(companies)
+//         {
+//             $scope.companytest = companies[$scope.selectedcompanies[0]];
+//
+//         });
+//
+//         $scope.ontestClick = function() {
+//             companyService.setCompanyID($scope.selectedcompanies.id[0]);
+//             companyService.getCompanyID();
+//         }
+//
+//         $scope.deleteCompany = function() {
+//             companyService.getCompanyID();
+//             companyService.deleteCompany();
+//         }
+//     };
+//
+//     construct();
+//
+//
+//
+// });
+//
+//
+>>>>>>> 3f83fb2df18a38885eb9929ceb4e559598f3c46a

@@ -7,48 +7,41 @@ angular.module('workshop').service('companyService', function($http)
 {
     var self = this;
 
-    self.selectedId = 0;
+    self.create = function (companyName, contactPerson, phoneNumber, email, tags, address, city, zipcode, onCreated){
 
-    self.setCompanyID = function(id){
-        self.selectedId = id;
-    };
-
-    self.getCompanyID = function(){
-        console.log('test: ' + self.selectedId);
-        return self.selectedId;
-    };
-
-    self.create = function(name, postcode, streetnumber, email, password, onCreated)
-    {
         var uri = '/api/companies';
         var data =
         {
-
+            companyName: companyName,
+            contactPerson: contactPerson,
+            phoneNumber: phoneNumber,
+            email: email,
+            tag: tags,
+            address: address,
+            city: city,
+            zipcode: zipcode,
         };
 
-        $http.post(uri, data).then(function(response)
-            {
-                onCreated(response.data);
-            },
-            function(message, status)
-            {
-                alert('Aanmaken mislukt: ' + message);
-            });
+        $http.post(uri, data).then(function (response) {
+            onCreated(response.data);
+        },
+
+        function (message, status) {
+            alert("Aanmaken mislukt: " + message);
+        });
     };
 
-    self.getAll = function(onReceived)
-    {
-        var uri = '/api/companies';
+    self.getAll = function (onReceived) {
+        var uri = "api/companies";
 
-        $http.get(uri).then(function(response)
-            {
-                onReceived(response.data);
-            },
-            function(message, status)
-            {
-                alert('Ophalen mislukt: ' + message);
-            });
+        $http.get(uri).then(function(response) {
+            onReceived(response.data);
+        },
+        function(message, status) {
+            alert("ophalen mislukt: " + message);
+        });
     };
+<<<<<<< HEAD
     self.getCompany = function(onReceived)
     {
         var uri = '/api/companies/' + (self.selectedId - 1)+ '';
@@ -64,21 +57,56 @@ angular.module('workshop').service('companyService', function($http)
         }
 
 
+=======
+
+    self.selectedCompany = 0;
+
+    self.setSelected = function(id){
+        self.selectedCompany = id;
+>>>>>>> 3f83fb2df18a38885eb9929ceb4e559598f3c46a
     };
 
-
-    self.deleteCompany = function(onReceived)
-    {
-        var uri = '/api/companies/' + (self.selectedId - 1) + '';
-
-        $http.delete(uri)
-            .then(
-                function(response){
-                    console.log("Deleted")
-                },
-                function(response){
-                    // failure call back
-                }
-            );
+    self.getSelected = function(){
+        console.log('test: ' + self.selectedId);
     };
+
+    self.getCompany = function(onReceived) {
+        var uri = "api/companies/" + self.selectedCompany + "";
+
+        $http.get(uri).then(function(response) {
+            onReceived(response.data);
+            console.log("trying to get" + self.selectedClient)
+        },
+            function (message, status) {
+                alert("Ophalen mislukt: " + message + status);
+        });
+    };
+
+   self.update = function (company, onReceived) {
+       var uri = "api/companies/" + company.id + "";
+       console.log("bedrijfsnaam: " +company.companyname);
+       $http.put(uri, company).then(function (response) {
+           onReceived(response.data);
+       },
+           function(message, status) {
+               alert("Aanpassen mislukt: " + message + status);
+       });
+   };
+
+
+
+//     self.deleteCompany = function(onReceived)
+//     {
+//         var uri = '/api/companies/' + (self.selectedId - 1) + '';
+//
+//         $http.delete(uri)
+//             .then(
+//                 function(response){
+//                     console.log("Deleted")
+//                 },
+//                 function(response){
+//                     // failure call back
+//                 }
+//             );
+//     };
 });

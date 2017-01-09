@@ -29,8 +29,8 @@
         <table class="table table-hover">
             <thead>
             <th></th>
-            <th><label>ID</label></th>
             <th><label>Bedrijfsnaam</label></th>
+            <th><label>Contactpersoon</label></th>
             <th><label>Telefoonnummer</label></th>
             <th><label>Email</label></th>
             <th><label>Tag</label></th>
@@ -42,18 +42,30 @@
                         <label>
                             <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
                             <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
-                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedcompanies.id"
+                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedCompany.id"
                                    checklist-value="company.id"/>
                         </label>
                     </div>
                 </td>
-                <td>{{ company.id }}</td>
                 <td>{{ company.companyName }}</td>
+                <td>{{ company.contactPerson }}</td>
                 <td>{{ company.phoneNumber }}</td>
-                <td>{{ company.emailAddress }}</td>
+                <td>{{ company.email }}</td>
                 <td>{{ company.tag }}</td>
             </tr>
             </tbody>
         </table>
+<<<<<<< HEAD
+=======
+
+        <div class="pull-right">
+            <a href="#">New</a>
+            <a href="/company">View/Edit</a>
+            <a ng-click="deleteCompany()">Delete</a>
+        </div>
+
+        <!--<span>Currently selected ID's: {{ selectedcompanies.id }} </span>-->
+
+>>>>>>> 3f83fb2df18a38885eb9929ceb4e559598f3c46a
     </div>
 </div>
