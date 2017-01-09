@@ -28,13 +28,13 @@ public class CompanyService extends BaseService<Company>
 
     public Company get(int id) {
         System.out.println("Get company called.");
-        Company c = dao.get(id);
+        Company c = dao.getCompany(id);
         System.out.println(c.getCompanyName());
-        return dao.get(id);
+        return dao.getCompany(id);
     }
 
     public void delete(int id)
     {
-        dao.delete(id);
+        //dao.delete(id);
     }
 }

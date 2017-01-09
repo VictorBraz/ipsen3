@@ -5,11 +5,32 @@
             <h5>Bedrijven</h5>
         </div>
 
+        <ul class="nav navbar-nav pull-right">
+            <li role="presentation" ng-class="{ 'active': isLocation('/addcompany') }">
+                <a ng-click="gotoAddCompany()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Nieuw
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ 'active': isLocation('/editcompany') }">
+                <a ng-click="gotoEditCompany()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Aanpassen
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ 'active': isLocation('/deletecompany') }">
+                <a ng-click="gotoDeleteCompany()">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Verwijderen
+                </a>
+            </li>
+        </ul>
+
         <table class="table table-hover">
             <thead>
             <th></th>
-            <th><label>ID</label></th>
             <th><label>Bedrijfsnaam</label></th>
+            <th><label>Contactpersoon</label></th>
             <th><label>Telefoonnummer</label></th>
             <th><label>Email</label></th>
             <th><label>Tag</label></th>
@@ -21,15 +42,15 @@
                         <label>
                             <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
                             <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
-                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedcompanies.id"
+                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedCompany.id"
                                    checklist-value="company.id"/>
                         </label>
                     </div>
                 </td>
-                <td>{{ company.id }}</td>
                 <td>{{ company.companyName }}</td>
+                <td>{{ company.contactPerson }}</td>
                 <td>{{ company.phoneNumber }}</td>
-                <td>{{ company.emailAddress }}</td>
+                <td>{{ company.email }}</td>
                 <td>{{ company.tag }}</td>
             </tr>
             </tbody>
@@ -41,7 +62,6 @@
             <a ng-click="deleteCompany()">Delete</a>
         </div>
 
-        <span>Currently selected ID's: {{ selectedcompanies.id }} </span>
-
+        <!--<span>Currently selected ID's: {{ selectedcompanies.id }} </span>-->
     </div>
 </div>
