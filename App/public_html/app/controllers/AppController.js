@@ -64,4 +64,8 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
         authenticationService.deleteAuthentication();
         $scope.gotoHome();
     };
+
+    $scope.gotoSearch = function(){
+        $location.path('/search');
+    };
 });
