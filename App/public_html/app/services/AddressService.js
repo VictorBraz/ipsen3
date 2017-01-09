@@ -15,7 +15,7 @@ angular.module('workshop').service('addressService', function($http)
         $http.get(url).then(function(response)
         {
             var data = response.data;
-            
+            console.log("data" + response.data);
             if (data.status === 'ok')
             {
                 onRetrieved(data.details[0]);

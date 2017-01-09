@@ -27,10 +27,9 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.emailAddress,
             $scope.phonenumber,
             $scope.tag,
-            /*$scope.street,
+            $scope.address,
             $scope.city,
             $scope.postcode,
-            $scope.streetnumber,*/
             clientCreated
         );
 
@@ -42,10 +41,6 @@ angular.module('workshop').controller('ClientController', function($scope, addre
 
     $scope.selectClient = function () {
         clientService.setSelected($scope.selectedClient.id[0]);
-        /*clientService.getClient(function (client) {
-            $scope.selected = client;
-            console.log("Firstname: " + client.firstname);
-        });*/
     };
 
     var clientCreated = function()

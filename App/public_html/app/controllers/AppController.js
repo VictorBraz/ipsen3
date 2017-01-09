@@ -48,7 +48,13 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
 
     $scope.gotoAddClient = function () {
         $location.path('/addclient');
-    }
+
+    };
+
+    $scope.gotoEditClient = function () {
+        $location.path('/editClient');
+    };
+
     $scope.gotoCalender = function () {
         $location.path('/calender');
     }
