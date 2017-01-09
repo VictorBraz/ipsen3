@@ -11,14 +11,36 @@ angular.module('workshop').service('searchService', function($http){
         self.tag = tag;
     }
 
-    self.getFiltered = function(onReceived){
-        var uri = 'api/search/' + self.tag + '';
+    self.getFilteredClients = function(onReceived){
+        var uri = 'api/search/clients/' + self.tag + '';
 
-        $http.get(uri).then(function (response) {
+        $http.get(uri).then(function(response){
             onReceived(response.data);
         },
-        function (message, status) {
-            alert('ophalen mislukt: ' + message + status);
+        function (message) {
+            alert('ophalen mislukt: ' + message);
         });
+    };
+
+    self.getFilteredCompanies = function(onReceived){
+        var uri = 'api/search/companies/' + self.tag + '';
+
+        $http.get(uri).then(function(response){
+            onReceived(response.data);
+        },
+        function (message){
+            alert('ophalen mislukt: ' + message);
+        });
+    };
+
+    self.getFilteredEmployees = function(onReceived){
+        var uri = 'api/search/employees/' + self.tag + '';
+
+        $http.get(uri).then(function(response){
+                onReceived(response.data);
+            },
+            function (message){
+                alert('ophalen mislukt: ' + message);
+            });
     };
 });

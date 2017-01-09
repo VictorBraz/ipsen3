@@ -10,11 +10,26 @@ angular.module('workshop').controller('SearchController', function($scope, searc
 
     $scope.searchAll = function () {
         $scope.setTag();
-        searchService.getFiltered(function (lists) {
-            $scope.lists = lists;
-            $scope.filteredClients = $scope.lists.getIndex(1);
-            $scope.filteredCompanies = $scope.lists.getIndex(2);
-            $scope.filteredEmployees = $scope.lists.getItem(3);
+        $scope.searchClients();
+        $scope.searchCompanies();
+        $scope.searchEmployees();
+    };
+
+    $scope.searchClients = function(){
+        searchService.getFilteredClients(function (clients) {
+            $scope.filteredClients = clients;
+        });
+    };
+
+    $scope.searchCompanies = function(){
+        searchService.getFilteredCompanies(function (companies) {
+            $scope.filteredCompanies = companies;
+        });
+    };
+
+    $scope.searchEmployees = function(){
+        searchService.getFilteredEmployees(function (employees){
+            $scope.filteredEmployees = employees;
         });
     };
 

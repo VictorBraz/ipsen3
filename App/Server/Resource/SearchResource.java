@@ -42,160 +42,53 @@ public class SearchResource {
     }
 
     @GET
-    @Path("/{tag}")
+    @Path("/clients/{tag}")
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Collection> retrieve(@PathParam("tag") @JsonView String tag) throws Exception{
-
-        List<Collection> list = new List<Collection>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Collection> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Collection collection) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Collection> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, Collection<? extends Collection> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public Collection get(int index) {
-                return null;
-            }
-
-            @Override
-            public Collection set(int index, Collection element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, Collection element) {
-
-            }
-
-            @Override
-            public Collection remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<Collection> listIterator() {
-                return null;
-            }
-
-            @Override
-            public ListIterator<Collection> listIterator(int index) {
-                return null;
-            }
-
-            @Override
-            public List<Collection> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-        };
+    public Collection<Client> retrieveClients(@PathParam("tag") @JsonView String tag) throws Exception {
 
         Collection<Client> clients = clientService.getAll();
-        Collection<Company> companies = companyService.getAll();
-        Collection<Employee> employees = employeeService.getAll();
-
-        for(Iterator<Client> clientIterator = clients.iterator(); clientIterator.hasNext();){
+        System.out.println("RETRIEVECLIENTS");
+        for (Iterator<Client> clientIterator = clients.iterator(); clientIterator.hasNext(); ) {
             Client client = clientIterator.next();
-            if(!client.getTag().toLowerCase().contains(tag.toLowerCase())){
+            if (!client.getTag().toLowerCase().contains(tag.toLowerCase())) {
                 clientIterator.remove();
             }
         }
-        list.add(clients);
+        return clients;
+    }
 
-        for (Iterator<Company> companyIterator = companies.iterator(); companyIterator.hasNext();){
+    @GET
+    @Path("/companies/{tag}")
+    @JsonView(View.Public.class)
+    @PermitAll
+    public Collection<Company> retrieveCompanies(@PathParam("tag") @JsonView String tag) throws Exception {
+
+        Collection<Company> companies = companyService.getAll();
+        System.out.println("RETRIEVE-Companies");
+        for (Iterator<Company> companyIterator = companies.iterator(); companyIterator.hasNext(); ) {
             Company company = companyIterator.next();
-            if(!company.getTag().toLowerCase().contains(tag.toLowerCase())){
+            if (!company.getTag().toLowerCase().contains(tag.toLowerCase())) {
                 companyIterator.remove();
             }
         }
-        list.add(companies);
+        return companies;
+    }
 
-        for (Iterator<Employee> employeeIterator = employees.iterator(); employeeIterator.hasNext();) {
+    @GET
+    @Path("/employees/{tag}")
+    @JsonView(View.Public.class)
+    @PermitAll
+    public Collection<Employee> retrieveEmployee(@PathParam("tag") @JsonView String tag) throws Exception {
 
+        Collection<Employee> employees = employeeService.getAll();
+        System.out.println("RETRIEVE-Employees");
+        for (Iterator<Employee> employeeIterator = employees.iterator(); employeeIterator.hasNext(); ) {
             Employee employee = employeeIterator.next();
-            if(!employee.getTag().toLowerCase().contains(tag.toLowerCase())){
-                System.out.println("--------!!!! " + employee.getFirstName());
+            if (!employee.getTag().toLowerCase().contains(tag.toLowerCase())) {
                 employeeIterator.remove();
             }
         }
-        System.out.println("AANTAL EMPLOYEESSSS: " + employees.size());
-        list.add(employees);
-
-        return list;
-
+        return employees;
     }
 }
