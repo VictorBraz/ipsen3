@@ -41,58 +41,53 @@ angular.module('workshop').service('companyService', function($http)
             alert("ophalen mislukt: " + message);
         });
     };
-<<<<<<< HEAD
-    self.getCompany = function(onReceived)
-    {
-        var uri = '/api/companies/' + (self.selectedId - 1)+ '';
+    self.getCompany = function(onReceived) {
+        var uri = '/api/companies/' + (self.selectedId - 1) + '';
 
-        if(self.selectedId >= 1) {
-            $http.get(uri).then(function(response) {
-                onReceived(response.data);
-                console.log("trying to get" + self.selectedId)
-            },
-            function(message, status) {
-                alert('Ophalen mislukt: ' + message + status);
-            });
+        if (self.selectedId >= 1) {
+            $http.get(uri).then(function (response) {
+                    onReceived(response.data);
+                    console.log("trying to get" + self.selectedId)
+                },
+                function (message, status) {
+                    alert('Ophalen mislukt: ' + message + status);
+                });
         }
 
+        self.selectedCompany = 0;
 
-=======
+        self.setSelected = function (id) {
+            self.selectedCompany = id;
+        };
 
-    self.selectedCompany = 0;
+        self.getSelected = function () {
+            console.log('test: ' + self.selectedId);
+        };
 
-    self.setSelected = function(id){
-        self.selectedCompany = id;
->>>>>>> 3f83fb2df18a38885eb9929ceb4e559598f3c46a
-    };
+        self.getCompany = function (onReceived) {
+            var uri = "api/companies/" + self.selectedCompany + "";
 
-    self.getSelected = function(){
-        console.log('test: ' + self.selectedId);
-    };
+            $http.get(uri).then(function (response) {
+                    onReceived(response.data);
+                    console.log("trying to get" + self.selectedClient)
+                },
+                function (message, status) {
+                    alert("Ophalen mislukt: " + message + status);
+                });
+        };
 
-    self.getCompany = function(onReceived) {
-        var uri = "api/companies/" + self.selectedCompany + "";
-
-        $http.get(uri).then(function(response) {
-            onReceived(response.data);
-            console.log("trying to get" + self.selectedClient)
-        },
-            function (message, status) {
-                alert("Ophalen mislukt: " + message + status);
-        });
-    };
-
-   self.update = function (company, onReceived) {
-       var uri = "api/companies/" + company.id + "";
-       console.log("bedrijfsnaam: " +company.companyname);
-       $http.put(uri, company).then(function (response) {
-           onReceived(response.data);
-       },
-           function(message, status) {
-               alert("Aanpassen mislukt: " + message + status);
-       });
-   };
-
+        self.update = function (company, onReceived) {
+            var uri = "api/companies/" + company.id + "";
+            console.log("bedrijfsnaam: " + company.companyname);
+            $http.put(uri, company).then(function (response) {
+                    onReceived(response.data);
+                },
+                function (message, status) {
+                    alert("Aanpassen mislukt: " + message + status);
+                });
+        };
+    }
+});
 
 
 //     self.deleteCompany = function(onReceived)
@@ -109,4 +104,4 @@ angular.module('workshop').service('companyService', function($http)
 //                 }
 //             );
 //     };
-});
+//});

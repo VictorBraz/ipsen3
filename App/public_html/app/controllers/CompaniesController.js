@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 angular.module('workshop').controller('CompaniesController', function($scope, companyService)
 {
     $scope.selectedcompanies = {
@@ -49,7 +47,6 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
 });
 
 
-=======
 //
 // angular.module('workshop').controller('CompaniesController', function($scope, companyService)
 // {
@@ -89,4 +86,3 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
 // });
 //
 //
->>>>>>> 3f83fb2df18a38885eb9929ceb4e559598f3c46a
