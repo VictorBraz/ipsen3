@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
 
-</body>
-</html>
+        <div class="panel-heading">
+            <h5>Zoeken</h5>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="form-group">
+                    <input type="text" class="form-control" ng-model="searchTag" ng-required="true" />
+                </li>
+                <li role="presentation" ng-class="{ 'active': isLocation('/search') }">
+                    <a ng-click="searchAll()">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Zoeken
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th><label>Voornaam</label></th>
+            <th><label>Achternaam</label></th>
+            <th><label>Studie</label></th>
+            <th><label>Telefoonnummer</label></th>
+            <th><label>Email</label></th>
+            <th><label>Tag</label></th>
+            </thead>
+            <tbody>
+            <!--<tr ng-repeat="client in clients">
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click="selectClient()" checklist-model="selectedClient.id" checklist-value="client.id">
+                        </label>
+                    </div>
+                </td>
+                <td>{{ client.firstname }}</td>
+                <td>{{ client.lastname }}</td>
+                <td>{{ client.study }}</td>
+                <td>{{ client.phonenumber }}</td>
+                <td>{{ client.emailAddress }}</td>
+                <td>{{ client.tag }}</td>
+            </tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>

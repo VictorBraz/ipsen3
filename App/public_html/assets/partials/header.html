@@ -60,6 +60,13 @@
                     </a>
                 </li>
 
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/search') }">
+                    <a ng-click="gotoSearch()">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        Zoeken
+                    </a>
+                </li>
+
                 <li role="presentation" ng-if="authenticated">
                     <a ng-click="logout()">
                         <span class="glyphicon glyphicon-user"></span>

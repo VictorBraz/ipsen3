@@ -3,17 +3,18 @@
  */
 angular.module('workshop').controller('SearchController', function($scope, searchService) {
 
-    $scope.searchTag = {
-        tags: []
-    };
+    $scope.searchTag;
     $scope.setTag = function (){
-        searchService.setTag($scope.searchTag.tags[0]);
+        searchService.setTag($scope.searchTag);
     };
 
     $scope.searchAll = function () {
+        $scope.setTag();
         searchService.getFiltered(function (lists) {
             $scope.lists = lists;
-            console.log(lists.getAccessId(1));
+            $scope.filteredClients = $scope.lists.getIndex(1);
+            $scope.filteredCompanies = $scope.lists.getIndex(2);
+            $scope.filteredEmployees = $scope.lists.getItem(3);
         });
     };
 

@@ -45,7 +45,7 @@ public class SearchResource {
     @Path("/{tag}")
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Collection> retrieve(@PathParam("tag") String tag){
+    public Collection<Collection> retrieve(@PathParam("tag") @JsonView String tag) throws Exception{
 
         List<Collection> list = new List<Collection>() {
             @Override
@@ -168,25 +168,31 @@ public class SearchResource {
         Collection<Company> companies = companyService.getAll();
         Collection<Employee> employees = employeeService.getAll();
 
-        for(Client client : clients){
-            if(!client.getTag().contains(tag)){
-                clients.remove(client);
+        for(Iterator<Client> clientIterator = clients.iterator(); clientIterator.hasNext();){
+            Client client = clientIterator.next();
+            if(!client.getTag().toLowerCase().contains(tag.toLowerCase())){
+                clientIterator.remove();
             }
         }
         list.add(clients);
 
-        for (Company company : companies){
-            if(!company.getTag().contains(tag)){
-                companies.remove(company);
+        for (Iterator<Company> companyIterator = companies.iterator(); companyIterator.hasNext();){
+            Company company = companyIterator.next();
+            if(!company.getTag().toLowerCase().contains(tag.toLowerCase())){
+                companyIterator.remove();
             }
         }
         list.add(companies);
 
-        for (Employee employee : employees){
-            if(!employee.getTag().contains(tag)){
-                employees.remove(employee);
+        for (Iterator<Employee> employeeIterator = employees.iterator(); employeeIterator.hasNext();) {
+
+            Employee employee = employeeIterator.next();
+            if(!employee.getTag().toLowerCase().contains(tag.toLowerCase())){
+                System.out.println("--------!!!! " + employee.getFirstName());
+                employeeIterator.remove();
             }
         }
+        System.out.println("AANTAL EMPLOYEESSSS: " + employees.size());
         list.add(employees);
 
         return list;
