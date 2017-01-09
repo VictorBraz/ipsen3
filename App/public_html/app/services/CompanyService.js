@@ -53,15 +53,17 @@ angular.module('workshop').service('companyService', function($http)
     {
         var uri = '/api/companies/' + (self.selectedId - 1)+ '';
 
-        $http.get(uri).then(function(response)
-            {
+        if(self.selectedId >= 1) {
+            $http.get(uri).then(function(response) {
                 onReceived(response.data);
                 console.log("trying to get" + self.selectedId)
             },
-            function(message, status)
-            {
+            function(message, status) {
                 alert('Ophalen mislukt: ' + message + status);
             });
+        }
+
+
     };
 
 

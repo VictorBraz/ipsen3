@@ -5,6 +5,27 @@
             <h5>Bedrijven</h5>
         </div>
 
+        <ul class="nav navbar-nav pull-right">
+            <li role="presentation" ng-class="{ 'active': isLocation('/addcompany') }">
+                <a ng-click="gotoAddCompany()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Nieuw
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ 'active': isLocation('/editcompany') }">
+                <a ng-click="gotoEditCompany()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Aanpassen
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ 'active': isLocation('/deletecompany') }">
+                <a ng-click="gotoDeleteCompany()">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Verwijderen
+                </a>
+            </li>
+        </ul>
+
         <table class="table table-hover">
             <thead>
             <th></th>
@@ -34,14 +55,5 @@
             </tr>
             </tbody>
         </table>
-
-        <div class="pull-right">
-            <a href="#">New</a>
-            <a href="/company">View/Edit</a>
-            <a ng-click="deleteCompany()">Delete</a>
-        </div>
-
-        <span>Currently selected ID's: {{ selectedcompanies.id }} </span>
-
     </div>
 </div>

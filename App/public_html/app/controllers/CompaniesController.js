@@ -28,6 +28,17 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
             companyService.getCompanyID();
             companyService.deleteCompany();
         }
+
+        $scope.checkSelected = function() {
+            if ($scope.selectedcompanies.id.length >= 1) { // your question said "more than one element"
+                console.log("1 of meer selected")
+                $scope.checkSelectedVar = true;
+            }
+            else {
+                console.log("lager dan 1 selected")
+                $scope.checkSelectedVar = false;
+            }
+        };
     };
 
     construct();
