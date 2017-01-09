@@ -6,7 +6,7 @@ angular.module('workshop').service('employeeService', function($http)
 {
     var self = this;
 
-    self.create = function (firstName, lastName, study, birthDate, phoneNumber, email, tag, onCreated) {
+    self.create = function (firstName, lastName, study, birthDate, email, phoneNumber, tag, address, cityName, zipCode, onCreated) {
 
         var uri = '/api/employees';
         var data =
@@ -15,11 +15,12 @@ angular.module('workshop').service('employeeService', function($http)
             lastName: lastName,
             study: study,
             birthDate: birthDate,
-            phoneNumber: phoneNumber,
             email: email,
+            phoneNumber: phoneNumber,
             tag: tag,
-            /*zipCode: "",
-            streetNumber: ""**/
+            address: address,
+            city: cityName,
+            postcode: zipCode,
         };
         $http.post(uri, data).then(function (response)
             {
@@ -42,6 +43,39 @@ angular.module('workshop').service('employeeService', function($http)
             alert('Ophalen mislukt: ' + message);
         });
 
+    };
+
+    self.selectedEmployee = 0;
+
+    self.setSelected = function(id){
+        self.selectedEmployee = id;
+    };
+
+    self.getSelected = function () {
+        console.log('test: ' + self.selectedId);
+    };
+
+    self.getEmployee = function (onReceived) {
+        var uri = 'api/employees/' + self.selectedEmployee + '';
+
+        $http.get(uri).then(function(response){
+                onReceived(response.data);
+                console.log("Ophalen: "+ self.selectedEmployee)
+            },
+            function (message, status) {
+                alert('Ophalen mislukt: ' + message + status);
+            });
+    };
+
+    self.update = function (employee, onReceived) {
+        var uri = 'api/employees/' + employee.id + '';
+        console.log("Naam: " + employee.firstName + employee.lastName);
+        $http.put(uri, employee).then(function (response) {
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Aanpassen mislukt: ' + message + status);
+            });
     };
 
 });

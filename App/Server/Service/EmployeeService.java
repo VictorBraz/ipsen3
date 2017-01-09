@@ -26,4 +26,7 @@ public class EmployeeService extends BaseService<Employee> {
     public void add(Employee employee){
         dao.addEmployee(employee);
     }
+    public void update(Employee employee) {
+        dao.update(employee);
+    }
 }
