@@ -30,6 +30,7 @@
     addScript('app/controllers/NoteController.js');
     addScript('app/controllers/EmployeesController.js');
     addScript('app/controllers/CalenderController.js');
+
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');

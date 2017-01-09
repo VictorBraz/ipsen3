@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import io.dropwizard.auth.Auth;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -21,6 +22,7 @@ import java.util.Collection;
 @Path("/notes")
 @Produces(MediaType.APPLICATION_JSON)
 public class NoteResource {
+
     private final NoteService service;
 
     @Inject
@@ -28,7 +30,7 @@ public class NoteResource {
 
     @GET
     @JsonView(View.Public.class)
-    @RolesAllowed("MEDEWERKER")
+    @PermitAll
     public Collection<Note> retrieveAll(){
         return service.getAll();
     }
@@ -51,8 +53,8 @@ public class NoteResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("MEDEWERKER")
+    @PermitAll
     public void update(@PathParam("id") int id, @Auth User authenticator, Note note){
-        service.edit(note);
+        service.update(note);
     }
 }

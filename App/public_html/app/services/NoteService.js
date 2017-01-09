@@ -21,9 +21,9 @@ angular.module('workshop').service('noteService', function($http)
         var uri = '/api/notes';
         var data =
         {
-            /*id:id,
+             id:id,
              text:text,
-             ownerID:ownerID*/
+             ownerID:ownerID
         };
         $http.post(uri, data).then(function (response)
             {
@@ -62,11 +62,14 @@ angular.module('workshop').service('noteService', function($http)
             });
     };
 
-    self.updateNote = function (text,note,OnReceived) {
-        var uri = '/api/notes/'
-        var data = {
-
-        }
-
-    }
+    self.updateNote = function (note, onReceived) {
+        var uri = 'api/notes/' + note.id + '';
+        console.log("note Text in self.update: " + note.text);
+        $http.put(uri, note).then(function (response) {
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Aanpassen mislukt: ' + message + status);
+            });
+    };
 });
