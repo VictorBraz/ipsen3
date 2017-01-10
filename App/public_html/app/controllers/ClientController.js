@@ -11,6 +11,8 @@ angular.module('workshop').controller('ClientController', function($scope, addre
         });
     };
 
+    $scope.searchKeyword = '';
+
     $scope.checkAddress = function () {
         addressService.get($scope.postcode, $scope.streetnumber, function (address) {
             $scope.street = address.street;
