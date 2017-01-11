@@ -32,6 +32,7 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.address,
             $scope.city,
             $scope.postcode,
+            $scope.noteText,
             clientCreated
         );
 
