@@ -107,6 +107,9 @@ public class ClientDAO extends DatabaseDAO{
                 client.setCity(address.getCity());
                 client.setPostcode(address.getPostcode());
 
+                Note note = noteDAO.getNote(client.getId());
+                client.setNoteText(note.getText());
+
                 clients.add(client);
             }
 //            getAll.close();
@@ -141,6 +144,8 @@ public class ClientDAO extends DatabaseDAO{
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
 
+                Note note = noteDAO.getNote(client.getId());
+                client.setNoteText(note.getText());
             }
         }catch (Exception e){
 
@@ -155,8 +160,12 @@ public class ClientDAO extends DatabaseDAO{
         address.setPostcode(client.getPostcode());
         address.setId(client.getClientAddresId());
 
-        try {
+        Note note = new Note();
+        note.setText(client.getNoteText());
+        note.setOwnerID(client.getId());
 
+        try {
+            noteDAO.update(note);
             addressDAO.UpdateAddress(address);
 
             updateClient.setInt(1, client.getClientAddresId());

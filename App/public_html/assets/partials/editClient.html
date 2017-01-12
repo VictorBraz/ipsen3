@@ -60,6 +60,11 @@
                 <input type="text" class="form-control" ng-model="client.tag" ng-required="true" />
             </div>
 
+            <div class="form-group">
+                <label class="control-label">Notitie</label>
+                <textarea class="form-control" rows="5" ng-model="client.noteText" placeholder="Hier kan een notitie worden gemaakt."></textarea>
+            </div>
+
             <input type="submit" class="btn btn-primary" value="Aanpassen" ng-disabled="registrationForm.$invalid" />
             <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
 
