@@ -31,9 +31,10 @@
         <form name="noteForm" class="panel-body" ng-submit="updateNote()" ng-controller="NoteController" novalidate>
             <div class="form-group">
                 <label class="control-label">Notitie</label>
-                <input type="text" class="form-control" ng-model="note.text"/>
+                <textarea class="control-label" rows="10" ng-model="note.text"></textarea>
+                <input type="Span6" class="form-control" rows="10"  ng-model="note.text"/>
             </div>
-            <input type="submit" class="btn btn-primary" value="Opslaan"/>
+            <input type="button" class="btn btn-primary" value="Opslaan"/>
         </form>
     </div>
 
