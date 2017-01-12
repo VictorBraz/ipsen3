@@ -40,7 +40,7 @@ angular.module('workshop').service('clientService', function($http)
             onReceived(response.data);
         },
         function(message, status){
-            alert('Ophalen mislukt: ' + message);
+            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message);
         });
 
     };
@@ -64,7 +64,7 @@ angular.module('workshop').service('clientService', function($http)
             console.log("trying to get" + self.selectedClient)
         },
         function (message, status) {
-            alert('Ophalen mislukt: ' + message + status);
+            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 
@@ -75,7 +75,7 @@ angular.module('workshop').service('clientService', function($http)
             onReceived(response.data);
         },
         function (message, status) {
-            alert('Aanpassen mislukt: ' + message + status);
+            alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 
