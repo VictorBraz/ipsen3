@@ -11,10 +11,10 @@
                         Nieuw
                     </a>
                 </li>
-                <li role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
-                    <a ng-click="gotoEditClient()">
+                <li role="presentation" ng-class="{'disabled':!isSelected()}">
+                    <a ng-click="!isSelected() || gotoEditClient()" >
                         <span class="glyphicon glyphicon-pencil"></span>
-                        Aanpasen
+                        Aanpassen
                     </a>
                 </li>
             </ul>
