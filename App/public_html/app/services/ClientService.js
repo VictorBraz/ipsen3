@@ -78,4 +78,15 @@ angular.module('workshop').service('clientService', function($http)
         });
     };
 
+    self.delete = function(client, onReceived) {
+        var uri = 'api/clients' + client.id + '';
+        console.log("voornaam: " + client.firstname);
+        $http.put(uri, client).then(function (response) {
+            onReceived(response.data);
+        },
+        function(message, status) {
+            alert('Verwijderen mislukt: ' + message + status);
+        });
+    };
+
 });

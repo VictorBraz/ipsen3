@@ -1,54 +1,132 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h5>Cliënten</h5>
+            <h1>Cliënten</h1>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
-                    <a ng-click="gotoAddClient()">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        Nieuw
-                    </a>
-                </li>
-                <li role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
-                    <a ng-click="gotoEditClient()">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        Aanpasen
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="text-field">
-            <input type="text" class="form-control" ng-model="searchKeyword" layout-padding="10px ,10px ,0px,0px" >
-        </div>
-        <table class="table table-hover">
-            <thead>
-            <th></th>
-            <th><label>Voornaam</label></th>
-            <th><label>Achternaam</label></th>
-            <th><label>Studie</label></th>
-            <th><label>Telefoonnummer</label></th>
-            <th><label>Email</label></th>
-            <th><label>Tag</label></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="client in clients | filter:searchKeyword">
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-click="selectClient()" checklist-model="selectedClient.id" checklist-value="client.id">
-                        </label>
+
+            <!--<li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">-->
+            <!--<a ng-click="gotoAddClient()">-->
+            <!--<span class="glyphicon glyphicon-plus"></span>-->
+            <!--Nieuw-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li role="presentation" ng-class="{ 'active': isLocation('/editClient') }">-->
+            <!--<a ng-click="gotoEditClient()">-->
+            <!--<span class="glyphicon glyphicon-pencil"></span>-->
+            <!--Aanpassen-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li role="presentation" ng-class="{ 'active': isLocation('/clients') }">-->
+            <!--<a ng-click="gotoDeleteCompany()">-->
+            <!--<span class="glyphicon glyphicon-trash"></span>-->
+            <!--Verwijderen-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<div class="text-field">-->
+            <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
+            <!--layout-padding="10px ,10px ,0px,0px">-->
+            <body>
+            <div class="container">
+
+
+                <div id="content">
+                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                        <li class="active"><a href="#activeclients" data-toggle="tab">Actief</a>
+                        </li>
+                        <li><a href="#nonactiveclients" data-toggle="tab">Non-actief</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="my-tab-content" class="tab-content">
+                    <div class="tab-pane active" id="activeclients">
+                        <p>
+                        <table id="Clienten" class="table table-hover">
+                            <thead>
+                            <th></th>
+                            <th><label>Voornaam</label></th>
+                            <th><label>Achternaam</label></th>
+                            <th><label>Studie</label></th>
+                            <th><label>Telefoonnummer</label></th>
+                            <th><label>Email</label></th>
+                            <th><label>Tag</label></th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="client in clients | filter:searchKeyword">
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-click="selectClient()"
+                                                   checklist-model="selectedClient.id"
+                                                   checklist-value="client.id">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>{{ client.firstname }}</td>
+                                <td>{{ client.lastname }}</td>
+                                <td>{{ client.study }}</td>
+                                <td>{{ client.phonenumber }}</td>
+                                <td>{{ client.emailAddress }}</td>
+                                <td>{{ client.tag }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </p>
                     </div>
-                </td>
-                <td>{{ client.firstname }}</td>
-                <td>{{ client.lastname }}</td>
-                <td>{{ client.study }}</td>
-                <td>{{ client.phonenumber }}</td>
-                <td>{{ client.emailAddress }}</td>
-                <td>{{ client.tag }}</td>
-            </tr>
-            </tbody>
-        </table>
+                    <div class="tab-pane" id="nonactiveclients">
+                        <h1></h1>
+                        <p>
+                        <table id="nonactive" class="table table-hover">
+                            <thead>
+                            <th></th>
+                            <th><label>Voornaam</label></th>
+                            <th><label>Achternaam</label></th>
+                            <th><label>Studie</label></th>
+                            <th><label>Telefoonnummer</label></th>
+                            <th><label>Email</label></th>
+                            <th><label>Tag</label></th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="client in clients | filter:searchKeyword">
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-click="selectClient()"
+                                                   checklist-model="selectedClient.id"
+                                                   checklist-value="client.id">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>{{ }}</td>
+                                <td>{{ }}</td>
+                                <td>{{ }}</td>
+                                <td>{{ }}</td>
+                                <td>{{ }}</td>
+                                <td>{{ }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            </body>
+
+
+            <!--</div>-->
+
+
+            <!--<div role="tabpanel" class="tab-pane" id="Month">2...</div>-->
+            <!--</div>-->
+        </div>
+
+
     </div>
 </div>
+
+
+

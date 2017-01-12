@@ -33,6 +33,7 @@
     addScript('app/controllers/CalenderController.js');
     addScript('app/controllers/SearchController.js');
 
+
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');
