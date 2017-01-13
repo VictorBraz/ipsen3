@@ -2,6 +2,7 @@ package Server.Persistence;
 
 import Server.Model.Address;
 import Server.Model.Client;
+import Server.Model.Note;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.List;
 public class ClientDAO extends DatabaseDAO{
 
     private AddressDAO addressDAO;
+    private NoteDAO noteDAO;
     private PreparedStatement getClient;
     private PreparedStatement addClient;
     private PreparedStatement getAll;
@@ -24,6 +26,7 @@ public class ClientDAO extends DatabaseDAO{
         prepareStatements();
         try {
             this.addressDAO = new AddressDAO();
+            this.noteDAO = new NoteDAO();
         }catch (Exception e){
 
         }
@@ -32,7 +35,7 @@ public class ClientDAO extends DatabaseDAO{
     private void prepareStatements(){
         try{
             getClient = conn.prepareStatement("SELECT * FROM client WHERE id=?");
-            addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname, lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)");
+            addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname, lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM client");
             updateClient = conn.prepareStatement("UPDATE client SET clientaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
 
@@ -62,10 +65,21 @@ public class ClientDAO extends DatabaseDAO{
 
             addClient.executeUpdate();
 
+            ResultSet rs = addClient.getGeneratedKeys();
+            if (rs.next()){
+                client.setId(rs.getInt("id"));
+            }
+
+            Note note = new Note();
+            note.setOwnerID(client.getId());
+            note.setText(client.getNoteText());
+            System.out.println(client.getNoteText());
+            noteDAO.addNote(note);
+
 //            addClient.close();
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
@@ -92,6 +106,9 @@ public class ClientDAO extends DatabaseDAO{
                 client.setAddress(address.getAddress());
                 client.setCity(address.getCity());
                 client.setPostcode(address.getPostcode());
+
+                Note note = noteDAO.getNote(client.getId());
+                client.setNoteText(note.getText());
 
                 clients.add(client);
             }
@@ -127,6 +144,8 @@ public class ClientDAO extends DatabaseDAO{
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
 
+                Note note = noteDAO.getNote(client.getId());
+                client.setNoteText(note.getText());
             }
         }catch (Exception e){
 
@@ -141,8 +160,12 @@ public class ClientDAO extends DatabaseDAO{
         address.setPostcode(client.getPostcode());
         address.setId(client.getClientAddresId());
 
-        try {
+        Note note = new Note();
+        note.setText(client.getNoteText());
+        note.setOwnerID(client.getId());
 
+        try {
+            noteDAO.update(note);
             addressDAO.UpdateAddress(address);
 
             updateClient.setInt(1, client.getClientAddresId());

@@ -46,7 +46,7 @@ public class Employee {
     @JsonView(View.Public.class)
     private String city;
 
-   @JsonView(View.Public.class)
+    @JsonView(View.Public.class)
     private String postcode;
 
     public int getId() {

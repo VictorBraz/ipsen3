@@ -4,20 +4,23 @@
         <div class="panel-heading">
             <h5>Cliënten</h5>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
-                <a ng-click="gotoAddClient()">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Nieuw
-                </a>
-            </li>
-            <li role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
-                <a ng-click="gotoEditClient()">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Aanpasen
-                </a>
-            </li>
-        </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
+                    <a ng-click="gotoAddClient()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Nieuw
+                    </a>
+                </li>
+                <li role="presentation" ng-class="{'disabled':!isSelected()}">
+                    <a ng-click="!isSelected() || gotoEditClient()" >
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Aanpassen
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="text-field">
+            <input type="text" class="form-control" ng-model="searchKeyword" layout-padding="10px ,10px ,0px,0px" >
         </div>
         <table class="table table-hover">
             <thead>
@@ -30,7 +33,7 @@
             <th><label>Tag</label></th>
             </thead>
             <tbody>
-            <tr ng-repeat="client in clients">
+            <tr ng-repeat="client in clients | filter:searchKeyword">
                 <td>
                     <div class="checkbox">
                         <label>

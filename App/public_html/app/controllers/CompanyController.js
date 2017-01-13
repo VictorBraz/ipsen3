@@ -3,8 +3,7 @@
  * @author Bernd Oostrum
  *
  */
-angular.module('workshop').controller('CompanyController', function($scope, companyService,noteService, addressService)
-{
+angular.module('workshop').controller('CompanyController', ['$scope','$controller','companyService','noteService','addressService', function ($scope, $controller, companyService,noteService, addressService) {
     var construct = function() {
         companyService.getAll(function(companies){
             $scope.companies = companies;
@@ -46,4 +45,9 @@ angular.module('workshop').controller('CompanyController', function($scope, comp
     };
 
     construct();
-});
+
+    angular.extend(this, $controller('NoteController', {
+        $scope: $scope
+    }));
+}])
+
