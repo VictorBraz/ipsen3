@@ -2,7 +2,7 @@
  * Created by Negin on 13-12-2016.
  */
 
-angular.module('workshop').controller('EmployeesController', function($scope, addressService, employeeService)
+angular.module('workshop').controller('EmployeesController', function($scope, employeeService)
 {
     var construct = function()
     {
@@ -11,13 +11,6 @@ angular.module('workshop').controller('EmployeesController', function($scope, ad
             $scope.employees = employees;
         });
     };
-
-    // $scope.checkAddress = function () {
-    //     addressService.get($scope.zipCode, $scope.streetNumber, function (address) {
-    //         $scope.street = address.street;
-    //         $scope.city = address.city;
-    //     });
-    // };
 
     $scope.register = function () {
         employeeService.create(

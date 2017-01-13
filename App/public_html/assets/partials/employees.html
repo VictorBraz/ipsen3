@@ -5,11 +5,18 @@
     <div class="panel-heading">
         <h5>Medewerkers</h5>
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right btn btn-info btn-default">
+            <li role="presentation" ng-class="{ 'active': isLocation('/editEmployee') }">
+                <a ng-click="gotoEditEmployee()">
+                    <i class="material-icons">create</i></a>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right btn btn-info btn-default">
             <li role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
                 <a ng-click="gotoAddEmployee()">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Nieuw
+                    <i class="material-icons">add</i></a>
                 </a>
             </li>
         </ul>

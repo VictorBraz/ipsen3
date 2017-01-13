@@ -57,7 +57,6 @@ angular.module('workshop').service('employeeService', function($http)
 
     self.getEmployee = function (onReceived) {
         var uri = 'api/employees/' + self.selectedEmployee + '';
-
         $http.get(uri).then(function(response){
                 onReceived(response.data);
                 console.log("Ophalen: "+ self.selectedEmployee)
