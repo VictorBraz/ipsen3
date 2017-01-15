@@ -10,11 +10,13 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/addcompany', {templateUrl: 'assets/partials/addcompany.html', controller: 'CompanyController' });
     $routeProvider.when('/editcompany', {templateUrl: 'assets/partials/editcompany.html', controller: 'CompanyController' });
     $routeProvider.when('/addclient', {templateUrl: 'assets/partials/addclient.html', controller: 'ClientController' });
-    $routeProvider.when('/employees', {templateUrl: 'assets/partials/employees.html', controller: 'EmployeesController' });
     $routeProvider.when('/editClient', {templateUrl: 'assets/partials/editClient.html', controller: 'EditClientController'});
     $routeProvider.when('/calender', {templateUrl: 'assets/partials/calender.html', controller: 'CalenderController' });
+    $routeProvider.when('/employees', {templateUrl: 'assets/partials/employees.html', controller: 'EmployeesController' });
     $routeProvider.when('/addEmployee', {templateUrl: 'assets/partials/addEmployee.html', controller: 'EmployeesController' });
+    $routeProvider.when('/editEmployee', {templateUrl: 'assets/partials/editEmployee.html', controller: 'EditEmployeeController' });
     $routeProvider.when('/search', {templateUrl: 'assets/partials/search.html', controller: 'SearchController'});
+
 
     // Voeg hier meer routes toe
     

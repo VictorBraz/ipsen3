@@ -1,3 +1,4 @@
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
     <div class="row">
@@ -106,14 +107,15 @@
                 <div class="col-md-1 col-md-offset-9" id="addbutton">
                     <div role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
                         <a ng-click="gotoAddClient()" class="btn btn-info btn-fab"><i class="material-icons">add</i></a>
+
                     </div>
                 </div>
 
                 <!--Aanpassen knop-->
 
                 <div class="col-md-1 col-md-offset-10" id="zoominbutton">
-                    <div role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
-                        <a ng-click="gotoEditClient()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
+                    <div role="presentation" ng-class="{'disabled':!isSelected()}">
+                        <a ng-click="!isSelected() || gotoEditClient()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
                     </div>
                 </div>
 

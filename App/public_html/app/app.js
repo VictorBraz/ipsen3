@@ -30,6 +30,7 @@
     addScript('app/controllers/ClientController.js');
     addScript('app/controllers/NoteController.js');
     addScript('app/controllers/EmployeesController.js');
+    addScript('app/controllers/EditEmployeeController.js');
     addScript('app/controllers/CalenderController.js');
     addScript('app/controllers/SearchController.js');
 
