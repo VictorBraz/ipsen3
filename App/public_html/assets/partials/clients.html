@@ -1,37 +1,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<div class="col-md-10 col-md-offset-1">
-    <div class="panel panel-default">
+<div class="container">
+    <div class="row">
+        <!--<div class="col-md-10 col-md-offset-1">-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>Cliënten</h1>
+            </div>
 
-        <div class="panel-heading">
-            <h1>Cliënten</h1>
-
-
-            <!--<li role="presentation" ng-class="{ 'active': isLocation('/addclient') }">-->
-            <!--<a ng-click="gotoAddClient()">-->
-            <!--<span class="glyphicon glyphicon-plus"></span>-->
-            <!--Nieuw-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li role="presentation" ng-class="{ 'active': isLocation('/editClient') }">-->
-            <!--<a ng-click="gotoEditClient()">-->
-            <!--<span class="glyphicon glyphicon-pencil"></span>-->
-            <!--Aanpassen-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li role="presentation" ng-class="{ 'active': isLocation('/clients') }">-->
-            <!--<a ng-click="gotoDeleteCompany()">-->
-            <!--<span class="glyphicon glyphicon-trash"></span>-->
-            <!--Verwijderen-->
-            <!--</a>-->
-            <!--</li>-->
             <!--<div class="text-field">-->
             <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
             <!--layout-padding="10px ,10px ,0px,0px">-->
             <body>
-            <div class="container">
+            <div id="content">
 
 
-                <div id="content">
+                <!--header boven tabellen-->
+                <div id="headertable">
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <li class="active"><a href="#activeclients" data-toggle="tab">Actief</a>
                         </li>
@@ -39,18 +23,24 @@
                         </li>
                     </ul>
                 </div>
-                <div id="my-tab-content" class="tab-content">
+
+
+                <!--inhoud van de tabellen-->
+                <div class="tab-content">
+
+                    <!--tabel met actieve clienten-->
                     <div class="tab-pane active" id="activeclients">
-                        <p>
                         <table id="Clienten" class="table table-hover">
                             <thead>
-                            <th></th>
-                            <th><label>Voornaam</label></th>
-                            <th><label>Achternaam</label></th>
-                            <th><label>Studie</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
+                            <tr>
+                                <th></th>
+                                <th><label>Voornaam</label></th>
+                                <th><label>Achternaam</label></th>
+                                <th><label>Studie</label></th>
+                                <th><label>Telefoonnummer</label></th>
+                                <th><label>Email</label></th>
+                                <th><label>Tag</label></th>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="client in clients | filter:searchKeyword">
@@ -63,29 +53,29 @@
                                         </label>
                                     </div>
                                 </td>
-                                <td>{{ client.firstname }}</td>
-                                <td>{{ client.lastname }}</td>
-                                <td>{{ client.study }}</td>
-                                <td>{{ client.phonenumber }}</td>
-                                <td>{{ client.emailAddress }}</td>
-                                <td>{{ client.tag }}</td>
+                                <td class="filterable-cell">{{ client.firstname }}</td>
+                                <td class="filterable-cell">{{ client.lastname }}</td>
+                                <td class="filterable-cell">{{ client.study }}</td>
+                                <td class="filterable-cell">{{ client.phonenumber }}</td>
+                                <td class="filterable-cell">{{ client.emailAddress }}</td>
+                                <td class="filterable-cell">{{ client.tag }}</td>
                             </tr>
                             </tbody>
                         </table>
-                        </p>
                     </div>
+
                     <div class="tab-pane" id="nonactiveclients">
-                        <h1></h1>
-                        <p>
                         <table id="nonactive" class="table table-hover">
                             <thead>
-                            <th></th>
-                            <th><label>Voornaam</label></th>
-                            <th><label>Achternaam</label></th>
-                            <th><label>Studie</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
+                            <tr>
+                                <th></th>
+                                <th><label>Voornaam</label></th>
+                                <th><label>Achternaam</label></th>
+                                <th><label>Studie</label></th>
+                                <th><label>Telefoonnummer</label></th>
+                                <th><label>Email</label></th>
+                                <th><label>Tag</label></th>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="client in clients | filter:searchKeyword">
@@ -98,35 +88,51 @@
                                         </label>
                                     </div>
                                 </td>
-                                <td>{{ }}</td>
-                                <td>{{ }}</td>
-                                <td>{{ }}</td>
-                                <td>{{ }}</td>
-                                <td>{{ }}</td>
-                                <td>{{ }}</td>
+                                <td class="filterable-cell">{{ }}</td>
+                                <td class="filterable-cell">{{ }}</td>
+                                <td class="filterable-cell">{{ }}</td>
+                                <td class="filterable-cell">{{ }}</td>
+                                <td class="filterable-cell">{{ }}</td>
+                                <td class="filterable-cell">{{ }}</td>
                             </tr>
                             </tbody>
                         </table>
-                        </p>
                     </div>
 
                 </div>
+                <!--Toevoegen knop-->
+                <!--<div class="btn-group">-->
+
+                <div class="col-md-1 col-md-offset-9" id="addbutton">
+                    <div role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
+                        <a ng-click="gotoAddClient()" class="btn btn-info btn-fab"><i class="material-icons">add</i></a>
+                    </div>
+                </div>
+
+                <!--Aanpassen knop-->
+
+                <div class="col-md-1 col-md-offset-10" id="zoominbutton">
+                    <div role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
+                        <a ng-click="gotoEditClient()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
+                    </div>
+                </div>
+
+                <!--Verwijderen knop-->
+                <div class="col-md-1 col-md-offset-11" id="deletebutton">
+                    <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
+                        <a ng-click="gotoDeleteCompany()" class="btn btn-info btn-fab"> <i class="material-icons">delete</i>
+                        </a>
+                    </div>
+                </div>
+                <!--</div>-->
+
             </div>
 
 
+
             </body>
-
-
-            <!--</div>-->
-
-
-            <!--<div role="tabpanel" class="tab-pane" id="Month">2...</div>-->
-            <!--</div>-->
         </div>
 
-
     </div>
-</div>
-
 
 

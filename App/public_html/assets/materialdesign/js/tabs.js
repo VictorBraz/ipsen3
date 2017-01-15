@@ -2,6 +2,13 @@
  * Created by bernd on 12-1-2017.
  */
 
-jQuery(function () {
-    jQuery('#myTab a:last').tab('show')
-})
+(function() {
+    'use strict';
+
+    angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+        .controller('AppCtrl', AppCtrl);
+
+    function AppCtrl($scope) {
+        $scope.currentNavItem = 'page1';
+    }
+})();
