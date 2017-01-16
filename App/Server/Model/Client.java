@@ -46,6 +46,9 @@ public class Client {
     @JsonView(View.Public.class)
     private String postcode;
 
+    @JsonView(View.Public.class)
+    private String noteText;
+
     public int getId() {
         return id;
     }
@@ -143,4 +146,11 @@ public class Client {
         this.postcode = postcode;
     }
 
+    public String getNoteText() {
+        return noteText;
+    }
+
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
+    }
 }

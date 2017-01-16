@@ -25,10 +25,8 @@ public class NoteService extends BaseService<Note>{
     public void add(Note note){
         dao.addNote(note);
     }
-    public void edit(Note note){
-        dao.editNote(note);
+    public void update(Note note){
+        dao.update(note);
     }
-    public List<Note>getAll(){
-        System.out.println("Get all Notes");
-        return dao.getAll();}
+    public List<Note>getAll(){ return dao.getAll();}
 }

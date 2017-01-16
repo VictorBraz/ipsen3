@@ -2,4 +2,7 @@
 .idea
 *.iml
 /target
+.DS_Store
 
+App/Server/Persistence/DatabaseDAO.java
+App/Server/Service/DatabaseService.java

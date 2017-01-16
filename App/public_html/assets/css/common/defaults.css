@@ -3,9 +3,9 @@
  * Standard styling voor de gehele applicatie
  */
 
-body
-{
-    /*padding: 20px;*/
+body {
+    overflow-y:hidden;
+
 }
 
 a

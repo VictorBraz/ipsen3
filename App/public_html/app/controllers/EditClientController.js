@@ -9,7 +9,6 @@ angular.module('workshop').controller('EditClientController', function($scope, c
         clientService.getClient(function(client)
         {
             $scope.client = client;
-
         });
 
     };

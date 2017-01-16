@@ -1,0 +1,106 @@
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h5>Zoeken</h5>
+
+            <ul class="nav navbar-nav ">
+                <li class="form-group">
+                    <input type="text" class="form-control" ng-model="searchTag" ng-required="true" />
+                </li>
+                <li role="presentation" ng-class="{ 'active': isLocation('/search') }">
+                    <a ng-click="searchAll()">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Zoeken
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th><label>Voornaam</label></th>
+            <th><label>Achternaam</label></th>
+            <th><label>Studie</label></th>
+            <th><label>Telefoonnummer</label></th>
+            <th><label>Email</label></th>
+            <th><label>Tag</label></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="client in filteredClients">
+                <td>
+                    <!--<div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click="selectClient()" checklist-model="selectedClient.id" checklist-value="client.id">
+                        </label>
+                    </div>-->
+                </td>
+                <td>{{ client.firstname }}</td>
+                <td>{{ client.lastname }}</td>
+                <td>{{ client.study }}</td>
+                <td>{{ client.phonenumber }}</td>
+                <td>{{ client.emailAddress }}</td>
+                <td>{{ client.tag }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th><label>Bedrijfsnaam</label></th>
+            <th><label>Contactpersoon</label></th>
+            <th><label>Telefoonnummer</label></th>
+            <th><label>Email</label></th>
+            <th><label>Tag</label></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="company in filteredCompanies">
+                <td>
+                    <!--<div class="checkbox">
+                        <label>
+                            &lt;!&ndash;<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>&ndash;&gt;
+                            &lt;!&ndash;<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}&ndash;&gt;
+                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedCompany.id"
+                                   checklist-value="company.id"/>
+                        </label>
+                    </div>-->
+                </td>
+                <td>{{ company.companyName }}</td>
+                <td>{{ company.contactPerson }}</td>
+                <td>{{ company.phoneNumber }}</td>
+                <td>{{ company.email }}</td>
+                <td>{{ company.tag }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th><label>Voornaam</label></th>
+            <th><label>Achternaam</label></th>
+            <th><label>Studie</label></th>
+            <th><label>Telefoonnummer</label></th>
+            <th><label>Email</label></th>
+            <th><label>Tag</label></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="employee in filteredEmployees">
+                <td>
+                    <!--<div class="checkbox">
+                        <label>
+                            <input type="checkbox" checklist-model="employee.id" checklist-value="employee.id">
+                        </label>
+
+                    </div>-->
+                </td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.study }}</td>
+                <td>{{ employee.phoneNumber }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.tag }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

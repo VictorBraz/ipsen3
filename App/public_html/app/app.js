@@ -16,6 +16,7 @@
     addScript('app/services/EmployeeService.js');
     addScript('app/services/NoteService.js');
     addScript('app/services/CalenderService.js');
+    addScript('app/services/SearchService.js');
 
 
     // Controllers
@@ -29,7 +30,11 @@
     addScript('app/controllers/ClientController.js');
     addScript('app/controllers/NoteController.js');
     addScript('app/controllers/EmployeesController.js');
+    addScript('app/controllers/EditEmployeeController.js');
     addScript('app/controllers/CalenderController.js');
+    addScript('app/controllers/SearchController.js');
+
+
     function addScript(url)
     {
         document.write('<script type="text/javascript" src="' + url + '"></script>');

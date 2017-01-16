@@ -5,14 +5,21 @@
     <div class="panel-heading">
         <h5>Medewerkers</h5>
 
-        <div class="panel-heading">
-            <li role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
-                <a ng-click="gotoAddEmployee()">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Nieuw
+        <ul class="nav navbar-nav navbar-right btn btn-info btn-default">
+            <li role="presentation" ng-class="{ 'active': isLocation('/editEmployee') }">
+                <a ng-click="gotoEditEmployee()">
+                    <i class="material-icons">create</i></a>
                 </a>
             </li>
-        </div>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right btn btn-info btn-default">
+            <li role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
+                <a ng-click="gotoAddEmployee()">
+                    <i class="material-icons">add</i></a>
+                </a>
+            </li>
+        </ul>
     </div>
 
     <table class="table table-hover">
@@ -39,11 +46,10 @@
                 <td>{{ employee.lastName }}</td>
                 <td>{{ employee.study }}</td>
                 <td>{{ employee.phoneNumber }}</td>
-                <td>{{ employee.emailAddress }}</td>
+                <td>{{ employee.email }}</td>
                 <td>{{ employee.tag }}</td>
             </tr>
         </tbody>
     </table>
-
 </div>
-    </div>
+</div>
