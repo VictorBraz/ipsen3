@@ -1514,7 +1514,7 @@ output {
   line-height: 1.42857143;
 }
 .form-control {
-  height: 38px;
+  height: 30px;
   padding: 7px 0;
   font-size: 16px;
   line-height: 1.42857143;
@@ -1554,13 +1554,13 @@ output {
 .form-control-static {
   padding-top: 8px;
   padding-bottom: 8px;
-  min-height: 38px;
+  min-height: 20px;
 }
 .input-sm .input-sm {
   height: 24px;
   padding: 3px 0;
   font-size: 11px;
-  line-height: 1.5;
+  line-height: 1;
   border-radius: 0;
 }
 .input-sm select.input-sm {
@@ -1608,13 +1608,13 @@ output {
   height: auto;
 }
 .form-group-lg .form-control {
-  height: 44px;
+  height: 35px;
   padding: 9px 0;
   font-size: 18px;
   line-height: 1.3333333;
 }
 .form-group-lg select.form-control {
-  height: 44px;
+  height: 35px;
   line-height: 44px;
 }
 .form-group-lg textarea.form-control,
@@ -1893,13 +1893,13 @@ label.control-label {
 }
 .form-group {
   padding-bottom: 7px;
-  margin: 28px 0 0 0;
+  margin: 10px 0 0 0;
 }
 .form-group .form-control {
   margin-bottom: 7px;
 }
 .form-group .form-control::-moz-placeholder {
-  font-size: 16px;
+  font-size: 10px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
@@ -1925,7 +1925,7 @@ label.control-label {
   font-weight: 400;
 }
 .form-group label.control-label {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.07142857;
   font-weight: 400;
   margin: 16px 0 0 0;
@@ -2855,10 +2855,10 @@ fieldset[disabled] .navbar .btn-link:focus {
   color: #03a9f4;
 }
 .nav-tabs {
-  background: #009688;
+  background: #ffffff;
 }
 .nav-tabs > li > a {
-  color: #FFFFFF;
+  color: #00bcd4;
   border: 0;
   margin: 0;
 }
@@ -2871,7 +2871,7 @@ fieldset[disabled] .navbar .btn-link:focus {
 .nav-tabs > li > a:focus {
   background-color: transparent !important;
   border: 0 !important;
-  color: #FFFFFF !important;
+  color: #00bcd4 !important;
   font-weight: 500;
 }
 .nav-tabs > li.disabled > a,

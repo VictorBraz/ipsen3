@@ -6,7 +6,7 @@ angular.module('workshop').service('clientService', function($http)
 {
     var self = this;
 
-    self.create = function (firstName, lastName, birthDate, Study, Email, phoneNumber, Tag, address, cityname, zipcode, onCreated) {
+    self.create = function (firstName, lastName, birthDate, Study, Email, phoneNumber, Tag, address, cityname, zipcode, noteText, onCreated) {
 
         var uri = '/api/clients';
         var data =
@@ -21,6 +21,7 @@ angular.module('workshop').service('clientService', function($http)
                 address: address,
                 city: cityname,
                 postcode: zipcode,
+                noteText: noteText
             };
         $http.post(uri, data).then(function (response)
         {
@@ -39,7 +40,7 @@ angular.module('workshop').service('clientService', function($http)
             onReceived(response.data);
         },
         function(message, status){
-            alert('Ophalen mislukt: ' + message);
+            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message);
         });
 
     };
@@ -63,7 +64,7 @@ angular.module('workshop').service('clientService', function($http)
             console.log("trying to get" + self.selectedClient)
         },
         function (message, status) {
-            alert('Ophalen mislukt: ' + message + status);
+            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 
@@ -74,7 +75,18 @@ angular.module('workshop').service('clientService', function($http)
             onReceived(response.data);
         },
         function (message, status) {
-            alert('Aanpassen mislukt: ' + message + status);
+            alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
+        });
+    };
+
+    self.delete = function(client, onReceived) {
+        var uri = 'api/clients' + client.id + '';
+        console.log("voornaam: " + client.firstname);
+        $http.put(uri, client).then(function (response) {
+            onReceived(response.data);
+        },
+        function(message, status) {
+            alert('Verwijderen mislukt: ' + message + status);
         });
     };
 

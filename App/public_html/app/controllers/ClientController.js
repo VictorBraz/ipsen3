@@ -1,8 +1,12 @@
 /**
  * Created by Victor on 12-12-2016.
  */
-angular.module('workshop').controller('ClientController', function($scope, addressService, clientService)
+
+angular.module('workshop').controller('ClientController', function($scope, clientService)
+
 {
+
+
     var construct = function()
     {
         clientService.getAll(function (clients)
@@ -11,12 +15,7 @@ angular.module('workshop').controller('ClientController', function($scope, addre
         });
     };
 
-    $scope.checkAddress = function () {
-        addressService.get($scope.postcode, $scope.streetnumber, function (address) {
-            $scope.street = address.street;
-            $scope.city = address.city;
-        });
-    };
+    $scope.searchKeyword = '';
 
     $scope.register = function () {
         clientService.create(
@@ -30,6 +29,7 @@ angular.module('workshop').controller('ClientController', function($scope, addre
             $scope.address,
             $scope.city,
             $scope.postcode,
+            $scope.noteText,
             clientCreated
         );
 
@@ -37,6 +37,14 @@ angular.module('workshop').controller('ClientController', function($scope, addre
 
     $scope.selectedClient = {
         id: []
+    };
+
+    $scope.isSelected = function () {
+        if($scope.selectedClient.id.length > 0){
+            return true;
+        }else{
+            return false;
+        }
     };
 
     $scope.selectClient = function () {

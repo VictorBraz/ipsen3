@@ -40,6 +40,18 @@ public class Employee {
     @JsonView(View.Public.class)
     private String tag;
 
+    @JsonView(View.Public.class)
+    private String address;
+
+    @JsonView(View.Public.class)
+    private String city;
+
+    @JsonView(View.Public.class)
+    private String postcode;
+
+    @JsonView(View.Public.class)
+    private String noteText;
+
     public int getId() {
         return id;
     }
@@ -112,4 +124,35 @@ public class Employee {
         this.tag = tag;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getNoteText() {
+        return noteText;
+    }
+
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
+    }
 }

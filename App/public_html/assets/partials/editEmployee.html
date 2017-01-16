@@ -7,67 +7,66 @@
             <h5>Toevoegen Medewerker</h5>
         </div>
 
-        <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
-            <!--ng-required="true" betekent dat je iets kan invoeren-->
+        <form name="updateForm" class="panel-body" ng-submit="update()" novalidate>
             <div class="form-group">
                 <label class="control-label">Voornaam</label>
-                <input type="text" class="form-control" ng-model="firstName" placeholder="Mike " ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.firstName" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Achternaam</label>
-                <input type="text" class="form-control" ng-model="lastName" placeholder="Bol " ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.lastName" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Geboortedatum</label>
-                <input type="text" class="form-control" ng-model="birthDate" placeholder="01-01-1990 " ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.birthDate" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Studie</label>
-                <input type="text" class="form-control" ng-model="study" placeholder="Informatica " ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.study" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Adres</label>
-                <input type="text" class="form-control" ng-model="address" placeholder="Stadhuisplein 1" ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.address" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Postcode</label>
-                <input type="text" class="form-control" ng-model="postcode" placeholder="1234AB" ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.postcode" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Woonplaats</label>
-                <input type="text" class="form-control" ng-model="city" placeholder="Amsterdam" ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.city" ng-required="true" />
             </div>
 
             <!--<p>-->
-                <!--<a ng-click="checkAddress()">Adres controleren</a>-->
+            <!--<a ng-click="checkAddress()">Adres controleren</a>-->
             <!--</p>-->
 
             <div class="form-group">
                 <label class="control-label">E-mailadres</label>
-                <input type="emailAddress" class="form-control" ng-model="email" placeholder="a@a.nl" ng-required="true" />
+                <input type="emailAddress" class="form-control" ng-model="employee.email" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Telefoon</label>
-                <input type="text" class="form-control" ng-model="phoneNumber" placeholder="0612345678" ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.phoneNumber" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Tags</label>
-                <input type="text" class="form-control" ng-model="tag" placeholder="Slechtziend" ng-required="true" />
+                <input type="text" class="form-control" ng-model="employee.tag" ng-required="true" />
             </div>
 
-            <input type="submit" class="btn btn-primary" value="Aanmaken" ng-disabled="registrationForm.$invalid" />
+            <input type="submit" class="btn btn-primary" value="Aanpassen" ng-disabled="registrationForm.$invalid" />
             <!--Gaat één pagina terug, zonder veranderingen-->
             <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
-
         </form>
 
     </div>
+
 </div>
