@@ -1,139 +1,142 @@
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
     <!--<div class="row">-->
-        <!--<div class="col-md-10 col-md-offset-1">-->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>Cliënten</h1>
-            </div>
-
-            <!--<div class="text-field">-->
-            <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
-            <!--layout-padding="10px ,10px ,0px,0px">-->
-            <body>
-            <p id="content">
-
-
-                <!--header boven tabellen-->
-                <div id="headertable">
-                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                        <li class="active"><a href="#activeclients" data-toggle="tab">Actief</a>
-                        </li>
-                        <li><a href="#nonactiveclients" data-toggle="tab">Non-actief</a>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <!--inhoud van de tabellen-->
-                <div class="tab-content">
-
-                    <!--tabel met actieve clienten-->
-                    <div class="tab-pane active" id="activeclients">
-                        <table id="Clienten" class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th><label>Voornaam</label></th>
-                                <th><label>Achternaam</label></th>
-                                <th><label>Studie</label></th>
-                                <th><label>Telefoonnummer</label></th>
-                                <th><label>Email</label></th>
-                                <th><label>Tag</label></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="client in clients | filter:searchKeyword">
-                                <td>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" ng-click="selectClient()"
-                                                   checklist-model="selectedClient.id"
-                                                   checklist-value="client.id">
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="filterable-cell">{{ client.firstname }}</td>
-                                <td class="filterable-cell">{{ client.lastname }}</td>
-                                <td class="filterable-cell">{{ client.study }}</td>
-                                <td class="filterable-cell">{{ client.phonenumber }}</td>
-                                <td class="filterable-cell">{{ client.emailAddress }}</td>
-                                <td class="filterable-cell">{{ client.tag }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="tab-pane" id="nonactiveclients">
-                        <table id="nonactive" class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th><label>Voornaam</label></th>
-                                <th><label>Achternaam</label></th>
-                                <th><label>Studie</label></th>
-                                <th><label>Telefoonnummer</label></th>
-                                <th><label>Email</label></th>
-                                <th><label>Tag</label></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="client in clients | filter:searchKeyword">
-                                <td>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" ng-click="selectClient()"
-                                                   checklist-model="selectedClient.id"
-                                                   checklist-value="client.id">
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="filterable-cell">{{ }}</td>
-                                <td class="filterable-cell">{{ }}</td>
-                                <td class="filterable-cell">{{ }}</td>
-                                <td class="filterable-cell">{{ }}</td>
-                                <td class="filterable-cell">{{ }}</td>
-                                <td class="filterable-cell">{{ }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <p class="bs-component">
-                <!--<div class="btn-group">-->
-                <!--Toevoegen knop-->
-                <div class="col-md-1 col-md-offset-9" id="addbutton">
-                    <div role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
-                        <a ng-click="gotoAddClient()" class="btn btn-info btn-fab"><i class="material-icons">add</i></a>
-                    </div>
-                </div>
-
-                <!--Aanpassen knop-->
-
-                <div class="col-md-1 col-md-offset-10" id="zoominbutton">
-                    <div role="presentation" ng-class="{'disabled':!isSelected()}">
-                        <a ng-click="!isSelected() || gotoEditClient()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
-                    </div>
-                </div>
-
-                <!--Verwijderen knop-->
-                <div class="col-md-1 col-md-offset-11" id="deletebutton">
-                    <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
-                        <a ng-click="gotoDeleteCompany()" class="btn btn-info btn-fab"> <i class="material-icons">delete</i>
-                        </a>
-                    </div>
-                </div>
-                </p>
-
-            </div>
-
-
-
-            </body>
+    <!--<div class="col-md-10 col-md-offset-1">-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Cliënten</h1>
         </div>
 
+        <!--<div class="text-field">-->
+        <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
+        <!--layout-padding="10px ,10px ,0px,0px">-->
+        <body>
+        <p id="content">
+
+
+            <!--header boven tabellen-->
+        <div id="headertable">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#activeclients" data-toggle="tab">Actief</a>
+                </li>
+                <li><a href="#nonactiveclients" data-toggle="tab">Non-actief</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--inhoud van de tabellen-->
+        <div class="tab-content">
+
+            <!--tabel met actieve clienten-->
+            <div class="tab-pane active" id="activeclients">
+                <table id="Clienten" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><label>Voornaam</label></th>
+                        <th><label>Achternaam</label></th>
+                        <th><label>Studie</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="client in clients | filter:searchKeyword">
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="selectClient()"
+                                           checklist-model="selectedClient.id"
+                                           checklist-value="client.id">
+                                </label>
+                            </div>
+                        </td>
+                        <td class="filterable-cell">{{ client.firstname }}</td>
+                        <td class="filterable-cell">{{ client.lastname }}</td>
+                        <td class="filterable-cell">{{ client.study }}</td>
+                        <td class="filterable-cell">{{ client.phonenumber }}</td>
+                        <td class="filterable-cell">{{ client.emailAddress }}</td>
+                        <td class="filterable-cell">{{ client.tag }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="nonactiveclients">
+                <table id="nonactive" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><label>Voornaam</label></th>
+                        <th><label>Achternaam</label></th>
+                        <th><label>Studie</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="client in clients | filter:searchKeyword">
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="selectClient()"
+                                           checklist-model="selectedClient.id"
+                                           checklist-value="client.id">
+                                </label>
+                            </div>
+                        </td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-md-offset-10">
+        <div class="row" id="buttonrow">
+            <!--<div class="btn-group">-->
+            <!--Toevoegen knop-->
+            <div class="btn btn-info btn-fab">
+                <div role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
+                    <a ng-click="gotoAddClient()"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+
+            <!--Aanpassen knop-->
+
+
+            <div class="btn btn-info btn-fab">
+                <div role="presentation" ng-class="{'disabled':!isSelected()}">
+                    <a ng-click="!isSelected() || gotoEditClient()"><i
+                            class="material-icons">launch</i></a>
+                </div>
+            </div>
+
+
+            <!--Verwijderen knop-->
+            <div class="btn btn-info btn-fab">
+                <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
+                    <a ng-click="gotoDeleteCompany()"> <i class="material-icons">delete</i>
+                    </a>
+                </div>
+                </div>
+        </div>
+
+</div>
     </div>
+
+
+    </body>
+</div>
+
+</div>
 
 

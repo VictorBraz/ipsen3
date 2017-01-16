@@ -47,22 +47,49 @@ input[type="checkbox"]{
     height: 475px !important;
 }
 
-#addbutton{
-    position:relative;
-    bottom:28px;
-    overflow: hidden;
+#buttonrow {
+    position: relative;
+    bottom: 20px;
+
 }
 
-#zoominbutton{
-    position: relative;
-    bottom: 83px;
-    overflow:hidden;
+.btn .btn-info .btn-fab {
+    padding: 0px 10px 0px 80px;
+
 }
 
-#deletebutton{
-    position: relative;
-    bottom:139px;
-    oveflow: hidden;
+.btn.btn-fab.btn-info {
+    background-color: #4DD0E1 !important;
+
 }
+
+.btn.btn-fab.btn-info:hover {
+    background-color: #E0F7FA !important;
+}
+
+
+.material-icons {
+    color: #FFFFFF;
+}
+
+/*@media (min-width: 768px) {*/
+    /*#addbutton {*/
+        /*position: relative;*/
+        /*bottom: 28px;*/
+        /*overflow: hidden;*/
+    /*}*/
+
+    /*#zoominbutton {*/
+        /*position: relative;*/
+        /*bottom: 83px;*/
+        /*overflow: hidden;*/
+    /*}*/
+
+    /*#deletebutton {*/
+        /*position: relative;*/
+        /*bottom: 139px;*/
+        /*overflow: hidden;*/
+    /*}*/
+/*}*/
 
 
