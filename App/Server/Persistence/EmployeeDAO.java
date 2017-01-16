@@ -2,6 +2,7 @@ package Server.Persistence;
 
 import Server.Model.Address;
 import Server.Model.Employee;
+import Server.Model.Note;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ import java.util.List;
 public class EmployeeDAO extends DatabaseDAO {
 
     private AddressDAO addressDAO;
+    private NoteDAO noteDAO;
     private PreparedStatement getEmployee;
     private PreparedStatement addEmployee;
     private PreparedStatement updateEmployee;
@@ -26,6 +28,7 @@ public class EmployeeDAO extends DatabaseDAO {
         prepareStatements();
         try {
             this.addressDAO = new AddressDAO();
+            this.noteDAO = new NoteDAO();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,7 +37,7 @@ public class EmployeeDAO extends DatabaseDAO {
     private void prepareStatements() {
         try {
             getEmployee = conn.prepareStatement("SELECT * FROM student WHERE id=?");
-            addEmployee = conn.prepareStatement("INSERT INTO student (studentaddressid, firstName, lastName, birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            addEmployee = conn.prepareStatement("INSERT INTO student (studentaddressid, firstName, lastName, birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM student");
             updateEmployee = conn.prepareStatement("UPDATE student SET studentaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
         } catch (SQLException e) {
@@ -46,12 +49,15 @@ public class EmployeeDAO extends DatabaseDAO {
     public void addEmployee(Employee employee){
         try {
             Address address = new Address();
-            System.out.println("-----------------"+employee.getAddress() + " " + employee.getCity() + employee.getPostcode());
             address.setAddress(employee.getAddress());
             address.setCity(employee.getCity());
             address.setPostcode(employee.getPostcode());
+
+            Note note = new Note();
+            note.setText(employee.getNoteText());
+
             employee.setEmployeeAddressID(addressDAO.addAddress(address).getId());
-            System.out.println("-----------------"+employee.getEmployeeAddressID());
+
             addEmployee.setInt(1, employee.getEmployeeAddressID());
             addEmployee.setString(2, employee.getFirstName());
             addEmployee.setString(3, employee.getLastName());
@@ -62,6 +68,14 @@ public class EmployeeDAO extends DatabaseDAO {
             addEmployee.setString(8, employee.getTag());
 
             addEmployee.executeUpdate();
+
+            ResultSet rs = addEmployee.getGeneratedKeys();
+            while (rs.next()){
+                employee.setId(rs.getInt("id"));
+            }
+
+            note.setOwnerID(employee.getId());
+            noteDAO.addNote(note);
 //            addEmployee.close();
         }catch (Exception e){
         }
@@ -89,6 +103,9 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setAddress(address.getAddress());
                 employee.setCity(address.getCity());
                 employee.setPostcode(address.getPostcode());
+
+                Note note = noteDAO.getNote(employee.getId());
+                employee.setNoteText(note.getText());
 
                 employees.add(employee);
             }
@@ -121,6 +138,9 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setCity(address.getCity());
                 employee.setPostcode(address.getPostcode());
 
+                Note note = noteDAO.getNote(employee.getId());
+                employee.setNoteText(note.getText());
+
             }
 //            getEmployee.close();
         }catch (Exception e){
@@ -135,9 +155,15 @@ public class EmployeeDAO extends DatabaseDAO {
         address.setPostcode(employee.getPostcode());
         address.setId(employee.getEmployeeAddressID());
 
+        Note note = new Note();
+        note.setText(employee.getNoteText());
+        note.setOwnerID(employee.getId());
+
         try {
 
             addressDAO.UpdateAddress(address);
+
+            noteDAO.update(note);
 
             updateEmployee.setInt(1, employee.getEmployeeAddressID());
             updateEmployee.setString(2, employee.getFirstName());
