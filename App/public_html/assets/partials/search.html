@@ -1,12 +1,13 @@
-<div class="col-md-10 col-md-offset-1">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<div class="container">
     <div class="panel panel-default">
 
         <div class="panel-heading">
             <h5>Zoeken</h5>
 
-            <ul class="nav navbar-nav ">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="form-group">
-                    <input type="text" class="form-control" ng-model="searchTag" ng-required="true" />
+                    <input type="text" class="form-control" ng-model="searchTag"/>
                 </li>
                 <li role="presentation" ng-class="{ 'active': isLocation('/search') }">
                     <a ng-click="searchAll()">
@@ -16,91 +17,112 @@
                 </li>
             </ul>
         </div>
-        <table class="table table-hover">
-            <thead>
-            <th></th>
-            <th><label>Voornaam</label></th>
-            <th><label>Achternaam</label></th>
-            <th><label>Studie</label></th>
-            <th><label>Telefoonnummer</label></th>
-            <th><label>Email</label></th>
-            <th><label>Tag</label></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="client in filteredClients">
-                <td>
-                    <!--<div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-click="selectClient()" checklist-model="selectedClient.id" checklist-value="client.id">
-                        </label>
-                    </div>-->
-                </td>
-                <td>{{ client.firstname }}</td>
-                <td>{{ client.lastname }}</td>
-                <td>{{ client.study }}</td>
-                <td>{{ client.phonenumber }}</td>
-                <td>{{ client.emailAddress }}</td>
-                <td>{{ client.tag }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table table-hover">
-            <thead>
-            <th></th>
-            <th><label>Bedrijfsnaam</label></th>
-            <th><label>Contactpersoon</label></th>
-            <th><label>Telefoonnummer</label></th>
-            <th><label>Email</label></th>
-            <th><label>Tag</label></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="company in filteredCompanies">
-                <td>
-                    <!--<div class="checkbox">
-                        <label>
-                            &lt;!&ndash;<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>&ndash;&gt;
-                            &lt;!&ndash;<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}&ndash;&gt;
-                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedCompany.id"
-                                   checklist-value="company.id"/>
-                        </label>
-                    </div>-->
-                </td>
-                <td>{{ company.companyName }}</td>
-                <td>{{ company.contactPerson }}</td>
-                <td>{{ company.phoneNumber }}</td>
-                <td>{{ company.email }}</td>
-                <td>{{ company.tag }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table table-hover">
-            <thead>
-            <th></th>
-            <th><label>Voornaam</label></th>
-            <th><label>Achternaam</label></th>
-            <th><label>Studie</label></th>
-            <th><label>Telefoonnummer</label></th>
-            <th><label>Email</label></th>
-            <th><label>Tag</label></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="employee in filteredEmployees">
-                <td>
-                    <!--<div class="checkbox">
-                        <label>
-                            <input type="checkbox" checklist-model="employee.id" checklist-value="employee.id">
-                        </label>
 
-                    </div>-->
-                </td>
-                <td>{{ employee.firstName }}</td>
-                <td>{{ employee.lastName }}</td>
-                <td>{{ employee.study }}</td>
-                <td>{{ employee.phoneNumber }}</td>
-                <td>{{ employee.email }}</td>
-                <td>{{ employee.tag }}</td>
-            </tr>
-            </tbody>
-        </table>
+        <body>
+            <p id="content">
+
+            <div id="headertable">
+                <ul id="tabs" class="nav nav-tabs" data-toggle="tabs">
+                    <li class="active"><a href="#clienten" data-toggle="tab" ng-click="searchClients()">Clienten</a></li>
+                    <li><a href="#bedrijven" data-toggle="tab" ng-click="searchCompanies()">Bedrijven</a></li>
+                    <li><a href="#medewerkers" data-toggle="tab" ng-click="searchEmployees()">Medewerkers</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="clienten">
+                    <table class="table table-hover">
+                        <thead>
+                        <th></th>
+                        <th><label>Voornaam</label></th>
+                        <th><label>Achternaam</label></th>
+                        <th><label>Studie</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="client in filteredClients">
+                            <td>
+                                <!--<div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-click="selectClient()" checklist-model="selectedClient.id" checklist-value="client.id">
+                                    </label>
+                                </div>-->
+                            </td>
+                            <td>{{ client.firstname }}</td>
+                            <td>{{ client.lastname }}</td>
+                            <td>{{ client.study }}</td>
+                            <td>{{ client.phonenumber }}</td>
+                            <td>{{ client.emailAddress }}</td>
+                            <td>{{ client.tag }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="bedrijven">
+                    <table class="table table-hover">
+                        <thead>
+                        <th></th>
+                        <th><label>Bedrijfsnaam</label></th>
+                        <th><label>Contactpersoon</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="company in filteredCompanies">
+                            <td>
+                                <!--<div class="checkbox">
+                                    <label>
+                                        &lt;!&ndash;<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>&ndash;&gt;
+                                        &lt;!&ndash;<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}&ndash;&gt;
+                                        <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedCompany.id"
+                                               checklist-value="company.id"/>
+                                    </label>
+                                </div>-->
+                            </td>
+                            <td>{{ company.companyName }}</td>
+                            <td>{{ company.contactPerson }}</td>
+                            <td>{{ company.phoneNumber }}</td>
+                            <td>{{ company.email }}</td>
+                            <td>{{ company.tag }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="medewerkers">
+                    <table class="table table-hover">
+                        <thead>
+                        <th></th>
+                        <th><label>Voornaam</label></th>
+                        <th><label>Achternaam</label></th>
+                        <th><label>Studie</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="employee in filteredEmployees">
+                            <td>
+                                <!--<div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checklist-model="employee.id" checklist-value="employee.id">
+                                    </label>
+
+                                </div>-->
+                            </td>
+                            <td>{{ employee.firstName }}</td>
+                            <td>{{ employee.lastName }}</td>
+                            <td>{{ employee.study }}</td>
+                            <td>{{ employee.phoneNumber }}</td>
+                            <td>{{ employee.email }}</td>
+                            <td>{{ employee.tag }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </p>
+        </body>
     </div>
 </div>
