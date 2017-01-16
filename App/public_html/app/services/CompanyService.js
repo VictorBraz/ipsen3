@@ -7,7 +7,7 @@ angular.module('workshop').service('companyService', function($http)
 {
     var self = this;
 
-    self.create = function (companyName, contactPerson, phoneNumber, email, tags, address, city, zipcode, onCreated){
+    self.create = function (companyName, contactPerson, phoneNumber, email, tags, address, city, zipcode, noteText, onCreated){
 
         var uri = '/api/companies';
         var data =
@@ -20,6 +20,7 @@ angular.module('workshop').service('companyService', function($http)
             address: address,
             city: city,
             zipcode: zipcode,
+            noteText: noteText
         };
 
         $http.post(uri, data).then(function (response) {
