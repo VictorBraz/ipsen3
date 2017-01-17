@@ -41,7 +41,7 @@
                         <th><label>Tag</label></th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="client in filteredClients">
+                        <tr ng-repeat="client in filteredClients" ng-model="setClient(client.id)" ng-click="gotoEditClient()">
                             <td>
                                 <!--<div class="checkbox">
                                     <label>
@@ -70,7 +70,7 @@
                         <th><label>Tag</label></th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="company in filteredCompanies">
+                        <tr ng-repeat="company in filteredCompanies" ng-model="setCompany(company.id)" ng-click="gotoEditCompany()">
                             <td>
                                 <!--<div class="checkbox">
                                     <label>
@@ -102,7 +102,7 @@
                         <th><label>Tag</label></th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="employee in filteredEmployees">
+                        <tr ng-repeat="employee in filteredEmployees" ng-model="setEmployee(employee.id)" ng-click="gotoEditEmployee()">
                             <td>
                                 <!--<div class="checkbox">
                                     <label>
