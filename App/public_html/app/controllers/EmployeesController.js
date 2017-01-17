@@ -32,7 +32,17 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
         id: []
     };
 
+    $scope.isSelected = function () {
+        if($scope.selectedEmployee.id.length > 0){
+            console.log("selectedEmployee id: " + $scope.selectedEmployee.id)
+            return true;
+        }else{
+            return false;
+        }
+    };
+
     $scope.selectEmployee = function () {
+        console.log("---------->" + $scope.selectedEmployee.id[0]);
         employeeService.setSelected($scope.selectedEmployee.id[0]);
     };
 
@@ -40,6 +50,8 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
             alert('Er is een nieuwe medewerker toegevoegd');
             $scope.gotoEmployees();
     };
+
+    $scope.searchKeyword = '';
 
     construct();
 });

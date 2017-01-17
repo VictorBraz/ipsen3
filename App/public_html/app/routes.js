@@ -8,7 +8,7 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/clients', {templateUrl: 'assets/partials/clients.html', controller: 'ClientController' });
     $routeProvider.when('/company', {templateUrl: 'assets/partials/companydetail.html', controller: 'CompanyController' });
     $routeProvider.when('/addcompany', {templateUrl: 'assets/partials/addcompany.html', controller: 'CompanyController' });
-    $routeProvider.when('/editcompany', {templateUrl: 'assets/partials/editcompany.html', controller: 'CompanyController' });
+    $routeProvider.when('/editcompany', {templateUrl: 'assets/partials/editCompany.html', controller: 'EditCompanyController' });
     $routeProvider.when('/addclient', {templateUrl: 'assets/partials/addclient.html', controller: 'ClientController' });
     $routeProvider.when('/editClient', {templateUrl: 'assets/partials/editClient.html', controller: 'EditClientController'});
     $routeProvider.when('/calender', {templateUrl: 'assets/partials/calender.html', controller: 'CalenderController' });

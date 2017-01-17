@@ -16,9 +16,6 @@ angular.module('workshop').service('searchService', function($http){
 
         $http.get(uri).then(function(response){
             onReceived(response.data);
-        },
-        function (message) {
-            alert('ophalen mislukt: ' + message);
         });
     };
 
@@ -27,9 +24,6 @@ angular.module('workshop').service('searchService', function($http){
 
         $http.get(uri).then(function(response){
             onReceived(response.data);
-        },
-        function (message){
-            alert('ophalen mislukt: ' + message);
         });
     };
 
@@ -37,10 +31,7 @@ angular.module('workshop').service('searchService', function($http){
         var uri = 'api/search/employees/' + self.tag + '';
 
         $http.get(uri).then(function(response){
-                onReceived(response.data);
-            },
-            function (message){
-                alert('ophalen mislukt: ' + message);
-            });
+            onReceived(response.data);
+        });
     };
 });

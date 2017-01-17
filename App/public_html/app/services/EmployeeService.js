@@ -59,7 +59,7 @@ angular.module('workshop').service('employeeService', function($http)
         var uri = 'api/employees/' + self.selectedEmployee + '';
         $http.get(uri).then(function(response){
                 onReceived(response.data);
-                console.log("Ophalen: "+ self.selectedEmployee)
+                console.log("Trying to get: "+ self.selectedEmployee)
             },
             function (message, status) {
                 alert('Ophalen mislukt: ' + message + status);
