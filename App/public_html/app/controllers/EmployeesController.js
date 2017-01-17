@@ -51,5 +51,7 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
             $scope.gotoEmployees();
     };
 
+    $scope.searchKeyword = '';
+
     construct();
 });
