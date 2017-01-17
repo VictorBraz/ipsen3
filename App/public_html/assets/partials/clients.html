@@ -10,9 +10,13 @@
         <!--<div class="text-field">-->
         <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
         <!--layout-padding="10px ,10px ,0px,0px">-->
-        <body>
-        <p id="content">
 
+        <p id="content">
+        <ul class="nav navbar-right">
+            <div class="navbar-text">
+                <input type="search" class="form-control" placeholder="Zoeken" ng-model="searchKeyword">
+            </div>
+        </ul>
 
             <!--header boven tabellen-->
         <div id="headertable">
@@ -24,7 +28,7 @@
             </ul>
         </div>
 
-
+        <body>
         <!--inhoud van de tabellen-->
         <div class="tab-content">
 
@@ -128,11 +132,10 @@
                     </a>
                 </div>
                 </div>
+
         </div>
 
 </div>
-    </div>
-
 
     </body>
 </div>

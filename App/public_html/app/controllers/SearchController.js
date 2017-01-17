@@ -1,18 +1,31 @@
 /**
  * Created by Braz on 09/01/2017.
  */
-angular.module('workshop').controller('SearchController', function($scope, searchService) {
+angular.module('workshop').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
 
-    $scope.searchTag;
+    $scope.searchTag = '';
+
+    $scope.setClient = function (id) {
+        clientService.setSelected(id);
+    };
+
+    $scope.setEmployee = function (id) {
+        employeeService.setSelected(id);
+    };
+
+    $scope.setCompany = function (id) {
+        companyService.setSelected(id);
+    };
+
     $scope.setTag = function (){
-        searchService.setTag($scope.searchTag);
+        if ($scope.searchTag != ''){
+            searchService.setTag($scope.searchTag);
+        }
     };
 
     $scope.searchAll = function () {
         $scope.setTag();
         $scope.searchClients();
-        $scope.searchCompanies();
-        $scope.searchEmployees();
     };
 
     $scope.searchClients = function(){
@@ -32,5 +45,11 @@ angular.module('workshop').controller('SearchController', function($scope, searc
             $scope.filteredEmployees = employees;
         });
     };
+
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
 
 });
