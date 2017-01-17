@@ -6,6 +6,7 @@ import Server.Model.Note;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class ClientDAO extends DatabaseDAO{
     private PreparedStatement addClient;
     private PreparedStatement getAll;
     private PreparedStatement updateClient;
+    private PreparedStatement deleteClient;
 
     public ClientDAO() throws Exception{
         super();
@@ -38,6 +40,9 @@ public class ClientDAO extends DatabaseDAO{
             addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname, lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM client");
             updateClient = conn.prepareStatement("UPDATE client SET clientaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
+            deleteClient = conn.prepareStatement("UPDATE client SET active=? WHERE id =?");
+
+
 
         }catch (Exception e){
 
@@ -100,6 +105,7 @@ public class ClientDAO extends DatabaseDAO{
                 client.setEmailAddress(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
+                client.setActive(rs.getBoolean(10));
 
                 Address address = addressDAO.getAddress(rs.getInt(2));
 
@@ -184,6 +190,18 @@ public class ClientDAO extends DatabaseDAO{
         }catch (Exception e){
 
         }
+    }
+
+    public void delete (Client client) {
+        try {
+            deleteClient.setBoolean(1, client.getActive());
+            deleteClient.setInt(2, client.getId());
+
+            deleteClient.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

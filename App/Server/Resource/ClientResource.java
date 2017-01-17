@@ -65,10 +65,10 @@ public class ClientResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("1")
-    public void delete(@PathParam("id") int id)
-    {
-
+    @Consumes(MediaType.APPLICATION_JSON)
+    @JsonView(View.Protected.class)
+    @PermitAll
+    public void delete(Client client) {
+        service.delete(client);
     }
-
 }
