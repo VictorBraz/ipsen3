@@ -21,7 +21,7 @@ angular.module('workshop').controller('NoteController',function ($scope,noteServ
 
     var onUpdated = function()
     {
-        alert('Note aangepast! ');
+        alert('Note aangepast!');
         $scope.gotoHome();
     };
 

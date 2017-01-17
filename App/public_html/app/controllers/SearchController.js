@@ -3,16 +3,16 @@
  */
 angular.module('workshop').controller('SearchController', function($scope, searchService) {
 
-    $scope.searchTag;
+    $scope.searchTag = '';
     $scope.setTag = function (){
-        searchService.setTag($scope.searchTag);
+        if ($scope.searchTag != ''){
+            searchService.setTag($scope.searchTag);
+        }
     };
 
     $scope.searchAll = function () {
         $scope.setTag();
         $scope.searchClients();
-        $scope.searchCompanies();
-        $scope.searchEmployees();
     };
 
     $scope.searchClients = function(){

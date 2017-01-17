@@ -55,6 +55,9 @@ public class Company {
     @JsonView(View.Public.class)
     private String postcode;
 
+    @JsonView(View.Public.class)
+    private String noteText;
+
     public int getId() {
         return id;
     }
@@ -133,5 +136,13 @@ public class Company {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public String getNoteText() {
+        return noteText;
+    }
+
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
     }
 }

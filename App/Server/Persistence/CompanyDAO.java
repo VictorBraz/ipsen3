@@ -2,6 +2,7 @@ package Server.Persistence;
 
 import Server.Model.Address;
 import Server.Model.Company;
+import Server.Model.Note;
 import com.google.inject.Singleton;
 
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ import java.util.List;
 public class CompanyDAO extends DatabaseDAO {
 
     private AddressDAO addressDAO;
+    private NoteDAO noteDAO;
     private PreparedStatement getCompany;
     private PreparedStatement addCompany;
     private PreparedStatement getAll;
@@ -27,17 +29,17 @@ public class CompanyDAO extends DatabaseDAO {
 
     public CompanyDAO() throws Exception {
         super();
-        preparStatements();
+        prepareStatements();
         this.addressDAO =  new AddressDAO();
-
+        this.noteDAO = new NoteDAO();
 
     }
 
-    private void preparStatements() {
+    private void prepareStatements() {
         try {
             getCompany = conn.prepareStatement("SELECT * FROM company WHERE id =?");
             addCompany = conn.prepareStatement("INSERT INTO company (companyaddressid, companyname, contactperson," +
-                    "phonenumber, email, tag ) VALUES (?,?,?,?,?,?)");
+                    "phonenumber, email, tag ) VALUES (?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM company");
             updateCompany = conn.prepareStatement("UPDATE company SET companyaddressid=?, companyname=?, contactperson=?," +
                     "phonenumber=?, email=?, tag=? WHERE id =?");
@@ -52,6 +54,9 @@ public class CompanyDAO extends DatabaseDAO {
         address.setCity(company.getCity());
         address.setPostcode(company.getPostcode());
 
+        Note note = new Note();
+        note.setText(company.getNoteText());
+
         company.setCompanyAddressID(addressDAO.addAddress(address).getId());
 
         try {
@@ -63,6 +68,14 @@ public class CompanyDAO extends DatabaseDAO {
             addCompany.setString(6, company.getTag());
 
             addCompany.executeUpdate();
+
+            ResultSet rs = addCompany.getGeneratedKeys();
+            while (rs.next()){
+                company.setId(rs.getInt("id"));
+            }
+
+            note.setOwnerID(company.getId());
+            noteDAO.addNote(note);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,6 +101,9 @@ public class CompanyDAO extends DatabaseDAO {
                 company.setAddress(address.getAddress());
                 company.setCity(address.getCity());
                 company.setPostcode(address.getPostcode());
+
+                Note note = noteDAO.getNote(company.getId());
+                company.setNoteText(note.getText());
 
                 companies.add(company);
             }
@@ -117,6 +133,9 @@ public class CompanyDAO extends DatabaseDAO {
                 company.setAddress(address.getAddress());
                 company.setCity(address.getCity());
                 company.setPostcode(address.getPostcode());
+
+                Note note = noteDAO.getNote(company.getId());
+                company.setNoteText(note.getText());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -133,6 +152,12 @@ public class CompanyDAO extends DatabaseDAO {
         address.setId(company.getCompanyAddressID());
 
         addressDAO.UpdateAddress(address);
+
+        Note note = new Note();
+        note.setText(company.getNoteText());
+        note.setOwnerID(company.getId());
+
+        noteDAO.update(note);
 
         try {
             updateCompany.setInt(1, company.getCompanyAddressID());
