@@ -10,7 +10,7 @@ angular.module('workshop').controller('EditEmployeeController', function($scope,
     };
 
     $scope.update = function () {
-        var confirmation = ("Weet u zeker dat u de gegevens wilt aanpassen?");
+        var confirmation = confirm("Weet u zeker dat u de gegevens wilt aanpassen?");
         if (confirmation == true) {
             employeeService.update($scope.employees, onUpdated);
         } else {
