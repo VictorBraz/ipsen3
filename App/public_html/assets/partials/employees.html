@@ -1,55 +1,136 @@
-<div class="col-md-10 col-md-offset-1">
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h5>Medewerkers</h5>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<div class="container">
+    <!--<div class="row">-->
+    <!--<div class="col-md-10 col-md-offset-1">-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Medewerkers</h1>
+        </div>
 
-        <ul class="nav navbar-nav navbar-right btn btn-info btn-default">
-            <li role="presentation" ng-class="{ 'active': isLocation('/editEmployee') }">
-                <a ng-click="gotoEditEmployee()">
-                    <i class="material-icons">create</i></a>
-                </a>
-            </li>
+        <ul class="nav navbar-right">
+            <div class="navbar-text">
+                <input type="search" class="form-control" placeholder="Zoeken" ng-model="searchKeyword">
+            </div>
         </ul>
+        <body>
+        <p id="content">
 
-        <ul class="nav navbar-nav navbar-right btn btn-info btn-default">
-            <li role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
-                <a ng-click="gotoAddEmployee()">
-                    <i class="material-icons">add</i></a>
+
+            <!--header boven tabellen-->
+        <div id="headertable">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#activeemployees" data-toggle="tab">Actief</a>
+                </li>
+                <li><a href="#nonactiveemployees" data-toggle="tab">Non-actief</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--inhoud van de tabellen-->
+        <div class="tab-content">
+
+            <!--tabel met actieve medewerkers-->
+            <div class="tab-pane active" id="activeemployees">
+                <table id="actieveMedewerkers" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><label>Voornaam</label></th>
+                            <th><label>Achternaam</label></th>
+                            <th><label>Studie</label></th>
+                            <th><label>Telefoonnummer</label></th>
+                            <th><label>Email</label></th>
+                            <th><label>Tag</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="employee in employees | filter:searchKeyword">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-click="selectEmployee()"
+                                               checklist-model="selectedEmployee.id"
+                                               checklist-value="employee.id">
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="filterable-cell">{{ employee.firstName }}</td>
+                            <td class="filterable-cell">{{ employee.lastName }}</td>
+                            <td class="filterable-cell">{{ employee.study }}</td>
+                            <td class="filterable-cell">{{ employee.phoneNumber }}</td>
+                            <td class="filterable-cell">{{ employee.email }}</td>
+                            <td class="filterable-cell">{{ employee.tag }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane active" id="nonactiveemployees">
+                <table id="nietActieveMedewerkers" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><label>Voornaam</label></th>
+                            <th><label>Achternaam</label></th>
+                            <th><label>Studie</label></th>
+                            <th><label>Telefoonnummer</label></th>
+                            <th><label>Email</label></th>
+                            <th><label>Tag</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="employee in employees | filter:searchKeyword">
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="selectEmployee()"
+                                           checklist-model="selectedEmployee.id"
+                                           checklist-value="employee.id">
+                                </label>
+                            </div>
+                        </td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <p class="bs-component">
+            <!--<div class="btn-group">-->
+            <!--Toevoegen knop-->
+        <div class="col-md-1 col-md-offset-9" id="addbutton">
+            <div role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
+                <a ng-click="gotoAddEmployee()" class="btn btn-info btn-fab"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+
+        <!--Aanpassen knop-->
+
+        <div class="col-md-1 col-md-offset-10" id="zoominbutton">
+            <div role="presentation" ng-class="{'disabled':!isSelected()}">
+                <a ng-click="!isSelected() || gotoEditEmployee()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
+            </div>
+        </div>
+
+        <!--Verwijderen knop-->
+        <div class="col-md-1 col-md-offset-11" id="deletebutton">
+            <div role="presentation" ng-class="{ 'active': isLocation('/employees') }">
+                <a ng-click="gotoDeleteEmployee()" class="btn btn-info btn-fab"> <i class="material-icons">delete</i>
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
+        </p>
+        </body>
     </div>
 
-    <table class="table table-hover">
-        <thead>
-            <th></th>
-            <th><label>Voornaam</label></th>
-            <th><label>Achternaam</label></th>
-            <th><label>Studie</label></th>
-            <th><label>Telefoonnummer</label></th>
-            <th><label>Email</label></th>
-            <th><label>Tag</label></th>
-        </thead>
-        <tbody>
-            <tr ng-repeat="employee in employees">
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-click="selectEmployee()"
-                                   checklist-model="selectedEmployee.id"
-                                   checklist-value="employee.id">
-                        </label>
-                    </div>
-                </td>
-                <td>{{ employee.firstName }}</td>
-                <td>{{ employee.lastName }}</td>
-                <td>{{ employee.study }}</td>
-                <td>{{ employee.phoneNumber }}</td>
-                <td>{{ employee.email }}</td>
-                <td>{{ employee.tag }}</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
-</div>
+
+
