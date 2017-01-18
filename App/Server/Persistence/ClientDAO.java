@@ -192,6 +192,7 @@ public class ClientDAO extends DatabaseDAO{
                 client.setEmailAddress(rs.getString(7));
                 client.setPhonenumber(rs.getString(8));
                 client.setTag(rs.getString(9));
+                client.setActive(rs.getBoolean(10));
 
                 Note note = noteDAO.getNote(client.getId());
                 client.setNoteText(note.getText());
@@ -235,16 +236,19 @@ public class ClientDAO extends DatabaseDAO{
         }
     }
 
-    public void delete (Client client) {
+    public void delete (int id) {
         try {
-            deleteClient.setBoolean(1, client.getActive());
-            deleteClient.setInt(2, client.getId());
-
-            deleteClient.executeUpdate();
+            deleteClient.setBoolean(1, false);
+            deleteClient.setInt(2, id);
+            deleteClient.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+
     }
+
+
+
 
 }

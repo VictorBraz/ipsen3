@@ -2,19 +2,13 @@
  * Created by Victor on 12-12-2016.
  */
 
-angular.module('workshop').controller('ClientController', function($scope, clientService)
-{
+angular.module('workshop').controller('ClientController', function ($scope, $route, clientService) {
 
 
-    var construct = function()
-    {
-        clientService.getAll(function (clients)
-        {
+    var construct = function () {
+        clientService.getAll(function (clients) {
             $scope.clients = clients;
             $scope.activetab = true;
-
-
-
         });
     };
 
@@ -33,6 +27,7 @@ angular.module('workshop').controller('ClientController', function($scope, clien
             $scope.city,
             $scope.postcode,
             $scope.noteText,
+            $scope.active,
             clientCreated
         );
 
@@ -43,9 +38,9 @@ angular.module('workshop').controller('ClientController', function($scope, clien
     };
 
     $scope.isSelected = function () {
-        if($scope.selectedClient.id.length > 0){
+        if ($scope.selectedClient.id.length > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     };
@@ -54,21 +49,41 @@ angular.module('workshop').controller('ClientController', function($scope, clien
         clientService.setSelected($scope.selectedClient.id[0]);
     };
 
-    var clientCreated = function()
-    {
+    var clientCreated = function () {
         alert('Er is een nieuw cliënt toegevoegd');
         $scope.gotoClients();
     };
 
-    construct();
 
-    $scope.delete = function() {
+    $scope.delete = function () {
         var confirmation = confirm("Weet u zeker dat u de client wilt verwijderen?");
         if (confirmation == true) {
-            clientService.delete($scope.client, onUpdated);
+            clientService.delete($scope.selectedClient.id[0], reload);
         }
         else {
-            alert("client is niet verwijderd");
+            alert("Gegevens niet verwijderd");
         }
+    };
+
+    $scope.restore = function () {
+        var confirmation = confirm("Weet u zeker dat u de client wilt herstellen?");
+        if (confirmation == true) {
+            clientService.restore($scope.selectedClient.id[0], reload);
+        }
+        else("Gegevens niet hersteld");
     }
+
+
+    var reload = function()
+    {
+        $route.reload();
+    };
+
+    construct();
+
+
+
+
+
+
 });
