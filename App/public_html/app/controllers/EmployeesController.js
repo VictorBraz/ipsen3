@@ -28,6 +28,11 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
         );
     };
 
+    $scope.viewSettedEmp = function (id) {
+        employeeService.setSelected(id);
+        $scope.gotoViewEmployee();
+    };
+
     $scope.selectedEmployee = {
         id: []
     };
