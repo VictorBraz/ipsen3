@@ -7,7 +7,7 @@ angular.module('workshop').service('companyService', function($http)
 {
     var self = this;
 
-    self.create = function (companyName, contactPerson, phoneNumber, Email, Tag, Address, City, zipCode, noteText, onCreated){
+    self.create = function (companyName, contactPerson, phoneNumber, Email, Tag, Address, City, zipCode, noteText, active, onCreated){
 
         var uri = '/api/companies';
         var data =
@@ -20,7 +20,8 @@ angular.module('workshop').service('companyService', function($http)
             address: Address,
             city: City,
             postcode: zipCode,
-            noteText: noteText
+            noteText: noteText,
+            active: active
         };
 
         console.log(data);
@@ -44,52 +45,42 @@ angular.module('workshop').service('companyService', function($http)
             alert("ophalen mislukt: " + message);
         });
     };
-    self.getCompany = function(onReceived) {
-        var uri = '/api/companies/' + (self.selectedId - 1) + '';
 
-        if (self.selectedId >= 1) {
+    self.selectedCompany = 0;
+
+    self.getCompany = function(onReceived) {
+        var uri = '/api/companies/' + (self.selectedCompany) + '';
+
+        if (self.selectedCompany >= 1) {
             $http.get(uri).then(function (response) {
                     onReceived(response.data);
-                    console.log("trying to get" + self.selectedId)
+                    console.log("trying to get" + self.selectedCompany)
+                    console.log(response.data)
                 },
                 function (message, status) {
                     alert('Ophalen mislukt: ' + message + status);
                 });
         }
+    };
 
-        self.selectedCompany = 0;
+    self.setSelected = function (id) {
+        self.selectedCompany = id;
+    };
 
-        self.setSelected = function (id) {
-            self.selectedCompany = id;
-        };
+    self.getSelected = function () {
+        console.log('test: ' + self.selectedId);
+    };
 
-        self.getSelected = function () {
-            console.log('test: ' + self.selectedId);
-        };
-
-        self.getCompany = function (onReceived) {
-            var uri = "api/companies/" + self.selectedCompany + "";
-
-            $http.get(uri).then(function (response) {
-                    onReceived(response.data);
-                    console.log("trying to get" + self.selectedClient)
-                },
-                function (message, status) {
-                    alert("Ophalen mislukt: " + message + status);
-                });
-        };
-
-        self.update = function (company, onReceived) {
-            var uri = "api/companies/" + company.id + "";
-            console.log("bedrijfsnaam: " + company.companyname);
-            $http.put(uri, company).then(function (response) {
-                    onReceived(response.data);
-                },
-                function (message, status) {
-                    alert("Aanpassen mislukt: " + message + status);
-                });
-        };
-    }
+    self.update = function (company, onReceived) {
+        var uri = "api/companies/" + company.id + "";
+        console.log("bedrijfsnaam: " + company.companyname);
+        $http.put(uri, company).then(function (response) {
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert("Aanpassen mislukt: " + message + status);
+            });
+    };
 });
 
 

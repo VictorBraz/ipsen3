@@ -3,25 +3,25 @@
  * @author Bernd Oostrum
  *
  */
-angular.module('workshop').controller('CompanyController', function ($scope, companyService, addressService) {
-
-    $scope.selectedCompanyTest = {
-        id: []
-    };
-
+angular.module('workshop').controller('CompanyController', function ($scope, companyService) {
 
     var construct = function() {
         companyService.getAll(function(companies){
             $scope.companies = companies;
+            $scope.activetab = true;
         });
     };
 
-    $scope.checkAddress = function () {
-        addressService.get($scope.postcode, $scope.streetnumber, function (address) {
-            $scope.street = address.street;
-            $scope.city = address.city;
-        });
+    $scope.searchKeyword = '';
+
+
+    $scope.selectedCompany = {
+        id: []
     };
+
+
+
+
 
     $scope.ontestClick = function() {
         companyService.setSelected($scope.selectedCompanyTest.id[0]);
@@ -39,12 +39,26 @@ angular.module('workshop').controller('CompanyController', function ($scope, com
             $scope.city,
             $scope.postcode,
             $scope.noteText,
+            $scope.active,
             companyCreated
         );
     };
 
-    $scope.selectCompany = function() {
+    //$scope.selectCompany = function() {
+     //   companyService.setSelected($scope.selectedCompany.id[0]);
+    //};
+
+    $scope.isSelected = function () {
+        if($scope.selectedCompany.id.length > 0){
+            return true;
+        }else{
+            return false;
+        }
+    };
+
+    $scope.selectCompany = function () {
         companyService.setSelected($scope.selectedCompany.id[0]);
+        console.log($scope.selectedCompany.id[0]);
     };
 
     var companyCreated = function() {
