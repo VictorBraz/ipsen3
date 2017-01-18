@@ -3,40 +3,62 @@
  * @author Bernd Oostrum
  *
  */
-angular.module('workshop').controller('CompanyController', ['$scope','$controller','companyService','noteService','addressService', function ($scope, $controller, companyService,noteService, addressService) {
+angular.module('workshop').controller('CompanyController', function ($scope, companyService) {
+
     var construct = function() {
         companyService.getAll(function(companies){
             $scope.companies = companies;
+            $scope.activetab = true;
         });
     };
 
-    $scope.checkAddress = function () {
-        addressService.get($scope.postcode, $scope.streetnumber, function (address) {
-            $scope.street = address.street;
-            $scope.city = address.city;
-        });
-    };
+    $scope.searchKeyword = '';
 
-    $scope.register = function () {
-        companyService.create(
-            $scope.companyname,
-            $scope.contactperson,
-            $scope.telephonenumber,
-            $scope.email,
-            $scope.tag,
-            $scope.address,
-            $scope.city,
-            $scope.postcode,
-            companyCreated
-        );
-    };
 
     $scope.selectedCompany = {
         id: []
     };
 
-    $scope.selectCompany = function() {
+
+
+
+
+    $scope.ontestClick = function() {
+        companyService.setSelected($scope.selectedCompanyTest.id[0]);
+        companyService.getSelected();
+    };
+
+    $scope.create = function () {
+        companyService.create(
+            $scope.companyname,
+            $scope.contactperson,
+            $scope.phoneNumber,
+            $scope.email,
+            $scope.tag,
+            $scope.address,
+            $scope.city,
+            $scope.postcode,
+            $scope.noteText,
+            $scope.active,
+            companyCreated
+        );
+    };
+
+    //$scope.selectCompany = function() {
+     //   companyService.setSelected($scope.selectedCompany.id[0]);
+    //};
+
+    $scope.isSelected = function () {
+        if($scope.selectedCompany.id.length > 0){
+            return true;
+        }else{
+            return false;
+        }
+    };
+
+    $scope.selectCompany = function () {
         companyService.setSelected($scope.selectedCompany.id[0]);
+        console.log($scope.selectedCompany.id[0]);
     };
 
     var companyCreated = function() {
@@ -46,8 +68,6 @@ angular.module('workshop').controller('CompanyController', ['$scope','$controlle
 
     construct();
 
-    angular.extend(this, $controller('NoteController', {
-        $scope: $scope
-    }));
-}])
+
+});
 

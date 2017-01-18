@@ -51,19 +51,20 @@ public class CompanyResource
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
+    @PermitAll
     public void create(Company company)
     {
-        //service.add(company);
+        service.add(company);
     }
 
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("1")
-    public void update(@PathParam("id") int id, @Auth User authenticator, User user)
+    @PermitAll
+    public void update(@PathParam("id") int id, @Auth User authenticator, Company comp)
     {
-        //service.update(authenticator, id, user);
+        service.update(comp);
     }
 
     @DELETE

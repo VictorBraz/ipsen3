@@ -47,6 +47,11 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
         $location.path('/editEmployee');
     };
 
+    $scope.gotoViewEmployee = function ()
+    {
+        $location.path('/viewEmployee');
+    };
+
     $scope.gotoAddClient = function () {
         $location.path('/addclient');
 

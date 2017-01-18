@@ -67,6 +67,7 @@ public class CompanyDAO extends DatabaseDAO {
             addCompany.setString(5, company.getEmail());
             addCompany.setString(6, company.getTag());
 
+
             addCompany.executeUpdate();
 
             ResultSet rs = addCompany.getGeneratedKeys();
@@ -96,6 +97,7 @@ public class CompanyDAO extends DatabaseDAO {
                 company.setPhoneNumber(result.getString(5));
                 company.setEmail(result.getString(6));
                 company.setTag(result.getString(7));
+                company.setActive(result.getBoolean(8));
 
                 Address address = addressDAO.getAddress(result.getInt(2));
                 company.setAddress(address.getAddress());

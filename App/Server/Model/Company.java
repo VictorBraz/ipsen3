@@ -58,6 +58,9 @@ public class Company {
     @JsonView(View.Public.class)
     private String noteText;
 
+    @JsonView(View.Public.class)
+    private Boolean active;
+
     public int getId() {
         return id;
     }
@@ -144,5 +147,13 @@ public class Company {
 
     public void setNoteText(String noteText) {
         this.noteText = noteText;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

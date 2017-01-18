@@ -49,6 +49,7 @@ angular.module('workshop').service('employeeService', function($http)
 
     self.setSelected = function(id){
         self.selectedEmployee = id;
+        console.log(id);
     };
 
     self.getSelected = function () {
