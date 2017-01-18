@@ -3,7 +3,13 @@
  * @author Bernd Oostrum
  *
  */
-angular.module('workshop').controller('CompanyController', ['$scope','$controller','companyService','noteService','addressService', function ($scope, $controller, companyService,noteService, addressService) {
+angular.module('workshop').controller('CompanyController', function ($scope, companyService, addressService) {
+
+    $scope.selectedCompanyTest = {
+        id: []
+    };
+
+
     var construct = function() {
         companyService.getAll(function(companies){
             $scope.companies = companies;
@@ -17,22 +23,24 @@ angular.module('workshop').controller('CompanyController', ['$scope','$controlle
         });
     };
 
-    $scope.register = function () {
+    $scope.ontestClick = function() {
+        companyService.setSelected($scope.selectedCompanyTest.id[0]);
+        companyService.getSelected();
+    };
+
+    $scope.create = function () {
         companyService.create(
             $scope.companyname,
             $scope.contactperson,
-            $scope.telephonenumber,
+            $scope.phoneNumber,
             $scope.email,
             $scope.tag,
             $scope.address,
             $scope.city,
             $scope.postcode,
+            $scope.noteText,
             companyCreated
         );
-    };
-
-    $scope.selectedCompany = {
-        id: []
     };
 
     $scope.selectCompany = function() {
@@ -46,8 +54,6 @@ angular.module('workshop').controller('CompanyController', ['$scope','$controlle
 
     construct();
 
-    angular.extend(this, $controller('NoteController', {
-        $scope: $scope
-    }));
-}])
+
+});
 

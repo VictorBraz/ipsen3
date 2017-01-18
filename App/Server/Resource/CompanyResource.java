@@ -51,9 +51,10 @@ public class CompanyResource
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
+    @PermitAll
     public void create(Company company)
     {
-        //service.add(company);
+        service.add(company);
     }
 
     @PUT

@@ -16,12 +16,12 @@
 
             <div class="form-group">
                 <label class="control-label">Contactpersoon</label>
-                <input type="text" class="form-control" ng-model="contact" placeholder="Bijv. Puk " ng-required="true" />
+                <input type="text" class="form-control" ng-model="contactperson" placeholder="Bijv. Puk " ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Telefoon nummer</label>
-                <input type="text" class="form-control" ng-model="telnum" placeholder="Bijv. 071 518 8800 " ng-required="true" />
+                <input type="text" class="form-control" ng-model="phoneNumber" placeholder="Bijv. 071 518 8800 " ng-required="true" />
             </div>
 
             <div class="form-group">
@@ -47,6 +47,11 @@
             <div class="form-group">
                 <label class="control-label">Tags</label>
                 <input type="text" class="form-control" ng-model="tag" placeholder="Bijv. Rolstoel, Slechtziend" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Notitie</label>
+                <textarea class="form-control" ng-model="noteText" placeholder="Hier kunt u een notitie schrijven" rows="5"></textarea>
             </div>
 
             <input type="submit" class="btn btn-primary" value="Aanmaken" ng-disabled="registrationForm.$invalid" />

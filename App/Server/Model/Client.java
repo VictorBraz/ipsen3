@@ -49,108 +49,118 @@ public class Client {
     @JsonView(View.Public.class)
     private String noteText;
 
+    @JsonView(View.Public.class)
+    private Boolean active;
+
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getClientAddresId() {
         return clientAddresId;
     }
 
-    public void setClientAddresId(int clientAddresId) {
-        this.clientAddresId = clientAddresId;
-    }
-
     public String getFirstname() {
         return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public String getBirthdate() {
         return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
     }
 
     public String getStudy() {
         return study;
     }
 
-    public void setStudy(String study) {
-        this.study = study;
-    }
-
-
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
     }
 
     public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
     public String getTag() {
         return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
     public String getNoteText() {
         return noteText;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setClientAddresId(int clientAddresId) {
+        this.clientAddresId = clientAddresId;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public void setStudy(String study) {
+        this.study = study;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
     public void setNoteText(String noteText) {
         this.noteText = noteText;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

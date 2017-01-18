@@ -1,4 +1,4 @@
-angular.module('workshop').controller('CompaniesController', function($scope, companyService)
+angular.module('workshop').controller('CompaniesOverviewController', function($scope, companyService)
 {
     $scope.selectedcompanies = {
         id: []
@@ -20,6 +20,7 @@ angular.module('workshop').controller('CompaniesController', function($scope, co
 
         $scope.ontestClick = function() {
             companyService.setCompanyID($scope.selectedcompanies.id[0]);
+            console.log($scope.selectedcompanies.id[0])
             companyService.getCompanyID();
         }
 

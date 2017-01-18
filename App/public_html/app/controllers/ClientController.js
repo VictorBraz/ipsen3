@@ -3,7 +3,6 @@
  */
 
 angular.module('workshop').controller('ClientController', function($scope, clientService)
-
 {
 
 
@@ -12,6 +11,10 @@ angular.module('workshop').controller('ClientController', function($scope, clien
         clientService.getAll(function (clients)
         {
             $scope.clients = clients;
+            $scope.activetab = true;
+
+
+
         });
     };
 
@@ -58,4 +61,14 @@ angular.module('workshop').controller('ClientController', function($scope, clien
     };
 
     construct();
+
+    $scope.delete = function() {
+        var confirmation = confirm("Weet u zeker dat u de client wilt verwijderen?");
+        if (confirmation == true) {
+            clientService.delete($scope.client, onUpdated);
+        }
+        else {
+            alert("client is niet verwijderd");
+        }
+    }
 });

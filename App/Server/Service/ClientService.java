@@ -17,7 +17,7 @@ public class ClientService extends BaseService<Client>{
     private final ClientDAO dao;
 
     @Inject
-    public ClientService(ClientDAO dao){
+    private ClientService(ClientDAO dao){
         this.dao = dao;
     }
     public Collection<Client>  getAll(){
@@ -31,6 +31,9 @@ public class ClientService extends BaseService<Client>{
     }
     public void update(Client client) {
         dao.update(client);
+    }
+    public void delete(Client client) {
+        dao.delete(client);
     }
 
 }
