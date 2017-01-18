@@ -33,6 +33,10 @@ public class CompanyService extends BaseService<Company>
         return dao.getCompany(id);
     }
 
+    public void add(Company comp){
+        dao.addCompany(comp);
+    }
+
     public void delete(int id)
     {
         //dao.delete(id);
