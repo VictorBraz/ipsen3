@@ -5,6 +5,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>Cliënten</h1>
+
+
         </div>
 
         <!--<div class="text-field">-->
@@ -17,10 +19,11 @@
         <div class="row">
             <div class="col-md-4">
                 <div id="headertable">
-                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                        <li class="active"><a href="#activeclients" data-toggle="tab">Actief</a>
+                    <ul id="tabs" class="nav nav-tabs">
+
+                        <li class="active"><a data-target="#activeclients" ng-click="activetab=true" data-toggle="tab">Actief</a>
                         </li>
-                        <li><a href="#nonactiveclients" data-toggle="tab">Non-actief</a>
+                        <li><a data-target="#nonactiveclients" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
                         </li>
                     </ul>
                 </div>
@@ -40,7 +43,7 @@
 
             <!--tabel met actieve clienten-->
             <div class="tab-pane active" id="activeclients">
-                <table id="Clienten" class="table table-hover">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th></th>
@@ -53,7 +56,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="client in clients | filter:searchKeyword">
+                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:true}">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -75,7 +78,7 @@
             </div>
 
             <div class="tab-pane" id="nonactiveclients">
-                <table id="nonactive" class="table table-hover">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th></th>
@@ -88,7 +91,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="client in clients | filter:searchKeyword">
+                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:false}">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -98,23 +101,23 @@
                                 </label>
                             </div>
                         </td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ client.firstname }}</td>
+                        <td class="filterable-cell">{{ client.lastname }}</td>
+                        <td class="filterable-cell">{{ client.study }}</td>
+                        <td class="filterable-cell">{{ client.phonenumber }}</td>
+                        <td class="filterable-cell">{{ client.emailAddress }}</td>
+                        <td class="filterable-cell">{{ client.tag }}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
 
         </div>
-        <div class="col-md-4 col-md-offset-10">
-            <div class="row" id="buttonrow">
+        <div class="col-md-2 col-md-offset-11">
+            <div class="row"  id="buttonrow">
                 <!--<div class="btn-group">-->
                 <!--Toevoegen knop-->
-                <div class="btn btn-info btn-fab">
+                <div class="btn btn-info btn-fab" ng-show="activetab && selectedClient.id.length ==0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
                         <a ng-click="gotoAddClient()"><i class="material-icons">add</i></a>
                     </div>
@@ -123,18 +126,25 @@
                 <!--Aanpassen knop-->
 
 
-                <div class="btn btn-info btn-fab">
+                <!--<div class="btn btn-info btn-fab">-->
+                    <!--<div role="presentation" ng-class="{'disabled':!isSelected()}">-->
+                        <!--<a ng-click="!isSelected() || gotoEditClient()"><i-->
+                                <!--class="material-icons">launch</i></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="btn btn-info btn-fab" ng-show="activetab == false">
                     <div role="presentation" ng-class="{'disabled':!isSelected()}">
-                        <a ng-click="!isSelected() || gotoEditClient()"><i
-                                class="material-icons">launch</i></a>
+                        <a ng-click="!isSelected() || gotoClients()"><i
+                                class="material-icons">restore</i></a>
                     </div>
                 </div>
 
 
                 <!--Verwijderen knop-->
-                <div class="btn btn-info btn-fab">
+                <div class="btn btn-info btn-fab"ng-show="activetab && selectedClient.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
-                        <a ng-click="gotoDeleteCompany()"> <i class="material-icons">delete</i>
+                        <a ng-click="gotoClients()"> <i class="material-icons">delete</i>
                         </a>
                     </div>
                 </div>
@@ -145,4 +155,3 @@
         </body>
     </div>
 </div>
-

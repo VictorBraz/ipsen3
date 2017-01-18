@@ -3,7 +3,6 @@
  */
 
 angular.module('workshop').controller('ClientController', function($scope, clientService)
-
 {
 
 
@@ -12,6 +11,10 @@ angular.module('workshop').controller('ClientController', function($scope, clien
         clientService.getAll(function (clients)
         {
             $scope.clients = clients;
+            $scope.activetab = true;
+
+
+
         });
     };
 

@@ -34,9 +34,17 @@ public class ClientResource {
     @JsonView(View.Public.class)
     //@RolesAllowed("3")
     @PermitAll
-    public Collection<Client> retrieveAll(){
+    public Collection<Client> retrieveActive(){
         return service.getAll();
     }
+
+//    @GET
+//    @JsonView(View.Public.class)
+//    //@RolesAllowed("3")
+//    @PermitAll
+//    public Collection<Client> retrieveInactive(){
+//        return service.getInactive();
+//    }
 
     @GET
     @Path("/{id}")

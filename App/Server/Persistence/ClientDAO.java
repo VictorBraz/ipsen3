@@ -94,7 +94,6 @@ public class ClientDAO extends DatabaseDAO{
             ResultSet rs = getAll.executeQuery();
 
             while (rs.next()){
-
                 Client client = new Client();
                 client.setId(rs.getInt(1));
                 client.setClientAddresId(rs.getInt(2));
@@ -116,15 +115,59 @@ public class ClientDAO extends DatabaseDAO{
                 Note note = noteDAO.getNote(client.getId());
                 client.setNoteText(note.getText());
 
-                clients.add(client);
+                //alleen actieve clienten toevoegen
+//                if (client.getActive()) {
+                    clients.add(client);
+//                }
+
             }
-//            getAll.close();
 
         }catch (Exception e){
 
         }
         return clients;
     }
+
+
+//    public List<Client> getInactive(){
+//        List<Client> inactive = new ArrayList<>();
+//        try{
+//            ResultSet rs = getAll.executeQuery();
+//
+//            while (rs.next()){
+//                Client client = new Client();
+//                client.setId(rs.getInt(1));
+//                client.setClientAddresId(rs.getInt(2));
+//                client.setFirstname(rs.getString(3));
+//                client.setLastname(rs.getString(4));
+//                client.setBirthdate(rs.getString(5));
+//                client.setStudy(rs.getString(6));
+//                client.setEmailAddress(rs.getString(7));
+//                client.setPhonenumber(rs.getString(8));
+//                client.setTag(rs.getString(9));
+//                client.setActive(rs.getBoolean(10));
+//
+//                Address address = addressDAO.getAddress(rs.getInt(2));
+//
+//                client.setAddress(address.getAddress());
+//                client.setCity(address.getCity());
+//                client.setPostcode(address.getPostcode());
+//
+//                Note note = noteDAO.getNote(client.getId());
+//                client.setNoteText(note.getText());
+//
+//                //alleen actieve clienten toevoegen
+//                if (client.getActive() == false) {
+//                    inactive.add(client);
+//                }
+//            }
+//
+//        }catch (Exception e){
+//        }
+//        return inactive;
+//    }
+
+
 
     public Client getClient(int id) {
         Client client = new Client();

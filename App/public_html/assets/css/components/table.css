@@ -49,12 +49,12 @@ input[type="checkbox"]{
 
 #buttonrow {
     position: relative;
-    bottom: 20px;
+    bottom: 25px;
 
 }
 
 .btn .btn-info .btn-fab {
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px 0px 80px;
 
 }
 
