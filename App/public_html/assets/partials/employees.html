@@ -20,9 +20,9 @@
             <!--header boven tabellen-->
         <div id="headertable">
             <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                <li class="active"><a href="#activeemployees" data-toggle="tab">Actief</a>
+                <li class="active"><a data-target="#activeemployees" data-toggle="tab">Actief</a>
                 </li>
-                <li><a href="#nonactiveemployees" data-toggle="tab">Non-actief</a>
+                <li><a data-target="#nonactiveemployees" data-toggle="tab">Non-actief</a>
                 </li>
             </ul>
         </div>
@@ -46,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="employee in employees | filter:searchKeyword">
+                        <tr ng-repeat="employee in employees | filter:searchKeyword | orderBy:'firstName'" ng-click="viewSettedEmp(employee.id)" >
                             <td>
                                 <div class="checkbox">
                                     <label>
@@ -67,7 +67,7 @@
                 </table>
             </div>
 
-            <div class="tab-pane active" id="nonactiveemployees">
+            <div class="tab-pane" id="nonactiveemployees">
                 <table id="nietActieveMedewerkers" class="table table-hover">
                     <thead>
                         <tr>
@@ -81,7 +81,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="employee in employees | filter:searchKeyword">
+                    <tr ng-repeat="employee in employees | orderBy:'employee.firstName' | filter:searchKeyword">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -116,7 +116,7 @@
 
         <div class="col-md-1 col-md-offset-10" id="zoominbutton">
             <div role="presentation" ng-class="{'disabled':!isSelected()}">
-                <a ng-click="!isSelected() || gotoEditEmployee()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
+                <a ng-click="!isSelected() || gotoViewEmployee()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
             </div>
         </div>
 

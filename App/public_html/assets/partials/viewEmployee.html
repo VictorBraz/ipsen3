@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<div class="col-md-10 col-md-offset-1">
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h5>Medewerker</h5>
+        </div>
+
+        <form name="updateForm" class="panel-body" ng-submit="update()" novalidate>
+            <div class="form-group">
+                <label class="control-label">Voornaam</label>
+                <input type="text" class="form-control" ng-model="employees.firstName" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Achternaam</label>
+                <input type="text" class="form-control" ng-model="employees.lastName" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Geboortedatum</label>
+                <input type="text" class="form-control" ng-model="employees.birthDate" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Studie</label>
+                <input type="text" class="form-control" ng-model="employees.study" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Adres</label>
+                <input type="text" class="form-control" ng-model="employees.address" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Postcode</label>
+                <input type="text" class="form-control" ng-model="employees.postcode" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Woonplaats</label>
+                <input type="text" class="form-control" ng-model="employees.city" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <!--<p>-->
+            <!--<a ng-click="checkAddress()">Adres controleren</a>-->
+            <!--</p>-->
+
+            <div class="form-group">
+                <label class="control-label">E-mailadres</label>
+                <input type="emailAddress" class="form-control" ng-model="employees.email" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Telefoon</label>
+                <input type="text" class="form-control" ng-model="employees.phoneNumber" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Tags</label>
+                <input type="text" class="form-control" ng-model="employees.tag" ng-readonly="true" ng-required="false" />
+            </div>
+
+            <!--Gaat één pagina terug, zonder veranderingen-->
+            <input type="button" class="btn btn-primary" value="Terug" onClick="history.go(-1);return true;" />
+        </form>
+
+    </div>
+
+</div>
