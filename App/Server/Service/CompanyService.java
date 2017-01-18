@@ -43,6 +43,6 @@ public class CompanyService extends BaseService<Company>
 
     public void delete(int id)
     {
-        //dao.delete(id);
+        dao.delete(id);
     }
 }

@@ -6,7 +6,7 @@
         <div class="panel-heading">
             <h1>Bedrijven</h1>
 
-            <a ng-click="gotoEditCompany()">Aanpassen</a>
+            <a ng-click="gotoEditCompany()" ng-show="selectedCompany.id.length > 0">Aanpassen</a>
         </div>
 
         <!--<div class="text-field">-->
@@ -139,7 +139,7 @@
                 <!--Verwijderen knop-->
                 <div class="btn btn-info btn-fab"ng-show="activetab && selectedCompany.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/companies') }">
-                        <a ng-click="gotoCompanies()"> <i class="material-icons">delete</i>
+                        <a ng-click="delete()"> <i class="material-icons">delete</i>
                         </a>
                     </div>
                 </div>

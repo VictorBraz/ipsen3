@@ -69,7 +69,7 @@ public class CompanyResource
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("1")
+    @PermitAll
     public void delete(@PathParam("id") int id)
     {
         service.delete(id);

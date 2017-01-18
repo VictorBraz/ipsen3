@@ -71,6 +71,19 @@ angular.module('workshop').service('companyService', function($http)
         console.log('test: ' + self.selectedId);
     };
 
+
+    self.delete = function(id, onReceived) {
+        var uri = 'api/companies/' + id + '';
+        console.log("bedrijf " + id);
+        $http.delete(uri, id).then(function (response) {
+                onReceived(response.data);
+                self.getAll(onReceived);
+            },
+            function(message, status) {
+                alert('Verwijderen mislukt: ' + message + status);
+            });
+    };
+
     self.update = function (company, onReceived) {
         var uri = "api/companies/" + company.id + "";
         console.log("bedrijfsnaam: " + company.companyname);
