@@ -3,7 +3,7 @@
  * @author Bernd Oostrum
  *
  */
-angular.module('workshop').controller('CompanyController', function ($scope, companyService) {
+angular.module('workshop').controller('CompanyController', function ($scope, $route, companyService) {
 
     var construct = function() {
         companyService.getAll(function(companies){
@@ -65,6 +65,23 @@ angular.module('workshop').controller('CompanyController', function ($scope, com
         alert("Er is een nieuw bedrijf toegevoegd");
         $scope.gotoCompanies();
     };
+
+
+    var reload = function()
+    {
+        $route.reload();
+    };
+
+    $scope.delete = function () {
+        var confirmation = confirm("Weet u zeker dat u dit bedrijf wilt verwijderen?");
+        if (confirmation == true) {
+            companyService.delete($scope.selectedCompany.id[0], reload);
+        }
+        else {
+            alert("Gegevens niet verwijderd");
+        }
+    };
+
 
     construct();
 
