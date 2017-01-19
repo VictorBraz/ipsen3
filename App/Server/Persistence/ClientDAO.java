@@ -248,6 +248,18 @@ public class ClientDAO extends DatabaseDAO{
 
     }
 
+    public void restore(int id) {
+
+        try {
+            deleteClient.setBoolean(1, true);
+            deleteClient.setInt(2, id);
+            deleteClient.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 
