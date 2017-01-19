@@ -5,8 +5,6 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>Cliënten</h1>
-
-
         </div>
 
         <body>
@@ -53,7 +51,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:true}">
+                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:true} | orderBy:'firstname'">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -88,7 +86,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:false}">
+                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:false} | orderBy:'firstname'">
                         <td>
                             <div class="checkbox">
                                 <label>

@@ -133,6 +133,8 @@ public class CompanyDAO extends DatabaseDAO {
                 company.setPhoneNumber(result.getString(5));
                 company.setEmail(result.getString(6));
                 company.setTag(result.getString(7));
+                company.setActive(result.getBoolean(8));
+
 
                 Address address = addressDAO.getAddress(company.getCompanyAddressID());
                 company.setAddress(address.getAddress());
@@ -179,11 +181,32 @@ public class CompanyDAO extends DatabaseDAO {
         }
     }
 
-    public void delete (int id) {
+    /* public void delete (int id) {
         try {
             deleteCompany.setBoolean(1, false);
             deleteCompany.setInt(2, id);
             deleteCompany.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    */
+
+    public void delete (int id) {
+        try {
+            Company comp = getCompany(id);
+            if(comp.getActive() == true) {
+                deleteCompany.setBoolean(1, false);
+                deleteCompany.setInt(2, id);
+                deleteCompany.execute();
+
+            } else {
+                deleteCompany.setBoolean(1, true);
+                deleteCompany.setInt(2, id);
+                deleteCompany.execute();
+            }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

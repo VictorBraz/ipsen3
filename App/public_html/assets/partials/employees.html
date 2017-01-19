@@ -8,23 +8,24 @@
             <h1>Medewerkers</h1>
         </div>
 
-        <ul class="nav navbar-right">
-            <div class="navbar-text">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="headertable">
+                    <ul id="tabs" class="nav nav-tabs">
+
+                        <li class="active"><a data-target="#activeemployees" ng-click="activetab=true" data-toggle="tab">Actief</a>
+                        </li>
+                        <li><a data-target="#nonactiveemployees" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-md-offset-5">
                 <input type="search" class="form-control" placeholder="Zoeken" ng-model="searchKeyword">
             </div>
-        </ul>
-        <body>
-        <p id="content">
 
 
-            <!--header boven tabellen-->
-        <div id="headertable">
-            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                <li class="active"><a data-target="#activeemployees" data-toggle="tab">Actief</a>
-                </li>
-                <li><a data-target="#nonactiveemployees" data-toggle="tab">Non-actief</a>
-                </li>
-            </ul>
         </div>
 
 
@@ -33,7 +34,8 @@
 
             <!--tabel met actieve medewerkers-->
             <div class="tab-pane active" id="activeemployees">
-                <table id="actieveMedewerkers" class="table table-hover">
+                <!--id="actieveMedewerkers"-->
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th></th>
@@ -46,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="employee in employees | filter:searchKeyword | orderBy:'firstName'" ng-click="viewSettedEmp(employee.id)" >
+                        <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:true} | orderBy:'firstName'" >
                             <td>
                                 <div class="checkbox">
                                     <label>
@@ -56,19 +58,19 @@
                                     </label>
                                 </div>
                             </td>
-                            <td class="filterable-cell">{{ employee.firstName }}</td>
-                            <td class="filterable-cell">{{ employee.lastName }}</td>
-                            <td class="filterable-cell">{{ employee.study }}</td>
-                            <td class="filterable-cell">{{ employee.phoneNumber }}</td>
-                            <td class="filterable-cell">{{ employee.email }}</td>
-                            <td class="filterable-cell">{{ employee.tag }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.firstName }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.lastName }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.study }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.email }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.tag }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
+            <!--id="nietActieveMedewerkers"-->
             <div class="tab-pane" id="nonactiveemployees">
-                <table id="nietActieveMedewerkers" class="table table-hover">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th></th>
@@ -81,7 +83,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="employee in employees | orderBy:'employee.firstName' | filter:searchKeyword">
+                    <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:false} | orderBy:'firstName'" ng-click="viewSettedEmp(employee.id)" >
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -91,43 +93,59 @@
                                 </label>
                             </div>
                         </td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
-                        <td class="filterable-cell">{{ }}</td>
+                        <td class="filterable-cell">{{ employee.firstName }}</td>
+                        <td class="filterable-cell">{{ employee.lastName }}</td>
+                        <td class="filterable-cell">{{ employee.study }}</td>
+                        <td class="filterable-cell">{{ employee.phoneNumber }}</td>
+                        <td class="filterable-cell">{{ employee.email }}</td>
+                        <td class="filterable-cell">{{ employee.tag }}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
 
         </div>
-        <p class="bs-component">
+        <div class="col-md-2 col-md-offset-11">
+            <div class="row"  id="buttonrow">
             <!--<div class="btn-group">-->
             <!--Toevoegen knop-->
-        <div class="col-md-1 col-md-offset-9" id="addbutton">
-            <div role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
-                <a ng-click="gotoAddEmployee()" class="btn btn-info btn-fab"><i class="material-icons">add</i></a>
+            <div class="btn btn-info btn-fab" ng-show="activetab && selectedEmployee.id.length ==0">
+                <div role="presentation" ng-class="{ 'active': isLocation('/addEmployee') }">
+                    <a ng-click="gotoAddEmployee()"><i class="material-icons">add</i></a>
+                </div>
             </div>
-        </div>
 
         <!--Aanpassen knop-->
 
-        <div class="col-md-1 col-md-offset-10" id="zoominbutton">
-            <div role="presentation" ng-class="{'disabled':!isSelected()}">
-                <a ng-click="!isSelected() || gotoViewEmployee()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>
+        <!--<div class="col-md-1 col-md-offset-10" id="zoominbutton">-->
+            <!--<div role="presentation" ng-class="{'disabled':!isSelected()}">-->
+                <!--<a ng-click="!isSelected() || gotoViewEmployee()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>-->
+            <!--</div>-->
+        <!--</div>-->
+            <div class="btn btn-info btn-fab" ng-show="activetab == false">
+                <div role="presentation" ng-class="{'disabled':!isSelected()}">
+                    <a ng-click="!isSelected() || gotoEmployees()"><i
+                            class="material-icons">restore</i></a>
+                </div>
             </div>
-        </div>
 
         <!--Verwijderen knop-->
-        <div class="col-md-1 col-md-offset-11" id="deletebutton">
-            <div role="presentation" ng-class="{ 'active': isLocation('/employees') }">
-                <a ng-click="gotoDeleteEmployee()" class="btn btn-info btn-fab"> <i class="material-icons">delete</i>
-                </a>
+        <!--<div class="col-md-1 col-md-offset-11" id="deletebutton">-->
+            <!--<div role="presentation" ng-class="{ 'active': isLocation('/employees') }">-->
+                <!--<a ng-click="gotoDeleteEmployee()" class="btn btn-info btn-fab"> <i class="material-icons">delete</i>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+            <div class="btn btn-info btn-fab"ng-show="activetab && selectedEmployee.id.length >0">
+                <div role="presentation" ng-class="{ 'active': isLocation('/employees') }">
+                    <a ng-click="gotoEmployees()"> <i class="material-icons">delete</i>
+                    </a>
+                </div>
             </div>
         </div>
-        </p>
+    </div>
+
+
         </body>
     </div>
 

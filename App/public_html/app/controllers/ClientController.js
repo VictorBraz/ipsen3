@@ -33,6 +33,11 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
     };
 
+    $scope.viewSettedClient = function (id) {
+        clientService.setSelected(id);
+        $scope.gotoViewClient();
+    };
+
     $scope.selectedClient = {
         id: []
     };
