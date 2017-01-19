@@ -51,7 +51,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:true} | orderBy:'firstname'" ng-click="viewSettedClient(client.id)">
+                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:true} | orderBy:'firstname'">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -86,7 +86,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:false} | orderBy:'firstname'" ng-click="viewSettedClient(client.id)">
+                    <tr ng-repeat="client in clients | filter:searchKeyword | filter: {active:false} | orderBy:'firstname'">
                         <td>
                             <div class="checkbox">
                                 <label>

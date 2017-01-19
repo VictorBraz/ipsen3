@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:true} | orderBy:'firstName'" ng-click="viewSettedEmp(employee.id)" >
+                        <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:true} | orderBy:'firstName'" >
                             <td>
                                 <div class="checkbox">
                                     <label>
@@ -58,12 +58,12 @@
                                     </label>
                                 </div>
                             </td>
-                            <td class="filterable-cell">{{ employee.firstName }}</td>
-                            <td class="filterable-cell">{{ employee.lastName }}</td>
-                            <td class="filterable-cell">{{ employee.study }}</td>
-                            <td class="filterable-cell">{{ employee.phoneNumber }}</td>
-                            <td class="filterable-cell">{{ employee.email }}</td>
-                            <td class="filterable-cell">{{ employee.tag }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.firstName }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.lastName }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.study }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.email }}</td>
+                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.tag }}</td>
                         </tr>
                     </tbody>
                 </table>
