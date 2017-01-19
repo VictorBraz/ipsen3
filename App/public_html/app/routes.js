@@ -17,6 +17,7 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/editEmployee', {templateUrl: 'assets/partials/editEmployee.html', controller: 'EditEmployeeController' });
     $routeProvider.when('/search', {templateUrl: 'assets/partials/search.html', controller: 'SearchController'});
     $routeProvider.when('/viewEmployee', {templateUrl: 'assets/partials/viewEmployee.html', controller: 'EditEmployeeController' });
+    $routeProvider.when('/viewClient', {templateUrl: 'assets/partials/viewClient.html', controller: 'ClientController' });
 
     // Voeg hier meer routes toe
     

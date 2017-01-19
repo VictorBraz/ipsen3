@@ -63,7 +63,7 @@ angular.module('workshop').service('clientService', function($http)
 
     self.setSelected = function(id){
         self.selectedClient = id;
-        //console.log("SELECTED: " + self.selectedClient);
+        console.log("SELECTED: " + self.selectedClient);
     };
 
     self.getSelected = function () {

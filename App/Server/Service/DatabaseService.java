@@ -53,8 +53,8 @@ public class DatabaseService {
      */
     public Connection getConnection(String username, String password) throws SQLException {
 
-//        String URL = "jdbc:postgresql://145.97.16.190:5432/IPSEN3G10";
-        String URL = "jdbc:postgresql://localhost:5432/HubSpot";
+        String URL = "jdbc:postgresql://145.97.16.190:5432/IPSEN3G10";
+//        String URL = "jdbc:postgresql://localhost:5432/HubSpot";
 
 
         //String URL = "jdbc:postgresql://"+ getHost() +":" + getPort() +  "/" + getDatabaseName() +"";

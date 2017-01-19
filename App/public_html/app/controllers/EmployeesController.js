@@ -9,8 +9,11 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
         employeeService.getAll(function (employees)
         {
             $scope.employees = employees;
+            $scope.activetab = true;
         });
     };
+
+    $scope.searchKeyword = '';
 
     $scope.register = function () {
         employeeService.create(
@@ -24,6 +27,7 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
             $scope.address,
             $scope.city,
             $scope.postcode,
+            $scope.noteText,
             employeeCreated
         );
     };
@@ -47,7 +51,6 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
     };
 
     $scope.selectEmployee = function () {
-        console.log("---------->" + $scope.selectedEmployee.id[0]);
         employeeService.setSelected($scope.selectedEmployee.id[0]);
     };
 
@@ -55,8 +58,6 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
             alert('Er is een nieuwe medewerker toegevoegd');
             $scope.gotoEmployees();
     };
-
-    $scope.searchKeyword = '';
 
     construct();
 });
