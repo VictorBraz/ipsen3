@@ -17,13 +17,12 @@ angular.module('workshop').service('userService', function($http)
         });
     };
     
-    self.create = function(id, accountName, password, privilege, userid, onCreated)
+    self.create = function(emailAddress, password, privilege, userid, onCreated)
     {
         var uri = '/api/users';
         var data =
         {
-            id : id,
-            accountName: accountName,
+            emailAddress: emailAddress,
             password: password,
             privilege: privilege,
             userId : userid

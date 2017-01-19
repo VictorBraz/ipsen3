@@ -33,9 +33,6 @@ public class UserService extends BaseService<User>
 
     public void add(User user)
     {
-        //Guest is 3
-        user.setPrivilege("3");
-
         dao.add(user);
     }
 

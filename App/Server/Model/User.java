@@ -23,7 +23,7 @@ public class User implements Principal
     @NotEmpty
     @Email
     @JsonView(View.Public.class)
-    private String accountName;
+    private String emailAddress;
 
     @NotEmpty
     @Length(min = 8)
@@ -46,14 +46,14 @@ public class User implements Principal
         this.id = id;
     }
 
-    public String getAccountName()
+    public String getEmailAddress()
     {
-        return accountName;
+        return emailAddress;
     }
 
-    public void setAccountName(String accountName)
+    public void setEmailAddress(String emailAddress)
     {
-        this.accountName = accountName;
+        this.emailAddress = emailAddress;
     }
 
     public String getPassword()
@@ -66,9 +66,13 @@ public class User implements Principal
         this.password = password;
     }
 
-    public String getPrivilege()
+    public int getPrivilege()
     {
-        return privilege;
+        if(this.privilege.equals("1")){
+            return 1;
+        }else {
+            return 3;
+        }
     }
 
     public void setPrivilege(String privilege)
@@ -103,6 +107,6 @@ public class User implements Principal
 
     public boolean equals(User user)
     {
-        return accountName.equals(user.getAccountName());
+        return emailAddress.equals(user.getEmailAddress());
     }
 }

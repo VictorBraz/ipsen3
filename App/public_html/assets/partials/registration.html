@@ -1,54 +1,48 @@
-<h1>Aanmelden</h1>
 
-<div class="panel panel-default">
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
 
-    <div class="panel-heading">
-        Uw gegevens
+        <div class="panel-heading">
+            <h5>Aanmelden</h5>
+        </div>
+
+        <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
+
+            <div class="form-group">
+                <label class="control-label">E-mailadres</label>
+                <input type="email" class="form-control" ng-model="emailAddress" placeholder="Bijv. info@domein.nl" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Wachtwoord</label>
+                <input type="password" class="form-control" ng-model="password" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Rechten</label>
+                <div class="selectContainer" >
+                    <select class="form-control" ng-model="privilege" ng-required="true">
+                        <option value="3">Gast</option>
+                        <option value="1">Admin</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Gebruiker</label>
+                <div class="selectContainer" >
+                    <select class="form-control" ng-model="userId" ng-required="true">
+                        <option value="3">Medewerker</option>
+                        <option value="2">Bedrijf</option>
+                        <option value="1">Client</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button">
+                <input type="submit" class="btn btn-primary" value="Aanmelden" ng-disabled="registrationForm.$invalid" />
+            </div>
+
+        </form>
     </div>
-
-    <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
-
-        <div class="form-group">
-            <label class="control-label">Naam</label>
-            <input type="text" class="form-control" ng-model="name" placeholder="Bijv. Pietje Puk" ng-required="true" />
-        </div>
-
-        <div class="form-group">
-            <label class="control-label">Postcode</label>
-            <input type="text" class="form-control" ng-model="postcode" placeholder="Bijv. 1234AB" ng-required="true" />
-        </div>
-
-        <div class="form-group">
-            <label class="control-label">Huisnummer</label>
-            <input type="text" class="form-control" ng-model="streetnumber" placeholder="Bijv. 29a" ng-required="true" />
-        </div>
-
-        <p>
-            <a ng-click="checkAddress()">Adres controleren</a>
-        </p>
-
-        <div class="form-group">
-            <label class="control-label">Straatnaam</label>
-            <input type="text" class="form-control" ng-model="street" disabled ng-required="true" />
-        </div>
-
-        <div class="form-group">
-            <label class="control-label">Woonplaats</label>
-            <input type="text" class="form-control" ng-model="city" disabled ng-required="true" />
-        </div>
-
-        <div class="form-group">
-            <label class="control-label">E-mailadres</label>
-            <input type="emailAddress" class="form-control" ng-model="emailAddress" placeholder="Bijv. info@domein.nl" ng-required="true" />
-        </div>
-
-        <div class="form-group">
-            <label class="control-label">Wachtwoord</label>
-            <input type="password" class="form-control" ng-model="password" ng-required="true" />
-        </div>
-        
-        <input type="submit" class="btn btn-primary" value="Aanmelden" ng-disabled="registrationForm.$invalid" />
-
-    </form>
-    
 </div>
