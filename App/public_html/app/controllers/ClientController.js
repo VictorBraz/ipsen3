@@ -68,9 +68,10 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
     $scope.restore = function () {
         var confirmation = confirm("Weet u zeker dat u de client wilt herstellen?");
         if (confirmation == true) {
-            clientService.restore($scope.selectedClient.id[0], reload);
+            clientService.delete($scope.selectedClient.id[0], reload);
+        } else{
+            ("Gegevens niet hersteld");
         }
-        else("Gegevens niet hersteld");
     }
 
 

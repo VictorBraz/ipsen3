@@ -38,5 +38,4 @@ public class ClientService extends BaseService<Client>{
     public void restore(int id) {
         dao.restore(id);
     }
-
 }

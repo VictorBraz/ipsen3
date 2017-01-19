@@ -81,13 +81,13 @@ public class ClientResource {
         service.delete(id);
     }
 
-    @POST
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @JsonView(View.Protected.class)
-    @PermitAll
-    public void restore(@PathParam("id") int id) {
-        System.out.println(id);
-        service.restore(id);
-    }
+//    @PUT
+//    @Path("/{id}")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @JsonView(View.Protected.class)
+//    @PermitAll
+//    public void restore(@PathParam("id") int id) {
+//        System.out.println(id);
+//        service.restore(id);
+//    }
 }
