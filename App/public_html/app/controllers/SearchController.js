@@ -29,30 +29,33 @@ angular.module('workshop').controller('SearchController', function($scope, searc
     $scope.searchAll = function () {
         $scope.setTag();
         $scope.searchClients();
+        $scope.searchCompanies();
+        $scope.searchEmployees();
     };
 
     $scope.searchClients = function(){
-        searchService.getFilteredClients(function (clients) {
-            $scope.filteredClients = clients;
-        });
+        if ($scope.filteredClients == null) {
+            searchService.getFilteredClients(function (clients) {
+                $scope.filteredClients = clients;
+            });
+        };
     };
 
     $scope.searchCompanies = function(){
-        searchService.getFilteredCompanies(function (companies) {
-            $scope.filteredCompanies = companies;
-        });
+        if($scope.filteredCompanies == null) {
+            searchService.getFilteredCompanies(function (companies) {
+                $scope.filteredCompanies = companies;
+            });
+        };
     };
 
     $scope.searchEmployees = function(){
-        searchService.getFilteredEmployees(function (employees){
-            $scope.filteredEmployees = employees;
-        });
+        if($scope.filteredEmployees == null) {
+            searchService.getFilteredEmployees(function (employees) {
+                $scope.filteredEmployees = employees;
+            });
+        };
     };
 
-    jQuery(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.document.location = $(this).data("href");
-        });
-    });
 
 });

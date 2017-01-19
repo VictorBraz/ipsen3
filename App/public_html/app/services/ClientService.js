@@ -46,18 +46,6 @@ angular.module('workshop').service('clientService', function($http)
 
     };
 
-    self.getInactive = function(onReceived) {
-        var uri = 'api/clients';
-
-        $http.get(uri).then(function(response) {
-            onReceived(response.data);
-
-        },
-        function(message, status) {
-            alert("ophalen mislukt, neem contact op met uw beheerder: " + message);
-
-        });
-    }
 
     self.selectedClient = 0;
 
@@ -93,15 +81,26 @@ angular.module('workshop').service('clientService', function($http)
         });
     };
 
-    self.delete = function(client, onReceived) {
-        var uri = 'api/clients' + client.id + '';
-        console.log("voornaam: " + client.firstname);
-        $http.put(uri, client).then(function (response) {
+    self.delete = function(id, onReceived) {
+        var uri = 'api/clients/' + id + '';
+        console.log("client " + id);
+        $http.delete(uri, id).then(function (response) {
             onReceived(response.data);
+            self.getAll(onReceived);
         },
         function(message, status) {
             alert('Verwijderen mislukt: ' + message + status);
         });
     };
 
+    self.restore = function(id, onReceived) {
+        var uri = 'api/clients/' + id + '';
+        console.log("client" + id);
+        $http.put(uri, id).then(function(response) {
+            onReceived(response.data);
+        },
+        function(message, status) {
+            alert('Herstellen mislukt: ' + message + status);
+        });
+    }
 });

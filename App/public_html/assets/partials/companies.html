@@ -1,67 +1,149 @@
-<div class="col-md-10 col-md-offset-1">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<div class="container">
+    <!--<div class="row">-->
+    <!--<div class="col-md-10 col-md-offset-1">-->
     <div class="panel panel-default">
-
         <div class="panel-heading">
-            <h5>Bedrijven</h5>
+            <h1>Bedrijven</h1>
+
+            <a ng-click="gotoEditCompany()" ng-show="selectedCompany.id.length > 0">Aanpassen</a>
         </div>
 
-        <ul class="nav navbar-nav pull-right">
-            <li role="presentation" ng-class="{ 'active': isLocation('/addcompany') }">
-                <a ng-click="gotoAddCompany()">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Nieuw
-                </a>
-            </li>
-            <li role="presentation" ng-class="{ 'active': isLocation('/editcompany') }">
-                <a ng-click="gotoEditCompany()">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Aanpassen
-                </a>
-            </li>
-            <li role="presentation" ng-class="{ 'active': isLocation('/deletecompany') }">
-                <a ng-click="gotoDeleteCompany()">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    Verwijderen
-                </a>
-            </li>
-        </ul>
+        <!--<div class="text-field">-->
+        <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
+        <!--layout-padding="10px ,10px ,0px,0px">-->
 
-        <table class="table table-hover">
-            <thead>
-            <th></th>
-            <th><label>Bedrijfsnaam</label></th>
-            <th><label>Contactpersoon</label></th>
-            <th><label>Telefoonnummer</label></th>
-            <th><label>Email</label></th>
-            <th><label>Tag</label></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="company in companies">
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <!--<input type="checkbox" ng-checked="getNumber(company.id)" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="checkbox-material"></span>-->
-                            <!--<input type="checkbox" checklist-model="selectedcompany.companyid" checklist-value="{{company.id}}"> {{company.id}}-->
-                            <input type="checkbox" ng-click="ontestClick()" checklist-model="selectedCompanyTest.id"
-                                   checklist-value="company.id"/>
-                        </label>
+
+        <!--header boven tabellen-->
+        <div class="row">
+            <div class="col-md-4">
+                <div id="headertable">
+                    <ul id="tabs" class="nav nav-tabs">
+
+                        <li class="active"><a data-target="#activecompanies" ng-click="activetab=true" data-toggle="tab">Actief</a>
+                        </li>
+                        <li><a data-target="#nonactivecompanies" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-md-offset-5">
+                <input type="search" class="form-control" placeholder="Zoeken" ng-model="searchKeyword">
+            </div>
+
+
+        </div>
+
+
+        <!--inhoud van de tabellen-->
+
+        <div class="tab-content">
+
+            <!--tabel met actieve companyen-->
+            <div class="tab-pane active" id="activecompanies">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><label>Bedrijf</label></th>
+                        <th><label>Contactpersoon</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Tag</label></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="company in companies | filter:searchKeyword | filter: {active:true}">
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="selectCompany()"
+                                           checklist-model="selectedCompany.id"
+                                           checklist-value="company.id">
+                                </label>
+                            </div>
+                        </td>
+                        <td class="filterable-cell">{{ company.companyName }}</td>
+                        <td class="filterable-cell">{{ company.contactPerson }}</td>
+                        <td class="filterable-cell">{{ company.email }}</td>
+                        <td class="filterable-cell">{{ company.phoneNumber }}</td>
+                        <td class="filterable-cell">{{ company.tag }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="nonactivecompanies">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><label>Bedrijf</label></th>
+                        <th><label>Contactpersoon</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Tag</label></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="company in companies | filter:searchKeyword | filter: {active:false}">
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="selectCompany()"
+                                           checklist-model="selectedCompany.id"
+                                           checklist-value="company.id">
+                                </label>
+                            </div>
+                        </td>
+                        <td class="filterable-cell">{{ company.companyName }}</td>
+                        <td class="filterable-cell">{{ company.contactPerson }}</td>
+                        <td class="filterable-cell">{{ company.email }}</td>
+                        <td class="filterable-cell">{{ company.phoneNumber }}</td>
+                        <td class="filterable-cell">{{ company.tag }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-md-2 col-md-offset-11">
+            <div class="row"  id="buttonrow">
+                <!--<div class="btn-group">-->
+                <!--Toevoegen knop-->
+                <div class="btn btn-info btn-fab" ng-show="activetab && selectedCompany.id.length == 0">
+                    <div role="presentation" ng-class="{ 'active': isLocation('/companies') }">
+                        <a ng-click="gotoAddCompany()"><i class="material-icons">add</i></a>
                     </div>
-                </td>
-                <td>{{ company.companyName }}</td>
-                <td>{{ company.contactPerson }}</td>
-                <td>{{ company.phoneNumber }}</td>
-                <td>{{ company.email }}</td>
-                <td>{{ company.tag }}</td>
-            </tr>
-            </tbody>
-        </table>
+                </div>
 
-        <div class="pull-right">
-            <a href="#">New</a>
-            <a href="/company">View/Edit</a>
-            <a ng-click="deleteCompany()">Delete</a>
+                <!--Aanpassen knop-->
+
+
+                <!--<div class="btn btn-info btn-fab">-->
+                <!--<div role="presentation" ng-class="{'disabled':!isSelected()}">-->
+                <!--<a ng-click="!isSelected() || gotoEditcompany()"><i-->
+                <!--class="material-icons">launch</i></a>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="btn btn-info btn-fab" ng-show="activetab == false">
+                    <div role="presentation" ng-class="{'disabled':!isSelected()}">
+                        <a ng-click="!isSelected() || gotoCompanies()"><i
+                                class="material-icons">restore</i></a>
+                    </div>
+                </div>
+
+
+                <!--Verwijderen knop-->
+                <div class="btn btn-info btn-fab"ng-show="activetab && selectedCompany.id.length >0">
+                    <div role="presentation" ng-class="{ 'active': isLocation('/companies') }">
+                        <a ng-click="delete()"> <i class="material-icons">delete</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     </div>
 </div>

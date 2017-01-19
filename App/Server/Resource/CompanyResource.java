@@ -61,15 +61,15 @@ public class CompanyResource
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    @RolesAllowed("1")
-    public void update(@PathParam("id") int id, @Auth User authenticator, User user)
+    @PermitAll
+    public void update(@PathParam("id") int id, @Auth User authenticator, Company comp)
     {
-        //service.update(authenticator, id, user);
+        service.update(comp);
     }
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("1")
+    @PermitAll
     public void delete(@PathParam("id") int id)
     {
         service.delete(id);

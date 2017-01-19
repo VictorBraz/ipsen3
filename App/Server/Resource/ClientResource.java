@@ -76,7 +76,18 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void delete(Client client) {
-        service.delete(client);
+    public void delete(@PathParam("id") int id) {
+        System.out.println(id);
+        service.delete(id);
     }
+
+//    @PUT
+//    @Path("/{id}")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @JsonView(View.Protected.class)
+//    @PermitAll
+//    public void restore(@PathParam("id") int id) {
+//        System.out.println(id);
+//        service.restore(id);
+//    }
 }

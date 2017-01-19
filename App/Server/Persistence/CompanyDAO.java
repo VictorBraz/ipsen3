@@ -25,6 +25,7 @@ public class CompanyDAO extends DatabaseDAO {
     private PreparedStatement addCompany;
     private PreparedStatement getAll;
     private PreparedStatement updateCompany;
+    private PreparedStatement deleteCompany;
 
 
     public CompanyDAO() throws Exception {
@@ -43,6 +44,8 @@ public class CompanyDAO extends DatabaseDAO {
             getAll = conn.prepareStatement("SELECT * FROM company");
             updateCompany = conn.prepareStatement("UPDATE company SET companyaddressid=?, companyname=?, contactperson=?," +
                     "phonenumber=?, email=?, tag=? WHERE id =?");
+            deleteCompany = conn.prepareStatement("UPDATE company SET active=? WHERE id =?");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,6 +69,7 @@ public class CompanyDAO extends DatabaseDAO {
             addCompany.setString(4, company.getPhoneNumber());
             addCompany.setString(5, company.getEmail());
             addCompany.setString(6, company.getTag());
+
 
             addCompany.executeUpdate();
 
@@ -96,6 +100,7 @@ public class CompanyDAO extends DatabaseDAO {
                 company.setPhoneNumber(result.getString(5));
                 company.setEmail(result.getString(6));
                 company.setTag(result.getString(7));
+                company.setActive(result.getBoolean(8));
 
                 Address address = addressDAO.getAddress(result.getInt(2));
                 company.setAddress(address.getAddress());
@@ -172,6 +177,18 @@ public class CompanyDAO extends DatabaseDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void delete (int id) {
+        try {
+            deleteCompany.setBoolean(1, false);
+            deleteCompany.setInt(2, id);
+            deleteCompany.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

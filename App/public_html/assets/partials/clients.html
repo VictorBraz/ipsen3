@@ -7,9 +7,6 @@
             <h1>Cliënten</h1>
         </div>
 
-        <!--<div class="text-field">-->
-        <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
-        <!--layout-padding="10px ,10px ,0px,0px">-->
         <body>
 
 
@@ -131,18 +128,19 @@
                     <!--</div>-->
                 <!--</div>-->
 
+                <!--Herstellen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab == false">
                     <div role="presentation" ng-class="{'disabled':!isSelected()}">
-                        <a ng-click="!isSelected() || gotoClients()"><i
+                        <a ng-click="!isSelected() || restore()"><i
                                 class="material-icons">restore</i></a>
                     </div>
                 </div>
 
 
                 <!--Verwijderen knop-->
-                <div class="btn btn-info btn-fab"ng-show="activetab && selectedClient.id.length >0">
+                <div class="btn btn-info btn-fab" ng-class="{'disabled':!isSelected()}"  ng-show="activetab && selectedClient.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
-                        <a ng-click="gotoClients()"> <i class="material-icons">delete</i>
+                        <a ng-click= "delete()" > <i class="material-icons">delete</i>
                         </a>
                     </div>
                 </div>
