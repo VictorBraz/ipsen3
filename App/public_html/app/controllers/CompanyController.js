@@ -82,6 +82,15 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
         }
     };
 
+    $scope.restore = function () {
+        var confirmation = confirm("Weet u zeker dat u het bedrijf wilt herstellen?");
+        if (confirmation == true) {
+            companyService.delete($scope.selectedCompany.id[0], reload);
+        } else{
+            alert("Gegevens niet hersteld");
+        }
+    };
+
 
     construct();
 
