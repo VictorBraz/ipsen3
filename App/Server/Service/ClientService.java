@@ -35,5 +35,7 @@ public class ClientService extends BaseService<Client>{
     public void delete(int id) {
         dao.delete(id);
     }
-
+    public void restore(int id) {
+        dao.restore(id);
+    }
 }

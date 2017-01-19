@@ -94,14 +94,13 @@ angular.module('workshop').service('clientService', function($http)
     };
 
     self.restore = function(id, onReceived) {
-        var uri = 'api/client/' + id + '';
+        var uri = 'api/clients/' + id + '';
         console.log("client" + id);
         $http.put(uri, id).then(function(response) {
             onReceived(response.data);
-            self.getAll(onReceived);
         },
         function(message, status) {
-            alert('Verwijderen mislukt: ' + message + status);
+            alert('Herstellen mislukt: ' + message + status);
         });
     }
 });

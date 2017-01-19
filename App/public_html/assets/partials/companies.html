@@ -87,7 +87,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="company in companys | filter:searchKeyword | filter: {active:false}">
+                    <tr ng-repeat="company in companies | filter:searchKeyword | filter: {active:false}">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -97,10 +97,10 @@
                                 </label>
                             </div>
                         </td>
-                        <td class="filterable-cell">{{ company.companyname }}</td>
-                        <td class="filterable-cell">{{ company.contactperson }}</td>
+                        <td class="filterable-cell">{{ company.companyName }}</td>
+                        <td class="filterable-cell">{{ company.contactPerson }}</td>
                         <td class="filterable-cell">{{ company.email }}</td>
-                        <td class="filterable-cell">{{ company.phonenumber }}</td>
+                        <td class="filterable-cell">{{ company.phoneNumber }}</td>
                         <td class="filterable-cell">{{ company.tag }}</td>
                     </tr>
                     </tbody>
