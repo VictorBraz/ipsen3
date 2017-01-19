@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * Created by Victor on 9-12-2016.
+ * @author Victor
  */
 public class DatabaseService {
     /**

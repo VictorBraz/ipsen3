@@ -1,5 +1,5 @@
 /**
- * Created by Braz on 09/01/2017.
+ * @author Victor
  */
 angular.module('workshop').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
 

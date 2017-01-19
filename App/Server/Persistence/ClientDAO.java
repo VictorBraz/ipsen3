@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Victor on 9-12-2016.
+ * @author Victor
  */
 public class ClientDAO extends DatabaseDAO{
 
