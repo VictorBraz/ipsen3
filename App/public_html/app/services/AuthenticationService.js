@@ -89,6 +89,13 @@ angular.module('workshop').service('authenticationService', function($window, $r
         $rootScope.authenticated = user !== null;
     };
 
+    self.isAdmin = function () {
+        if(authenticator.privilege == "1"){
+            return true;
+        }else{
+            return false;
+        }
+    };
     /**
      * Gets the authenticated user.
      * 

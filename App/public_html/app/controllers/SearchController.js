@@ -34,27 +34,21 @@ angular.module('workshop').controller('SearchController', function($scope, searc
     };
 
     $scope.searchClients = function(){
-        if ($scope.filteredClients == null) {
-            searchService.getFilteredClients(function (clients) {
-                $scope.filteredClients = clients;
-            });
-        };
+        searchService.getFilteredClients(function (clients) {
+            $scope.filteredClients = clients;
+        });
     };
 
     $scope.searchCompanies = function(){
-        if($scope.filteredCompanies == null) {
-            searchService.getFilteredCompanies(function (companies) {
-                $scope.filteredCompanies = companies;
-            });
-        };
+        searchService.getFilteredCompanies(function (companies) {
+            $scope.filteredCompanies = companies;
+        });
     };
 
     $scope.searchEmployees = function(){
-        if($scope.filteredEmployees == null) {
-            searchService.getFilteredEmployees(function (employees) {
-                $scope.filteredEmployees = employees;
-            });
-        };
+        searchService.getFilteredEmployees(function (employees) {
+            $scope.filteredEmployees = employees;
+        });
     };
 
 

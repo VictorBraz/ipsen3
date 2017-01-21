@@ -9,7 +9,7 @@ angular.module('workshop').service('searchService', function($http){
 
     self.setTag = function (tag){
         self.tag = tag;
-    }
+    };
 
     self.getFilteredClients = function(onReceived){
         var uri = 'api/search/clients/' + self.tag + '';
