@@ -14,6 +14,6 @@ public abstract class DatabaseDAO {
     protected Connection conn;
 
     public DatabaseDAO() throws Exception{
-        this.conn = DatabaseService.getInstance().getConnection("postgres", "1");
+        this.conn = DatabaseService.getInstance().getConnection("IPSEN3G10", "1");
     }
 }
