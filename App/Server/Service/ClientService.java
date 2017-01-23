@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 import java.util.Collection;
 
 /**
- * Created by Victor on 12-12-2016.
+ * @author Victor
  */
 @Singleton
 public class ClientService extends BaseService<Client>{

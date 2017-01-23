@@ -83,7 +83,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:false} | orderBy:'firstName'" ng-click="viewSettedEmp(employee.id)" >
+                    <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:false} | orderBy:'firstName'">
                         <td>
                             <div class="checkbox">
                                 <label>
@@ -93,12 +93,12 @@
                                 </label>
                             </div>
                         </td>
-                        <td class="filterable-cell">{{ employee.firstName }}</td>
-                        <td class="filterable-cell">{{ employee.lastName }}</td>
-                        <td class="filterable-cell">{{ employee.study }}</td>
-                        <td class="filterable-cell">{{ employee.phoneNumber }}</td>
-                        <td class="filterable-cell">{{ employee.email }}</td>
-                        <td class="filterable-cell">{{ employee.tag }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.firstName }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.lastName }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.study }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.email }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.tag }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -124,7 +124,7 @@
         <!--</div>-->
             <div class="btn btn-info btn-fab" ng-show="activetab == false">
                 <div role="presentation" ng-class="{'disabled':!isSelected()}">
-                    <a ng-click="!isSelected() || gotoEmployees()"><i
+                    <a ng-click="!isSelected() || restore()"><i
                             class="material-icons">restore</i></a>
                 </div>
             </div>
@@ -138,7 +138,7 @@
         <!--</div>-->
             <div class="btn btn-info btn-fab"ng-show="activetab && selectedEmployee.id.length >0">
                 <div role="presentation" ng-class="{ 'active': isLocation('/employees') }">
-                    <a ng-click="gotoEmployees()"> <i class="material-icons">delete</i>
+                    <a ng-click="delete()"> <i class="material-icons">delete</i>
                     </a>
                 </div>
             </div>

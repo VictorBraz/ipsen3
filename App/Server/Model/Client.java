@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * Created by Victor on 9-12-2016.
+ * @author Victor
  */
 public class Client {
 

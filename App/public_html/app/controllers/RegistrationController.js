@@ -16,6 +16,6 @@ angular.module('workshop').controller('RegistrationController', function($scope,
     var userCreated = function()
     {
         alert('Uw account is aangemaakt, u kunt nu inloggen');
-        $scope.gotoHome();
+        $scope.gotoOverview();
     };
 });
