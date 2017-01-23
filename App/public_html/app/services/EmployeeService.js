@@ -79,4 +79,16 @@ angular.module('workshop').service('employeeService', function($http)
             });
     };
 
+    self.delete = function(id, onReceived) {
+        var uri = 'api/employees/' + id + '';
+        console.log("employee: " + id);
+        $http.delete(uri, id).then(function (response) {
+                onReceived(response.data);
+                self.getAll(onReceived);
+            },
+            function(message, status) {
+                alert('Verwijderen mislukt: ' + message + status);
+            });
+    };
+
 });

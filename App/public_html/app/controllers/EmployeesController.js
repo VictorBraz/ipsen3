@@ -2,7 +2,7 @@
  * Created by Negin on 13-12-2016.
  */
 
-angular.module('workshop').controller('EmployeesController', function($scope, employeeService)
+angular.module('workshop').controller('EmployeesController', function($scope, $route, employeeService)
 {
     var construct = function()
     {
@@ -57,6 +57,33 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
     var employeeCreated = function() {
             alert('Er is een nieuwe medewerker toegevoegd');
             $scope.gotoEmployees();
+    };
+
+    $scope.delete = function () {
+        var confirmation = confirm("Weet u zeker dat u de medewerker wilt verwijderen?");
+        if (confirmation == true) {
+            employeeService.delete($scope.selectedEmployee.id[0], reload);
+            alert("De medewerker is op non-active gezet!");
+        }
+        else {
+            alert("Gegevens niet verwijderd");
+        }
+    };
+
+    $scope.restore = function () {
+        var confirmation = confirm("Weet u zeker dat u de medewerker wilt herstellen?");
+        if (confirmation == true) {
+            employeeService.delete($scope.selectedEmployee.id[0], reload);
+            alert("De medewerker is op active gezet!");
+        } else{
+            ("Gegevens niet hersteld");
+        }
+    }
+
+
+    var reload = function()
+    {
+        $route.reload();
     };
 
     construct();

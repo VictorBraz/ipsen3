@@ -65,9 +65,11 @@ public class EmployeeResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed("1")
-    public void delete(@PathParam("id") int id)
-    {
-
+    @Consumes(MediaType.APPLICATION_JSON)
+    @JsonView(View.Protected.class)
+    @PermitAll
+    public void delete(@PathParam("id") int id) {
+        System.out.println(id);
+        service.delete(id);
     }
 }
