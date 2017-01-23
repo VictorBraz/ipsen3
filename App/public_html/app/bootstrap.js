@@ -1,24 +1,33 @@
 
 angular.module('workshop',
-[
-    'ngRoute',
-    'checklist-model'
-    // Voeg hier meer modules toe
-])
-.config(function($httpProvider)
-{
+    [
+        'ngRoute',
+        'checklist-model',
+        'ngMaterial',
+        'materialCalendar'
 
-    $httpProvider.interceptors.push('requestService');
-
-    if(!$httpProvider.defaults.headers.get)
+        // Voeg hier meer modules toe
+    ])
+    .config(function($httpProvider)
     {
-        $httpProvider.defaults.headers.get = {};
-    }
-})
-.config(function($locationProvider)
-{
-    $locationProvider.html5Mode(true);
-    $locationProvider.baseHref = '/';
 
-})
+        $httpProvider.interceptors.push('requestService');
+
+        if(!$httpProvider.defaults.headers.get)
+        {
+            $httpProvider.defaults.headers.get = {};
+        }
+    })
+    .config(function($locationProvider)
+    {
+        $locationProvider.html5Mode(true);
+        $locationProvider.baseHref = '/';
+
+    })
+    .config(function($mdThemingProvider) {
+        $mdThemingProvider
+            .theme("default")
+            .primaryPalette("cyan")
+            .accentPalette("light-green");
+    });
 // Voeg hier meer configuraties toe
