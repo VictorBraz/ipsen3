@@ -1,28 +1,39 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="container">
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h5>Accounts</h5>
+            <h1>Accounts</h1>
+            <ul class="nav navbar-nav navbar-right">
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/register') }">
+                    <a ng-click="gotoRegistration()">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Aanmelden
+                    </a>
+                </li>
+            </ul>
         </div>
-
         <table class="table table-hover">
             <thead>
 
             <th></th>
             <th><label>E-mailadres</label></th>
             <th><label>Wachtwoord</label></th>
+            <th><label>Rechten</label></th>
+            <th><label>Gebruiker</label></th>
             </thead>
             <tbody>
             <tr ng-repeat="user in users">
                 <td>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.accountName" checklist-value="user.accountName">
+                            <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.emailAddress" checklist-value="user.emailAddress">
                         </label>
                     </div>
                 </td>
-                <td>{{ user.accountName }}</td>
+                <td>{{ user.emailAddress}}</td>
                 <td>{{ user.password }}</td>
+                <td>{{ user.privilege}}</td>
+                <td>{{ user.userId}}</td>
             </tr>
             </tbody>
         </table>

@@ -1,3 +1,4 @@
+<META name="Author" content="Victor">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
     <!--<div class="row">-->
@@ -129,7 +130,7 @@
                 <!--</div>-->
 
                 <!--Herstellen knop-->
-                <div class="btn btn-info btn-fab" ng-show="activetab == false">
+                <div class="btn btn-info btn-fab" ng-show="activetab == false" ng-disabled="$isAdmin == false">
                     <div role="presentation" ng-class="{'disabled':!isSelected()}">
                         <a ng-click="!isSelected() || restore()"><i
                                 class="material-icons">restore</i></a>
@@ -138,7 +139,7 @@
 
 
                 <!--Verwijderen knop-->
-                <div class="btn btn-info btn-fab" ng-class="{'disabled':!isSelected()}"  ng-show="activetab && selectedClient.id.length >0">
+                <div class="btn btn-info btn-fab" ng-class="{'disabled':!isSelected()}" ng-disabled="$isAdmin == false" ng-show="activetab && selectedClient.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
                         <a ng-click= "delete()" > <i class="material-icons">delete</i>
                         </a>

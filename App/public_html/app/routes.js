@@ -6,7 +6,7 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/overview', { templateUrl: 'assets/partials/overview.html', controller: 'OverviewController' });
     $routeProvider.when('/companies', { templateUrl: 'assets/partials/companies.html', controller: 'CompanyController' });
     $routeProvider.when('/clients', {templateUrl: 'assets/partials/clients.html', controller: 'ClientController' });
-    $routeProvider.when('/company', {templateUrl: 'assets/partials/companydetail.html', controller: 'CompanyController' });
+    $routeProvider.when('/viewCompany', {templateUrl: 'assets/partials/viewCompany.html', controller: 'EditCompanyController' });
     $routeProvider.when('/addcompany', {templateUrl: 'assets/partials/addcompany.html', controller: 'CompanyController' });
     $routeProvider.when('/editcompany', {templateUrl: 'assets/partials/editCompany.html', controller: 'EditCompanyController' });
     $routeProvider.when('/addclient', {templateUrl: 'assets/partials/addclient.html', controller: 'ClientController' });

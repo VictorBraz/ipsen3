@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<div class="col-md-10 col-md-offset-1">
+
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h5>Organisatie</h5>
+        </div>
+
+        <a ng-click="gotoEditCompany()">Aanpassen</a>
+
+        <form name="editForm" class="panel-body" ng-submit="" novalidate>
+
+            <div class="form-group">
+                <label class="control-label">Organisatie naam</label>
+                <input type="text" class="form-control" ng-model="company.companyName" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Contactpersoon</label>
+                <input type="text" class="form-control" ng-model="company.contactPerson" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Telefoon nummer</label>
+                <input type="text" class="form-control" ng-model="company.phoneNumber" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">E-mailadres</label>
+                <input type="text" class="form-control" ng-model="company.email" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Adres</label>
+                <input type="text" class="form-control" ng-model="company.address" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Postcode</label>
+                <input type="text" class="form-control" ng-model="company.postcode" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Plaatsnaam</label>
+                <input type="text" class="form-control" ng-model="company.city" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Tags</label>
+                <input type="text" class="form-control" ng-model="company.tag" ng-readonly="true" ng-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Notitie</label>
+                <textarea class="form-control" ng-model="company.noteText" ng-readonly="true" rows="5"></textarea>
+            </div>
+
+            <input type="button" class="btn btn-primary" value="Keer terug" onClick="history.go(-1);return true;" />
+
+        </form>
+
+    </div>
+</div>

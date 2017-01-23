@@ -48,6 +48,12 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
      //   companyService.setSelected($scope.selectedCompany.id[0]);
     //};
 
+    $scope.viewSettedComp = function (id) {
+        console.log("Current ID get: " +  id);
+        companyService.setSelected(id);
+        $scope.gotoViewCompany();
+    };
+
     $scope.isSelected = function () {
         if($scope.selectedCompany.id.length > 0){
             return true;
@@ -79,6 +85,15 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
         }
         else {
             alert("Gegevens niet verwijderd");
+        }
+    };
+
+    $scope.restore = function () {
+        var confirmation = confirm("Weet u zeker dat u het bedrijf wilt herstellen?");
+        if (confirmation == true) {
+            companyService.delete($scope.selectedCompany.id[0], reload);
+        } else{
+            alert("Gegevens niet hersteld");
         }
     };
 

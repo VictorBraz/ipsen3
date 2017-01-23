@@ -13,6 +13,10 @@ angular.module('workshop').controller('OverviewController', function($scope, use
         accountName: []
     };
 
+    $scope.signIn = function () {
+        $scope.gotoRegistration();
+    };
+
     $scope.selectUser = function () {
         userService.setSelected($scope.selectedUser.accountName[0]);
     };

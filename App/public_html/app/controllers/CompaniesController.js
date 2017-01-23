@@ -41,6 +41,9 @@ angular.module('workshop').controller('CompaniesOverviewController', function($s
         };
     };
 
+
+
+
     construct();
 
 

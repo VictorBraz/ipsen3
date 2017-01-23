@@ -1,5 +1,5 @@
 /**
- * Created by Victor on 21-12-2016.
+ * @author Victor
  */
 angular.module('workshop').controller('EditClientController', function($scope, clientService)
 {
