@@ -8,55 +8,56 @@
             <h5>Organisatie</h5>
         </div>
 
-        <form name="editForm" class="panel-body" ng-submit="update()" novalidate>
+        <a ng-click="gotoEditCompany()">Aanpassen</a>
+
+        <form name="editForm" class="panel-body" ng-submit="" novalidate>
 
             <div class="form-group">
                 <label class="control-label">Organisatie naam</label>
-                <input type="text" class="form-control" ng-model="company.companyName" placeholder="Bijv. Hogeschool Leiden " ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.companyName" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Contactpersoon</label>
-                <input type="text" class="form-control" ng-model="company.contactPerson" placeholder="Bijv. Puk " ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.contactPerson" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Telefoon nummer</label>
-                <input type="text" class="form-control" ng-model="company.phoneNumber" placeholder="Bijv. 071 518 8800 " ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.phoneNumber" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">E-mailadres</label>
-                <input type="text" class="form-control" ng-model="company.email" placeholder="Bijv. info@domein.nl " ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.email" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Adres</label>
-                <input type="text" class="form-control" ng-model="company.address" placeholder="Bijv. Zernikdreef 11" ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.address" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Postcode</label>
-                <input type="text" class="form-control" ng-model="company.postcode" placeholder="Bijv. 1234AB" ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.postcode" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Plaatsnaam</label>
-                <input type="text" class="form-control" ng-model="company.city" placeholder="Bijv. Leiden" ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.city" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Tags</label>
-                <input type="text" class="form-control" ng-model="company.tag" placeholder="Bijv. Rolstoel, Slechtziend" ng-required="true" />
+                <input type="text" class="form-control" ng-model="company.tag" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Notitie</label>
-                <textarea class="form-control" ng-model="company.noteText" placeholder="Hier kunt u een notitie schrijven" rows="5"></textarea>
+                <textarea class="form-control" ng-model="company.noteText" ng-readonly="true" rows="5"></textarea>
             </div>
 
-            <input type="submit" class="btn btn-primary" value="Aanpassen" ng-disabled="registrationForm.$invalid" />
-            <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
+            <input type="button" class="btn btn-primary" value="Keer terug" onClick="history.go(-1);return true;" />
 
         </form>
 

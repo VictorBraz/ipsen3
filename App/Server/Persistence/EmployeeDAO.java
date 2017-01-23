@@ -132,6 +132,8 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setEmail(rs.getString(7));
                 employee.setPhoneNumber(rs.getString(8));
                 employee.setTag(rs.getString(9));
+                employee.setActive(rs.getBoolean(10));
+
 
                 Address address = addressDAO.getAddress(employee.getEmployeeAddressID());
                 employee.setAddress(address.getAddress());
@@ -183,15 +185,22 @@ public class EmployeeDAO extends DatabaseDAO {
         }
     }
 
-    public void delete (Employee employee) {
+    public void delete (int id) {
         try {
-            deleteEmployee.setBoolean(1, employee.getActive());
-            deleteEmployee.setInt(2, employee.getId());
+            if (getEmployee(id).getActive() == true) {
+                deleteEmployee.setBoolean(1, false);
+                deleteEmployee.setInt(2, id);
+                deleteEmployee.execute();
 
-            deleteEmployee.executeUpdate();
+            } else {
+                deleteEmployee.setBoolean(1, true);
+                deleteEmployee.setInt(2, id);
+                deleteEmployee.execute();
+            }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
