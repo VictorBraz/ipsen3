@@ -65,7 +65,7 @@ public class EmployeeDAO extends DatabaseDAO {
             addEmployee.executeUpdate();
 
             ResultSet rs = addEmployee.getGeneratedKeys();
-            while (rs.next()){
+            if (rs.next()){
                 employee.setId(rs.getInt("id"));
             }
 
@@ -75,7 +75,7 @@ public class EmployeeDAO extends DatabaseDAO {
             System.out.println(employee.getNoteText());
             noteDAO.addNote(note);
 
-//            addEmployee.close();
+            addEmployee.close();
         }catch (Exception e){
         }
     }
@@ -109,7 +109,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
                 employees.add(employee);
             }
-//            getAll.close();
+            getAll.close();
 
         }catch (Exception e) {
         }
@@ -144,7 +144,7 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setNoteText(note.getText());
 
             }
-//            getEmployee.close();
+            getEmployee.close();
         }catch (Exception e){
         }
         return employee;
@@ -179,7 +179,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
             updateEmployee.executeUpdate();
 
-
+            updateEmployee.close();
         }catch (Exception e){
 
         }
@@ -198,7 +198,7 @@ public class EmployeeDAO extends DatabaseDAO {
                 deleteEmployee.execute();
             }
 
-
+            deleteEmployee.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
