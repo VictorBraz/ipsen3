@@ -77,7 +77,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
         } else{
             ("Gegevens niet hersteld");
         }
-    }
+    };
 
 
     var reload = function()

@@ -19,6 +19,7 @@ public class UserDAO extends DatabaseDAO
     private PreparedStatement getUser;
     private PreparedStatement addUser;
     private PreparedStatement getAll;
+    private PreparedStatement deleteUser;
     private List<User> users;
 
     public UserDAO() throws Exception {
@@ -30,8 +31,10 @@ public class UserDAO extends DatabaseDAO
     private void prepareStatements() {
         try {
             getUser = conn.prepareStatement("SELECT * FROM account WHERE id=?");
-            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid) VALUES (?, ?, ?, ?)");
+            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid, active) VALUES (?, ?, ?, ?, TRUE )");
             getAll = conn.prepareStatement("SELECT * FROM account");
+            deleteUser = conn.prepareStatement("UPDATE account SET active=? WHERE id =?");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,6 +54,7 @@ public class UserDAO extends DatabaseDAO
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(String.valueOf(rs.getInt(4)));
                 user.setUserId(rs.getInt(5));
+                user.setActive(rs.getBoolean(6));
                 users.add(user);
             }
 //            getAll.close();
@@ -73,6 +77,7 @@ public class UserDAO extends DatabaseDAO
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(rs.getString(4));
                 user.setUserId(rs.getInt(5));
+                user.setActive(rs.getBoolean(6));
                 users.add(user);
             }
 //            getEmployee.close();
@@ -114,6 +119,23 @@ public class UserDAO extends DatabaseDAO
 
     public void delete(int id)
     {
-        users.remove(id);
+        try {
+
+            if( getUser(id).getActive() == true) {
+                deleteUser.setBoolean(1, false);
+                deleteUser.setInt(2, id);
+                deleteUser.execute();
+
+            } else {
+                deleteUser.setBoolean(1, true);
+                deleteUser.setInt(2, id);
+                deleteUser.execute();
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

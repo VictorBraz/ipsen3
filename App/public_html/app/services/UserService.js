@@ -59,15 +59,15 @@ angular.module('workshop').service('userService', function($http)
         console.log("SELECTED: " + self.selectedUser);
     };
 
-    self.getUser = function (onReceived) {
-        var uri = 'api/clients/' + self.selectedUser + '';
-
-        $http.get(uri).then(function(response){
+    self.delete = function(id, onReceived) {
+        var uri = 'api/users/' + id + '';
+        $http.delete(uri, id).then(function (response) {
                 onReceived(response.data);
-                console.log("trying to get" + self.selectedUser);
+                self.getAll(onReceived);
             },
-            function (message, status) {
-                alert('Ophalen mislukt: ' + message + status);
+            function(message, status) {
+                alert('Verwijderen mislukt: ' + message + status);
             });
     };
+
 });

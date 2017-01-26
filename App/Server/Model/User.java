@@ -36,6 +36,9 @@ public class User implements Principal
     @JsonView(View.Public.class)
     private int userId;
 
+    @JsonView(View.Public.class)
+    private boolean active;
+
     public int getId()
     {
         return id;
@@ -73,6 +76,14 @@ public class User implements Principal
         }else {
             return 3;
         }
+    }
+
+    public void setActive(boolean active){
+        this.active = active;
+    }
+
+    public boolean getActive(){
+        return this.active;
     }
 
     public void setPrivilege(String privilege)
