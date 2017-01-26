@@ -60,6 +60,7 @@ public class UserResource
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
+    @RolesAllowed("1")
     public void create(User user)
     {
         service.add(user);

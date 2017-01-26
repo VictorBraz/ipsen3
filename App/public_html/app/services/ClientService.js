@@ -1,5 +1,5 @@
 /**
- * Created by Victor on 12-12-2016.
+ * @author Victor
  */
 
 angular.module('workshop').service('clientService', function($http)
@@ -51,7 +51,7 @@ angular.module('workshop').service('clientService', function($http)
 
     self.setSelected = function(id){
         self.selectedClient = id;
-        //console.log("SELECTED: " + self.selectedClient);
+        console.log("SELECTED: " + self.selectedClient);
     };
 
     self.getSelected = function () {

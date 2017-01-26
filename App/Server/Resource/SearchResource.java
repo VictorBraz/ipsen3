@@ -1,7 +1,7 @@
 package Server.Resource;
 
 /**
- * Created by Braz on 09/01/2017.
+ * @author Victor
  */
 
 import Server.Model.Client;
@@ -32,6 +32,7 @@ public class SearchResource {
     private final ClientService clientService;
     private final CompanyService companyService;
     private final EmployeeService employeeService;
+
 
     @Inject
     public SearchResource(ClientService cs, CompanyService comp, EmployeeService emp){

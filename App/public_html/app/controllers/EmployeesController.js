@@ -2,15 +2,18 @@
  * Created by Negin on 13-12-2016.
  */
 
-angular.module('workshop').controller('EmployeesController', function($scope, employeeService)
+angular.module('workshop').controller('EmployeesController', function($scope, $route, employeeService)
 {
     var construct = function()
     {
         employeeService.getAll(function (employees)
         {
             $scope.employees = employees;
+            $scope.activetab = true;
         });
     };
+
+    $scope.searchKeyword = '';
 
     $scope.register = function () {
         employeeService.create(
@@ -24,6 +27,7 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
             $scope.address,
             $scope.city,
             $scope.postcode,
+            $scope.noteText,
             employeeCreated
         );
     };
@@ -47,7 +51,6 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
     };
 
     $scope.selectEmployee = function () {
-        console.log("---------->" + $scope.selectedEmployee.id[0]);
         employeeService.setSelected($scope.selectedEmployee.id[0]);
     };
 
@@ -56,7 +59,32 @@ angular.module('workshop').controller('EmployeesController', function($scope, em
             $scope.gotoEmployees();
     };
 
-    $scope.searchKeyword = '';
+    $scope.delete = function () {
+        var confirmation = confirm("Weet u zeker dat u de medewerker wilt verwijderen?");
+        if (confirmation == true) {
+            employeeService.delete($scope.selectedEmployee.id[0], reload);
+            alert("De medewerker is op non-active gezet!");
+        }
+        else {
+            alert("Gegevens niet verwijderd");
+        }
+    };
+
+    $scope.restore = function () {
+        var confirmation = confirm("Weet u zeker dat u de medewerker wilt herstellen?");
+        if (confirmation == true) {
+            employeeService.delete($scope.selectedEmployee.id[0], reload);
+            alert("De medewerker is op active gezet!");
+        } else{
+            ("Gegevens niet hersteld");
+        }
+    }
+
+
+    var reload = function()
+    {
+        $route.reload();
+    };
 
     construct();
 });

@@ -7,7 +7,13 @@
             <h5>Medewerker</h5>
         </div>
 
-        <form name="updateForm" class="panel-body" ng-submit="update()" novalidate>
+        <div class="btn btn-info btn-fab">
+            <div role="presentation" ng-class="{ 'active': isLocation('/editEmployee') }">
+                <a ng-click="gotoEditEmployee()"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+
+        <form class="panel-body" novalidate>
             <div class="form-group">
                 <label class="control-label">Voornaam</label>
                 <input type="text" class="form-control" ng-model="employees.firstName" ng-readonly="true" ng-required="true" />
@@ -62,6 +68,10 @@
                 <input type="text" class="form-control" ng-model="employees.tag" ng-readonly="true" ng-required="false" />
             </div>
 
+            <div class="form-group">
+                <label class="control-label">Notitie</label>
+                <textarea class="form-control" ng-model="employees.noteText" ng-readonly="true" rows="5"></textarea>
+            </div>
             <!--Gaat één pagina terug, zonder veranderingen-->
             <input type="button" class="btn btn-primary" value="Terug" onClick="history.go(-1);return true;" />
         </form>

@@ -4,7 +4,7 @@
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h5>Toevoegen Medewerker</h5>
+            <h5>Aanpassen Medewerker</h5>
         </div>
 
         <form name="updateForm" class="panel-body" ng-submit="update()" novalidate>
@@ -60,6 +60,11 @@
             <div class="form-group">
                 <label class="control-label">Tags</label>
                 <input type="text" class="form-control" ng-model="employees.tag" ng-required="False" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Notitie</label>
+                <textarea class="form-control" ng-model="employees.noteText" placeholder="Hier kunt u een notitie schrijven" rows="5"></textarea>
             </div>
 
             <input type="submit" class="btn btn-primary" value="Aanpassen" ng-disabled="registrationForm.$invalid" />

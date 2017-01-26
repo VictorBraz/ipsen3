@@ -81,12 +81,19 @@ angular.module('workshop').service('authenticationService', function($window, $r
      * 
      * @param {object} user The authenticated user.
      */
-    self.setAuthenticator = function(user)
-    {
+    self.setAuthenticator = function(user) {
         authenticator = user;
-        
+
         $rootScope.authenticator = user;
         $rootScope.authenticated = user !== null;
+        if (user != null) {
+            console.log('Heeft privilege'+ user.privilege);
+            if (user.privilege.toString() == '1') {
+                $rootScope.isAdmin = true;
+            } else {
+                $rootScope.isAdmin = false;
+            }
+        }
     };
 
     /**

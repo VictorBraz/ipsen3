@@ -30,7 +30,7 @@ public class UserDAO extends DatabaseDAO
     private void prepareStatements() {
         try {
             getUser = conn.prepareStatement("SELECT * FROM account WHERE id=?");
-            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid) VALUES (?, ?, ?, ?, ?)");
+            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid) VALUES (?, ?, ?, ?)");
             getAll = conn.prepareStatement("SELECT * FROM account");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class UserDAO extends DatabaseDAO
                 User user = new User();
                 user.setId(rs.getInt(1));
                 System.out.println("//////////////////" + rs.getInt(1));
-                user.setAccountName(rs.getString(2));
+                user.setEmailAddress(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(String.valueOf(rs.getInt(4)));
                 user.setUserId(rs.getInt(5));
@@ -69,7 +69,7 @@ public class UserDAO extends DatabaseDAO
 
             while (rs.next()) {
                 user.setId(rs.getInt(1));
-                user.setAccountName(rs.getString(2));
+                user.setEmailAddress(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(rs.getString(4));
                 user.setUserId(rs.getInt(5));
@@ -84,7 +84,7 @@ public class UserDAO extends DatabaseDAO
 
     public User getByEmailAddress(String accountName) {
 
-            Optional<User> result = users.stream().filter(user -> user.getAccountName().equals(accountName)).findAny();
+            Optional<User> result = users.stream().filter(user -> user.getEmailAddress().equals(accountName)).findAny();
 
             return result.isPresent()
                     ? result.get()
@@ -94,6 +94,17 @@ public class UserDAO extends DatabaseDAO
     public void add(User user)
     {
         users.add(user);
+        try{
+            addUser.setString(1, user.getEmailAddress());
+            addUser.setString(2, user.getPassword());
+            addUser.setInt(3, user.getPrivilege());
+            addUser.setInt(4, user.getUserId());
+
+            addUser.executeUpdate();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void update(int id, User user)

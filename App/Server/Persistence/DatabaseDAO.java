@@ -6,7 +6,7 @@ import javax.inject.Singleton;
 import java.sql.Connection;
 
 /**
- * Created by Victor on 9-12-2016.
+ * @author Victor
  */
 public abstract class DatabaseDAO {
 
@@ -14,6 +14,6 @@ public abstract class DatabaseDAO {
     protected Connection conn;
 
     public DatabaseDAO() throws Exception{
-        this.conn = DatabaseService.getInstance().getConnection("postgres", "1");
+        this.conn = DatabaseService.getInstance().getConnection("IPSEN3G10", "1");
     }
 }

@@ -1,5 +1,5 @@
 /**
- * Created by Braz on 09/01/2017.
+ * @author Victor
  */
 angular.module('workshop').service('searchService', function($http){
 
@@ -9,7 +9,7 @@ angular.module('workshop').service('searchService', function($http){
 
     self.setTag = function (tag){
         self.tag = tag;
-    }
+    };
 
     self.getFilteredClients = function(onReceived){
         var uri = 'api/search/clients/' + self.tag + '';

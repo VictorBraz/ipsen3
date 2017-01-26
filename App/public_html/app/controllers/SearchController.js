@@ -1,5 +1,5 @@
 /**
- * Created by Braz on 09/01/2017.
+ * @author Victor
  */
 angular.module('workshop').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
 
@@ -29,6 +29,8 @@ angular.module('workshop').controller('SearchController', function($scope, searc
     $scope.searchAll = function () {
         $scope.setTag();
         $scope.searchClients();
+        $scope.searchCompanies();
+        $scope.searchEmployees();
     };
 
     $scope.searchClients = function(){
@@ -44,15 +46,10 @@ angular.module('workshop').controller('SearchController', function($scope, searc
     };
 
     $scope.searchEmployees = function(){
-        searchService.getFilteredEmployees(function (employees){
+        searchService.getFilteredEmployees(function (employees) {
             $scope.filteredEmployees = employees;
         });
     };
 
-    jQuery(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.document.location = $(this).data("href");
-        });
-    });
 
 });

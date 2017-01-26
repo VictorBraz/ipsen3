@@ -6,7 +6,7 @@ angular.module('workshop').service('employeeService', function($http)
 {
     var self = this;
 
-    self.create = function (firstName, lastName, study, birthDate, email, phoneNumber, tag, address, cityName, zipCode, onCreated) {
+    self.create = function (firstName, lastName, study, birthDate, email, phoneNumber, tag, address, cityName, zipCode,noteText, onCreated) {
 
         var uri = '/api/employees';
         var data =
@@ -21,6 +21,7 @@ angular.module('workshop').service('employeeService', function($http)
             address: address,
             city: cityName,
             postcode: zipCode,
+            noteText:noteText
         };
         $http.post(uri, data).then(function (response)
             {
@@ -75,6 +76,18 @@ angular.module('workshop').service('employeeService', function($http)
             },
             function (message, status) {
                 alert('Aanpassen mislukt: ' + message + status);
+            });
+    };
+
+    self.delete = function(id, onReceived) {
+        var uri = 'api/employees/' + id + '';
+        console.log("employee: " + id);
+        $http.delete(uri, id).then(function (response) {
+                onReceived(response.data);
+                self.getAll(onReceived);
+            },
+            function(message, status) {
+                alert('Verwijderen mislukt: ' + message + status);
             });
     };
 

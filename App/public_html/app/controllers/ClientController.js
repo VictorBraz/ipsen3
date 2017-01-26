@@ -1,5 +1,5 @@
 /**
- * Created by Victor on 12-12-2016.
+ * @author Victor
  */
 
 angular.module('workshop').controller('ClientController', function ($scope, $route, clientService) {
@@ -32,6 +32,11 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
             clientCreated
         );
 
+    };
+
+    $scope.viewSettedClient = function (id) {
+        clientService.setSelected(id);
+        $scope.gotoViewClient();
     };
 
     $scope.selectedClient = {

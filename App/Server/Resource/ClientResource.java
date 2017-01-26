@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 /**
- * Created by Victor on 12-12-2016.
+ * @author Victor
  */
 @Singleton
 @Path("/clients")

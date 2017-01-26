@@ -52,6 +52,9 @@ public class Employee {
     @JsonView(View.Public.class)
     private String noteText;
 
+    @JsonView(View.Public.class)
+    private Boolean active;
+
     public int getId() {
         return id;
     }
@@ -154,5 +157,13 @@ public class Employee {
 
     public void setNoteText(String noteText) {
         this.noteText = noteText;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Boolean getActive() {
+        return active;
     }
 }
