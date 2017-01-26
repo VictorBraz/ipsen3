@@ -4,6 +4,7 @@
 
 angular.module('workshop').controller('ClientController', function ($scope, $route, clientService) {
 
+// Make sure to include the ngAlertify.js file.
 
     var construct = function () {
         clientService.getAll(function (clients) {
@@ -56,12 +57,12 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
 
     $scope.delete = function () {
-        var confirmation = confirm("Weet u zeker dat u de client wilt verwijderen?");
+        var confirmation = alertify.confirm("Weet u zeker dat u de client wilt verwijderen?");
         if (confirmation == true) {
             clientService.delete($scope.selectedClient.id[0], reload);
         }
         else {
-            alert("Gegevens niet verwijderd");
+            alertify.alert("Gegevens niet verwijderd");
         }
     };
 
