@@ -32,7 +32,7 @@ public class CalenderResource {
     @JsonView(View.Public.class)
     //@RolesAllowed("3")
     @PermitAll
-    public Collection<Calender> retrieveActive(){
+    public Collection<Calender> getAll(){
         return service.getAll();
     }
 

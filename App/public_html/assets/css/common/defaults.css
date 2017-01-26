@@ -10,9 +10,6 @@ a
     cursor: pointer;
 }
 
-body {
-    background:#c33;
-}
 
 .panel-transparent {
     background: none;
@@ -31,11 +28,19 @@ body {
 
 
 body {
-    background: url('../../images/background.jpg') no-repeat center center fixed;
+    background: url('../../images/background.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-size: cover !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px
 }
 
 #emptyspace {
