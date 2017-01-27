@@ -62,12 +62,12 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
 
     $scope.delete = function () {
-        var confirmation = alertify.confirm("Weet u zeker dat u de client wilt verwijderen?");
+        var confirmation = confirm("Weet u zeker dat u de client wilt verwijderen?");
         if (confirmation == true) {
             clientService.delete($scope.selectedClient.id[0], reload);
         }
         else {
-            alertify.alert("Gegevens niet verwijderd");
+            alert("Gegevens niet verwijderd");
         }
     };
 

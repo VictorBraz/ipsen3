@@ -4,12 +4,17 @@
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h5>Medewerker</h5>
+            <h1>Medewerker</h1>
         </div>
 
-        <div class="btn btn-info btn-fab">
-            <div role="presentation" ng-class="{ 'active': isLocation('/editEmployee') }">
-                <a ng-click="gotoEditEmployee()"><i class="material-icons">add</i></a>
+        <div class="col-md-2 col-md-offset-11">
+            <div class="row"  id="buttonrow">
+                <div class="btn btn-info btn-fab">
+                    <div role="presentation" ng-class="{ 'active': isLocation('/editEmployee') }">
+                        <a ng-click="gotoEditEmployee()"><i
+                                class="material-icons">launch</i></a>
+                    </div>
+                </div>
             </div>
         </div>
 

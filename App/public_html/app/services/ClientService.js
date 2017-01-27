@@ -30,7 +30,7 @@ angular.module('workshop').service('clientService', function($http)
 
         function (message, status)
         {
-            alert('Aanmaken mislukt: ' + message);
+            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message);
         });
     };
 
@@ -41,7 +41,7 @@ angular.module('workshop').service('clientService', function($http)
             onReceived(response.data);
         },
         function(message, status){
-            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message);
+            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
 
     };
@@ -51,11 +51,6 @@ angular.module('workshop').service('clientService', function($http)
 
     self.setSelected = function(id){
         self.selectedClient = id;
-        console.log("SELECTED: " + self.selectedClient);
-    };
-
-    self.getSelected = function () {
-        console.log('test: ' + self.selectedId);
     };
 
     self.getClient = function (onReceived) {
@@ -63,7 +58,6 @@ angular.module('workshop').service('clientService', function($http)
 
         $http.get(uri).then(function(response){
             onReceived(response.data);
-            console.log("trying to get" + self.selectedClient)
         },
         function (message, status) {
             alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
@@ -72,7 +66,7 @@ angular.module('workshop').service('clientService', function($http)
 
     self.update = function (client, onReceived) {
         var uri = 'api/clients/' + client.id + '';
-        console.log("voornaam: " + client.firstname);
+
         $http.put(uri, client).then(function (response) {
             onReceived(response.data);
         },
@@ -83,24 +77,24 @@ angular.module('workshop').service('clientService', function($http)
 
     self.delete = function(id, onReceived) {
         var uri = 'api/clients/' + id + '';
-        console.log("client " + id);
+
         $http.delete(uri, id).then(function (response) {
             onReceived(response.data);
             self.getAll(onReceived);
         },
         function(message, status) {
-            alert('Verwijderen mislukt: ' + message + status);
+            alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 
     self.restore = function(id, onReceived) {
         var uri = 'api/clients/' + id + '';
-        console.log("client" + id);
+
         $http.put(uri, id).then(function(response) {
             onReceived(response.data);
         },
         function(message, status) {
-            alert('Herstellen mislukt: ' + message + status);
+            alert('Herstellen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     }
 });

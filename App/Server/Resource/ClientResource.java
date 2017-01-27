@@ -32,19 +32,11 @@ public class ClientResource {
 
     @GET
     @JsonView(View.Public.class)
-    //@RolesAllowed("3")
     @PermitAll
     public Collection<Client> retrieveActive(){
         return service.getAll();
     }
 
-//    @GET
-//    @JsonView(View.Public.class)
-//    //@RolesAllowed("3")
-//    @PermitAll
-//    public Collection<Client> retrieveInactive(){
-//        return service.getInactive();
-//    }
 
     @GET
     @Path("/{id}")
@@ -68,7 +60,6 @@ public class ClientResource {
     @PermitAll
     public void update(Client client){
         service.update(client);
-        System.out.println(client.getFirstname());
     }
 
     @DELETE
@@ -81,13 +72,4 @@ public class ClientResource {
         service.delete(id);
     }
 
-//    @PUT
-//    @Path("/{id}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @JsonView(View.Protected.class)
-//    @PermitAll
-//    public void restore(@PathParam("id") int id) {
-//        System.out.println(id);
-//        service.restore(id);
-//    }
 }
