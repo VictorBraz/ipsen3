@@ -78,6 +78,7 @@ public class UserDAO extends DatabaseDAO
                 user.setPrivilege(rs.getString(4));
                 user.setUserId(rs.getInt(5));
                 user.setActive(rs.getBoolean(6));
+                System.out.println("WORDT NAAR HET VOLGENDE GEZET: " +rs.getBoolean(6));
                 users.add(user);
             }
 //            getEmployee.close();
@@ -121,15 +122,16 @@ public class UserDAO extends DatabaseDAO
     {
         try {
 
-            if( getUser(id).getActive() == true) {
+            if( getUser(id).getActive()) {
                 deleteUser.setBoolean(1, false);
                 deleteUser.setInt(2, id);
-                deleteUser.execute();
-
+                deleteUser.executeUpdate();
+                System.out.println("set to false");
             } else {
                 deleteUser.setBoolean(1, true);
                 deleteUser.setInt(2, id);
-                deleteUser.execute();
+                deleteUser.executeUpdate();
+                System.out.println("set to true");
             }
 
 

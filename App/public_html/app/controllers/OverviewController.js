@@ -6,6 +6,7 @@ angular.module('workshop').controller('OverviewController', function($scope, use
         userService.getAll(function(users)
         {
             $scope.users = users;
+            $scope.activetab = true;
         });
     };
 
