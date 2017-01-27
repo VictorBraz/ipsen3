@@ -80,7 +80,6 @@ angular.module('workshop').service('clientService', function($http)
 
         $http.delete(uri, id).then(function (response) {
             onReceived(response.data);
-            self.getAll(onReceived);
         },
         function(message, status) {
             alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);

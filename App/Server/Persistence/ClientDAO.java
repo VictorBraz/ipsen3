@@ -214,7 +214,6 @@ public class ClientDAO extends DatabaseDAO{
             e.printStackTrace();
         }
 
-
     }
 
     public void restore(int id) {
