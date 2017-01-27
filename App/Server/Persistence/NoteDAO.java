@@ -16,7 +16,7 @@ public class NoteDAO extends DatabaseDAO {
     private PreparedStatement getNote;
     private PreparedStatement editNote;
     private PreparedStatement getAll;
-    private List<Note> notes;
+
 
     public NoteDAO() throws Exception {
         super();

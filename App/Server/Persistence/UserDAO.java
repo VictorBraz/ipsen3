@@ -31,7 +31,8 @@ public class UserDAO extends DatabaseDAO
     private void prepareStatements() {
         try {
             getUser = conn.prepareStatement("SELECT * FROM account WHERE id=?");
-            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid, active) VALUES (?, ?, ?, ?, TRUE )");
+            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege," +
+                    " userid, active) VALUES (?, ?, ?, ?, TRUE )");
             getAll = conn.prepareStatement("SELECT * FROM account");
             deleteUser = conn.prepareStatement("UPDATE account SET active=? WHERE id =?");
 
@@ -49,7 +50,6 @@ public class UserDAO extends DatabaseDAO
             while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt(1));
-                System.out.println("//////////////////" + rs.getInt(1));
                 user.setEmailAddress(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(String.valueOf(rs.getInt(4)));
@@ -57,9 +57,9 @@ public class UserDAO extends DatabaseDAO
                 user.setActive(rs.getBoolean(6));
                 users.add(user);
             }
-//            getAll.close();
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return users;
     }
@@ -78,10 +78,8 @@ public class UserDAO extends DatabaseDAO
                 user.setPrivilege(rs.getString(4));
                 user.setUserId(rs.getInt(5));
                 user.setActive(rs.getBoolean(6));
-                System.out.println("WORDT NAAR HET VOLGENDE GEZET: " +rs.getBoolean(6));
                 users.add(user);
             }
-//            getEmployee.close();
         } catch (Exception e) {
             return null;
         }
@@ -126,12 +124,10 @@ public class UserDAO extends DatabaseDAO
                 deleteUser.setBoolean(1, false);
                 deleteUser.setInt(2, id);
                 deleteUser.executeUpdate();
-                System.out.println("set to false");
             } else {
                 deleteUser.setBoolean(1, true);
                 deleteUser.setInt(2, id);
                 deleteUser.executeUpdate();
-                System.out.println("set to true");
             }
 
 

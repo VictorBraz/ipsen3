@@ -56,7 +56,6 @@ angular.module('workshop').service('userService', function($http)
 
     self.setSelected = function(accName){
         self.selectedUser = accName;
-        console.log("SELECTED: " + self.selectedUser);
     };
 
     self.delete = function(id, onReceived) {

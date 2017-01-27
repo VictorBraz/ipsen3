@@ -44,12 +44,7 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
         );
     };
 
-    //$scope.selectCompany = function() {
-     //   companyService.setSelected($scope.selectedCompany.id[0]);
-    //};
-
     $scope.viewSettedComp = function (id) {
-        console.log("Current ID get: " +  id);
         companyService.setSelected(id);
         $scope.gotoViewCompany();
     };
@@ -64,7 +59,6 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
 
     $scope.selectCompany = function () {
         companyService.setSelected($scope.selectedCompany.id[0]);
-        console.log($scope.selectedCompany.id[0]);
     };
 
     var companyCreated = function() {

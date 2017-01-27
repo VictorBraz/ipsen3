@@ -43,7 +43,6 @@ angular.module('workshop').controller('EmployeesController', function($scope, $r
 
     $scope.isSelected = function () {
         if($scope.selectedEmployee.id.length > 0){
-            console.log("selectedEmployee id: " + $scope.selectedEmployee.id)
             return true;
         }else{
             return false;

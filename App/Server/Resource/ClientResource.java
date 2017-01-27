@@ -69,7 +69,6 @@ public class ClientResource {
     @PermitAll
     public void delete(@PathParam("id") int id) {
         System.out.println(id);
-        service.delete(id);
     }
 
 }

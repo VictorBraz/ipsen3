@@ -48,7 +48,7 @@ public class SearchResource {
     public Collection<Client> retrieveClients(@PathParam("tag") @JsonView String tag) throws Exception {
 
         Collection<Client> clients = clientService.getAll();
-        System.out.println("RETRIEVECLIENTS");
+
         for (Iterator<Client> clientIterator = clients.iterator(); clientIterator.hasNext(); ) {
             Client client = clientIterator.next();
             if (!client.getTag().toLowerCase().contains(tag.toLowerCase())) {
@@ -65,7 +65,7 @@ public class SearchResource {
     public Collection<Company> retrieveCompanies(@PathParam("tag") @JsonView String tag) throws Exception {
 
         Collection<Company> companies = companyService.getAll();
-        System.out.println("RETRIEVE-Companies");
+
         for (Iterator<Company> companyIterator = companies.iterator(); companyIterator.hasNext(); ) {
             Company company = companyIterator.next();
             if (!company.getTag().toLowerCase().contains(tag.toLowerCase())) {
@@ -82,7 +82,7 @@ public class SearchResource {
     public Collection<Employee> retrieveEmployee(@PathParam("tag") @JsonView String tag) throws Exception {
 
         Collection<Employee> employees = employeeService.getAll();
-        System.out.println("RETRIEVE-Employees");
+
         for (Iterator<Employee> employeeIterator = employees.iterator(); employeeIterator.hasNext(); ) {
             Employee employee = employeeIterator.next();
             if (!employee.getTag().toLowerCase().contains(tag.toLowerCase())) {

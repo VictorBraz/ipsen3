@@ -23,7 +23,6 @@ public class DatabaseService {
 
 
         } catch (ClassNotFoundException e) {
-            System.out.println("Error: Class not found");
             e.printStackTrace();
             return;
         }

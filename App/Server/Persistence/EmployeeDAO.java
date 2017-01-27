@@ -34,9 +34,12 @@ public class EmployeeDAO extends DatabaseDAO {
     private void prepareStatements() {
         try {
             getEmployee = conn.prepareStatement("SELECT * FROM student WHERE id=?");
-            addEmployee = conn.prepareStatement("INSERT INTO student (studentaddressid, firstName, lastName, birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            addEmployee = conn.prepareStatement("INSERT INTO student (studentaddressid, firstName, lastName," +
+                    " birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM student");
-            updateEmployee = conn.prepareStatement("UPDATE student SET studentaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
+            updateEmployee = conn.prepareStatement("UPDATE student SET studentaddressid=?, firstname=?," +
+                    " lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
             deleteEmployee = conn.prepareStatement("UPDATE student SET active=? WHERE id =?");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,11 +75,11 @@ public class EmployeeDAO extends DatabaseDAO {
             Note note = new Note();
             note.setOwnerID(employee.getId());
             note.setText(employee.getNoteText());
-            System.out.println(employee.getNoteText());
             noteDAO.addNote(note);
 
             addEmployee.close();
         }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -112,6 +115,7 @@ public class EmployeeDAO extends DatabaseDAO {
             getAll.close();
 
         }catch (Exception e) {
+            e.printStackTrace();
         }
         return employees;
     }
@@ -146,6 +150,7 @@ public class EmployeeDAO extends DatabaseDAO {
             }
             getEmployee.close();
         }catch (Exception e){
+            e.printStackTrace();
         }
         return employee;
     }
@@ -181,7 +186,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
             updateEmployee.close();
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 

@@ -181,17 +181,6 @@ public class CompanyDAO extends DatabaseDAO {
         }
     }
 
-    /* public void delete (int id) {
-        try {
-            deleteCompany.setBoolean(1, false);
-            deleteCompany.setInt(2, id);
-            deleteCompany.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    */
-
     public void delete (int id) {
         try {
             Company comp = getCompany(id);
@@ -210,8 +199,5 @@ public class CompanyDAO extends DatabaseDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

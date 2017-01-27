@@ -3,7 +3,6 @@
  */
 angular.module('workshop').controller('NoteController',function ($scope,noteService) {
     var construct = function () {
-        console.log('Contruct Controller 2');
         noteService.getNote(function (note) {
             $scope.note = note
         })
