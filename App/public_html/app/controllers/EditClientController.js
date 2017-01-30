@@ -19,7 +19,7 @@ angular.module('workshop').controller('EditClientController', function($scope, c
             clientService.update($scope.client, onUpdated);
         }
         else{
-            alert('Gegevens niet aangepast!');
+            alert('Gegevens niet aangepast, neem contact op met uw beheerder.');
         }
     };
 

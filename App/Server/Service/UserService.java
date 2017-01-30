@@ -54,9 +54,6 @@ public class UserService extends BaseService<User>
 
     public void delete(int id)
     {
-        // Controleren of deze gebruiker wel bestaat
-        User user = get(id);
-
         dao.delete(id);
     }
 }

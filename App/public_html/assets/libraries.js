@@ -9,15 +9,28 @@
     addScript('assets/libraries/angular-route.min.js');
     addScript('assets/libraries/ui-bootstrap.min.js');
 
+
     // Other
     addScript('assets/libraries/base64.min.js');
     addScript('assets/libraries/checklist-model.js');
+
+    //alertscreen
+    addScript('assets/libraries/alertify/alertify.js');
+    addScript('assets/libraries/alertify/ngAlertify.js');
+    addScript('assets/materialdesign/js/initAlertify.js');
+    addScript('https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js');
+
+    //charts
+    addScript('assets/libraries/')
+
 
     //materialdesign
     addScript('assets/materialdesign/js/arrive.min.js');
     addScript('assets/materialdesign/js/material.min.js');
     addScript('assets/materialdesign/js/ripples.min.js');
     addScript('assets/materialdesign/js/initBootstrap.js');
+
+
 
     //calender
 

@@ -4,24 +4,35 @@
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h5>Cliënt</h5>
+            <h1>Cliënt</h1>
+        </div>
+
+        <div class="col-md-2 col-md-offset-11">
+            <div class="row"  id="buttonrow">
+                <div class="btn btn-info btn-fab">
+                        <div role="presentation" ng-class="{ 'active': isLocation('/editClient') }">
+                            <a ng-click="gotoEditClient()"><i
+                            class="material-icons">launch</i></a>
+                        </div>
+                </div>
+            </div>
         </div>
 
         <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
 
             <div class="form-group">
                 <label class="control-label">Voornaam</label>
-                <input type="text" class="form-control" ng-model="clients.firstname" ng-readonly="true" ng-required="true" />
+                <input type="text" class="form-control" ng-model="client.firstname" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Achternaam</label>
-                <input type="text" class="form-control" ng-model="clients.lastname" ng-readonly="true" ng-required="true" />
+                <input type="text" class="form-control" ng-model="client.lastname" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">
                 <label class="control-label">Geboortedatum</label>
-                <input type="text" class="form-control" ng-model="clients.birthdate" ng-readonly="true" ng-required="true" />
+                <input type="text" class="form-control" ng-model="client.birthdate" ng-readonly="true" ng-required="true" />
             </div>
 
             <div class="form-group">

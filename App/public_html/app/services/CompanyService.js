@@ -1,5 +1,6 @@
 /**
  * Created by Mitch on 12/9/2016.
+ * @author Bernd
  */
 
 
@@ -23,8 +24,6 @@ angular.module('workshop').service('companyService', function($http)
             noteText: noteText,
             active: active
         };
-
-        console.log(data);
 
         $http.post(uri, data).then(function (response) {
             onCreated(response.data);
@@ -54,8 +53,6 @@ angular.module('workshop').service('companyService', function($http)
         if (self.selectedCompany >= 1) {
             $http.get(uri).then(function (response) {
                     onReceived(response.data);
-                    console.log("trying to get" + self.selectedCompany)
-                    console.log(response.data)
                 },
                 function (message, status) {
                     alert('Ophalen mislukt: ' + message + status);
@@ -67,14 +64,9 @@ angular.module('workshop').service('companyService', function($http)
         self.selectedCompany = id;
     };
 
-    self.getSelected = function () {
-        console.log('test: ' + self.selectedId);
-    };
-
-
     self.delete = function(id, onReceived) {
         var uri = 'api/companies/' + id + '';
-        console.log("bedrijf " + id);
+
         $http.delete(uri, id).then(function (response) {
                 onReceived(response.data);
                 self.getAll(onReceived);
@@ -86,7 +78,7 @@ angular.module('workshop').service('companyService', function($http)
 
     self.update = function (company, onReceived) {
         var uri = "api/companies/" + company.id + "";
-        console.log("bedrijfsnaam: " + company.companyname);
+
         $http.put(uri, company).then(function (response) {
                 onReceived(response.data);
             },
@@ -95,20 +87,3 @@ angular.module('workshop').service('companyService', function($http)
             });
     };
 });
-
-
-//     self.deleteCompany = function(onReceived)
-//     {
-//         var uri = '/api/companies/' + (self.selectedId - 1) + '';
-//
-//         $http.delete(uri)
-//             .then(
-//                 function(response){
-//                     console.log("Deleted")
-//                 },
-//                 function(response){
-//                     // failure call back
-//                 }
-//             );
-//     };
-//});

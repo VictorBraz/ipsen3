@@ -19,6 +19,7 @@ public class UserDAO extends DatabaseDAO
     private PreparedStatement getUser;
     private PreparedStatement addUser;
     private PreparedStatement getAll;
+    private PreparedStatement deleteUser;
     private List<User> users;
 
     public UserDAO() throws Exception {
@@ -30,8 +31,11 @@ public class UserDAO extends DatabaseDAO
     private void prepareStatements() {
         try {
             getUser = conn.prepareStatement("SELECT * FROM account WHERE id=?");
-            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege, userid) VALUES (?, ?, ?, ?)");
+            addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege," +
+                    " userid, active) VALUES (?, ?, ?, ?, TRUE )");
             getAll = conn.prepareStatement("SELECT * FROM account");
+            deleteUser = conn.prepareStatement("UPDATE account SET active=? WHERE id =?");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -46,16 +50,16 @@ public class UserDAO extends DatabaseDAO
             while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt(1));
-                System.out.println("//////////////////" + rs.getInt(1));
                 user.setEmailAddress(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(String.valueOf(rs.getInt(4)));
                 user.setUserId(rs.getInt(5));
+                user.setActive(rs.getBoolean(6));
                 users.add(user);
             }
-//            getAll.close();
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return users;
     }
@@ -73,13 +77,13 @@ public class UserDAO extends DatabaseDAO
                 user.setPassword(rs.getString(3));
                 user.setPrivilege(rs.getString(4));
                 user.setUserId(rs.getInt(5));
+                user.setActive(rs.getBoolean(6));
                 users.add(user);
             }
-//            getEmployee.close();
         } catch (Exception e) {
             return null;
         }
-        return users.get(id);
+        return user;
     }
 
     public User getByEmailAddress(String accountName) {
@@ -114,6 +118,22 @@ public class UserDAO extends DatabaseDAO
 
     public void delete(int id)
     {
-        users.remove(id);
+        try {
+
+            if( getUser(id).getActive()) {
+                deleteUser.setBoolean(1, false);
+                deleteUser.setInt(2, id);
+                deleteUser.executeUpdate();
+            } else {
+                deleteUser.setBoolean(1, true);
+                deleteUser.setInt(2, id);
+                deleteUser.executeUpdate();
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

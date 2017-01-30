@@ -12,7 +12,6 @@ angular.module('workshop').service('noteService', function($http)
     };
 
     self.getNoteOwnerID = function(){
-        console.log('test: ' + self.selectedOwnerId);
         return self.selectedOwnerId;
     };
 
@@ -54,7 +53,6 @@ angular.module('workshop').service('noteService', function($http)
         $http.get(uri).then(function(response)
             {
                 onReceived(response.data);
-                console.log("trying to get note id " + self.selectedOwnerId)
             },
             function(message, status)
             {
@@ -64,7 +62,7 @@ angular.module('workshop').service('noteService', function($http)
 
     self.updateNote = function (note, onReceived) {
         var uri = 'api/notes/' + note.id + '';
-        console.log("note Text in self.update: " + note.text);
+
         $http.put(uri, note).then(function (response) {
                 onReceived(response.data);
             },

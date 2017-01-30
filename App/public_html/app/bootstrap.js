@@ -4,7 +4,9 @@ angular.module('workshop',
         'ngRoute',
         'checklist-model',
         'ngMaterial',
-        'materialCalendar'
+        'materialCalendar',
+        'ngAlertify',
+        'ngAnimate'
 
         // Voeg hier meer modules toe
     ])

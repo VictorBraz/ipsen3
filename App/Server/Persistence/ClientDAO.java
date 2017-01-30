@@ -30,22 +30,25 @@ public class ClientDAO extends DatabaseDAO{
             this.addressDAO = new AddressDAO();
             this.noteDAO = new NoteDAO();
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
     private void prepareStatements(){
         try{
             getClient = conn.prepareStatement("SELECT * FROM client WHERE id=?");
-            addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname, lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname," +
+                    " lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)",
+                    PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM client");
-            updateClient = conn.prepareStatement("UPDATE client SET clientaddressid=?, firstname=?, lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
+            updateClient = conn.prepareStatement("UPDATE client SET clientaddressid=?, firstname=?," +
+                    " lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
             deleteClient = conn.prepareStatement("UPDATE client SET active=? WHERE id =?");
 
 
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
@@ -78,10 +81,8 @@ public class ClientDAO extends DatabaseDAO{
             Note note = new Note();
             note.setOwnerID(client.getId());
             note.setText(client.getNoteText());
-            System.out.println(client.getNoteText());
             noteDAO.addNote(note);
 
-//            addClient.close();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -115,57 +116,15 @@ public class ClientDAO extends DatabaseDAO{
                 Note note = noteDAO.getNote(client.getId());
                 client.setNoteText(note.getText());
 
-                //alleen actieve clienten toevoegen
-//                if (client.getActive()) {
-                    clients.add(client);
-//                }
+                clients.add(client);
 
             }
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return clients;
     }
-
-
-//    public List<Client> getInactive(){
-//        List<Client> inactive = new ArrayList<>();
-//        try{
-//            ResultSet rs = getAll.executeQuery();
-//
-//            while (rs.next()){
-//                Client client = new Client();
-//                client.setId(rs.getInt(1));
-//                client.setClientAddresId(rs.getInt(2));
-//                client.setFirstname(rs.getString(3));
-//                client.setLastname(rs.getString(4));
-//                client.setBirthdate(rs.getString(5));
-//                client.setStudy(rs.getString(6));
-//                client.setEmailAddress(rs.getString(7));
-//                client.setPhonenumber(rs.getString(8));
-//                client.setTag(rs.getString(9));
-//                client.setActive(rs.getBoolean(10));
-//
-//                Address address = addressDAO.getAddress(rs.getInt(2));
-//
-//                client.setAddress(address.getAddress());
-//                client.setCity(address.getCity());
-//                client.setPostcode(address.getPostcode());
-//
-//                Note note = noteDAO.getNote(client.getId());
-//                client.setNoteText(note.getText());
-//
-//                //alleen actieve clienten toevoegen
-//                if (client.getActive() == false) {
-//                    inactive.add(client);
-//                }
-//            }
-//
-//        }catch (Exception e){
-//        }
-//        return inactive;
-//    }
 
 
 
@@ -198,7 +157,7 @@ public class ClientDAO extends DatabaseDAO{
                 client.setNoteText(note.getText());
             }
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return client;
     }
@@ -232,7 +191,7 @@ public class ClientDAO extends DatabaseDAO{
 
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
@@ -255,7 +214,6 @@ public class ClientDAO extends DatabaseDAO{
             e.printStackTrace();
         }
 
-
     }
 
     public void restore(int id) {
@@ -267,10 +225,5 @@ public class ClientDAO extends DatabaseDAO{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
-
-
-
 }

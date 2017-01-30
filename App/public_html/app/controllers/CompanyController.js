@@ -1,6 +1,6 @@
 /**
  * Created by Mitch on 12/12/2016.
- * @author Bernd Oostrum
+ * @author Bernd
  *
  */
 angular.module('workshop').controller('CompanyController', function ($scope, $route, companyService) {
@@ -44,12 +44,7 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
         );
     };
 
-    //$scope.selectCompany = function() {
-     //   companyService.setSelected($scope.selectedCompany.id[0]);
-    //};
-
     $scope.viewSettedComp = function (id) {
-        console.log("Current ID get: " +  id);
         companyService.setSelected(id);
         $scope.gotoViewCompany();
     };
@@ -64,7 +59,6 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
 
     $scope.selectCompany = function () {
         companyService.setSelected($scope.selectedCompany.id[0]);
-        console.log($scope.selectedCompany.id[0]);
     };
 
     var companyCreated = function() {

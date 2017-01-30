@@ -50,18 +50,13 @@ angular.module('workshop').service('employeeService', function($http)
 
     self.setSelected = function(id){
         self.selectedEmployee = id;
-        console.log(id);
-    };
-
-    self.getSelected = function () {
-        console.log('test: ' + self.selectedId);
     };
 
     self.getEmployee = function (onReceived) {
         var uri = 'api/employees/' + self.selectedEmployee + '';
+
         $http.get(uri).then(function(response){
                 onReceived(response.data);
-                console.log("Trying to get: "+ self.selectedEmployee)
             },
             function (message, status) {
                 alert('Ophalen mislukt: ' + message + status);
@@ -70,7 +65,7 @@ angular.module('workshop').service('employeeService', function($http)
 
     self.update = function (employee, onReceived) {
         var uri = 'api/employees/' + employee.id + '';
-        console.log("Naam: " + employee.firstName + employee.lastName);
+
         $http.put(uri, employee).then(function (response) {
                 onReceived(response.data);
             },
@@ -81,7 +76,7 @@ angular.module('workshop').service('employeeService', function($http)
 
     self.delete = function(id, onReceived) {
         var uri = 'api/employees/' + id + '';
-        console.log("employee: " + id);
+
         $http.delete(uri, id).then(function (response) {
                 onReceived(response.data);
                 self.getAll(onReceived);

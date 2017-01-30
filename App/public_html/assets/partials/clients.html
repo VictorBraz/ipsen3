@@ -1,8 +1,7 @@
 <META name="Author" content="Victor">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
-    <!--<div class="row">-->
-    <!--<div class="col-md-10 col-md-offset-1">-->
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>Cliënten</h1>
@@ -62,12 +61,12 @@
                                 </label>
                             </div>
                         </td>
-                        <td class="filterable-cell">{{ client.firstname }}</td>
-                        <td class="filterable-cell">{{ client.lastname }}</td>
-                        <td class="filterable-cell">{{ client.study }}</td>
-                        <td class="filterable-cell">{{ client.phonenumber }}</td>
-                        <td class="filterable-cell">{{ client.emailAddress }}</td>
-                        <td class="filterable-cell">{{ client.tag }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.firstname }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.lastname }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.study }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.phonenumber }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.emailAddress }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.tag }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -97,12 +96,12 @@
                                 </label>
                             </div>
                         </td>
-                        <td class="filterable-cell">{{ client.firstname }}</td>
-                        <td class="filterable-cell">{{ client.lastname }}</td>
-                        <td class="filterable-cell">{{ client.study }}</td>
-                        <td class="filterable-cell">{{ client.phonenumber }}</td>
-                        <td class="filterable-cell">{{ client.emailAddress }}</td>
-                        <td class="filterable-cell">{{ client.tag }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.firstname }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.lastname }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.study }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.phonenumber }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.emailAddress }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.tag }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -110,8 +109,8 @@
 
         </div>
         <div class="col-md-2 col-md-offset-11">
-            <div class="row"  id="buttonrow">
-                <!--<div class="btn-group">-->
+                <div class="row"  id="buttonrow">
+
                 <!--Toevoegen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab && selectedClient.id.length ==0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/addclient') }">
@@ -119,15 +118,6 @@
                     </div>
                 </div>
 
-                <!--Aanpassen knop-->
-
-
-                <!--<div class="btn btn-info btn-fab">-->
-                    <!--<div role="presentation" ng-class="{'disabled':!isSelected()}">-->
-                        <!--<a ng-click="!isSelected() || gotoEditClient()"><i-->
-                                <!--class="material-icons">launch</i></a>-->
-                    <!--</div>-->
-                <!--</div>-->
 
                 <!--Herstellen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab == false" ng-disabled="$isAdmin == false">

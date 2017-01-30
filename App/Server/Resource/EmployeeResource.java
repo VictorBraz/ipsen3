@@ -60,7 +60,6 @@ public class EmployeeResource {
     @PermitAll
     public void update(@PathParam("id") int id, @Auth User authenticator, Employee employee){
         service.update(employee);
-        System.out.println(employee.getFirstName() + employee.getLastName());
     }
 
     @DELETE
@@ -69,7 +68,6 @@ public class EmployeeResource {
     @JsonView(View.Protected.class)
     @PermitAll
     public void delete(@PathParam("id") int id) {
-        System.out.println(id);
         service.delete(id);
     }
 }

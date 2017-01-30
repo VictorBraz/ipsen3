@@ -1,42 +1,119 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
     <div class="panel panel-default">
 
         <div class="panel-heading">
             <h1>Accounts</h1>
-            <ul class="nav navbar-nav navbar-right">
-                <li role="presentation" ng-if="authenticated && isAdmin" ng-class="{ 'active': isLocation('/register') }">
-                    <a ng-click="gotoRegistration()">
-                        <span class="glyphicon glyphicon-user"></span>
-                        Aanmelden
-                    </a>
-                </li>
-            </ul>
         </div>
-        <table class="table table-hover">
-            <thead>
 
-            <th></th>
-            <th><label>E-mailadres</label></th>
-            <th><label>Wachtwoord</label></th>
-            <th><label>Rechten</label></th>
-            <th><label>Gebruiker</label></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="user in users">
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.emailAddress" checklist-value="user.emailAddress">
-                        </label>
+        <body>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="headertable">
+                        <ul id="tabs" class="nav nav-tabs">
+
+                            <li class="active"><a data-target="#activeUsers" ng-click="activetab=true" data-toggle="tab">Actief</a>
+                            </li>
+                            <li><a data-target="#nonactiveUsers" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
+                            </li>
+                        </ul>
                     </div>
-                </td>
-                <td>{{ user.emailAddress}}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.privilege}}</td>
-                <td>{{ user.userId}}</td>
-            </tr>
-            </tbody>
-        </table>
+                </div>
 
+                <div class="col-md-3 col-md-offset-5">
+                    <input type="search" class="form-control" placeholder="Zoeken" ng-model="searchKeyword">
+                </div>
+            </div>
+
+
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="activeUsers">
+                    <table class="table table-hover">
+                        <thead>
+
+                        <th></th>
+                        <th><label>E-mailadres</label></th>
+                        <th><label>Wachtwoord</label></th>
+                        <th><label>Rechten</label></th>
+                        <th><label>Gebruiker</label></th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:true} | orderBy:'E-mailadres'">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.id" checklist-value="user.id">
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="filterable-cell">{{ user.emailAddress}}</td>
+                            <td class="filterable-cell">{{ user.password }}</td>
+                            <td class="filterable-cell">{{ user.privilege}}</td>
+                            <td class="filterable-cell">{{ user.userId}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane" id="nonactiveUsers">
+                    <table class="table table-hover">
+                        <thead>
+
+                        <th></th>
+                        <th><label>E-mailadres</label></th>
+                        <th><label>Wachtwoord</label></th>
+                        <th><label>Rechten</label></th>
+                        <th><label>Gebruiker</label></th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:false} | orderBy:'E-mailadres'">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.id" checklist-value="user.id">
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="filterable-cell">{{ user.emailAddress}}</td>
+                            <td class="filterable-cell">{{ user.password }}</td>
+                            <td class="filterable-cell">{{ user.privilege}}</td>
+                            <td class="filterable-cell">{{ user.userId}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-2 col-md-offset-11">
+                <div class="row"  id="buttonrow">
+
+                    <div class="btn btn-info btn-fab" ng-show="activetab && selectedUser.id.length == 0">
+                        <div role="presentation" ng-class="{ 'active': isLocation('/register') }">
+                            <a ng-click="gotoRegistration()"><i class="material-icons">add</i></a>
+                        </div>
+                    </div>
+
+                    <!--Herstellen knop-->
+                    <div class="btn btn-info btn-fab" ng-show="activetab == false" ng-disabled="isAdmin == false">
+                        <div role="presentation" ng-class="{'disabled':!isSelected()}">
+                            <a ng-click="!isSelected() || restore()"><i
+                                    class="material-icons">restore</i></a>
+                        </div>
+                    </div>
+
+
+                    <!--Verwijderen knop-->
+                    <div class="btn btn-info btn-fab" ng-class="{'disabled':!isSelected()}" ng-disabled="isAdmin == false" ng-show="activetab && selectedUser.id.length >0">
+                        <div role="presentation" ng-class="{ 'active': isLocation('/users') }">
+                            <a ng-click= "!isSelected() || delete()" > <i class="material-icons">delete</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
     </div>
 </div>
