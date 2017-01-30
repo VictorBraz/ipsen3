@@ -1,6 +1,6 @@
 /**
  * Created by Mitch on 12/12/2016.
- * @author Bernd Oostrum
+ * @author Bernd
  *
  */
 angular.module('workshop').controller('CompanyController', function ($scope, $route, companyService) {

@@ -9,7 +9,7 @@
     // Services
     addScript('app/services/AuthenticationService.js');
     addScript('app/services/RequestService.js');
-    addScript('app/services/AddressService.js');
+    // addScript('app/services/AddressService.js');
     addScript('app/services/UserService.js');
     addScript('app/services/CompanyService.js');
     addScript('app/services/ClientService.js');

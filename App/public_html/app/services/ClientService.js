@@ -1,5 +1,5 @@
 /**
- * @author Victor
+ * @author Victor, Bernd
  */
 
 angular.module('workshop').service('clientService', function($http)

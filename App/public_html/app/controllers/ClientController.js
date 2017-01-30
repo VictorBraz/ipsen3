@@ -1,8 +1,9 @@
 /**
- * @author Victor
+ * @author Victor, Bernd
+ *
  */
 
-angular.module('workshop').controller('ClientController', function ($scope, $route, clientService) {
+angular.module('workshop').controller('ClientController', function ($scope, $route, alertify, clientService) {
 
 // Make sure to include the ngAlertify.js file.
 
@@ -62,22 +63,52 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
 
     $scope.delete = function () {
-        var confirmation = confirm("Weet u zeker dat u de client wilt verwijderen?");
-        if (confirmation == true) {
-            clientService.delete($scope.selectedClient.id[0], reload);
-        }
-        else {
-            alert("Gegevens niet verwijderd");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde cliënt wilt verwijderen?", function (ev) {
+                clientService.delete($scope.selectedClient.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Cliënt succesvol verwijderd");
+
+        }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Cliënt niet verwijderd");
+
+
+        });
+        // if (confirmation == true) {
+        //
+        // }
+        // else {
+        //     alert("Gegevens niet verwijderd");
+        // }
     };
 
+    // alertify
+    //     .okBtn("OK")
+    //     .cancelBtn("Annuleren")
+    //     .confirm("Weet u zeker dat u een cliënt wilt verwijderen?", function (ev) {
+    //         ev.preventDefault();
+    //         alertify.succes("Cliënt succesvol verwijderd");
+    //     }, function(ev) {
+    //
+    //
+    //
+    //     })
+
     $scope.restore = function () {
-        var confirmation = confirm("Weet u zeker dat u de client wilt herstellen?");
-        if (confirmation == true) {
+        var confirmation = alertify.confirm("Message", function () {
             clientService.delete($scope.selectedClient.id[0], reload);
-        } else{
-            ("Gegevens niet hersteld");
-        }
+        }, function () {
+
+
+        });
+        // if (confirmation == true) {
+        //
+        // } else{
+        //     ("Gegevens niet hersteld");
+        // }
     };
 
 

@@ -3,46 +3,50 @@
 
 
         <div id="loginheader" class="panel-heading">
-            <div class="col-md-10 col-md-offset-1">
-                <h3 class="panel-title ">Inloggen bij IN2</h3>
+            <div class="col-md-10 col-md-offset-4">
+
+                <img class="img-responsive" id="logo" src = "../../assets/images/LOGO_IN2.png">
+
             </div>
         </div>
 
         <form name="loginForm" class="panel-body" ng-submit="login()" novalidate>
 
-            <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
-                    <label class="control-label"></label>
-                    <input class="form-control" type="emailAdress" placeholder="E-mailadres" class="form-control" ng-model="$parent.emailAddress" ng-required="true"/>
+            <div class="col-md-10 col-md-offset-1">
+                <div class="form-group label-floating">
+
+                    <label for="email" class="control-label">E-mailadres</label>
+                    <input class="form-control" id="email" type="emailAdress" class="form-control"
+                           ng-model="$parent.emailAddress" ng-required="true"/>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1">
+                <div class="form-group label-floating">
+
+                    <label for="password" class="control-label">Wachtwoord</label>
+                    <input type="password" id="password" class="form-control" ng-model="$parent.password"
+                           ng-required="true"/>
                 </div>
             </div>
 
 
             <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
-                    <label class="control-label"></label>
-                    <input type="password" class="form-control" placeholder="wachwoord" ng-model="$parent.password" ng-required="true"/>
-                </div>
-            </div>
-
-
-
-                <div  class="form-group">
-                    <div id="memorize" class="col-md-6 col-md-offset-1">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" ng-model="$parent.remember">
-                                  Gegevens onthouden
-                            </label>
-                        </div>
+                <div id="memorize" class="col-md-6 col-md-offset-1">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="$parent.remember">
+                            Gegevens onthouden
+                        </label>
                     </div>
-
                 </div>
 
-                <div id="loginbutton" class="col-md-5">
-                    <input  type="submit" class="btn btn-primary " value="Inloggen" ng-disabled="loginForm.$invalid"/>
+            </div>
 
-                </div>
+            <div id="loginbutton" class="col-md-5">
+                <input type="submit" class="btn btn-primary " value="Inloggen" ng-disabled="loginForm.$invalid"/>
+
+            </div>
         </form>
 
     </div>

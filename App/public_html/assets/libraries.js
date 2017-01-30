@@ -18,6 +18,10 @@
     addScript('assets/libraries/alertify/alertify.js');
     addScript('assets/libraries/alertify/ngAlertify.js');
     addScript('assets/materialdesign/js/initAlertify.js');
+    addScript('https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js');
+
+    //charts
+    addScript('assets/libraries/')
 
 
     //materialdesign
