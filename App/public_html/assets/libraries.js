@@ -22,13 +22,6 @@
     addScript("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js");
     addScript("http://cdn.rawgit.com/jtblin/angular-chart.js/master/dist/angular-chart.js")
 
-    //hashing passwords
-    addScript("assets/libraries/bcrypt/dist/dtrw.bcrypt.js");
-    addScript("assets/libraries/bcrypt/dist/dtrw.bcrypt-df34c8d1.js");
-    addScript("assets/libraries/bcrypt/dist/bcrypt.js");
-    addScript("assets/libraries/bcrypt/dist/bcrypt-service.js");
-
-
 
     //materialdesign
     addScript('assets/materialdesign/js/arrive.min.js');
