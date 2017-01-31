@@ -18,14 +18,6 @@
                     </a>
                 </li>
 
-                <!--<li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/register') }">-->
-                    <!--<a ng-click="gotoRegistration()">-->
-                        <!--<span class="glyphicon glyphicon-user"></span>-->
-                        <!--Aanmelden-->
-                    <!--</a>-->
-                <!--</li>-->
-
-
                 <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/employees') }">
                     <a ng-click="gotoEmployees()">
                         <span class="glyphicon glyphicon-th-list"></span>
@@ -67,7 +59,7 @@
                     </a>
                 </li>
 
-                <li role="presentation" ng-if="authenticated">
+                <li role="presentation" ng-if="authenticated" ng-class="{'active': isLocation('/')}">
                     <a ng-click="logout()">
                         <span class="glyphicon glyphicon-user"></span>
                         Uitloggen

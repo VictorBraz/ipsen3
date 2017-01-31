@@ -1,14 +1,15 @@
 /**
  * @author Victor
  */
-angular.module('workshop').controller('EditClientController', function($scope, clientService)
+angular.module('workshop').controller('EditClientController', function($scope, alertify, clientService)
 {
     var construct = function()
     {
-
         clientService.getClient(function(client)
         {
             $scope.client = client;
+
+
         });
 
     };

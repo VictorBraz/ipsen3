@@ -3,6 +3,8 @@ package Server.Service;
 import java.util.Collection;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import Server.BCrypt;
 import Server.Model.User;
 import Server.Persistence.UserDAO;
 
@@ -16,7 +18,7 @@ public class UserService extends BaseService<User>
     private final UserDAO dao;
 
     @Inject
-    public UserService(UserDAO dao)
+    private UserService(UserDAO dao)
     {
         this.dao = dao;
     }
@@ -28,11 +30,13 @@ public class UserService extends BaseService<User>
 
     public User get(int id)
     {
-        return requireResult(dao.getUser(id));
+        return requireResult(
+                dao.getUser(id));
+
     }
 
-    public void add(User user)
-    {
+    public void add(User user) {
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         dao.add(user);
     }
 

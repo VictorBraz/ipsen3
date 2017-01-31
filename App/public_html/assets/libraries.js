@@ -15,13 +15,19 @@
     addScript('assets/libraries/checklist-model.js');
 
     //alertscreen
-    addScript('assets/libraries/alertify/alertify.js');
-    addScript('assets/libraries/alertify/ngAlertify.js');
-    addScript('assets/materialdesign/js/initAlertify.js');
     addScript('https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js');
+    addScript('assets/materialdesign/js/initAlertify.js');
 
     //charts
-    addScript('assets/libraries/')
+    addScript("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js");
+    addScript("http://cdn.rawgit.com/jtblin/angular-chart.js/master/dist/angular-chart.js")
+
+    //hashing passwords
+    addScript("assets/libraries/bcrypt/dist/dtrw.bcrypt.js");
+    addScript("assets/libraries/bcrypt/dist/dtrw.bcrypt-df34c8d1.js");
+    addScript("assets/libraries/bcrypt/dist/bcrypt.js");
+    addScript("assets/libraries/bcrypt/dist/bcrypt-service.js");
+
 
 
     //materialdesign
@@ -30,10 +36,7 @@
     addScript('assets/materialdesign/js/ripples.min.js');
     addScript('assets/materialdesign/js/initBootstrap.js');
 
-
-
     //calender
-
     addScript('assets/libraries/angular-animate.min.js');
     addScript('assets/libraries/angular-aria.min.js');
     addScript('assets/libraries/angular-material-calendar.js');
