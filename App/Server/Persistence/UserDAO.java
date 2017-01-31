@@ -83,7 +83,7 @@ public class UserDAO extends DatabaseDAO
         } catch (Exception e) {
             return null;
         }
-        return users.get(id);
+        return user;
     }
 
     public User getByEmailAddress(String accountName) {
