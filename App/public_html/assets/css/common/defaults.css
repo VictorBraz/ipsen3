@@ -90,6 +90,17 @@ h1.panel-title {
     padding-left: 100px;
 }
 
+#buttonsinform {
+    padding-left: 100px;
+    padding-top: 50px;
+}
+
+#editbutton {
+    position: relative;
+    left: 145px;
+
+}
+
 #logo {
     position: relative;
     bottom: 50px;
