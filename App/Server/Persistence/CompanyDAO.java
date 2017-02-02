@@ -13,7 +13,8 @@ import java.util.List;
 
 /**
  * Created by Mitch on 12/9/2016.
- * @author Bernd
+ *
+ * @author Bernd, Mitch
  */
 
 
@@ -28,6 +29,11 @@ public class CompanyDAO extends DatabaseDAO {
     private PreparedStatement deleteCompany;
 
 
+    /**
+     * Instantiates a new Company dao.
+     *
+     * @throws Exception the exception
+     */
     public CompanyDAO() throws Exception {
         super();
         prepareStatements();
@@ -51,6 +57,11 @@ public class CompanyDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Add company.
+     *
+     * @param company the company
+     */
     public void addCompany(Company company) {
         Address address = new Address();
         address.setAddress(company.getAddress());
@@ -85,6 +96,11 @@ public class CompanyDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     public List <Company> getAll() {
         List<Company> companies = new ArrayList<>();
 
@@ -118,6 +134,12 @@ public class CompanyDAO extends DatabaseDAO {
         return companies;
     }
 
+    /**
+     * Gets company.
+     *
+     * @param id the id
+     * @return the company
+     */
     public Company getCompany(int id) {
         Company company = new Company();
 
@@ -151,6 +173,11 @@ public class CompanyDAO extends DatabaseDAO {
 
     }
 
+    /**
+     * Update.
+     *
+     * @param company the company
+     */
     public void update(Company company) {
         Address address = new Address();
         address.setAddress(company.getAddress());
@@ -181,6 +208,11 @@ public class CompanyDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     public void delete (int id) {
         try {
             Company comp = getCompany(id);

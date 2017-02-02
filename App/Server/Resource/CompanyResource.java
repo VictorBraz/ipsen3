@@ -17,6 +17,8 @@ import java.util.Collection;
 
 /**
  * Created by Mitch on 12/9/2016.
+ *
+ * @author Mitch
  */
 @Singleton
 @Path("/companies")
@@ -25,12 +27,22 @@ public class CompanyResource
 {
     private final CompanyService service;
 
+    /**
+     * Instantiates a new Company resource.
+     *
+     * @param service the service
+     */
     @Inject
     public CompanyResource(CompanyService service)
     {
         this.service = service;
     }
 
+    /**
+     * Retrieve all collection.
+     *
+     * @return the collection
+     */
     @GET
     @JsonView(View.Public.class)
     @PermitAll
@@ -39,6 +51,12 @@ public class CompanyResource
         return service.getAll();
     }
 
+    /**
+     * Retrieve company.
+     *
+     * @param id the id
+     * @return the company
+     */
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -48,6 +66,11 @@ public class CompanyResource
         return service.get(id);
     }
 
+    /**
+     * Create.
+     *
+     * @param company the company
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -57,6 +80,13 @@ public class CompanyResource
         service.add(company);
     }
 
+    /**
+     * Update.
+     *
+     * @param id            the id
+     * @param authenticator the authenticator
+     * @param comp          the comp
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -67,6 +97,11 @@ public class CompanyResource
         service.update(comp);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     @DELETE
     @Path("/{id}")
     @PermitAll
