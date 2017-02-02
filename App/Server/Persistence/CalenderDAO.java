@@ -84,7 +84,7 @@ public class CalenderDAO extends DatabaseDAO{
         try{
             addEvent.setString(1, calender.getEventName());
             addEvent.setDate(2, (Date) calender.getDatum());
-
+            addEvent.setString(3, calender.getContactPersoon());
 
             addEvent.executeUpdate();
             ResultSet rs = addEvent.getGeneratedKeys();
