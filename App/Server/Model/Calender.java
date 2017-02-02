@@ -30,6 +30,13 @@ public class Calender {
 
 
 
+    @NotEmpty
+    @Length(min = 1, max = 100)
+    @JsonView(View.Public.class)
+    private String contactPersoon;
+
+
+
     public String getEventName() {
         return eventName;
     }
@@ -55,4 +62,8 @@ public class Calender {
     }
 
 
+    public String getContactPersoon() {
+        return contactPersoon;
+    }
+    public void setContactPersoon(String contactPersoon) {this.contactPersoon = contactPersoon; }
 }
