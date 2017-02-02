@@ -1,27 +1,23 @@
 
-angular.module('workshop').service('userService', function($http)
-{
+angular.module('workshop').service('userService', function($http) {
+
     var self = this;
+    self.selectedUser = 0;
     
-    self.authenticate = function(onSuccess)
-    {
+    self.authenticate = function(onSuccess) {
         var uri = '/api/users/me';
-        
-        $http.get(uri).then(function(response)
-        {
+        $http.get(uri).then(function(response) {
             onSuccess(response.data);
         },
-        function(message, status)
-        {
+        function(message, status) {
             alert('Inloggen mislukt: ' + message);
         });
     };
     
-    self.create = function(emailAddress, password, privilege, userid, onCreated)
-    {
+    self.create = function(emailAddress, password, privilege, userid, onCreated) {
         var uri = '/api/users';
-        var data =
-        {
+
+        var data = {
             emailAddress: emailAddress,
             password: password,
             privilege: privilege,
@@ -38,8 +34,7 @@ angular.module('workshop').service('userService', function($http)
         });
     };
     
-    self.getAll = function(onReceived)
-    {
+    self.getAll = function(onReceived) {
         var uri = '/api/users';
 
         $http.get(uri).then(function(response)
@@ -51,8 +46,6 @@ angular.module('workshop').service('userService', function($http)
             alert('Ophalen mislukt: ' + message);
         });
     };
-
-    self.selectedUser = 0;
 
     self.setSelected = function(accName){
         self.selectedUser = accName;

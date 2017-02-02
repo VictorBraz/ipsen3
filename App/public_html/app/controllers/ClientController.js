@@ -5,7 +5,6 @@
 
 angular.module('workshop').controller('ClientController', function ($scope, $route, alertify, clientService) {
 
-// Make sure to include the ngAlertify.js file.
 
     var construct = function () {
         clientService.getAll(function (clients) {
@@ -17,6 +16,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
     $scope.searchKeyword = '';
 
     $scope.register = function () {
+
         clientService.create(
             $scope.firstname,
             $scope.lastname,
@@ -32,6 +32,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
             $scope.active,
             clientCreated
         );
+
 
     };
 
@@ -57,7 +58,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
     };
 
     var clientCreated = function () {
-        alert('Er is een nieuw cliënt toegevoegd');
+        alertify.success("Er is een nieuw cliënt toegevoegd");
         $scope.gotoClients();
     };
 
@@ -70,46 +71,29 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
                 clientService.delete($scope.selectedClient.id[0], reload);
                 ev.preventDefault();
                 alertify.success("Cliënt succesvol verwijderd");
-
         }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Cliënt niet verwijderd");
-
-
         });
-        // if (confirmation == true) {
-        //
-        // }
-        // else {
-        //     alert("Gegevens niet verwijderd");
-        // }
     };
-
-    // alertify
-    //     .okBtn("OK")
-    //     .cancelBtn("Annuleren")
-    //     .confirm("Weet u zeker dat u een cliënt wilt verwijderen?", function (ev) {
-    //         ev.preventDefault();
-    //         alertify.succes("Cliënt succesvol verwijderd");
-    //     }, function(ev) {
-    //
-    //
-    //
-    //     })
 
     $scope.restore = function () {
-        var confirmation = alertify.confirm("Message", function () {
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde cliënt wilt herstellen?", function (ev) {
             clientService.delete($scope.selectedClient.id[0], reload);
-        }, function () {
-
-
+                ev.preventDefault();
+                alertify.success("Client succesvol hersteld");
+        }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Client niet hersteld");
         });
-        // if (confirmation == true) {
-        //
-        // } else{
-        //     ("Gegevens niet hersteld");
-        // }
     };
+
+    $scope.reloadFillSettings = function() {
+        $.material.options.autofill = true;
+    }
 
 
     var reload = function()

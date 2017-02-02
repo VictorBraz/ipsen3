@@ -87,6 +87,7 @@ public class UserResource
     @GET
     @Path("/me")
     @JsonView(View.Private.class)
+    @PermitAll
     public User authenticate(@Auth User authenticator)
     {
         return authenticator;

@@ -2,8 +2,8 @@
 angular.module('workshop').controller('RegistrationController', function($scope, userService)
 {
 
-    $scope.register = function()
-    {
+    $scope.register = function() {
+
         userService.create(
             $scope.emailAddress,
             $scope.password,

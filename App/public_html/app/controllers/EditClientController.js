@@ -1,31 +1,35 @@
 /**
  * @author Victor
  */
-angular.module('workshop').controller('EditClientController', function($scope, clientService)
+angular.module('workshop').controller('EditClientController', function($scope, alertify, clientService)
 {
     var construct = function()
     {
-
         clientService.getClient(function(client)
         {
             $scope.client = client;
+
+
         });
 
     };
 
     $scope.update = function () {
-        var confirmation = confirm("Weet u zeker dat u de gegevens wilt aanpassen?");
-        if (confirmation == true) {
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de gegevens wilt aanpassen?", function (ev) {
             clientService.update($scope.client, onUpdated);
-        }
-        else{
-            alert('Gegevens niet aangepast, neem contact op met uw beheerder.');
-        }
+                ev.preventDefault();
+                alertify.success("Cliënt aangepast");
+        }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Cliënt niet aangepast");
+        });
     };
 
     var onUpdated = function()
     {
-        alert('Cliënt aangepast! ');
         $scope.gotoClients();
     };
 
