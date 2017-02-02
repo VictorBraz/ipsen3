@@ -6,6 +6,8 @@
 package Server.Service;
 
 import java.util.Optional;
+
+import Server.BCrypt;
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.Authorizer;
@@ -17,7 +19,7 @@ import Server.Persistence.UserDAO;
 
 /**
  *
- * @author Peter van Vliet
+ * @author Peter van Vliet, Bernd
  */
 @Singleton
 public class AuthenticationService implements Authenticator<BasicCredentials, User>, Authorizer<User>
@@ -35,8 +37,9 @@ public class AuthenticationService implements Authenticator<BasicCredentials, Us
     {
         User user = userDAO.getByEmailAddress(credentials.getUsername());
 
-        if (user != null && user.getPassword().equals(credentials.getPassword()))
-        {
+
+
+        if (user != null && BCrypt.checkpw(credentials.getPassword(), user.getPassword())) {
             return Optional.of(user);
         }
 
