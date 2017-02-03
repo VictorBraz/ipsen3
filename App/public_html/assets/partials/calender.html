@@ -8,7 +8,7 @@
                      calendar-direction="direction"
                      on-prev-month="prevMonth"
                      on-next-month="nextMonth"
-                     on-day-click="gotoAddCalender"
+                     on-day-click="gotoEditCalender"
                      title-format="'MMMM y'"
                      ng-model='selectedDate'
                      day-format="dayFormat"
@@ -23,8 +23,15 @@
                      disable-future-selection="disableFutureDates">
 
         </calendar-md>
-    </div>
+        <div class="btn btn-info btn-fab" >
+            <div role="presentation" >
+                <a ng-click="gotoAddCalender()"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+
+
 </div>
 
+</div>
 
 </div>

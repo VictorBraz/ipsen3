@@ -2,7 +2,7 @@
  * Created by vedadpiric on 21-12-16.
  */
 
-angular.module("workshop").controller('CalenderController', function($scope, $filter, $q, $timeout,$http, $log,CalenderService) {
+angular.module("workshop").controller('CalenderController', function($scope, $filter, $q, $timeout,$http, $log,CalenderService,alertify) {
 
     var holidays = {};
 
@@ -87,8 +87,8 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
 
         CalenderService.create(
             $scope.datum,
-            $scope.contactPersoon,
             $scope.eventName,
+            $scope.contactPersoon,
             calenderCreated
         );
 

@@ -5,13 +5,13 @@ angular.module('workshop').service('CalenderService', function($http)
 {
     var self = this;
 
-    self.create = function (eventName,datum,contactPersoon) {
+    self.create = function (datum,eventName,contactPersoon, onCreated) {
 
-        var uri = 'api/calender/';
+        var uri = 'api/calender';
         var data =
             {
-                eventName: eventName,
                 datum: datum,
+                eventName: eventName,
                 contactPersoon: contactPersoon
 
             };
@@ -26,7 +26,7 @@ angular.module('workshop').service('CalenderService', function($http)
     };
 
     self.getAll = function (onReceived) {
-        var uri = 'api/calender/';
+        var uri = 'api/calender';
 
         $http.get(uri).then(function(response){
                 onReceived(response.data);
