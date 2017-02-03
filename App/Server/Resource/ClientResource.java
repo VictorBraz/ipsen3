@@ -16,7 +16,9 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 /**
- * @author Victor
+ * The type Client resource.
+ *
+ * @author Victor Machado Braz
  */
 @Singleton
 @Path("/clients")
@@ -25,11 +27,21 @@ public class ClientResource {
 
     private final ClientService service;
 
+    /**
+     * Instantiates a new Client resource.
+     *
+     * @param service the service
+     */
     @Inject
     public ClientResource(ClientService service){
         this.service = service;
     }
 
+    /**
+     * Retrieve active collection.
+     *
+     * @return the collection
+     */
     @GET
     @JsonView(View.Public.class)
     @PermitAll
@@ -38,6 +50,12 @@ public class ClientResource {
     }
 
 
+    /**
+     * Retrieve client.
+     *
+     * @param id the id
+     * @return the client
+     */
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -45,6 +63,11 @@ public class ClientResource {
         return service.get(id);
     }
 
+    /**
+     * Create.
+     *
+     * @param client the client
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -53,6 +76,11 @@ public class ClientResource {
         service.add(client);
     }
 
+    /**
+     * Update.
+     *
+     * @param client the client
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -62,6 +90,11 @@ public class ClientResource {
         service.update(client);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)

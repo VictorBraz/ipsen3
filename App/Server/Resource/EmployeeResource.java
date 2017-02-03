@@ -17,9 +17,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 /**
- * Created by Negin on 13-12-2016.
+ * Created by Negin Nafissi on 13-12-2016.
  */
-
 @Singleton
 @Path("/employees")
 @Produces(MediaType.APPLICATION_JSON)
@@ -27,11 +26,21 @@ public class EmployeeResource {
 
     private final EmployeeService service;
 
+    /**
+     * Instantiates a new Employee resource.
+     *
+     * @param service the service
+     */
     @Inject
     public EmployeeResource(EmployeeService service){
         this.service = service;
     }
 
+    /**
+     * Retrieve all collection.
+     *
+     * @return the collection
+     */
     @GET
     @JsonView(View.Public.class)
     @PermitAll
@@ -39,6 +48,12 @@ public class EmployeeResource {
         return service.getAll();
     }
 
+    /**
+     * Retrieve employee.
+     *
+     * @param id the id
+     * @return the employee
+     */
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -46,6 +61,11 @@ public class EmployeeResource {
         return service.get(id);
     }
 
+    /**
+     * Create.
+     *
+     * @param employee the employee
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -53,6 +73,13 @@ public class EmployeeResource {
         service.add(employee);
     }
 
+    /**
+     * Update.
+     *
+     * @param id            the id
+     * @param authenticator the authenticator
+     * @param employee      the employee
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -62,6 +89,11 @@ public class EmployeeResource {
         service.update(employee);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)

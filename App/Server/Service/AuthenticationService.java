@@ -18,14 +18,20 @@ import Server.Model.User;
 import Server.Persistence.UserDAO;
 
 /**
+ * The type Authentication service.
  *
- * @author Peter van Vliet, Bernd
+ * @author Peter van Vliet, Bernd Oostrum, Negin Nafissi
  */
 @Singleton
 public class AuthenticationService implements Authenticator<BasicCredentials, User>, Authorizer<User>
 {
     private final UserDAO userDAO;
 
+    /**
+     * Instantiates a new Authentication service.
+     *
+     * @param userDAO the user dao
+     */
     @Inject
     public AuthenticationService(UserDAO userDAO)
     {

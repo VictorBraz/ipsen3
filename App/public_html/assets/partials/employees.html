@@ -1,13 +1,13 @@
-
+<META name="Author" content="Negin">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
-    <!--<div class="row">-->
-    <!--<div class="col-md-10 col-md-offset-1">-->
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>Medewerkers</h1>
         </div>
 
+        <!--header boven tabellen-->
         <div class="row">
             <div class="col-md-4">
                 <div id="headertable">
@@ -47,6 +47,7 @@
                             <th><label>Tag</label></th>
                         </tr>
                     </thead>
+                    </body>
                     <tbody>
                         <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:true} | orderBy:'firstName'" >
                             <td>
@@ -115,13 +116,7 @@
                 </div>
             </div>
 
-        <!--Aanpassen knop-->
-
-        <!--<div class="col-md-1 col-md-offset-10" id="zoominbutton">-->
-            <!--<div role="presentation" ng-class="{'disabled':!isSelected()}">-->
-                <!--<a ng-click="!isSelected() || gotoViewEmployee()" class="btn btn-info btn-fab"><i class="material-icons">launch</i></a>-->
-            <!--</div>-->
-        <!--</div>-->
+            <!--Herstellen knop-->
             <div class="btn btn-info btn-fab" ng-show="activetab == false">
                 <div role="presentation" ng-class="{'disabled':!isSelected()}">
                     <a ng-click="!isSelected() || restore()"><i
@@ -129,13 +124,7 @@
                 </div>
             </div>
 
-        <!--Verwijderen knop-->
-        <!--<div class="col-md-1 col-md-offset-11" id="deletebutton">-->
-            <!--<div role="presentation" ng-class="{ 'active': isLocation('/employees') }">-->
-                <!--<a ng-click="gotoDeleteEmployee()" class="btn btn-info btn-fab"> <i class="material-icons">delete</i>-->
-                <!--</a>-->
-            <!--</div>-->
-        <!--</div>-->
+            <!--Verwijderen knop-->
             <div class="btn btn-info btn-fab"ng-show="activetab && selectedEmployee.id.length >0">
                 <div role="presentation" ng-class="{ 'active': isLocation('/employees') }">
                     <a ng-click="delete()"> <i class="material-icons">delete</i>
@@ -144,9 +133,6 @@
             </div>
         </div>
     </div>
-
-
-        </body>
     </div>
 
 </div>

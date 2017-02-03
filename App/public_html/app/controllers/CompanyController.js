@@ -1,9 +1,9 @@
 /**
  * Created by Mitch on 12/12/2016.
- * @author Bernd
+ * @author Bernd, Mitch
  *
  */
-angular.module('workshop').controller('CompanyController', function ($scope, $route, companyService) {
+angular.module('workshop').controller('CompanyController', function ($scope, $route, alertify, companyService) {
 
     var construct = function() {
         companyService.getAll(function(companies){
@@ -62,7 +62,7 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
     };
 
     var companyCreated = function() {
-        alert("Er is een nieuw bedrijf toegevoegd");
+        alertify.success("Er is een nieuw bedrijf toegevoegd");
         $scope.gotoCompanies();
     };
 
@@ -73,22 +73,31 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
     };
 
     $scope.delete = function () {
-        var confirmation = confirm("Weet u zeker dat u dit bedrijf wilt verwijderen?");
-        if (confirmation == true) {
-            companyService.delete($scope.selectedCompany.id[0], reload);
-        }
-        else {
-            alert("Gegevens niet verwijderd");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde bedrijf wilt verwijderen?", function (ev) {
+                companyService.delete($scope.selectedCompany.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Bedrijf succesvol verwijderd");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Bedrijf niet verwijderd");
+        });
     };
 
     $scope.restore = function () {
-        var confirmation = confirm("Weet u zeker dat u het bedrijf wilt herstellen?");
-        if (confirmation == true) {
-            companyService.delete($scope.selectedCompany.id[0], reload);
-        } else{
-            alert("Gegevens niet hersteld");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde bedrijf wilt herstellen?", function (ev) {
+                companyService.delete($scope.selectedCompany.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Bedrijf succesvol hersteld");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Bedrijf niet hersteld");
+        });
     };
 
 

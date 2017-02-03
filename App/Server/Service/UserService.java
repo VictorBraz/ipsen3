@@ -9,6 +9,7 @@ import Server.Model.User;
 import Server.Persistence.UserDAO;
 
 /**
+ * The type User service.
  *
  * @author Peter van Vliet, Negin Nafissi
  */
@@ -23,11 +24,22 @@ public class UserService extends BaseService<User>
         this.dao = dao;
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     public Collection<User> getAll()
     {
         return dao.getAll();
     }
 
+    /**
+     * Get user.
+     *
+     * @param id the id
+     * @return the user
+     */
     public User get(int id)
     {
         return requireResult(
@@ -35,11 +47,23 @@ public class UserService extends BaseService<User>
 
     }
 
+    /**
+     * Add.
+     *
+     * @param user the user
+     */
     public void add(User user) {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         dao.add(user);
     }
 
+    /**
+     * Update.
+     *
+     * @param authenticator the authenticator
+     * @param id            the id
+     * @param user          the user
+     */
     public void update(User authenticator, int id, User user)
     {
         // Controleren of deze gebruiker wel bestaat
@@ -56,6 +80,11 @@ public class UserService extends BaseService<User>
         dao.update(id, user);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     public void delete(int id)
     {
         dao.delete(id);
