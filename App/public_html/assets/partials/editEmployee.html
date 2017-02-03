@@ -1,81 +1,112 @@
-<!DOCTYPE html>
-<div class="col-md-10 col-md-offset-1">
+<META name="Author" content="Negin, Bernd">
+<div class="container">
 
-    <div class="container">
+    <div class="panel panel-default">
 
-        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Cliëntgegevens</h1>
+        </div>
 
-            <div class="panel-heading">
-                <h1>Aanpassen Medewerker</h1>
+        <form name="updateForm" class="panel-body" ng-submit="update()" novalidate>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label" for="firstname">Voornaam</label>
+                    <input data-ng-model="employees.firstName" ng-change="changed()" name="firstname" class="form-control"  id="firstname" type="text"
+                           ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="lastname">Achternaam</label>
+                    <input type="text" class="form-control" id="lastname" ng-model="employees.lastName"
+                           ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="birthdate">Geboortedatum</label>
+                    <input type="text" class="form-control" id="birthdate" ng-model="employees.birthDate"
+                           ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="study">Studie</label>
+                    <input type="text" class="form-control" id="study" ng-model="employees.study" ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="address">Adres</label>
+                    <input type="text" class="form-control" id="address" ng-model="employees.address" ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="zipcode">Postcode</label>
+                    <input type="text" class="form-control" id="zipcode" ng-model="employees.postcode" ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="city">Woonplaats</label>
+                    <input type="text" class="form-control" id="city" ng-model="employees.city" ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="email">E-mailadres</label>
+                    <input type="email" class="form-control" id="email" ng-model="employees.email"
+                           ng-required="true"/>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label" for="phone">Telefoon</label>
+                    <input type="text" class="form-control" id="phone" ng-model="employees.phoneNumber"
+                           ng-required="true"/>
+                </div>
             </div>
 
-            <form name="updateForm" class="panel-body" ng-submit="update()" novalidate>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label">Voornaam</label>
-                        <input type="text" class="form-control" ng-model="employees.firstName" ng-required="true" />
-                    </div>
+            <div class="col-md-5 col-md-offset-2">
+                <div class="form-group label-floating">
+                    <label class="control-label" for="tags">Tags</label>
+                    <input type="text" class="form-control" id="tags" ng-model="employees.tag" ng-required="true"/>
+                </div>
 
-                    <div class="form-group">
-                        <label class="control-label">Achternaam</label>
-                        <input type="text" class="form-control" ng-model="employees.lastName" ng-required="true" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Geboortedatum</label>
-                        <input type="text" class="form-control" ng-model="employees.birthDate" ng-required="true" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Studie</label>
-                        <input type="text" class="form-control" ng-model="employees.study" ng-required="true" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Adres</label>
-                        <input type="text" class="form-control" ng-model="employees.address" ng-required="true" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Postcode</label>
-                        <input type="text" class="form-control" ng-model="employees.postcode" ng-required="true" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Woonplaats</label>
-                        <input type="text" class="form-control" ng-model="employees.city" ng-required="true" />
+                <div class="form-group label-floating">
+                    <label for="file" class="control-label">Document</label>
+                    <input type="file" id="file" multiple="">
+                    <div class="input-group">
+                        <input type="text" readonly="" class="form-control"
+                        >
+                        <span class="input-group-btn input-group-sm">
+                             <button type="button" class="btn btn-fab btn-fab-mini">
+                                <i class="material-icons">attach_file</i>
+                            </button>
+                             </span>
                     </div>
                 </div>
-                    <!--<p>-->
-                    <!--<a ng-click="checkAddress()">Adres controleren</a>-->
-                    <!--</p>-->
-                <div class="col-md-5 col-md-offset-2">
-                    <div class="form-group">
-                        <label class="control-label">E-mailadres</label>
-                        <input type="emailAddress" class="form-control" ng-model="employees.email" ng-required="true" />
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label">Telefoon</label>
-                        <input type="text" class="form-control" ng-model="employees.phoneNumber" ng-required="true" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Tags</label>
-                        <input type="text" class="form-control" ng-model="employees.tag" ng-required="False" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Notitie</label>
-                        <textarea class="form-control" ng-model="employees.noteText" placeholder="Hier kunt u een notitie schrijven" rows="5"></textarea>
-                    </div>
-
-                    <input type="submit" class="btn btn-primary" value="Aanpassen" ng-disabled="registrationForm.$invalid" />
-                    <!--Gaat één pagina terug, zonder veranderingen-->
-                    <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
+                <div class="form-group label-floating">
+                    <label for="files" class="control-label"></label>
+                    <textarea readonly id="files" class="form-control"
+                              rows="3"></textarea>
                 </div>
-            </form>
 
-        </div>
+                <div class="form-group label-floating">
+                    <label class="control-label" for="note">Notitie</label>
+                    <textarea id="note" class="form-control" rows="5" ng-model="employees.noteText"></textarea>
+                </div>
+
+            </div>
+
+            <div class="col-md-4 col-md-offset-4" id="buttonsinform">
+                <div class="row top-buffer">
+
+                    <input type="button" class="btn btn-primary" value="Annuleren"
+                           onClick="history.go(-1);return true;"/>
+
+                    <input type="submit" class="btn btn-primary" value="Opslaan"
+                           ng-disabled="registrationForm.$invalid"/>
+
+                </div>
+            </div>
+
+        </form>
+
     </div>
 </div>
