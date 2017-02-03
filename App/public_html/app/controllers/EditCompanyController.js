@@ -1,7 +1,7 @@
 /**
  * Created by Roel on 16-1-2017.
  */
-angular.module('workshop').controller('EditCompanyController', function ($scope, companyService) {
+angular.module('workshop').controller('EditCompanyController', function ($scope, alertify, companyService) {
     var construct = function () {
         companyService.getCompany(function (company) {
             $scope.company = company;
@@ -9,18 +9,21 @@ angular.module('workshop').controller('EditCompanyController', function ($scope,
     };
 
     $scope.update = function () {
-        var confirmation = confirm("Weet u zeker dat u de gegevens wilt aanpassen?");
-        if (confirmation == true) {
-            companyService.update($scope.company, onUpdated);
-        }
-        else{
-            alert('Gegevens niet aangepast!');
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de gegevens wilt aanpassen?", function (ev) {
+                companyService.update($scope.company, onUpdated);
+                ev.preventDefault();
+                alertify.success("Bedrijf aangepast");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Bedrijf niet aangepast");
+        });
     };
 
     var onUpdated = function()
     {
-        alert('Company aangepast!');
         $scope.gotoCompanies();
     };
 
