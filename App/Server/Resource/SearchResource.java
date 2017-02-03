@@ -1,7 +1,7 @@
 package Server.Resource;
 
 /**
- * @author Victor
+ * @author Victor Machado Braz
  */
 
 import Server.Model.Client;
@@ -24,6 +24,9 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * The type Search resource.
+ */
 @Singleton
 @Path("/search")
 @Produces(MediaType.APPLICATION_JSON)
@@ -34,6 +37,13 @@ public class SearchResource {
     private final EmployeeService employeeService;
 
 
+    /**
+     * Instantiates a new Search resource.
+     *
+     * @param cs   the cs
+     * @param comp the comp
+     * @param emp  the emp
+     */
     @Inject
     public SearchResource(ClientService cs, CompanyService comp, EmployeeService emp){
         this.companyService = comp;
@@ -41,6 +51,13 @@ public class SearchResource {
         this.employeeService = emp;
     }
 
+    /**
+     * Retrieve clients collection.
+     *
+     * @param tag the tag
+     * @return the collection
+     * @throws Exception the exception
+     */
     @GET
     @Path("/clients/{tag}")
     @JsonView(View.Public.class)
@@ -58,6 +75,13 @@ public class SearchResource {
         return clients;
     }
 
+    /**
+     * Retrieve companies collection.
+     *
+     * @param tag the tag
+     * @return the collection
+     * @throws Exception the exception
+     */
     @GET
     @Path("/companies/{tag}")
     @JsonView(View.Public.class)
@@ -75,6 +99,13 @@ public class SearchResource {
         return companies;
     }
 
+    /**
+     * Retrieve employee collection.
+     *
+     * @param tag the tag
+     * @return the collection
+     * @throws Exception the exception
+     */
     @GET
     @Path("/employees/{tag}")
     @JsonView(View.Public.class)

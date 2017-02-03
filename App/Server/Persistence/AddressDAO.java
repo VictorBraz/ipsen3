@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- * @author Victor
+ * The type Address dao.
+ *
+ * @author Victor Machado Braz
  */
 public class AddressDAO extends DatabaseDAO{
 
@@ -15,6 +17,11 @@ public class AddressDAO extends DatabaseDAO{
     private PreparedStatement addAddress;
     private PreparedStatement updateAddress;
 
+    /**
+     * Instantiates a new Address dao.
+     *
+     * @throws Exception the exception
+     */
     public AddressDAO() throws Exception{
         super();
         prepareStatements();
@@ -30,6 +37,12 @@ public class AddressDAO extends DatabaseDAO{
         }
     }
 
+    /**
+     * Get address address.
+     *
+     * @param id the id
+     * @return the address
+     */
     public Address getAddress(int id){
         Address address = new Address();
         try{
@@ -51,6 +64,11 @@ public class AddressDAO extends DatabaseDAO{
 
     }
 
+    /**
+     * Get all array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Address> getAll(){
         ArrayList<Address> addresses = new ArrayList<>();
 
@@ -58,6 +76,12 @@ public class AddressDAO extends DatabaseDAO{
         return addresses;
     }
 
+    /**
+     * Add address address.
+     *
+     * @param address the address
+     * @return the address
+     */
     public Address addAddress(Address address){
         try{
             addAddress.setString(1, address.getAddress());
@@ -77,6 +101,11 @@ public class AddressDAO extends DatabaseDAO{
         return address;
     }
 
+    /**
+     * Update address.
+     *
+     * @param address the address
+     */
     public void UpdateAddress(Address address){
 
         try{

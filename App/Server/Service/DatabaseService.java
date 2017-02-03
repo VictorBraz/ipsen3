@@ -6,11 +6,13 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * @author Victor
+ * The type Database service.
+ *
+ * @author Victor Machado Braz, Negin Nafissi
  */
 public class DatabaseService {
     /**
-     * @author Victor
+     * @author Victor Machado Braz
      */
     private static DatabaseService connectionInstance;
 
@@ -31,8 +33,10 @@ public class DatabaseService {
 
 
     /**
-     * @author Victor
-     * @return
+     * Gets instance.
+     *
+     * @return instance
+     * @author Victor Machado Braz
      */
     public static DatabaseService getInstance() {
         if(connectionInstance == null) {
@@ -46,9 +50,13 @@ public class DatabaseService {
     }
 
     /**
-     * @author
-     * @return
-     * @throws SQLException
+     * Gets connection.
+     *
+     * @param username the username
+     * @param password the password
+     * @return connection
+     * @throws SQLException the sql exception
+     * @author Negin Nafissi
      */
     public Connection getConnection(String username, String password) throws SQLException {
 

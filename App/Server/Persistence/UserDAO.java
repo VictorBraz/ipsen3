@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import Server.Model.User;
 
 /**
+ * The type User dao.
  *
  * @author Peter van Vliet, Negin Nafissi
  */
@@ -22,6 +23,11 @@ public class UserDAO extends DatabaseDAO
     private PreparedStatement deleteUser;
     private List<User> users;
 
+    /**
+     * Instantiates a new User dao.
+     *
+     * @throws Exception the exception
+     */
     public UserDAO() throws Exception {
         super();
         prepareStatements();
@@ -41,6 +47,11 @@ public class UserDAO extends DatabaseDAO
         }
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     public List<User> getAll()
     {
         users = new ArrayList<>();
@@ -64,6 +75,12 @@ public class UserDAO extends DatabaseDAO
         return users;
     }
 
+    /**
+     * Gets user.
+     *
+     * @param id the id
+     * @return the user
+     */
     public User getUser(int id)
     {
         User user = new User();
@@ -86,6 +103,12 @@ public class UserDAO extends DatabaseDAO
         return user;
     }
 
+    /**
+     * Gets by email address.
+     *
+     * @param accountName the account name
+     * @return the by email address
+     */
     public User getByEmailAddress(String accountName) {
 
             Optional<User> result = users.stream().filter(user -> user.getEmailAddress().equals(accountName)).findAny();
@@ -95,6 +118,11 @@ public class UserDAO extends DatabaseDAO
                     : null;
     }
 
+    /**
+     * Add.
+     *
+     * @param user the user
+     */
     public void add(User user)
     {
         users.add(user);
@@ -111,11 +139,22 @@ public class UserDAO extends DatabaseDAO
         }
     }
 
+    /**
+     * Update.
+     *
+     * @param id   the id
+     * @param user the user
+     */
     public void update(int id, User user)
     {
         users.set(id, user);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     public void delete(int id)
     {
         try {

@@ -23,7 +23,7 @@ import Server.Model.User;
 
 /**
  * Meer informatie over resources:
- *  https://jersey.java.net/documentation/latest/user-guide.html#jaxrs-resources
+ * https://jersey.java.net/documentation/latest/user-guide.html#jaxrs-resources
  *
  * @author Peter van Vliet, Negin Nafissi
  */
@@ -34,12 +34,22 @@ public class UserResource
 {
     private final UserService service;
 
+    /**
+     * Instantiates a new User resource.
+     *
+     * @param service the service
+     */
     @Inject
     public UserResource(UserService service)
     {
         this.service = service;
     }
 
+    /**
+     * Retrieve all collection.
+     *
+     * @return the collection
+     */
     @GET
     @JsonView(View.Public.class)
     @PermitAll
@@ -48,6 +58,12 @@ public class UserResource
         return service.getAll();
     }
 
+    /**
+     * Retrieve user.
+     *
+     * @param id the id
+     * @return the user
+     */
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -57,6 +73,11 @@ public class UserResource
         return service.get(id);
     }
 
+    /**
+     * Create.
+     *
+     * @param user the user
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -66,6 +87,13 @@ public class UserResource
         service.add(user);
     }
 
+    /**
+     * Update.
+     *
+     * @param id            the id
+     * @param authenticator the authenticator
+     * @param user          the user
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -76,6 +104,11 @@ public class UserResource
         service.update(authenticator, id, user);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     @DELETE
     @Path("/{id}")
     @RolesAllowed("1")
@@ -84,6 +117,12 @@ public class UserResource
         service.delete(id);
     }
 
+    /**
+     * Authenticate user.
+     *
+     * @param authenticator the authenticator
+     * @return the user
+     */
     @GET
     @Path("/me")
     @JsonView(View.Private.class)

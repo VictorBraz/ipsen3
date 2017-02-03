@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Victor
+ * The type Client dao.
+ *
+ * @author Victor Machado Braz
  */
 public class ClientDAO extends DatabaseDAO{
 
@@ -23,6 +25,11 @@ public class ClientDAO extends DatabaseDAO{
     private PreparedStatement updateClient;
     private PreparedStatement deleteClient;
 
+    /**
+     * Instantiates a new Client dao.
+     *
+     * @throws Exception the exception
+     */
     public ClientDAO() throws Exception{
         super();
         prepareStatements();
@@ -52,6 +59,11 @@ public class ClientDAO extends DatabaseDAO{
         }
     }
 
+    /**
+     * Add client.
+     *
+     * @param client the client
+     */
     public void addClient(Client client){
 
         try {
@@ -89,6 +101,11 @@ public class ClientDAO extends DatabaseDAO{
         }
     }
 
+    /**
+     * Get all list.
+     *
+     * @return the list
+     */
     public List<Client> getAll(){
         List<Client> clients = new ArrayList<>();
         try{
@@ -127,7 +144,12 @@ public class ClientDAO extends DatabaseDAO{
     }
 
 
-
+    /**
+     * Gets client.
+     *
+     * @param id the id
+     * @return the client
+     */
     public Client getClient(int id) {
         Client client = new Client();
         try {
@@ -162,6 +184,11 @@ public class ClientDAO extends DatabaseDAO{
         return client;
     }
 
+    /**
+     * Update.
+     *
+     * @param client the client
+     */
     public void update(Client client){
         Address address = new Address();
         address.setAddress(client.getAddress());
@@ -195,6 +222,11 @@ public class ClientDAO extends DatabaseDAO{
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     public void delete (int id) {
         try {
 
@@ -216,6 +248,11 @@ public class ClientDAO extends DatabaseDAO{
 
     }
 
+    /**
+     * Restore.
+     *
+     * @param id the id
+     */
     public void restore(int id) {
 
         try {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Negin on 13-12-2016.
+ * Created by Negin Nafissi on 13-12-2016.
  */
 public class EmployeeDAO extends DatabaseDAO {
 
@@ -24,6 +24,11 @@ public class EmployeeDAO extends DatabaseDAO {
     private PreparedStatement getAll;
 
 
+    /**
+     * Instantiates a new Employee dao.
+     *
+     * @throws Exception the exception
+     */
     public EmployeeDAO() throws Exception {
         super();
         prepareStatements();
@@ -47,6 +52,11 @@ public class EmployeeDAO extends DatabaseDAO {
 
     }
 
+    /**
+     * Add employee.
+     *
+     * @param employee the employee
+     */
     public void addEmployee(Employee employee){
         try {
             Address address = new Address();
@@ -83,6 +93,11 @@ public class EmployeeDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Get all list.
+     *
+     * @return the list
+     */
     public List<Employee> getAll(){
         List<Employee> employees = new ArrayList<>();
         try{
@@ -120,6 +135,12 @@ public class EmployeeDAO extends DatabaseDAO {
         return employees;
     }
 
+    /**
+     * Gets employee.
+     *
+     * @param id the id
+     * @return the employee
+     */
     public Employee getEmployee(int id) {
         Employee employee = new Employee();
         try {
@@ -155,6 +176,11 @@ public class EmployeeDAO extends DatabaseDAO {
         return employee;
     }
 
+    /**
+     * Update.
+     *
+     * @param employee the employee
+     */
     public void update(Employee employee){
         Address address = new Address();
         address.setAddress(employee.getAddress());
@@ -190,6 +216,11 @@ public class EmployeeDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     public void delete (int id) {
         try {
             if (getEmployee(id).getActive() == true) {
