@@ -1,5 +1,5 @@
 /**
- * @author Victor, Bernd
+ * Created by Victor Machado Braz, Bernd Oostrum
  */
 
 angular.module('workshop').service('clientService', function($http)

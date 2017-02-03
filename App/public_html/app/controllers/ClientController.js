@@ -1,6 +1,5 @@
 /**
- * @author Victor, Bernd
- *
+ * Created by Victor Machado Braz
  */
 
 angular.module('workshop').controller('ClientController', function ($scope, $route, alertify, clientService) {
@@ -16,7 +15,6 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
     $scope.searchKeyword = '';
 
     $scope.register = function () {
-
         clientService.create(
             $scope.firstname,
             $scope.lastname,
@@ -32,8 +30,6 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
             $scope.active,
             clientCreated
         );
-
-
     };
 
     $scope.viewSettedClient = function (id) {
@@ -58,7 +54,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
     };
 
     var clientCreated = function () {
-        alertify.success("Er is een nieuw cliënt toegevoegd");
+        alertify.success("Er is een nieuwe cliënt toegevoegd");
         $scope.gotoClients();
     };
 
@@ -95,17 +91,9 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
         $.material.options.autofill = true;
     }
 
-
-    var reload = function()
-    {
+    var reload = function() {
         $route.reload();
     };
 
     construct();
-
-
-
-
-
-
 });

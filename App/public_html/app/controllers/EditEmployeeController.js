@@ -1,8 +1,8 @@
 /**
- * Created by Negin on 10-1-2017.
+ * Created by Negin Nafissi on 10-1-2017.
  */
 
-angular.module('workshop').controller('EditEmployeeController', function($scope, employeeService) {
+angular.module('workshop').controller('EditEmployeeController', function($scope, alertify, employeeService) {
     var construct = function () {
         employeeService.getEmployee(function(employees) {
             $scope.employees = employees;
@@ -10,16 +10,19 @@ angular.module('workshop').controller('EditEmployeeController', function($scope,
     };
 
     $scope.update = function () {
-        var confirmation = confirm("Weet u zeker dat u de gegevens wilt aanpassen?");
-        if (confirmation == true) {
-            employeeService.update($scope.employees, onUpdated);
-        } else {
-            alert('Gegevens niet aangepast!');
-        }
-
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de gegevens wilt aanpassen?", function (ev) {
+                employeeService.update($scope.employees, onUpdated);
+                ev.preventDefault();
+                alertify.success("Medewerker aangepast");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Medewerker niet aangepast");
+            });
     };
     var onUpdated = function () {
-        alert('Medewerker is aangepast! ');
         $scope.gotoEmployees();
     };
 
