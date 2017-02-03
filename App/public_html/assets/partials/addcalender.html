@@ -1,0 +1,50 @@
+<META name="Author" content="Vedad ,Piric">
+<div class="container">
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h1>Toevoegen Agendapunt</h1>
+        </div>
+
+        <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+
+                    <label class="control-label" for="contactPersoon">Aangemaakt door</label>
+                    <input type="text" id="contactPersoon" class="form-control" ng-model="contactPersoon" ng-required="true">
+                </div>
+                <div class="form-group label-floating">
+
+                    <label for="datum" class="control-label">Datum</label>
+                    <input type="text" class="form-control" id="datum" ng-model="datum" ng-required="true"/>
+                </div>
+
+            </div>
+
+            <div class="col-md-5 col-md-offset-2">
+
+                <div class="form-group label-floating">
+                    <label for="eventName" class="control-label">Agendapunt</label>
+                    <textarea id="eventName" class="form-control" ng-model="eventName" rows="7"></textarea>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 col-md-offset-4" id="addbuttongroup">
+                <div class="row top-buffer">
+
+                    <input type="button" class="btn btn-primary" value="Annuleren"
+                           onClick="history.go(-1);return true;"/>
+                    <input type="submit" class="btn btn-primary" value="Opslaan"
+                           ng-disabled="registrationForm.$invalid"/>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>

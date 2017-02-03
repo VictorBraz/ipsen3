@@ -27,11 +27,11 @@ public class CalenderDAO extends DatabaseDAO{
         try{
             getAll = conn.prepareStatement("SELECT * FROM calender ");
             getEvent = conn.prepareStatement("SELECT * FROM calender WHERE id=?");
-            addEvent = conn.prepareStatement("INSERT INTO calender (eventName, datum) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            updateEvent = conn.prepareStatement("UPDATE calender SET eventName = ? , datum = ? WHERE id = ?");
+            addEvent = conn.prepareStatement("INSERT INTO calender (eventname,datum,aangemaaktdoor) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            updateEvent = conn.prepareStatement("UPDATE calender SET eventname = ? , datum = ? ,aangemaaktdoor = ? WHERE id = ?");
             deleteEvent = conn.prepareStatement("DELETE FROM calender WHERE id =?");
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
@@ -45,12 +45,13 @@ public class CalenderDAO extends DatabaseDAO{
                 calender.setId(rs.getInt(1));
                 calender.setEventName(rs.getString(2));
                 calender.setDatum(rs.getDate(3));
+                calender.setContactPersoon(rs.getString(3));
 
             }
 
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return calender;
 
@@ -66,10 +67,10 @@ public class CalenderDAO extends DatabaseDAO{
                 calender.setId(rs.getInt(4));
                 calender.setEventName(rs.getString(1));
                 calender.setDatum(rs.getDate(2));
-
+                calender.setContactPersoon(rs.getString(3));
 
                 calenderList.add(calender);
-//                }
+
 
             }
 
@@ -81,20 +82,17 @@ public class CalenderDAO extends DatabaseDAO{
 
 
     public Calender addEvents(Calender calender){
+
+        java.util.Date util_StartDate = calender.getDatum();
+        java.sql.Date sql_StartDate = new java.sql.Date( util_StartDate.getTime() );
         try{
             addEvent.setString(1, calender.getEventName());
-            addEvent.setDate(2, (Date) calender.getDatum());
+            addEvent.setDate(2, sql_StartDate);
             addEvent.setString(3, calender.getContactPersoon());
-
             addEvent.executeUpdate();
-            ResultSet rs = addEvent.getGeneratedKeys();
-            if (rs.next()) {
-                int id = rs.getInt(1);
-                calender.setId(id);
-            }
             addEvent.close();
         }catch(Exception e){
-
+            e.printStackTrace();
         }
         return calender;
     }
@@ -105,10 +103,11 @@ public class CalenderDAO extends DatabaseDAO{
 
             updateEvent.setString(1, calender.getEventName());
             updateEvent.setDate(2, (Date) calender.getDatum());
-            updateEvent.setInt(3, calender.getId());
+            updateEvent.setString(3, calender.getContactPersoon());
+            updateEvent.setInt(4, calender.getId());
             updateEvent.executeQuery();
         }catch(Exception e){
-
+                e.printStackTrace();
         }
     }
     public void deleteEvent (int id) {

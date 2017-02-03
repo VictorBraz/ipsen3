@@ -2,7 +2,6 @@ package Server.Model;
 
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;
@@ -17,21 +16,12 @@ public class Calender {
     @JsonView(View.Public.class)
     private int id;
 
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
     private Date datum;
 
-
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
     private String eventName;
 
-
-
-    @NotEmpty
-    @Length(min = 1, max = 100)
     @JsonView(View.Public.class)
     private String contactPersoon;
 
@@ -60,7 +50,6 @@ public class Calender {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getContactPersoon() {
         return contactPersoon;

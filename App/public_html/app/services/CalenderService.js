@@ -5,13 +5,14 @@ angular.module('workshop').service('CalenderService', function($http)
 {
     var self = this;
 
-    self.create = function (eventName,Datum) {
+    self.create = function (eventName,datum,contactPersoon) {
 
         var uri = 'api/calender/';
         var data =
             {
                 eventName: eventName,
-                datum: datum
+                datum: datum,
+                contactPersoon: contactPersoon
 
             };
         $http.post(uri, data).then(function (response){
