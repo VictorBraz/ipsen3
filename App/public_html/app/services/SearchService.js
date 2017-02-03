@@ -1,5 +1,5 @@
 /**
- * @author Victor
+ * Created by Victor Machado Braz
  */
 angular.module('workshop').service('searchService', function($http){
 

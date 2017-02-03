@@ -1,5 +1,5 @@
 /**
- * @author Victor
+ * Created by Victor Machado Braz
  */
 angular.module('workshop').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
 

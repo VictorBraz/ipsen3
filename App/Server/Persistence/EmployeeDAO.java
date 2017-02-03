@@ -87,7 +87,7 @@ public class EmployeeDAO extends DatabaseDAO {
             note.setText(employee.getNoteText());
             noteDAO.addNote(note);
 
-            addEmployee.close();
+//            addEmployee.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -127,7 +127,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
                 employees.add(employee);
             }
-            getAll.close();
+//            getAll.close();
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -169,7 +169,7 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setNoteText(note.getText());
 
             }
-            getEmployee.close();
+//            getEmployee.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -210,7 +210,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
             updateEmployee.executeUpdate();
 
-            updateEmployee.close();
+//            updateEmployee.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -234,7 +234,7 @@ public class EmployeeDAO extends DatabaseDAO {
                 deleteEmployee.execute();
             }
 
-            deleteEmployee.close();
+//            deleteEmployee.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

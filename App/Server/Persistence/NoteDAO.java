@@ -37,6 +37,9 @@ public class NoteDAO extends DatabaseDAO {
 
     public void addNote(Note note){
         try {
+            if(note.getText() == null){
+                note.setText("");
+            }
             addNote.setString(1,note.getText());
             addNote.setInt(2,note.getOwnerID());
 

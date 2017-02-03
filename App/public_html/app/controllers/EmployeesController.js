@@ -1,13 +1,11 @@
 /**
- * Created by Negin on 13-12-2016.
+ * Created by Negin Nafissi on 13-12-2016.
  */
 
-angular.module('workshop').controller('EmployeesController', function($scope, $route, employeeService)
+angular.module('workshop').controller('EmployeesController', function($scope, $route, alertify, employeeService)
 {
-    var construct = function()
-    {
-        employeeService.getAll(function (employees)
-        {
+    var construct = function() {
+        employeeService.getAll(function (employees) {
             $scope.employees = employees;
             $scope.activetab = true;
         });
@@ -54,34 +52,43 @@ angular.module('workshop').controller('EmployeesController', function($scope, $r
     };
 
     var employeeCreated = function() {
-            alert('Er is een nieuwe medewerker toegevoegd');
-            $scope.gotoEmployees();
+        alertify.success("Er is een nieuwe medewerker toegevoegd");
+        $scope.gotoEmployees();
     };
 
     $scope.delete = function () {
-        var confirmation = confirm("Weet u zeker dat u de medewerker wilt verwijderen?");
-        if (confirmation == true) {
-            employeeService.delete($scope.selectedEmployee.id[0], reload);
-            alert("De medewerker is op non-active gezet!");
-        }
-        else {
-            alert("Gegevens niet verwijderd");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde medewerker wilt verwijderen?", function (ev) {
+                employeeService.delete($scope.selectedEmployee.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Medewerker succesvol verwijderd");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Medewerker niet verwijderd");
+            });
     };
 
     $scope.restore = function () {
-        var confirmation = confirm("Weet u zeker dat u de medewerker wilt herstellen?");
-        if (confirmation == true) {
-            employeeService.delete($scope.selectedEmployee.id[0], reload);
-            alert("De medewerker is op active gezet!");
-        } else{
-            ("Gegevens niet hersteld");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde medewerker wilt herstellen?", function (ev) {
+                employeeService.delete($scope.selectedEmployee.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Medewerker succesvol hersteld");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Medewerker niet hersteld");
+            });
+    };
+
+    $scope.reloadFillSettings = function() {
+        $.material.options.autofill = true;
     }
 
-
-    var reload = function()
-    {
+    var reload = function() {
         $route.reload();
     };
 
