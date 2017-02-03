@@ -46,6 +46,10 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     {
         $location.path('/addEmployee');
     };
+    $scope.gotoAddCalender = function ()
+    {
+        $location.path('/addcalender');
+    };
 
     $scope.gotoEditEmployee = function ()
     {

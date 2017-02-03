@@ -12,6 +12,7 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/addclient', {templateUrl: 'assets/partials/addclient.html', controller: 'ClientController' });
     $routeProvider.when('/editClient', {templateUrl: 'assets/partials/editClient.html', controller: 'EditClientController'});
     $routeProvider.when('/calender', {templateUrl: 'assets/partials/calender.html', controller: 'CalenderController' });
+    $routeProvider.when('/addcalender', {templateUrl: 'assets/partials/addcalender.html', controller: 'CalenderController' });
     $routeProvider.when('/employees', {templateUrl: 'assets/partials/employees.html', controller: 'EmployeesController' });
     $routeProvider.when('/addEmployee', {templateUrl: 'assets/partials/addEmployee.html', controller: 'EmployeesController' });
     $routeProvider.when('/editEmployee', {templateUrl: 'assets/partials/editEmployee.html', controller: 'EditEmployeeController' });
@@ -19,7 +20,7 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/viewEmployee', {templateUrl: 'assets/partials/viewEmployee.html', controller: 'EditEmployeeController' });
     $routeProvider.when('/viewClient', {templateUrl: 'assets/partials/viewClient.html', controller: 'EditClientController' });
 
-    // Voeg hier meer routes toe
+
     
     $routeProvider.otherwise({ redirectTo: '/' });
 });
