@@ -38,6 +38,33 @@ angular.module('workshop').service('CalenderService', function($http)
 
     };
 
+    self.selectedEvent = 0;
+
+    self.setSelected = function(id){
+        self.selectedEvent = id;
+    };
+    self.getEvent = function (onReceived) {
+        var uri = 'api/calender/' + self.selectedEvent + '';
+
+        $http.get(uri).then(function(response){
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
+    };
+
+    self.update = function (event, onReceived) {
+        var uri = 'api/calender/' + event.id + '';
+
+        $http.put(uri, event).then(function (response) {
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
+    };
+
 
 
 });
