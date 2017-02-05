@@ -19,7 +19,7 @@ angular.module('workshop').service('CalenderService', function($http)
                 onCreated(response.data);
             },
 
-            function (message, status)
+            function (message)
             {
                 alert('Aanmaken mislukt: ' + message);
             });

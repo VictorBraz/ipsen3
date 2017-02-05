@@ -10,7 +10,7 @@ angular.module('workshop').service('userService', function($http) {
             onSuccess(response.data);
         },
         function(message, status) {
-            alert('Inloggen mislukt: ' + message);
+            alert('Inloggen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
     
@@ -30,7 +30,7 @@ angular.module('workshop').service('userService', function($http) {
         },
         function(message, status)
         {
-            alert('Aanmaken mislukt: ' + message);
+            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
     
@@ -43,7 +43,7 @@ angular.module('workshop').service('userService', function($http) {
         },
         function(message, status)
         {
-            alert('Ophalen mislukt: ' + message);
+            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 
@@ -58,7 +58,7 @@ angular.module('workshop').service('userService', function($http) {
                 self.getAll(onReceived);
             },
             function(message, status) {
-                alert('Verwijderen mislukt: ' + message + status);
+                alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
             });
     };
 

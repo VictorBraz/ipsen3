@@ -5,8 +5,6 @@ angular.module('workshop').service('searchService', function($http){
 
     var self = this;
 
-    self.tag;
-
     self.setTag = function (tag){
         self.tag = tag;
     };

@@ -30,7 +30,7 @@ angular.module('workshop').service('noteService', function($http)
             },
             function (message, status)
             {
-                alert('Aanmaken mislukt: ' + message);
+                alert('Aanmaken notitie mislukt, neem contact op met uw beheerder: ' + message + status);
             });
     };
 
@@ -41,7 +41,7 @@ angular.module('workshop').service('noteService', function($http)
                 onReceived(response.data);
             },
             function(message, status){
-                alert('Ophalen mislukt: ' + message);
+                alert('Ophalen notitie mislukt, neem contact op met uw beheerder: ' + message + status);
             });
 
     };
@@ -56,7 +56,7 @@ angular.module('workshop').service('noteService', function($http)
             },
             function(message, status)
             {
-                alert('Ophalen mislukt: ' + message + status);
+                alert('Ophalen notitie mislukt, neem contact op met uw beheerder: ' + message + status);
             });
     };
 
@@ -67,7 +67,7 @@ angular.module('workshop').service('noteService', function($http)
                 onReceived(response.data);
             },
             function (message, status) {
-                alert('Aanpassen mislukt: ' + message + status);
+                alert('Aanpassen notitie mislukt, neem contact op met uw beheerder: ' + message + status);
             });
     };
 });

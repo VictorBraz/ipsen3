@@ -30,7 +30,7 @@ angular.module('workshop').service('clientService', function($http)
 
         function (message, status)
         {
-            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message);
+            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 

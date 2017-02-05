@@ -6,7 +6,7 @@ angular.module('workshop').controller('NoteController',function ($scope,noteServ
         noteService.getNote(function (note) {
             $scope.note = note
         })
-    }
+    };
 
     $scope.updateNote = function () {
         var confirmation = confirm("Weet u zeker dat u de gegevens wilt aanpassen?");

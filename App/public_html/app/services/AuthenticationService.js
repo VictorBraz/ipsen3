@@ -1,7 +1,7 @@
 /**
   * Service for providing authentication logic.
   * 
-  * @author Peter van Vliet <p.van.vliet@anyvation.com>
+  * @author Peter van Vliet <p.van.vliet@anyvation.com>, Victor Machado Braz
   * 
   * @param {object} $window The angular window object.
   * @param {object} $rootScope The angular rootScope object.

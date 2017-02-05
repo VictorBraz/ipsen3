@@ -19,15 +19,6 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
         id: []
     };
 
-
-
-
-
-    $scope.ontestClick = function() {
-        companyService.setSelected($scope.selectedCompanyTest.id[0]);
-        companyService.getSelected();
-    };
-
     $scope.create = function () {
         companyService.create(
             $scope.companyname,
