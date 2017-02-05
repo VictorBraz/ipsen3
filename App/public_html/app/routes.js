@@ -13,6 +13,8 @@ angular.module('workshop').config(function($routeProvider)
     $routeProvider.when('/editClient', {templateUrl: 'assets/partials/editClient.html', controller: 'EditClientController'});
     $routeProvider.when('/calender', {templateUrl: 'assets/partials/calender.html', controller: 'CalenderController' });
     $routeProvider.when('/addcalender', {templateUrl: 'assets/partials/addcalender.html', controller: 'CalenderController' });
+    $routeProvider.when('/editCalender', {templateUrl: 'assets/partials/editCalender.html', controller: 'EditCalenderController' });
+    $routeProvider.when('/viewCalender', {templateUrl: 'assets/partials/viewCalender.html', controller: 'EditCalenderController' });
     $routeProvider.when('/employees', {templateUrl: 'assets/partials/employees.html', controller: 'EmployeesController' });
     $routeProvider.when('/addEmployee', {templateUrl: 'assets/partials/addEmployee.html', controller: 'EmployeesController' });
     $routeProvider.when('/editEmployee', {templateUrl: 'assets/partials/editEmployee.html', controller: 'EditEmployeeController' });

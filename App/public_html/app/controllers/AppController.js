@@ -75,6 +75,12 @@ angular.module('workshop').controller('AppController', function($scope, $locatio
     $scope.gotoCalender = function () {
         $location.path('/calender');
     };
+    $scope.gotoViewCalender = function () {
+        $location.path('/viewCalender');
+    };
+    $scope.gotoEditCalender = function () {
+        $location.path('/editCalender');
+    };
 
     $scope.gotoAddCompany = function () {
         $location.path('/addcompany');

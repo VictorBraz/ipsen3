@@ -60,7 +60,7 @@ public class CalenderResource {
     @PermitAll
     public void update(Calender calender){
         service.update(calender);
-        System.out.println(calender.getEventName());
+
     }
 
     @DELETE
@@ -69,7 +69,7 @@ public class CalenderResource {
     @JsonView(View.Protected.class)
     @PermitAll
     public void delete(@PathParam("id") int id) {
-        System.out.println(id);
+
         service.delete(id);
     }
 

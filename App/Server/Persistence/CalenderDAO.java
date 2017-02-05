@@ -2,7 +2,6 @@ package Server.Persistence;
 
 import Server.Model.Calender;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,10 +41,10 @@ public class CalenderDAO extends DatabaseDAO{
             ResultSet rs = getEvent.executeQuery();
 
             while(rs.next()){
-                calender.setId(rs.getInt(1));
-                calender.setEventName(rs.getString(2));
-                calender.setDatum(rs.getDate(3));
+                calender.setEventName(rs.getString(1));
+                calender.setDatum(rs.getDate(2));
                 calender.setContactPersoon(rs.getString(3));
+                calender.setId(rs.getInt(4));
 
             }
 
@@ -98,14 +97,16 @@ public class CalenderDAO extends DatabaseDAO{
     }
 
     public void UpdateEvents(Calender calender){
+        java.util.Date util_StartDate = calender.getDatum();
+        java.sql.Date sql_StartDate = new java.sql.Date( util_StartDate.getTime() );
 
         try{
 
             updateEvent.setString(1, calender.getEventName());
-            updateEvent.setDate(2, (Date) calender.getDatum());
+            updateEvent.setDate(2, sql_StartDate);
             updateEvent.setString(3, calender.getContactPersoon());
             updateEvent.setInt(4, calender.getId());
-            updateEvent.executeQuery();
+            updateEvent.executeUpdate();
         }catch(Exception e){
                 e.printStackTrace();
         }
@@ -114,7 +115,7 @@ public class CalenderDAO extends DatabaseDAO{
         try {
 
          deleteEvent.setInt(1,id);
-         deleteEvent.executeQuery();
+         deleteEvent.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

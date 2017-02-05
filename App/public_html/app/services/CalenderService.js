@@ -5,13 +5,13 @@ angular.module('workshop').service('CalenderService', function($http)
 {
     var self = this;
 
-    self.create = function (eventName,datum,contactPersoon) {
+    self.create = function (datum,eventName,contactPersoon, onCreated) {
 
-        var uri = 'api/calender/';
+        var uri = 'api/calender';
         var data =
             {
-                eventName: eventName,
                 datum: datum,
+                eventName: eventName,
                 contactPersoon: contactPersoon
 
             };
@@ -26,7 +26,7 @@ angular.module('workshop').service('CalenderService', function($http)
     };
 
     self.getAll = function (onReceived) {
-        var uri = 'api/calender/';
+        var uri = 'api/calender';
 
         $http.get(uri).then(function(response){
                 onReceived(response.data);
@@ -36,6 +36,43 @@ angular.module('workshop').service('CalenderService', function($http)
                 alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message);
             });
 
+    };
+
+    self.selectedEvent = 0;
+
+    self.setSelected = function(id){
+        self.selectedEvent = id;
+    };
+    self.getEvent = function (onReceived) {
+        var uri = 'api/calender/' + self.selectedEvent + '';
+
+        $http.get(uri).then(function(response){
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
+    };
+
+    self.update = function (event, onReceived) {
+        var uri = 'api/calender/' + event.id + '';
+
+        $http.put(uri, event).then(function (response) {
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
+    };
+    self.delete = function(id, onReceived) {
+        var uri = 'api/calender/' + id + '';
+
+        $http.delete(uri, id).then(function (response) {
+                onReceived(response.data);
+            },
+            function(message, status) {
+                alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
     };
 
 

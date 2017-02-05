@@ -2,11 +2,11 @@
  * Created by vedadpiric on 21-12-16.
  */
 
-angular.module("workshop").controller('CalenderController', function($scope, $filter, $q, $timeout,$http, $log,CalenderService) {
+angular.module("workshop").controller('CalenderController', function($scope, $filter, $q, $timeout,$http, $log,CalenderService,alertify) {
 
-    var holidays = {};
+    var eventday = {};
 
-    var getHolidays = function () {
+    var getEvents = function () {
         CalenderService.getAll(function (events) {
             $scope.events = events;
             for (i = 0; i < $scope.events.length; i++) {
@@ -14,21 +14,21 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
 
                 tempObject  = new Object();
 
-                console.log($scope.events[i]);
+
                 tempObject.name = $scope.events[i].eventName;
                 tempObject.date = $scope.events[i].datum;
-                tempObject.country = "us";
+                tempObject.id = $scope.events[i].id;
 
                 tempArray.push(tempObject);
 
-                holidays[$scope.events[i].datum] = tempArray;
+                eventday[$scope.events[i].datum] = tempArray;
 
             }
-            //console.log(events);
+
         });
     };
 
-    getHolidays();
+    getEvents();
 
     $scope.selectedDate = new Date();
     $scope.weekStartsOn = 0;
@@ -36,24 +36,15 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
     $scope.tooltips = true;
     $scope.disableFutureDates = false;
 
-
     $scope.setDirection = function(direction) {
         $scope.direction = direction;
         $scope.dayFormat = direction === "vertical" ? "EEEE, MMMM d" : "d";
     };
 
     $scope.dayClick = function(date) {
-        $scope.msg = "You clicked " + $filter("date")(date, "MMM d, y h:mm:ss a Z");
-    };
 
-    $scope.prevMonth = function(data) {
-        $scope.msg = "You clicked (prev) month " + data.month + ", " + data.year;
+        $scope.viewSettedEvent($scope.getid(date));
     };
-
-    $scope.nextMonth = function(data) {
-        $scope.msg = "You clicked (next) month " + data.month + ", " + data.year;
-    };
-
 
     var numFmt = function(num) {
         num = num.toString();
@@ -70,7 +61,7 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
 
     $scope.setDayContent = function(date) {
         var key = [date.getFullYear(), numFmt(date.getMonth()+1), numFmt(date.getDate())].join("-");
-        var data = (holidays[key]||[{ name: ""}])[0].name;
+        var data = (eventday[key]||[{ name: ""}])[0].name;
         if (loadContentAsync) {
             var deferred = $q.defer();
             $timeout(function() {
@@ -78,7 +69,13 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
             });
             return deferred.promise;
         }
+            reload()
+        return data;
 
+    };
+    $scope.getid = function(date) {
+        var key = [date.getFullYear(), numFmt(date.getMonth()+1), numFmt(date.getDate())].join("-");
+        var data = (eventday[key]||[{ id: ""}])[0].id;
         return data;
 
     };
@@ -87,8 +84,8 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
 
         CalenderService.create(
             $scope.datum,
-            $scope.contactPersoon,
             $scope.eventName,
+            $scope.contactPersoon,
             calenderCreated
         );
 
@@ -99,9 +96,14 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
         $scope.gotoCalender();
     };
 
+    $scope.viewSettedEvent = function (id) {
+        CalenderService.setSelected(id);
+        $scope.gotoViewCalender();
+    };
 
-
-
+    var reload = function() {
+        $route.reload();
+    };
 
 });
 
