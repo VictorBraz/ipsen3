@@ -115,7 +115,7 @@ public class CalenderDAO extends DatabaseDAO{
         try {
 
          deleteEvent.setInt(1,id);
-         deleteEvent.executeQuery();
+         deleteEvent.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

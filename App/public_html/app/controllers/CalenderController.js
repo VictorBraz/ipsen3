@@ -69,7 +69,7 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
             });
             return deferred.promise;
         }
-
+            reload()
         return data;
 
     };
@@ -99,6 +99,10 @@ angular.module("workshop").controller('CalenderController', function($scope, $fi
     $scope.viewSettedEvent = function (id) {
         CalenderService.setSelected(id);
         $scope.gotoViewCalender();
+    };
+
+    var reload = function() {
+        $route.reload();
     };
 
 });

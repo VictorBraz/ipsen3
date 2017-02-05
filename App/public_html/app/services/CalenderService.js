@@ -64,6 +64,16 @@ angular.module('workshop').service('CalenderService', function($http)
                 alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
             });
     };
+    self.delete = function(id, onReceived) {
+        var uri = 'api/calender/' + id + '';
+
+        $http.delete(uri, id).then(function (response) {
+                onReceived(response.data);
+            },
+            function(message, status) {
+                alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
+    };
 
 
 

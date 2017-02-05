@@ -27,9 +27,26 @@ angular.module('workshop').controller('EditCalenderController', function($scope,
                 alertify.error("Agendapunt niet aangepast");
         });
     };
+    $scope.delete = function () {
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde cliënt wilt verwijderen?", function (ev) {
+                CalenderService.delete($scope.event.id, onDelete);
+                ev.preventDefault();
+                alertify.success("Afspraak succesvol verwijderd");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Afspraak niet verwijderd");
+            });
+    };
 
     var onUpdated = function()
     {
+        $scope.gotoCalender();
+    };
+
+    var onDelete = function() {
         $scope.gotoCalender();
     };
 
