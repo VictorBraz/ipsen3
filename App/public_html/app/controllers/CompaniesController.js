@@ -1,3 +1,8 @@
+/**
+ * Created by Mitch van Wijngaarden
+ * @author Mitch, Roel
+ *
+ */
 angular.module('workshop').controller('CompaniesOverviewController', function($scope, companyService)
 {
     $scope.selectedcompanies = {

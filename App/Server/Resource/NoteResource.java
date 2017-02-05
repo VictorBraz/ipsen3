@@ -25,9 +25,19 @@ public class NoteResource {
 
     private final NoteService service;
 
+    /**
+     * Instantiates a new Note resource.
+     *
+     * @param service the service
+     */
     @Inject
     public NoteResource(NoteService service){this.service = service;}
 
+    /**
+     * Retrieve all collection.
+     *
+     * @return the collection
+     */
     @GET
     @JsonView(View.Public.class)
     @PermitAll
@@ -35,6 +45,12 @@ public class NoteResource {
         return service.getAll();
     }
 
+    /**
+     * Retrieve note.
+     *
+     * @param id the id
+     * @return the note
+     */
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -42,6 +58,11 @@ public class NoteResource {
         return service.get(id);
     }
 
+    /**
+     * Create.
+     *
+     * @param note the note
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -49,6 +70,13 @@ public class NoteResource {
         service.add(note);
     }
 
+    /**
+     * Update.
+     *
+     * @param id            the id
+     * @param authenticator the authenticator
+     * @param note          the note
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)

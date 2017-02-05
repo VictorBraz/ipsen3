@@ -23,11 +23,21 @@ public class CalenderResource {
 
     private final CalenderService service;
 
+    /**
+     * Instantiates a new Calender resource.
+     *
+     * @param service the service
+     */
     @Inject
     public CalenderResource(CalenderService service){
         this.service = service;
     }
 
+    /**
+     * Get all collection.
+     *
+     * @return the collection
+     */
     @GET
     @JsonView(View.Public.class)
     //@RolesAllowed("3")
@@ -37,7 +47,12 @@ public class CalenderResource {
     }
 
 
-
+    /**
+     * Retrieve calender.
+     *
+     * @param id the id
+     * @return the calender
+     */
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -45,6 +60,11 @@ public class CalenderResource {
         return service.get(id);
     }
 
+    /**
+     * Create.
+     *
+     * @param calender the calender
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -53,6 +73,11 @@ public class CalenderResource {
         service.add(calender);
     }
 
+    /**
+     * Update.
+     *
+     * @param calender the calender
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -63,6 +88,11 @@ public class CalenderResource {
 
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
