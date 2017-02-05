@@ -51,5 +51,3 @@ angular.module('workshop',
         };
     }]);
 
-
-// Voeg hier meer configuraties toe
