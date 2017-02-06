@@ -13,9 +13,11 @@
                 <div id="headertable">
                     <ul id="tabs" class="nav nav-tabs">
 
-                        <li class="active"><a data-target="#activeemployees" ng-click="activetab=true" data-toggle="tab">Actief</a>
+                        <li class="active"><a data-target="#activeemployees" ng-click="activetab=true"
+                                              data-toggle="tab">Actief</a>
                         </li>
-                        <li><a data-target="#nonactiveemployees" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
+                        <li><a data-target="#nonactiveemployees" ng-click="activetab=false"
+                               data-toggle="tab">Non-actief</a>
                         </li>
                     </ul>
                 </div>
@@ -34,50 +36,51 @@
                 <!--id="actieveMedewerkers"-->
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                            <th></th>
-                            <th><label>Voornaam</label></th>
-                            <th><label>Achternaam</label></th>
-                            <th><label>Studie</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
-                        </tr>
+                    <tr>
+                        <th></th>
+                        <th><label>Voornaam</label></th>
+                        <th><label>Achternaam</label></th>
+                        <th><label>Studie</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                    </tr>
                     </thead>
                     </body>
                     <tbody>
-                        <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:true} | orderBy:'firstName'" >
-                            <td>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-click="selectEmployee()"
-                                               checklist-model="selectedEmployee.id"
-                                               checklist-value="employee.id">
-                                    </label>
-                                </div>
-                            </td>
-                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.firstName }}</td>
-                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.lastName }}</td>
-                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.study }}</td>
-                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}</td>
-                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.email }}</td>
-                            <td class="filterable-cell"  ng-click="viewSettedEmp(employee.id)">{{ employee.tag }}</td>
-                        </tr>
+                    <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:true} | orderBy:'firstName'">
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-click="selectEmployee()"
+                                           checklist-model="selectedEmployee.id"
+                                           checklist-value="employee.id">
+                                </label>
+                            </div>
+                        </td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.firstName }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.lastName }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.study }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}
+                        </td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.email }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.tag }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
             <div class="tab-pane" id="nonactiveemployees">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                            <th></th>
-                            <th><label>Voornaam</label></th>
-                            <th><label>Achternaam</label></th>
-                            <th><label>Studie</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
-                        </tr>
+                    <tr>
+                        <th></th>
+                        <th><label>Voornaam</label></th>
+                        <th><label>Achternaam</label></th>
+                        <th><label>Studie</label></th>
+                        <th><label>Telefoonnummer</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>Tag</label></th>
+                    </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="employee in employees | filter:searchKeyword | filter: {active:false} | orderBy:'firstName'">
@@ -93,7 +96,8 @@
                         <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.firstName }}</td>
                         <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.lastName }}</td>
                         <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.study }}</td>
-                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.phoneNumber }}
+                        </td>
                         <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.email }}</td>
                         <td class="filterable-cell" ng-click="viewSettedEmp(employee.id)">{{ employee.tag }}</td>
                     </tr>
@@ -103,7 +107,7 @@
 
         </div>
         <div class="col-md-2 col-md-offset-11">
-            <div class="row"  id="buttonrow">
+            <div class="row" id="buttonrow">
 
                 <!--Toevoegen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab && selectedEmployee.id.length ==0">
@@ -121,7 +125,7 @@
                 </div>
 
                 <!--Verwijderen knop-->
-                <div class="btn btn-info btn-fab"ng-show="activetab && selectedEmployee.id.length >0">
+                <div class="btn btn-info btn-fab" ng-show="activetab && selectedEmployee.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/employees') }">
                         <a ng-click="delete()"> <i class="material-icons">delete</i>
                         </a>

@@ -13,9 +13,11 @@
                 <div id="headertable">
                     <ul id="tabs" class="nav nav-tabs">
 
-                        <li class="active"><a data-target="#activecompanies" ng-click="activetab=true" data-toggle="tab">Actief</a>
+                        <li class="active"><a data-target="#activecompanies" ng-click="activetab=true"
+                                              data-toggle="tab">Actief</a>
                         </li>
-                        <li><a data-target="#nonactivecompanies" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
+                        <li><a data-target="#nonactivecompanies" ng-click="activetab=false"
+                               data-toggle="tab">Non-actief</a>
                         </li>
                     </ul>
                 </div>
@@ -57,7 +59,8 @@
                             </div>
                         </td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.companyName }}</td>
-                        <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.contactPerson }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.contactPerson }}
+                        </td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.email }}</td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.phoneNumber }}</td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.tag }}</td>
@@ -90,7 +93,8 @@
                             </div>
                         </td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.companyName }}</td>
-                        <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.contactPerson }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.contactPerson }}
+                        </td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.email }}</td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.phoneNumber }}</td>
                         <td class="filterable-cell" ng-click="viewSettedComp(company.id)">{{ company.tag }}</td>
@@ -101,7 +105,7 @@
 
         </div>
         <div class="col-md-2 col-md-offset-11">
-            <div class="row"  id="buttonrow">
+            <div class="row" id="buttonrow">
 
                 <!--Toevoegen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab && selectedCompany.id.length == 0">
@@ -119,7 +123,7 @@
                 </div>
 
                 <!--Verwijderen knop-->
-                <div class="btn btn-info btn-fab"ng-show="activetab && selectedCompany.id.length >0">
+                <div class="btn btn-info btn-fab" ng-show="activetab && selectedCompany.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/companies') }">
                         <a ng-click="delete()"> <i class="material-icons">delete</i>
                         </a>

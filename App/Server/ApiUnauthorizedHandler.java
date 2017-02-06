@@ -5,6 +5,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
+ * The type Api unauthorized handler.
  *
  * @author Peter van Vliet
  */

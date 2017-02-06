@@ -18,7 +18,7 @@ import java.util.Collection;
 /**
  * The type Client resource.
  *
- * @author Victor Machado Braz
+ * @author Victor Machado Braz, Bernd
  */
 @Singleton
 @Path("/clients")

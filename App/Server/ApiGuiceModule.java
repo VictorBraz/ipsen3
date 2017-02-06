@@ -8,6 +8,7 @@ package Server;
 import com.google.inject.AbstractModule;
 
 /**
+ * The type Api guice module.
  *
  * @author Peter van Vliet
  */

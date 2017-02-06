@@ -1,3 +1,4 @@
+<META name="Author" content="Bernd">
 <div class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -18,7 +19,7 @@
                     </a>
                 </li>
 
-                <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/employees') }">
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/employees') }">
                     <a ng-click="gotoEmployees()">
                         <span class="material-icons">sentiment_very_satisfied</span>
                         Medewerkers
@@ -33,7 +34,7 @@
                 </li>
 
 
-                <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/clients') }">
+                <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/clients') }">
                     <a ng-click="gotoClients()">
                         <span class="material-icons">people</span>
                         Cliënten

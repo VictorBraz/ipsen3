@@ -15,7 +15,8 @@
 
                         <li class="active"><a data-target="#activeclients" ng-click="activetab=true" data-toggle="tab">Actief</a>
                         </li>
-                        <li><a data-target="#nonactiveclients" ng-click="activetab=false" data-toggle="tab">Non-actief</a>
+                        <li><a data-target="#nonactiveclients" ng-click="activetab=false"
+                               data-toggle="tab">Non-actief</a>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +61,8 @@
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.lastname }}</td>
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.study }}</td>
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.phonenumber }}</td>
-                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.emailAddress }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.emailAddress }}
+                        </td>
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.tag }}</td>
                     </tr>
                     </tbody>
@@ -95,7 +97,8 @@
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.lastname }}</td>
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.study }}</td>
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.phonenumber }}</td>
-                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.emailAddress }}</td>
+                        <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.emailAddress }}
+                        </td>
                         <td class="filterable-cell" ng-click="viewSettedClient(client.id)">{{ client.tag }}</td>
                     </tr>
                     </tbody>
@@ -104,7 +107,7 @@
 
         </div>
         <div class="col-md-2 col-md-offset-11">
-                <div class="row"  id="buttonrow">
+            <div class="row" id="buttonrow">
 
                 <!--Toevoegen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab && selectedClient.id.length ==0">
@@ -124,9 +127,10 @@
 
 
                 <!--Verwijderen knop-->
-                <div class="btn btn-info btn-fab" ng-class="{'disabled':!isSelected()}" ng-disabled="$isAdmin == false" ng-show="activetab && selectedClient.id.length >0">
+                <div class="btn btn-info btn-fab" ng-class="{'disabled':!isSelected()}" ng-disabled="$isAdmin == false"
+                     ng-show="activetab && selectedClient.id.length >0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/clients') }">
-                        <a ng-click= "delete()" > <i class="material-icons">delete</i>
+                        <a ng-click="delete()"> <i class="material-icons">delete</i>
                         </a>
                     </div>
                 </div>

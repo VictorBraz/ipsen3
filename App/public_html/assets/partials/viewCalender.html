@@ -11,24 +11,25 @@
 
                 <div class="col-md-1 col-md-offset-6 ">
 
-                        <div class="btn btn-info btn-fab" id="editbutton">
-                                <div role="presentation" ng-class="{ 'active': isLocation('/editCalender') }">
-                                    <a ng-click="gotoEditCalender() || reloadFillSettings()"><i
+                    <div class="btn btn-info btn-fab" id="editbutton">
+                        <div role="presentation" ng-class="{ 'active': isLocation('/editCalender') }">
+                            <a ng-click="gotoEditCalender() || reloadFillSettings()"><i
                                     class="material-icons">create</i></a>
 
-                                </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <form name="registrationForm" class="panel-body"  novalidate>
+        <form name="registrationForm" class="panel-body" novalidate>
 
             <div class="col-md-4">
 
                 <div class="form-group label-floating">
                     <label class="control-label" for="contactPersoon">Aangemaakt door</label>
-                    <input data-ng-model="event.contactPersoon" ng-change="change()" type="text" name="contactPersoon" id="contactPersoon" class="form-control"
+                    <input data-ng-model="event.contactPersoon" ng-change="change()" type="text" name="contactPersoon"
+                           id="contactPersoon" class="form-control"
                            ng-readonly="true">
                 </div>
 
@@ -43,15 +44,16 @@
 
                 <div class="form-group label-floating">
                     <label for="eventName" class="control-label">Agendapunt</label>
-                    <textarea id="eventName"  ng-readonly="true" class="form-control" ng-model="event.eventName" rows="7"></textarea>
+                    <textarea id="eventName" ng-readonly="true" class="form-control" ng-model="event.eventName"
+                              rows="7"></textarea>
                 </div>
             </div>
 
             <div class="col-md-1">
 
-                <div class="btn btn-info btn-fab" id="deletebutton" >
+                <div class="btn btn-info btn-fab" id="deletebutton">
                     <div role="presentation" ng-class="{ 'active': isLocation('/calender') }">
-                        <a ng-click= "delete()" > <i class="material-icons">delete</i>
+                        <a ng-click="delete()"> <i class="material-icons">delete</i>
                         </a>
                     </div>
                 </div>
@@ -59,7 +61,7 @@
 
             <div class="col-md-2 col-md-offset-9" id="buttonsinviewcalendar">
                 <div class="row top-buffer">
-                    <input type="button" class="btn btn-primary" value="Terug" onClick="history.go(-1);return true;" />
+                    <input type="button" class="btn btn-primary" value="Terug" onClick="history.go(-1);return true;"/>
                 </div>
             </div>
         </form>

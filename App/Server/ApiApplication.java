@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * The type Api application.
  *
  * @author Peter van Vliet
  */
@@ -97,6 +98,12 @@ public class ApiApplication extends Application<ApiConfiguration>
         );
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception
     {
         new ApiApplication().run(args);

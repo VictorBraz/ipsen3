@@ -11,7 +11,7 @@ import Server.Persistence.UserDAO;
 /**
  * The type User service.
  *
- * @author Peter van Vliet, Negin Nafissi
+ * @author Peter van Vliet, Negin Nafissi, Bernd
  */
 @Singleton
 public class UserService extends BaseService<User> {

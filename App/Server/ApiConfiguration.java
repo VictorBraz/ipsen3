@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
+ * The type Api configuration.
  *
  * @author Peter van Vliet
  */
@@ -23,6 +24,11 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     @JsonProperty
     private final AssetsConfiguration assets = new AssetsConfiguration();
 
+    /**
+     * Gets api name.
+     *
+     * @return the api name
+     */
     public String getApiName()
     {
         return apiName;

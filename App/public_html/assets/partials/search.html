@@ -20,91 +20,91 @@
         </div>
 
         <body>
-            <p id="content">
+        <p id="content">
 
-                <div id="headertable">
-                    <ul id="tabs" class="nav nav-tabs" data-toggle="tabs">
-                        <li class="active"><a data-target="#clienten" data-toggle="tab" >Clienten</a></li>
-                        <li><a data-target="#bedrijven" data-toggle="tab" >Bedrijven</a></li>
-                        <li><a data-target="#medewerkers" data-toggle="tab" >Medewerkers</a></li>
-                    </ul>
-                </div>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="clienten">
-                        <table class="table table-hover">
-                            <thead>
-                            <th></th>
-                            <th><label>Voornaam</label></th>
-                            <th><label>Achternaam</label></th>
-                            <th><label>Studie</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="client in filteredClients" ng-click="setClient(client.id)">
-                                <td>
-                                </td>
-                                <td>{{ client.firstname }}</td>
-                                <td>{{ client.lastname }}</td>
-                                <td>{{ client.study }}</td>
-                                <td>{{ client.phonenumber }}</td>
-                                <td>{{ client.emailAddress }}</td>
-                                <td>{{ client.tag }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="bedrijven">
-                        <table class="table table-hover">
-                            <thead>
-                            <th></th>
-                            <th><label>Bedrijfsnaam</label></th>
-                            <th><label>Contactpersoon</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="company in filteredCompanies" ng-click="setCompany(company.id)">
-                                <td>
-                                </td>
-                                <td>{{ company.companyName }}</td>
-                                <td>{{ company.contactPerson }}</td>
-                                <td>{{ company.phoneNumber }}</td>
-                                <td>{{ company.email }}</td>
-                                <td>{{ company.tag }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="medewerkers">
-                        <table class="table table-hover">
-                            <thead>
-                            <th></th>
-                            <th><label>Voornaam</label></th>
-                            <th><label>Achternaam</label></th>
-                            <th><label>Studie</label></th>
-                            <th><label>Telefoonnummer</label></th>
-                            <th><label>Email</label></th>
-                            <th><label>Tag</label></th>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="employee in filteredEmployees" ng-click="setEmployee(employee.id)" >
-                                <td>
-                                </td>
-                                <td>{{ employee.firstName }}</td>
-                                <td>{{ employee.lastName }}</td>
-                                <td>{{ employee.study }}</td>
-                                <td>{{ employee.phoneNumber }}</td>
-                                <td>{{ employee.email }}</td>
-                                <td>{{ employee.tag }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </p>
+        <div id="headertable">
+            <ul id="tabs" class="nav nav-tabs" data-toggle="tabs">
+                <li class="active"><a data-target="#clienten" data-toggle="tab">Clienten</a></li>
+                <li><a data-target="#bedrijven" data-toggle="tab">Bedrijven</a></li>
+                <li><a data-target="#medewerkers" data-toggle="tab">Medewerkers</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="clienten">
+                <table class="table table-hover">
+                    <thead>
+                    <th></th>
+                    <th><label>Voornaam</label></th>
+                    <th><label>Achternaam</label></th>
+                    <th><label>Studie</label></th>
+                    <th><label>Telefoonnummer</label></th>
+                    <th><label>Email</label></th>
+                    <th><label>Tag</label></th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="client in filteredClients" ng-click="setClient(client.id)">
+                        <td>
+                        </td>
+                        <td>{{ client.firstname }}</td>
+                        <td>{{ client.lastname }}</td>
+                        <td>{{ client.study }}</td>
+                        <td>{{ client.phonenumber }}</td>
+                        <td>{{ client.emailAddress }}</td>
+                        <td>{{ client.tag }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="bedrijven">
+                <table class="table table-hover">
+                    <thead>
+                    <th></th>
+                    <th><label>Bedrijfsnaam</label></th>
+                    <th><label>Contactpersoon</label></th>
+                    <th><label>Telefoonnummer</label></th>
+                    <th><label>Email</label></th>
+                    <th><label>Tag</label></th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="company in filteredCompanies" ng-click="setCompany(company.id)">
+                        <td>
+                        </td>
+                        <td>{{ company.companyName }}</td>
+                        <td>{{ company.contactPerson }}</td>
+                        <td>{{ company.phoneNumber }}</td>
+                        <td>{{ company.email }}</td>
+                        <td>{{ company.tag }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="medewerkers">
+                <table class="table table-hover">
+                    <thead>
+                    <th></th>
+                    <th><label>Voornaam</label></th>
+                    <th><label>Achternaam</label></th>
+                    <th><label>Studie</label></th>
+                    <th><label>Telefoonnummer</label></th>
+                    <th><label>Email</label></th>
+                    <th><label>Tag</label></th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="employee in filteredEmployees" ng-click="setEmployee(employee.id)">
+                        <td>
+                        </td>
+                        <td>{{ employee.firstName }}</td>
+                        <td>{{ employee.lastName }}</td>
+                        <td>{{ employee.study }}</td>
+                        <td>{{ employee.phoneNumber }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.tag }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </p>
         </body>
     </div>
 </div>
