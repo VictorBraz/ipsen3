@@ -27,7 +27,7 @@ public class DocumentDAO extends DatabaseDAO {
      *
      * @throws Exception the exception
      */
-    public DocumentDAO() throws Exception{
+    public DocumentDAO() throws Exception {
         super();
         prepareStatements();
 
@@ -51,12 +51,12 @@ public class DocumentDAO extends DatabaseDAO {
      * @param filename the filename
      * @return the file
      */
-    public String getFile(int id,String filename) {
+    public String getFile(int id, String filename) {
 
         byte[] fileBytes;
         File file = new File(filename);
-        String fileDownloadLink = "http://localhost:8080/fileToDownload/"+file;
-        String filePath ="/Users/vedadpiric/ipsen3/App/filesToDownload/"+file;
+        String fileDownloadLink = "http://localhost:8080/fileToDownload/" + file;
+        String filePath = "/Users/vedadpiric/ipsen3/App/filesToDownload/" + file;
         try {
             bestandSelecteren.setInt(1, id);
 
