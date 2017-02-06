@@ -1,4 +1,4 @@
-angular.module('workshop',
+angular.module('IN2',
     [
         'ngRoute',
         'checklist-model',

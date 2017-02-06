@@ -3,7 +3,7 @@
  * @author Bernd, Mitch
  *
  */
-angular.module('workshop').controller('CompanyController', function ($scope, $route, alertify, companyService) {
+angular.module('IN2').controller('CompanyController', function ($scope, $route, alertify, companyService) {
 
     var construct = function() {
         companyService.getAll(function(companies){

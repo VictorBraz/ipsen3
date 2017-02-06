@@ -1,4 +1,4 @@
-angular.module('workshop').controller('CompaniesOverviewController', function($scope, companyService)
+angular.module('IN2').controller('CompaniesOverviewController', function($scope, companyService)
 {
     $scope.selectedcompanies = {
         id: []

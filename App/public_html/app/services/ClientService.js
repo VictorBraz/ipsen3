@@ -2,7 +2,7 @@
  * Created by Victor Machado Braz, Bernd Oostrum
  */
 
-angular.module('workshop').service('clientService', function($http)
+angular.module('IN2').service('clientService', function($http)
 {
     var self = this;
 

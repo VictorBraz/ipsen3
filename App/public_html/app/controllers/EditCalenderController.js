@@ -1,7 +1,7 @@
 /**
  * Created by Vedad Piric
  */
-angular.module('workshop').controller('EditCalenderController', function($scope, alertify, CalenderService)
+angular.module('IN2').controller('EditCalenderController', function($scope, alertify, CalenderService)
 {
     var construct = function()
     {

@@ -11,7 +11,7 @@
  * @param {object} $rootScope The root scope.
  * @param {object} authService The authentication service.
  */
-angular.module('workshop').service('requestService', function($q, $rootScope, authenticationService)
+angular.module('IN2').service('requestService', function($q, $rootScope, authenticationService)
 {
     /**
      * Self-reference used for internal referencing.

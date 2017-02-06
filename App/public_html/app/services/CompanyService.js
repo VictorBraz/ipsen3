@@ -4,7 +4,7 @@
  */
 
 
-angular.module('workshop').service('companyService', function($http)
+angular.module('IN2').service('companyService', function($http)
 {
     var self = this;
 

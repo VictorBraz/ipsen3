@@ -1,7 +1,7 @@
 /**
  * Created by Victor Machado Braz
  */
-angular.module('workshop').controller('EditClientController', function($scope, alertify, clientService)
+angular.module('IN2').controller('EditClientController', function($scope, alertify, clientService)
 {
     var construct = function()
     {

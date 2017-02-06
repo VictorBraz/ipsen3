@@ -1,7 +1,7 @@
 /**
  * Created by Roel on 15-12-2016.
  */
-angular.module('workshop').service('noteService', function($http)
+angular.module('IN2').service('noteService', function($http)
 {
     var self = this;
 

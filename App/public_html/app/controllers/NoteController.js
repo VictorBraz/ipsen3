@@ -1,7 +1,7 @@
 /**
  * Created by Roel on 21-12-2016.
  */
-angular.module('workshop').controller('NoteController',function ($scope,noteService) {
+angular.module('IN2').controller('NoteController',function ($scope, noteService) {
     var construct = function () {
         noteService.getNote(function (note) {
             $scope.note = note

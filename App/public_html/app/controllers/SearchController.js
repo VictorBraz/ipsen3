@@ -1,7 +1,7 @@
 /**
  * Created by Victor Machado Braz
  */
-angular.module('workshop').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
+angular.module('IN2').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
 
     $scope.searchTag = '';
 
