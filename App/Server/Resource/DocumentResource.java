@@ -49,4 +49,13 @@ public class DocumentResource {
     public ArrayList<Document> retrieve(@PathParam("id") int id){
         return service.get(id);
     }
-}
+
+    @GET
+    @Path("/{id}/{filename}")
+    @JsonView(View.Public.class)
+    public String getFile(@PathParam("id") int id, @PathParam("filename") String filename){return service.download(id,filename);}
+
+
+    }
+
+

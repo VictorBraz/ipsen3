@@ -46,7 +46,7 @@ angular.module('IN2').service('clientService', function($http)
 
     };
 
-
+    self.fileName = '';
     self.selectedClient = 0;
 
     self.setSelected = function(id){
@@ -69,12 +69,22 @@ angular.module('IN2').service('clientService', function($http)
 
         $http.get(uri).then(function(response){
                 onReceived(response.data);
-                console.log("received");
+                self.fileName = response.data;
             },
             function (message, status) {
                 alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
             });
     };
+
+    self.getFile = function (onReceived,documentname){
+        var uri = 'api/documents/' + self.selectedClient + '/' + documentname + '';
+
+        $http.get(uri).then(function (response) {
+            onReceived(response.data);
+        })
+    };
+
+
 
     self.update = function (client, onReceived) {
         var uri = 'api/clients/' + client.id + '';

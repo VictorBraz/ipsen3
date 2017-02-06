@@ -62,19 +62,21 @@ public class DocumentDAO extends DatabaseDAO {
         }
     }
 
-    public void getFile(Client client, File file) {
+    public String getFile(int id,String filename) {
 
         byte[] fileBytes;
-
-
+        File file = new File(filename);
+        String fileDownloadLink = "http://localhost:8080/fileToDownload/"+file;
+        String filePath ="/Users/vedadpiric/ipsen3/App/filesToDownload/"+file;
         try {
-            bestandSelecteren.setInt(1, client.getId());
+            bestandSelecteren.setInt(1, id);
+
             ResultSet rs = bestandSelecteren.executeQuery();
             if (rs.next()) {
 
                 fileBytes = rs.getBytes("pdffile");
 
-                FileOutputStream targetFile = new FileOutputStream(file);
+                FileOutputStream targetFile = new FileOutputStream(filePath);
                 targetFile.write(fileBytes);
                 targetFile.close();
 
@@ -84,6 +86,7 @@ public class DocumentDAO extends DatabaseDAO {
             e.printStackTrace();
         }
 
+        return fileDownloadLink;
     }
 
     public ArrayList<Document> getAllDocuments(int id) {

@@ -34,6 +34,21 @@ angular.module('IN2').controller('EditClientController', function($scope, alerti
         $scope.gotoClients();
     };
 
+    $scope.downloadFile = function(document) {
+
+        clientService.getFile(document).$promise.then(function(result) {
+            var url = "http://localhost:8080/fileToDownload/"+document.documentname;
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = result.filename;
+            a.target = '_blank';
+            a.click();
+        })
+            .catch(resourceError)
+            .catch(function(error) {
+                console.log(error.data); // in JSON
+            });
+    }
 
     construct();
 });

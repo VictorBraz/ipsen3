@@ -64,6 +64,8 @@ angular.module('IN2').controller('ClientController', function ($scope, $route, a
     };
 
 
+
+
     $scope.delete = function () {
         alertify
             .okBtn("OK")

@@ -27,4 +27,7 @@ public class DocumentService extends BaseService<Document>{
     public ArrayList<Document> get(int id){
         return dao.getAllDocuments(id);
     }
+
+
+    public String download(int id, String filename) {return   dao.getFile(id,filename);}
 }

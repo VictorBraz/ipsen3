@@ -55,7 +55,7 @@ angular.module("IN2").controller('CalenderController', function($scope, $filter,
     };
 
     var loadContentAsync = true;
-    $log.info("setDayContent.async", loadContentAsync);
+
 
 
 

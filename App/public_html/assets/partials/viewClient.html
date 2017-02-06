@@ -1,4 +1,4 @@
-<META name="Author" content="Victor, Bernd">
+<META name="Author" content="Victor, Bernd ,Vedad">
 <div class="container">
 
     <div class="panel panel-default">
@@ -83,31 +83,24 @@
                 <input type="text" class="form-control" id="tags" ng-model="client.tag" ng-readonly="true" ng-required="true" />
             </div>
 
-                <div class="form-group label-floating">
-                    <label for="file" class="control-label">Document</label>
-                    <input type="file" id="file" multiple="">
-                    <div class="input-group">
-                        <input type="text" readonly="" class="form-control">
-                        <span class="input-group-btn input-group-sm">
-                             <button type="button" class="btn btn-fab btn-fab-mini">
-                                <i class="material-icons">attach_file</i>
-                            </button>
-                             </span>
-                    </div>
-                </div>
 
                 <div class="form-group label-floating">
                     <label for="files" class="control-label">Documenten</label>
-                </div>
+
 
                     <select id="files" name="Files" >
                         <option ng-repeat="document in documents" value="{{document.documentname}}">{{document.documentname}}</option>
 
                     </select>
+                    <button type="button" ng-click="downloadFile()" class="btn btn-fab btn-fab-mini">
 
+                    <i class="material-icons">attach_file</i>
+                 </button>
 
+                </div>
 
             <div class="form-group label-floating">
+
                 <label for="note" class="control-label">Notitie</label>
                 <textarea class="form-control" id="note" ng-model="client.noteText" ng-readonly="true" rows="5"></textarea>
             </div>
