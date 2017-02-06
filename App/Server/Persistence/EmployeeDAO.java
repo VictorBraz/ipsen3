@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * Created by Negin Nafissi on 13-12-2016.
+ * @author Negin, Roel
+ *
  */
 public class EmployeeDAO extends DatabaseDAO {
 

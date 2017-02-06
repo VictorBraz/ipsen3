@@ -1,5 +1,9 @@
-angular.module('IN2').controller('CompaniesOverviewController', function($scope, companyService)
-{
+/**
+ * Created by Mitch van Wijngaarden
+ * @author Mitch, Roel
+ *
+ */
+angular.module('IN2').controller('CompaniesOverviewController', function($scope, companyService){
     $scope.selectedcompanies = {
         id: []
     };

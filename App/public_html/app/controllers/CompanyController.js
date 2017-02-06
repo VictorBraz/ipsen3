@@ -1,6 +1,6 @@
 /**
  * Created by Mitch on 12/12/2016.
- * @author Bernd, Mitch
+ * @author Bernd, Mitch, Roel
  *
  */
 angular.module('IN2').controller('CompanyController', function ($scope, $route, alertify, companyService) {

@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * The type Company.
  *
- * @author Bernd, Mitch
+ * @author Bernd, Mitch, Roel
  */
 public class Company {
 

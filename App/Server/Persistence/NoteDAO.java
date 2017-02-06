@@ -18,12 +18,20 @@ public class NoteDAO extends DatabaseDAO {
     private PreparedStatement getAll;
 
 
+    /**
+     * Instantiates a new Note dao.
+     *
+     * @throws Exception the exception
+     */
     public NoteDAO() throws Exception {
         super();
 
         prepareStatements();
     }
 
+    /**
+     * Prepare statements.
+     */
     public void prepareStatements(){
         try {
             addNote = conn.prepareStatement("INSERT INTO note(note,ownerID) VALUES(?,?)");
@@ -35,6 +43,11 @@ public class NoteDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Add note.
+     *
+     * @param note the note
+     */
     public void addNote(Note note){
         try {
             if(note.getText() == null){
@@ -49,6 +62,12 @@ public class NoteDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Get note note.
+     *
+     * @param ownerID the owner id
+     * @return the note
+     */
     public Note getNote(int ownerID){
         Note note = new Note();
         try {
@@ -67,6 +86,11 @@ public class NoteDAO extends DatabaseDAO {
         return note;
     }
 
+    /**
+     * Update.
+     *
+     * @param note the note
+     */
     public void update(Note note){
         try {
             editNote.setString(1,note.getText());
@@ -78,6 +102,11 @@ public class NoteDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Get all list.
+     *
+     * @return the list
+     */
     public List<Note> getAll(){
         List<Note> notes = new ArrayList<>();
         try{
@@ -98,6 +127,9 @@ public class NoteDAO extends DatabaseDAO {
         return notes;
     }
 
+    /**
+     * Close.
+     */
     public void close(){
         try {
             addNote.close();
