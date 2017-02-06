@@ -45,7 +45,8 @@ public class SearchResource {
      * @param emp  the emp
      */
     @Inject
-    public SearchResource(ClientService cs, CompanyService comp, EmployeeService emp){
+    public SearchResource(ClientService cs, CompanyService comp, EmployeeService emp) {
+
         this.companyService = comp;
         this.clientService = cs;
         this.employeeService = emp;

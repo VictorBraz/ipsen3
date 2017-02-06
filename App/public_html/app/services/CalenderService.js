@@ -1,11 +1,11 @@
 /**
  * Created by vedadpiric on 21-12-16.
  */
-angular.module('IN2').service('CalenderService', function($http, alertify)
-{
+angular.module('IN2').service('CalenderService', function ($http, alertify) {
+
     var self = this;
 
-    self.create = function (datum,eventName,contactPersoon, onCreated) {
+    self.create = function (datum, eventName, contactPersoon, onCreated) {
 
         var uri = 'api/calender';
         var data =
@@ -15,12 +15,10 @@ angular.module('IN2').service('CalenderService', function($http, alertify)
                 contactPersoon: contactPersoon
 
             };
-        $http.post(uri, data).then(function (response){
+        $http.post(uri, data).then(function (response) {
                 onCreated(response.data);
             },
-
-            function (message)
-            {
+            function () {
                 alertify.okBtn("OK").confirm("Aanmaken mislukt, neem contact op met uw beheerder!");
             });
     };
@@ -28,30 +26,31 @@ angular.module('IN2').service('CalenderService', function($http, alertify)
     self.getAll = function (onReceived) {
         var uri = 'api/calender';
 
-        $http.get(uri).then(function(response){
+        $http.get(uri).then(function (response) {
                 onReceived(response.data);
 
             },
-            function(message, status){
+            function () {
                 alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
-        });
+            });
 
     };
 
     self.selectedEvent = 0;
 
-    self.setSelected = function(id){
+    self.setSelected = function (id) {
         self.selectedEvent = id;
     };
+
     self.getEvent = function (onReceived) {
         var uri = 'api/calender/' + self.selectedEvent + '';
 
-        $http.get(uri).then(function(response){
+        $http.get(uri).then(function (response) {
                 onReceived(response.data);
             },
-            function (message, status) {
+            function () {
                 alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
-        });
+            });
     };
 
     self.update = function (event, onReceived) {
@@ -60,21 +59,21 @@ angular.module('IN2').service('CalenderService', function($http, alertify)
         $http.put(uri, event).then(function (response) {
                 onReceived(response.data);
             },
-            function (message, status) {
+            function () {
                 alertify.okBtn("OK").confirm("Aanpassen mislukt, neem contact op met uw beheerder!");
-        });
+            });
     };
-    self.delete = function(id, onReceived) {
+
+    self.delete = function (id, onReceived) {
         var uri = 'api/calender/' + id + '';
 
         $http.delete(uri, id).then(function (response) {
                 onReceived(response.data);
             },
-            function(message, status) {
+            function () {
                 alertify.okBtn("OK").confirm("Verwijderen mislukt, neem contact op met uw beheerder!");
-        });
+            });
     };
-
 
 
 });

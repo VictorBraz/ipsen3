@@ -1,7 +1,7 @@
 /**
  * Created by Victor Machado Braz
  */
-angular.module('IN2').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
+angular.module('IN2').controller('SearchController', function ($scope, searchService, clientService, employeeService, companyService) {
 
     $scope.searchTag = '';
 
@@ -20,8 +20,8 @@ angular.module('IN2').controller('SearchController', function($scope, searchServ
         $scope.gotoViewCompany();
     };
 
-    $scope.setTag = function (){
-        if ($scope.searchTag != ''){
+    $scope.setTag = function () {
+        if ($scope.searchTag != '') {
             searchService.setTag($scope.searchTag);
         }
     };
@@ -33,23 +33,22 @@ angular.module('IN2').controller('SearchController', function($scope, searchServ
         $scope.searchEmployees();
     };
 
-    $scope.searchClients = function(){
+    $scope.searchClients = function () {
         searchService.getFilteredClients(function (clients) {
             $scope.filteredClients = clients;
         });
     };
 
-    $scope.searchCompanies = function(){
+    $scope.searchCompanies = function () {
         searchService.getFilteredCompanies(function (companies) {
             $scope.filteredCompanies = companies;
         });
     };
 
-    $scope.searchEmployees = function(){
+    $scope.searchEmployees = function () {
         searchService.getFilteredEmployees(function (employees) {
             $scope.filteredEmployees = employees;
         });
     };
-
 
 });

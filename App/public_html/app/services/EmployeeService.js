@@ -2,33 +2,31 @@
  * Created by Negin Nafissi on 13-12-2016.
  */
 
-angular.module('IN2').service('employeeService', function($http, alertify)
-{
+angular.module('IN2').service('employeeService', function ($http, alertify) {
+
     var self = this;
 
-    self.create = function (firstName, lastName, study, birthDate, email, phoneNumber, tag, address, cityName, zipCode,noteText, onCreated) {
+    self.create = function (firstName, lastName, study, birthDate, email, phoneNumber, tag, address, cityName, zipCode, noteText, onCreated) {
 
         var uri = '/api/employees';
         var data =
-        {
-            firstName: firstName,
-            lastName: lastName,
-            study: study,
-            birthDate: birthDate,
-            email: email,
-            phoneNumber: phoneNumber,
-            tag: tag,
-            address: address,
-            city: cityName,
-            postcode: zipCode,
-            noteText:noteText
-        };
-        $http.post(uri, data).then(function (response)
             {
+                firstName: firstName,
+                lastName: lastName,
+                study: study,
+                birthDate: birthDate,
+                email: email,
+                phoneNumber: phoneNumber,
+                tag: tag,
+                address: address,
+                city: cityName,
+                postcode: zipCode,
+                noteText: noteText
+            };
+        $http.post(uri, data).then(function (response) {
                 onCreated(response.data);
             },
-            function (message, status)
-            {
+            function () {
                 alertify.okBtn("OK").confirm("Aanmaken mislukt, neem contact op met uw beheerder!");
             });
     };
@@ -37,28 +35,28 @@ angular.module('IN2').service('employeeService', function($http, alertify)
 
         var uri = 'api/employees';
 
-        $http.get(uri).then(function(response){
+        $http.get(uri).then(function (response) {
                 onReceived(response.data);
-        },
-        function(message, status){
-            alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
-        });
+            },
+            function () {
+                alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
+            });
 
     };
 
     self.selectedEmployee = 0;
 
-    self.setSelected = function(id){
+    self.setSelected = function (id) {
         self.selectedEmployee = id;
     };
 
     self.getEmployee = function (onReceived) {
         var uri = 'api/employees/' + self.selectedEmployee + '';
 
-        $http.get(uri).then(function(response){
+        $http.get(uri).then(function (response) {
                 onReceived(response.data);
             },
-            function (message, status) {
+            function () {
                 alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
             });
     };
@@ -69,19 +67,19 @@ angular.module('IN2').service('employeeService', function($http, alertify)
         $http.put(uri, employee).then(function (response) {
                 onReceived(response.data);
             },
-            function (message, status) {
+            function () {
                 alertify.okBtn("OK").confirm("Aanpassen mislukt, neem contact op met uw beheerder!");
             });
     };
 
-    self.delete = function(id, onReceived) {
+    self.delete = function (id, onReceived) {
         var uri = 'api/employees/' + id + '';
 
         $http.delete(uri, id).then(function (response) {
                 onReceived(response.data);
                 self.getAll(onReceived);
             },
-            function(message, status) {
+            function () {
                 alertify.okBtn("OK").confirm("Verwijderen mislukt, neem contact op met uw beheerder!");
             });
     };

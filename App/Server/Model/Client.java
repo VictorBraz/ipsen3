@@ -8,11 +8,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * The type Client.
  *
-<<<<<<< HEAD
- * @author Victor Machado Braz & Vedad Piric
-=======
- * @author Victor Machado Braz, Roel
->>>>>>> 533f55d5f50b80db05423d646b20a9e5b0f8cc1a
+ * @author Victor Machado Braz & Vedad Piric, Roel
+ *
  */
 public class Client {
 

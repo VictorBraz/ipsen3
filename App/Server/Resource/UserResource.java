@@ -4,6 +4,7 @@ import Server.View;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Singleton;
 import io.dropwizard.auth.Auth;
+
 import java.util.Collection;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
@@ -17,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import Server.Service.UserService;
 import Server.Model.User;
 
@@ -30,8 +32,8 @@ import Server.Model.User;
 @Singleton
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserResource
-{
+public class UserResource {
+
     private final UserService service;
 
     /**
@@ -40,8 +42,7 @@ public class UserResource
      * @param service the service
      */
     @Inject
-    public UserResource(UserService service)
-    {
+    public UserResource(UserService service) {
         this.service = service;
     }
 
@@ -53,8 +54,7 @@ public class UserResource
     @GET
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<User> retrieveAll()
-    {
+    public Collection<User> retrieveAll() {
         return service.getAll();
     }
 
@@ -68,8 +68,7 @@ public class UserResource
     @Path("/{id}")
     @JsonView(View.Public.class)
     @PermitAll
-    public User retrieve(@PathParam("id") int id)
-    {
+    public User retrieve(@PathParam("id") int id) {
         return service.get(id);
     }
 
@@ -82,8 +81,7 @@ public class UserResource
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @RolesAllowed("1")
-    public void create(User user)
-    {
+    public void create(User user) {
         service.add(user);
     }
 
@@ -99,8 +97,7 @@ public class UserResource
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @RolesAllowed("1")
-    public void update(@PathParam("id") int id, @Auth User authenticator, User user)
-    {
+    public void update(@PathParam("id") int id, @Auth User authenticator, User user) {
         service.update(authenticator, id, user);
     }
 
@@ -112,8 +109,7 @@ public class UserResource
     @DELETE
     @Path("/{id}")
     @RolesAllowed("1")
-    public void delete(@PathParam("id") int id)
-    {
+    public void delete(@PathParam("id") int id) {
         service.delete(id);
     }
 
@@ -127,8 +123,7 @@ public class UserResource
     @Path("/me")
     @JsonView(View.Private.class)
     @PermitAll
-    public User authenticate(@Auth User authenticator)
-    {
+    public User authenticate(@Auth User authenticator) {
         return authenticator;
     }
 }

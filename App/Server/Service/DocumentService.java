@@ -9,11 +9,12 @@ import java.util.ArrayList;
 /**
  * Created by vedadpiric on 05-02-17.
  */
-public class DocumentService extends BaseService<Document>{
+public class DocumentService extends BaseService<Document> {
 
     private final DocumentDAO dao;
+
     @Inject
-    private DocumentService(DocumentDAO dao){
+    private DocumentService(DocumentDAO dao) {
         this.dao = dao;
     }
 
@@ -24,10 +25,12 @@ public class DocumentService extends BaseService<Document>{
      * @param id the id
      * @return the document
      */
-    public ArrayList<Document> get(int id){
+    public ArrayList<Document> get(int id) {
         return dao.getAllDocuments(id);
     }
 
 
-    public String download(int id, String filename) {return   dao.getFile(id,filename);}
+    public String download(int id, String filename) {
+        return dao.getFile(id, filename);
+    }
 }

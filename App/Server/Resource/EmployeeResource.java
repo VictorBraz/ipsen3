@@ -32,7 +32,7 @@ public class EmployeeResource {
      * @param service the service
      */
     @Inject
-    public EmployeeResource(EmployeeService service){
+    public EmployeeResource(EmployeeService service) {
         this.service = service;
     }
 
@@ -44,7 +44,7 @@ public class EmployeeResource {
     @GET
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Employee> retrieveAll(){
+    public Collection<Employee> retrieveAll() {
         return service.getAll();
     }
 
@@ -57,7 +57,7 @@ public class EmployeeResource {
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    public Employee retrieve(@PathParam("id") int id){
+    public Employee retrieve(@PathParam("id") int id) {
         return service.get(id);
     }
 
@@ -69,7 +69,7 @@ public class EmployeeResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    public void create(Employee employee){
+    public void create(Employee employee) {
         service.add(employee);
     }
 
@@ -85,7 +85,7 @@ public class EmployeeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void update(@PathParam("id") int id, @Auth User authenticator, Employee employee){
+    public void update(@PathParam("id") int id, @Auth User authenticator, Employee employee) {
         service.update(employee);
     }
 

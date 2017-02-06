@@ -94,5 +94,7 @@ public class Calender {
      *
      * @param contactPersoon the contact persoon
      */
-    public void setContactPersoon(String contactPersoon) {this.contactPersoon = contactPersoon; }
+    public void setContactPersoon(String contactPersoon) {
+        this.contactPersoon = contactPersoon;
+    }
 }

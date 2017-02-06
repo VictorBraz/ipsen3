@@ -9,12 +9,12 @@ import java.util.Collection;
 /**
  * Created by vedadpiric on 23-01-17.
  */
-public class CalenderService  extends BaseService<Calender>{
+public class CalenderService extends BaseService<Calender> {
 
     private final CalenderDAO dao;
 
     @Inject
-    private CalenderService(CalenderDAO dao){
+    private CalenderService(CalenderDAO dao) {
         this.dao = dao;
     }
 
@@ -23,7 +23,7 @@ public class CalenderService  extends BaseService<Calender>{
      *
      * @return the collection
      */
-    public Collection<Calender> getAll(){
+    public Collection<Calender> getAll() {
         return dao.getAll();
     }
 
@@ -33,7 +33,7 @@ public class CalenderService  extends BaseService<Calender>{
      * @param id the id
      * @return the calender
      */
-    public Calender get(int id){
+    public Calender get(int id) {
         return dao.getEVENT(id);
     }
 
@@ -42,7 +42,7 @@ public class CalenderService  extends BaseService<Calender>{
      *
      * @param calender the calender
      */
-    public void add(Calender calender){
+    public void add(Calender calender) {
         dao.addEvents(calender);
     }
 

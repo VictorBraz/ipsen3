@@ -35,9 +35,10 @@ public class CompanyDAO extends DatabaseDAO {
      * @throws Exception the exception
      */
     public CompanyDAO() throws Exception {
+
         super();
         prepareStatements();
-        this.addressDAO =  new AddressDAO();
+        this.addressDAO = new AddressDAO();
         this.noteDAO = new NoteDAO();
 
     }
@@ -63,6 +64,7 @@ public class CompanyDAO extends DatabaseDAO {
      * @param company the company
      */
     public void addCompany(Company company) {
+
         Address address = new Address();
         address.setAddress(company.getAddress());
         address.setCity(company.getCity());
@@ -85,7 +87,7 @@ public class CompanyDAO extends DatabaseDAO {
             addCompany.executeUpdate();
 
             ResultSet rs = addCompany.getGeneratedKeys();
-            while (rs.next()){
+            while (rs.next()) {
                 company.setId(rs.getInt("id"));
             }
 
@@ -101,11 +103,12 @@ public class CompanyDAO extends DatabaseDAO {
      *
      * @return the all
      */
-    public List <Company> getAll() {
+    public List<Company> getAll() {
+
         List<Company> companies = new ArrayList<>();
 
         try {
-            ResultSet result =getAll.executeQuery();
+            ResultSet result = getAll.executeQuery();
 
             while (result.next()) {
                 Company company = new Company();
@@ -131,6 +134,7 @@ public class CompanyDAO extends DatabaseDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return companies;
     }
 
@@ -141,6 +145,7 @@ public class CompanyDAO extends DatabaseDAO {
      * @return the company
      */
     public Company getCompany(int id) {
+
         Company company = new Company();
 
         try {
@@ -169,6 +174,7 @@ public class CompanyDAO extends DatabaseDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return company;
 
     }
@@ -179,7 +185,9 @@ public class CompanyDAO extends DatabaseDAO {
      * @param company the company
      */
     public void update(Company company) {
+
         Address address = new Address();
+
         address.setAddress(company.getAddress());
         address.setCity(company.getCity());
         address.setPostcode(company.getPostcode());
@@ -188,6 +196,7 @@ public class CompanyDAO extends DatabaseDAO {
         addressDAO.UpdateAddress(address);
 
         Note note = new Note();
+
         note.setText(company.getNoteText());
         note.setOwnerID(company.getId());
 
@@ -213,10 +222,11 @@ public class CompanyDAO extends DatabaseDAO {
      *
      * @param id the id
      */
-    public void delete (int id) {
+    public void delete(int id) {
+
         try {
             Company comp = getCompany(id);
-            if(comp.getActive() == true) {
+            if (comp.getActive() == true) {
                 deleteCompany.setBoolean(1, false);
                 deleteCompany.setInt(2, id);
                 deleteCompany.execute();
@@ -226,8 +236,6 @@ public class CompanyDAO extends DatabaseDAO {
                 deleteCompany.setInt(2, id);
                 deleteCompany.execute();
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

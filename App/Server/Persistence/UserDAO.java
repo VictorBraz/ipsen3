@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.inject.Singleton;
+
 import Server.Model.User;
 
 /**
@@ -15,8 +16,7 @@ import Server.Model.User;
  * @author Peter van Vliet, Negin Nafissi
  */
 @Singleton
-public class UserDAO extends DatabaseDAO
-{
+public class UserDAO extends DatabaseDAO {
     private PreparedStatement getUser;
     private PreparedStatement addUser;
     private PreparedStatement getAll;
@@ -29,12 +29,14 @@ public class UserDAO extends DatabaseDAO
      * @throws Exception the exception
      */
     public UserDAO() throws Exception {
+
         super();
         prepareStatements();
         getAll();
     }
 
     private void prepareStatements() {
+
         try {
             getUser = conn.prepareStatement("SELECT * FROM account WHERE id=?");
             addUser = conn.prepareStatement("INSERT INTO account (accountname, password, privilege," +
@@ -52,9 +54,10 @@ public class UserDAO extends DatabaseDAO
      *
      * @return the all
      */
-    public List<User> getAll()
-    {
+    public List<User> getAll() {
+
         users = new ArrayList<>();
+
         try {
             ResultSet rs = getAll.executeQuery();
 
@@ -72,6 +75,7 @@ public class UserDAO extends DatabaseDAO
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return users;
     }
 
@@ -81,9 +85,10 @@ public class UserDAO extends DatabaseDAO
      * @param id the id
      * @return the user
      */
-    public User getUser(int id)
-    {
+    public User getUser(int id) {
+
         User user = new User();
+
         try {
             getUser.setInt(1, id);
             ResultSet rs = getUser.executeQuery();
@@ -100,6 +105,7 @@ public class UserDAO extends DatabaseDAO
         } catch (Exception e) {
             return null;
         }
+
         return user;
     }
 
@@ -111,11 +117,11 @@ public class UserDAO extends DatabaseDAO
      */
     public User getByEmailAddress(String accountName) {
 
-            Optional<User> result = users.stream().filter(user -> user.getEmailAddress().equals(accountName)).findAny();
+        Optional<User> result = users.stream().filter(user -> user.getEmailAddress().equals(accountName)).findAny();
 
-            return result.isPresent()
-                    ? result.get()
-                    : null;
+        return result.isPresent()
+                ? result.get()
+                : null;
     }
 
     /**
@@ -123,10 +129,11 @@ public class UserDAO extends DatabaseDAO
      *
      * @param user the user
      */
-    public void add(User user)
-    {
+    public void add(User user) {
+
         users.add(user);
-        try{
+
+        try {
             addUser.setString(1, user.getEmailAddress());
             addUser.setString(2, user.getPassword());
             addUser.setInt(3, user.getPrivilege());
@@ -134,7 +141,7 @@ public class UserDAO extends DatabaseDAO
 
             addUser.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -145,8 +152,7 @@ public class UserDAO extends DatabaseDAO
      * @param id   the id
      * @param user the user
      */
-    public void update(int id, User user)
-    {
+    public void update(int id, User user) {
         users.set(id, user);
     }
 
@@ -155,11 +161,11 @@ public class UserDAO extends DatabaseDAO
      *
      * @param id the id
      */
-    public void delete(int id)
-    {
+    public void delete(int id) {
+
         try {
 
-            if( getUser(id).getActive()) {
+            if (getUser(id).getActive()) {
                 deleteUser.setBoolean(1, false);
                 deleteUser.setInt(2, id);
                 deleteUser.executeUpdate();
@@ -168,7 +174,6 @@ public class UserDAO extends DatabaseDAO
                 deleteUser.setInt(2, id);
                 deleteUser.executeUpdate();
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();

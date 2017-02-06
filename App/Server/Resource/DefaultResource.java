@@ -24,6 +24,6 @@ public class DefaultResource
     @Produces(MediaType.TEXT_PLAIN)
     public String get()
     {
-        return "Hello World";
+        return "API conrrect opgestart!";
     }
 }

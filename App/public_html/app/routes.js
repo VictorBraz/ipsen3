@@ -23,6 +23,5 @@ angular.module('IN2').config(function($routeProvider)
     $routeProvider.when('/viewClient', {templateUrl: 'assets/partials/viewClient.html', controller: 'EditClientController' });
 
 
-    
     $routeProvider.otherwise({ redirectTo: '/' });
 });

@@ -15,7 +15,7 @@ angular.module('IN2').service('searchService', function($http){
         $http.get(uri).then(function(response){
             onReceived(response.data);
         },
-        function (message, status) {
+        function () {
             alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
         });
     };
@@ -26,7 +26,7 @@ angular.module('IN2').service('searchService', function($http){
         $http.get(uri).then(function(response){
             onReceived(response.data);
         },
-        function (message, status) {
+        function () {
             alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
         });
     };
@@ -37,7 +37,7 @@ angular.module('IN2').service('searchService', function($http){
         $http.get(uri).then(function(response){
             onReceived(response.data);
         },
-        function (message, status) {
+        function () {
             alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
         });
     };

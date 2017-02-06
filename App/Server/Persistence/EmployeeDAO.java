@@ -12,13 +12,14 @@ import java.util.List;
 
 /**
  * Created by Negin Nafissi on 13-12-2016.
- * @author Negin, Roel
  *
+ * @author Negin, Roel
  */
 public class EmployeeDAO extends DatabaseDAO {
 
     private AddressDAO addressDAO;
     private NoteDAO noteDAO;
+
     private PreparedStatement getEmployee;
     private PreparedStatement addEmployee;
     private PreparedStatement updateEmployee;
@@ -32,17 +33,20 @@ public class EmployeeDAO extends DatabaseDAO {
      * @throws Exception the exception
      */
     public EmployeeDAO() throws Exception {
+
         super();
         prepareStatements();
         this.addressDAO = new AddressDAO();
         this.noteDAO = new NoteDAO();
+
     }
 
     private void prepareStatements() {
+
         try {
             getEmployee = conn.prepareStatement("SELECT * FROM student WHERE id=?");
             addEmployee = conn.prepareStatement("INSERT INTO student (studentaddressid, firstName, lastName," +
-                    " birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                            " birthDate, study, email, phoneNumber, tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                     PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM student");
             updateEmployee = conn.prepareStatement("UPDATE student SET studentaddressid=?, firstname=?," +
@@ -59,7 +63,8 @@ public class EmployeeDAO extends DatabaseDAO {
      *
      * @param employee the employee
      */
-    public void addEmployee(Employee employee){
+    public void addEmployee(Employee employee) {
+
         try {
             Address address = new Address();
             address.setAddress(employee.getAddress());
@@ -80,7 +85,7 @@ public class EmployeeDAO extends DatabaseDAO {
             addEmployee.executeUpdate();
 
             ResultSet rs = addEmployee.getGeneratedKeys();
-            if (rs.next()){
+            if (rs.next()) {
                 employee.setId(rs.getInt("id"));
             }
 
@@ -89,7 +94,7 @@ public class EmployeeDAO extends DatabaseDAO {
             note.setText(employee.getNoteText());
             noteDAO.addNote(note);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -99,12 +104,14 @@ public class EmployeeDAO extends DatabaseDAO {
      *
      * @return the list
      */
-    public List<Employee> getAll(){
+    public List<Employee> getAll() {
+
         List<Employee> employees = new ArrayList<>();
-        try{
+
+        try {
             ResultSet rs = getAll.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 Employee employee = new Employee();
 
                 employee.setId(rs.getInt(1));
@@ -129,7 +136,7 @@ public class EmployeeDAO extends DatabaseDAO {
                 employees.add(employee);
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return employees;
@@ -142,7 +149,9 @@ public class EmployeeDAO extends DatabaseDAO {
      * @return the employee
      */
     public Employee getEmployee(int id) {
+
         Employee employee = new Employee();
+
         try {
             getEmployee.setInt(1, id);
             ResultSet rs = getEmployee.executeQuery();
@@ -170,7 +179,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return employee;
@@ -181,14 +190,17 @@ public class EmployeeDAO extends DatabaseDAO {
      *
      * @param employee the employee
      */
-    public void update(Employee employee){
+    public void update(Employee employee) {
+
         Address address = new Address();
+
         address.setAddress(employee.getAddress());
         address.setCity(employee.getCity());
         address.setPostcode(employee.getPostcode());
         address.setId(employee.getEmployeeAddressID());
 
         Note note = new Note();
+
         note.setText(employee.getNoteText());
         note.setOwnerID(employee.getId());
 
@@ -210,7 +222,7 @@ public class EmployeeDAO extends DatabaseDAO {
 
             updateEmployee.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -220,7 +232,8 @@ public class EmployeeDAO extends DatabaseDAO {
      *
      * @param id the id
      */
-    public void delete (int id) {
+    public void delete(int id) {
+
         try {
             if (getEmployee(id).getActive() == true) {
                 deleteEmployee.setBoolean(1, false);

@@ -29,7 +29,7 @@ public class CalenderResource {
      * @param service the service
      */
     @Inject
-    public CalenderResource(CalenderService service){
+    public CalenderResource(CalenderService service) {
         this.service = service;
     }
 
@@ -40,9 +40,8 @@ public class CalenderResource {
      */
     @GET
     @JsonView(View.Public.class)
-    //@RolesAllowed("3")
     @PermitAll
-    public Collection<Calender> getAll(){
+    public Collection<Calender> getAll() {
         return service.getAll();
     }
 
@@ -56,7 +55,7 @@ public class CalenderResource {
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    public Calender retrieve(@PathParam("id") int id){
+    public Calender retrieve(@PathParam("id") int id) {
         return service.get(id);
     }
 
@@ -69,7 +68,7 @@ public class CalenderResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void create(Calender calender){
+    public void create(Calender calender) {
         service.add(calender);
     }
 
@@ -83,9 +82,9 @@ public class CalenderResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void update(Calender calender){
-        service.update(calender);
+    public void update(Calender calender) {
 
+        service.update(calender);
     }
 
     /**

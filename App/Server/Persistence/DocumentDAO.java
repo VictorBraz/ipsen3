@@ -1,15 +1,11 @@
 package Server.Persistence;
 
-import Server.Model.Client;
 import Server.Model.Document;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -26,14 +22,15 @@ public class DocumentDAO extends DatabaseDAO {
     private String bestandVerwijderenQuery = "DELETE FROM document WHERE id = ?";
 
 
+    public DocumentDAO() throws Exception {
 
-    public DocumentDAO() throws Exception{
         super();
         prepareStatements();
 
     }
 
     private void prepareStatements() {
+
         try {
             bestandSelecteren = conn.prepareStatement(bestandSelecterenQuery);
             bestandToeveogen = conn.prepareStatement(bestandToeveogenQuery);
@@ -44,30 +41,15 @@ public class DocumentDAO extends DatabaseDAO {
         }
     }
 
-    public void fileInsert(Client client, File file) throws FileNotFoundException {
-
-        int len = (int) file.length();
-        try {
-
-            FileInputStream fis = new FileInputStream(file.getPath());
-            bestandToeveogen.setInt(1, client.getId());
-            bestandToeveogen.setString(2, file.getName());
-            bestandToeveogen.setBinaryStream(3, fis, len);
-            bestandToeveogen.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String getFile(int id,String filename) {
+    public String getFile(int id, String filename) {
 
         byte[] fileBytes;
+
         File file = new File(filename);
-        String fileDownloadLink = "http://localhost:8080/fileToDownload/"+file;
-        String filePath ="/Users/vedadpiric/ipsen3/App/filesToDownload/"+file;
+
+        String fileDownloadLink = "http://localhost:8080/fileToDownload/" + file;
+        String filePath = "/Users/vedadpiric/ipsen3/App/filesToDownload/" + file;
+
         try {
             bestandSelecteren.setInt(1, id);
 
@@ -90,8 +72,10 @@ public class DocumentDAO extends DatabaseDAO {
     }
 
     public ArrayList<Document> getAllDocuments(int id) {
+
         ArrayList<Document> documentLijst = new ArrayList<Document>();
         Document document;
+
         try {
             bestandSelecteren.setInt(1, id);
             ResultSet set = bestandSelecteren.executeQuery();

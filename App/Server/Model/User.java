@@ -3,7 +3,9 @@ package Server.Model;
 import Server.View;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+
 import java.security.Principal;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -12,10 +14,9 @@ import org.hibernate.validator.constraints.NotEmpty;
  * Meer informatie over validatie:
  * http://hibernate.org/validator/
  *
- * @author Peter van Vliet, Negin Nafissi
+ * @author Peter van Vliet, Negin Nafissi, Victor Machado Braz
  */
-public class User implements Principal
-{
+public class User implements Principal {
     @NotEmpty
     @JsonView(View.Public.class)
     private int id;
@@ -44,8 +45,7 @@ public class User implements Principal
      *
      * @return the id
      */
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
@@ -54,8 +54,7 @@ public class User implements Principal
      *
      * @param id the id
      */
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -64,8 +63,7 @@ public class User implements Principal
      *
      * @return the email address
      */
-    public String getEmailAddress()
-    {
+    public String getEmailAddress() {
         return emailAddress;
     }
 
@@ -74,8 +72,7 @@ public class User implements Principal
      *
      * @param emailAddress the email address
      */
-    public void setEmailAddress(String emailAddress)
-    {
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
@@ -84,8 +81,7 @@ public class User implements Principal
      *
      * @return the password
      */
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
@@ -94,8 +90,7 @@ public class User implements Principal
      *
      * @param password the password
      */
-    public void setPassword(String password)
-    {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -104,11 +99,10 @@ public class User implements Principal
      *
      * @return the privilege
      */
-    public int getPrivilege()
-    {
-        if(this.privilege.equals("1")){
+    public int getPrivilege() {
+        if (this.privilege.equals("1")) {
             return 1;
-        }else {
+        } else {
             return 3;
         }
     }
@@ -118,7 +112,7 @@ public class User implements Principal
      *
      * @param active the active
      */
-    public void setActive(boolean active){
+    public void setActive(boolean active) {
         this.active = active;
     }
 
@@ -127,7 +121,7 @@ public class User implements Principal
      *
      * @return the boolean
      */
-    public boolean getActive(){
+    public boolean getActive() {
         return this.active;
     }
 
@@ -136,8 +130,7 @@ public class User implements Principal
      *
      * @param privilege the privilege
      */
-    public void setPrivilege(String privilege)
-    {
+    public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
 
@@ -146,8 +139,7 @@ public class User implements Principal
      *
      * @return the user id
      */
-    public int getUserId()
-    {
+    public int getUserId() {
         return userId;
     }
 
@@ -156,15 +148,13 @@ public class User implements Principal
      *
      * @param userId the user id
      */
-    public void setUserId(int userId)
-    {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
     @Override
     @JsonIgnore
-    public String getName()
-    {
+    public String getName() {
         return null;
     }
 
@@ -175,8 +165,8 @@ public class User implements Principal
      * @param roleName the role name
      * @return the boolean
      */
-    public boolean hasRole(String roleName){
-        if(roleName.equals(privilege)) {
+    public boolean hasRole(String roleName) {
+        if (roleName.equals(privilege)) {
             return true;
         }
         return false;
@@ -188,8 +178,7 @@ public class User implements Principal
      * @param user the user
      * @return the boolean
      */
-    public boolean equals(User user)
-    {
+    public boolean equals(User user) {
         return emailAddress.equals(user.getEmailAddress());
     }
 }

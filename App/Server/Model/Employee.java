@@ -6,8 +6,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Created by Negin Nafissi on 13-12-2016.
- * @author Negin, Roel
  *
+ * @author Negin, Roel
  */
 public class Employee {
 

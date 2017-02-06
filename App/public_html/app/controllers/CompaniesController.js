@@ -3,31 +3,29 @@
  * @author Mitch, Roel
  *
  */
-angular.module('IN2').controller('CompaniesOverviewController', function($scope, companyService){
+angular.module('IN2').controller('CompaniesOverviewController', function ($scope, companyService) {
+
     $scope.selectedcompanies = {
         id: []
     };
 
-    var construct = function()
-    {
-        companyService.getAll(function(companies)
-        {
+    var construct = function () {
+        companyService.getAll(function (companies) {
             $scope.companies = companies;
 
         });
 
-        companyService.getAll(function(companies)
-        {
+        companyService.getAll(function (companies) {
             $scope.companytest = companies[$scope.selectedcompanies[0]];
 
         });
 
-        $scope.deleteCompany = function() {
+        $scope.deleteCompany = function () {
             companyService.getCompanyID();
             companyService.deleteCompany();
         };
 
-        $scope.checkSelected = function() {
+        $scope.checkSelected = function () {
             if ($scope.selectedcompanies.id.length >= 1) {
                 $scope.checkSelectedVar = true;
             }
@@ -37,11 +35,6 @@ angular.module('IN2').controller('CompaniesOverviewController', function($scope,
         };
     };
 
-
-
-
     construct();
-
-
 
 });

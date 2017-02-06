@@ -19,7 +19,7 @@ public class EmployeeService extends BaseService<Employee> {
      * @param dao the dao
      */
     @Inject
-    public EmployeeService(EmployeeDAO dao){
+    public EmployeeService(EmployeeDAO dao) {
         this.dao = dao;
     }
 
@@ -28,7 +28,7 @@ public class EmployeeService extends BaseService<Employee> {
      *
      * @return the collection
      */
-    public Collection<Employee> getAll(){
+    public Collection<Employee> getAll() {
         return dao.getAll();
     }
 
@@ -38,7 +38,7 @@ public class EmployeeService extends BaseService<Employee> {
      * @param id the id
      * @return the employee
      */
-    public Employee get(int id){
+    public Employee get(int id) {
         return dao.getEmployee(id);
     }
 
@@ -47,7 +47,7 @@ public class EmployeeService extends BaseService<Employee> {
      *
      * @param employee the employee
      */
-    public void add(Employee employee){
+    public void add(Employee employee) {
         dao.addEmployee(employee);
     }
 

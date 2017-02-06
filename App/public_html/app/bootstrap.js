@@ -8,8 +8,6 @@ angular.module('IN2',
         'ngAnimate',
         'chart.js'
 
-
-
         // Voeg hier meer modules toe
     ])
     .config(function ($httpProvider) {

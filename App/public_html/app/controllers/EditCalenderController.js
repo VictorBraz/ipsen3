@@ -1,15 +1,12 @@
 /**
  * Created by Vedad Piric
  */
-angular.module('IN2').controller('EditCalenderController', function($scope, alertify, CalenderService)
-{
-    var construct = function()
-    {
-        CalenderService.getEvent(function(event)
-        {
+angular.module('IN2').controller('EditCalenderController', function ($scope, alertify, CalenderService) {
+
+    var construct = function () {
+        CalenderService.getEvent(function (event) {
+
             $scope.event = event;
-
-
         });
 
     };
@@ -19,14 +16,15 @@ angular.module('IN2').controller('EditCalenderController', function($scope, aler
             .okBtn("OK")
             .cancelBtn("Annuleren")
             .confirm("Weet u zeker dat u de gegevens wilt aanpassen?", function (ev) {
-            CalenderService.update($scope.event, onUpdated);
+                CalenderService.update($scope.event, onUpdated);
                 ev.preventDefault();
                 alertify.success("Agendapunt aangepast");
-        }, function (ev) {
+            }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Agendapunt niet aangepast");
-        });
+            });
     };
+
     $scope.delete = function () {
         alertify
             .okBtn("OK")
@@ -41,15 +39,13 @@ angular.module('IN2').controller('EditCalenderController', function($scope, aler
             });
     };
 
-    var onUpdated = function()
-    {
+    var onUpdated = function () {
         $scope.gotoCalender();
     };
 
-    var onDelete = function() {
+    var onDelete = function () {
         $scope.gotoCalender();
     };
-
 
     construct();
 });
