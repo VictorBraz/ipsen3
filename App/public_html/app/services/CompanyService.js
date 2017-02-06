@@ -1,10 +1,11 @@
 /**
  * Created by Mitch on 12/9/2016.
- * @author Bernd
+ * @author Bernd, Roel
+ *
  */
 
 
-angular.module('workshop').service('companyService', function($http)
+angular.module('IN2').service('companyService', function($http)
 {
     var self = this;
 

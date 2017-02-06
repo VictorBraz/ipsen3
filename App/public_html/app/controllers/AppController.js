@@ -1,7 +1,7 @@
 /**
  * Created by Victor Machado Braz, Bernd Oostrum, Negin Nafissi, Vedad Piric, Roel van Holsteijn, Mitch van Wijngaarden
  */
-angular.module('workshop').controller('AppController', function($scope, $location, authenticationService)
+angular.module('IN2').controller('AppController', function($scope, $location, authenticationService)
 {
 
     $scope.isLocation = function(location)

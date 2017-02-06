@@ -2,7 +2,7 @@
  * Created by Negin Nafissi on 13-12-2016.
  */
 
-angular.module('workshop').service('employeeService', function($http)
+angular.module('IN2').service('employeeService', function($http)
 {
     var self = this;
 

@@ -1,5 +1,5 @@
 
-angular.module('workshop').service('userService', function($http) {
+angular.module('IN2').service('userService', function($http) {
 
     var self = this;
     self.selectedUser = 0;

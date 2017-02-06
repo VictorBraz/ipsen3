@@ -2,7 +2,7 @@
  * Created by Victor Machado Braz
  */
 
-angular.module('workshop').controller('ClientController', function ($scope, $route, alertify, clientService) {
+angular.module('IN2').controller('ClientController', function ($scope, $route, alertify, clientService) {
 
 
     var construct = function () {

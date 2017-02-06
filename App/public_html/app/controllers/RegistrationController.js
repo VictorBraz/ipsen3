@@ -1,5 +1,5 @@
 
-angular.module('workshop').controller('RegistrationController', function($scope, userService)
+angular.module('IN2').controller('RegistrationController', function($scope, userService)
 {
 
     $scope.register = function() {
