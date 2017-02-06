@@ -5,7 +5,7 @@
  */
 
 
-angular.module('IN2').service('companyService', function($http)
+angular.module('IN2').service('companyService', function($http, alertify)
 {
     var self = this;
 
@@ -31,7 +31,7 @@ angular.module('IN2').service('companyService', function($http)
         },
 
         function (message, status) {
-            alert("Aanmaken mislukt: " + message + status);
+            alertify.okBtn("OK").confirm("Aanmaken mislukt, neem contact op met uw beheerder!");
         });
     };
 
@@ -42,7 +42,7 @@ angular.module('IN2').service('companyService', function($http)
             onReceived(response.data);
         },
         function(message, status) {
-            alert("ophalen mislukt: " + message + status);
+            alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
         });
     };
 
@@ -56,8 +56,8 @@ angular.module('IN2').service('companyService', function($http)
                     onReceived(response.data);
                 },
                 function (message, status) {
-                    alert('Ophalen mislukt: ' + message + status);
-                });
+                    alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
+            });
         }
     };
 
@@ -73,8 +73,8 @@ angular.module('IN2').service('companyService', function($http)
                 self.getAll(onReceived);
             },
             function(message, status) {
-                alert('Verwijderen mislukt: ' + message + status);
-            });
+                alertify.okBtn("OK").confirm("Verwijderen mislukt, neem contact op met uw beheerder!");
+        });
     };
 
     self.update = function (company, onReceived) {
@@ -84,7 +84,7 @@ angular.module('IN2').service('companyService', function($http)
                 onReceived(response.data);
             },
             function (message, status) {
-                alert("Aanpassen mislukt: " + message + status);
-            });
+                alertify.okBtn("OK").confirm("Aanpassen mislukt, neem contact op met uw beheerder!");
+        });
     };
 });

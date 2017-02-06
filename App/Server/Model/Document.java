@@ -7,22 +7,22 @@ package Server.Model;
  * @since   3/02/2016
  */
 public class Document {
-    String Document_Titel;
+    String documentname;
 
     /**
      * Haalt documentnaam op
      * @return  document naam
      */
-    public String getDocument_Titel() {
-        return Document_Titel;
+    public String getDocumentname() {
+        return documentname;
     }
 
     /**
      * Set een document naam
      *
      */
-    public void setDocument_Titel(String document_Titel) {
-        Document_Titel = document_Titel;
+    public void setDocumentname(String documentname) {
+        this.documentname = documentname;
     }
 
 

@@ -36,10 +36,10 @@
 
                         <th></th>
                         <th><label>E-mailadres</label></th>
-                        <th><label>Rechten(1=Admin, 3=Gast)</label></th>
+                        <th><label>Rechten</label></th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:true} | orderBy:'E-mailadres'">
+                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:true} | orderBy:'E-mailadres'" ng-if="user.privilege == 1">
                             <td>
                                 <div class="checkbox">
                                     <label>
@@ -48,7 +48,18 @@
                                 </div>
                             </td>
                             <td class="filterable-cell">{{ user.emailAddress}}</td>
-                            <td class="filterable-cell">{{ user.privilege}}</td>
+                            <td class="filterable-cell">{{ "Admin" }}</td>
+                        </tr>
+                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:true} | orderBy:'E-mailadres'" ng-if="user.privilege == 3">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.id" checklist-value="user.id">
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="filterable-cell">{{ user.emailAddress}}</td>
+                            <td class="filterable-cell">{{ "Medewerker" }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -60,10 +71,10 @@
 
                         <th></th>
                         <th><label>E-mailadres</label></th>
-                        <th><label>Rechten(1=Admin 3=Gast)</label></th>
+                        <th><label>Rechten</label></th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:false} | orderBy:'E-mailadres'">
+                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:false} | orderBy:'E-mailadres'" ng-if="user.privilege == 1">
                             <td>
                                 <div class="checkbox">
                                     <label>
@@ -72,7 +83,18 @@
                                 </div>
                             </td>
                             <td class="filterable-cell">{{ user.emailAddress}}</td>
-                            <td class="filterable-cell">{{ user.privilege}}</td>
+                            <td class="filterable-cell">{{ "Admin" }}</td>
+                        </tr>
+                        <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:false} | orderBy:'E-mailadres'" ng-if="user.privilege == 3">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-click="selectUser()" checklist-model="selectedUser.id" checklist-value="user.id">
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="filterable-cell">{{ user.emailAddress}}</td>
+                            <td class="filterable-cell">{{ "Medewerker" }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -83,7 +105,7 @@
             <div class="col-md-2 col-md-offset-11">
                 <div class="row"  id="buttonrow">
 
-                    <div class="btn btn-info btn-fab" ng-show="activetab && selectedUser.id.length == 0">
+                    <div class="btn btn-info btn-fab" ng-show="activetab && selectedUser.id.length == 0 && isAdmin == true" >
                         <div role="presentation" ng-class="{ 'active': isLocation('/register') }">
                             <a ng-click="gotoRegistration()"><i class="material-icons">add</i></a>
                         </div>

@@ -101,10 +101,10 @@
                     <textarea readonly  class="form-control"
                               rows="3"></textarea>
                 </div>
-                </br>
-                    <select textarea readonly rows="3" id="files" ng-repeat="document in documents" name="files">
-                        <option value="{{document.documentname}}">{{document.documentname}}</option>
 
+
+                    <select id="files" name="Files" >
+                        <option ng-repeat="document in documents" value="{{document.documentname}}">{{document.documentname}}</option>
                     </select>
 
 
