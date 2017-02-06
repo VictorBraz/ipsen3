@@ -18,7 +18,6 @@ import java.util.ArrayList;
 /**
  * Created by vedadpiric on 05-02-17.
  */
-
 @Singleton
 @Path("/documents")
 @Produces(MediaType.APPLICATION_JSON)
@@ -36,7 +35,6 @@ public class DocumentResource {
     }
 
 
-
     /**
      * Retrieve documents.
      *
@@ -50,6 +48,13 @@ public class DocumentResource {
         return service.get(id);
     }
 
+    /**
+     * Gets file.
+     *
+     * @param id       the id
+     * @param filename the filename
+     * @return the file
+     */
     @GET
     @Path("/{id}/{filename}")
     @JsonView(View.Public.class)

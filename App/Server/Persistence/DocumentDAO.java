@@ -26,7 +26,11 @@ public class DocumentDAO extends DatabaseDAO {
     private String bestandVerwijderenQuery = "DELETE FROM document WHERE id = ?";
 
 
-
+    /**
+     * Instantiates a new Document dao.
+     *
+     * @throws Exception the exception
+     */
     public DocumentDAO() throws Exception{
         super();
         prepareStatements();
@@ -44,6 +48,13 @@ public class DocumentDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * File insert.
+     *
+     * @param client the client
+     * @param file   the file
+     * @throws FileNotFoundException the file not found exception
+     */
     public void fileInsert(Client client, File file) throws FileNotFoundException {
 
         int len = (int) file.length();
@@ -62,6 +73,13 @@ public class DocumentDAO extends DatabaseDAO {
         }
     }
 
+    /**
+     * Gets file.
+     *
+     * @param id       the id
+     * @param filename the filename
+     * @return the file
+     */
     public String getFile(int id,String filename) {
 
         byte[] fileBytes;
@@ -89,6 +107,12 @@ public class DocumentDAO extends DatabaseDAO {
         return fileDownloadLink;
     }
 
+    /**
+     * Gets all documents.
+     *
+     * @param id the id
+     * @return the all documents
+     */
     public ArrayList<Document> getAllDocuments(int id) {
         ArrayList<Document> documentLijst = new ArrayList<Document>();
         Document document;
