@@ -1,3 +1,4 @@
+<META name="Author" content="Victor, Negin">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
     <div class="panel panel-default">
@@ -35,9 +36,7 @@
 
                         <th></th>
                         <th><label>E-mailadres</label></th>
-                        <th><label>Wachtwoord</label></th>
-                        <th><label>Rechten</label></th>
-                        <th><label>Gebruiker</label></th>
+                        <th><label>Rechten(1=Admin, 3=Gast)</label></th>
                         </thead>
                         <tbody>
                         <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:true} | orderBy:'E-mailadres'">
@@ -49,9 +48,7 @@
                                 </div>
                             </td>
                             <td class="filterable-cell">{{ user.emailAddress}}</td>
-                            <td class="filterable-cell">{{ user.password }}</td>
                             <td class="filterable-cell">{{ user.privilege}}</td>
-                            <td class="filterable-cell">{{ user.userId}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -63,9 +60,7 @@
 
                         <th></th>
                         <th><label>E-mailadres</label></th>
-                        <th><label>Wachtwoord</label></th>
-                        <th><label>Rechten</label></th>
-                        <th><label>Gebruiker</label></th>
+                        <th><label>Rechten(1=Admin 3=Gast)</label></th>
                         </thead>
                         <tbody>
                         <tr ng-repeat="user in users | filter:searchKeyword | filter: {active:false} | orderBy:'E-mailadres'">
@@ -77,9 +72,7 @@
                                 </div>
                             </td>
                             <td class="filterable-cell">{{ user.emailAddress}}</td>
-                            <td class="filterable-cell">{{ user.password }}</td>
                             <td class="filterable-cell">{{ user.privilege}}</td>
-                            <td class="filterable-cell">{{ user.userId}}</td>
                         </tr>
                         </tbody>
                     </table>

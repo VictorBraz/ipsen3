@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * The type Client dao.
  *
- * @author Victor Machado Braz
+ * @author Victor Machado Braz, Bernd
  */
 public class ClientDAO extends DatabaseDAO{
 
@@ -52,8 +52,6 @@ public class ClientDAO extends DatabaseDAO{
                     " lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
             deleteClient = conn.prepareStatement("UPDATE client SET active=? WHERE id =?");
 
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -65,7 +63,6 @@ public class ClientDAO extends DatabaseDAO{
      * @param client the client
      */
     public void addClient(Client client){
-
         try {
             Address address = new Address();
             address.setAddress(client.getAddress());
@@ -94,7 +91,6 @@ public class ClientDAO extends DatabaseDAO{
             note.setOwnerID(client.getId());
             note.setText(client.getNoteText());
             noteDAO.addNote(note);
-
 
         }catch (Exception e){
             e.printStackTrace();
@@ -134,7 +130,6 @@ public class ClientDAO extends DatabaseDAO{
                 client.setNoteText(note.getText());
 
                 clients.add(client);
-
             }
 
         }catch (Exception e){
@@ -142,7 +137,6 @@ public class ClientDAO extends DatabaseDAO{
         }
         return clients;
     }
-
 
     /**
      * Gets client.
@@ -164,7 +158,6 @@ public class ClientDAO extends DatabaseDAO{
                 client.setAddress(address.getAddress());
                 client.setCity(address.getCity());
                 client.setPostcode(address.getPostcode());
-
 
                 client.setFirstname(rs.getString(3));
                 client.setLastname(rs.getString(4));
@@ -216,7 +209,6 @@ public class ClientDAO extends DatabaseDAO{
             updateClient.setInt(9, client.getId());
             updateClient.executeUpdate();
 
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -229,7 +221,6 @@ public class ClientDAO extends DatabaseDAO{
      */
     public void delete (int id) {
         try {
-
             if( getClient(id).getActive() == true) {
                 deleteClient.setBoolean(1, false);
                 deleteClient.setInt(2, id);
@@ -240,25 +231,6 @@ public class ClientDAO extends DatabaseDAO{
                 deleteClient.setInt(2, id);
                 deleteClient.execute();
             }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
-     * Restore.
-     *
-     * @param id the id
-     */
-    public void restore(int id) {
-
-        try {
-            deleteClient.setBoolean(1, true);
-            deleteClient.setInt(2, id);
-            deleteClient.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }

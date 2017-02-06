@@ -2,7 +2,7 @@
  * Created by Negin Nafissi on 13-12-2016.
  */
 
-angular.module('workshop').controller('EmployeesController', function($scope, $route, alertify, employeeService)
+angular.module('IN2').controller('EmployeesController', function($scope, $route, alertify, employeeService)
 {
     var construct = function() {
         employeeService.getAll(function (employees) {

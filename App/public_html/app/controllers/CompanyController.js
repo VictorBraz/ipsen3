@@ -1,9 +1,9 @@
 /**
  * Created by Mitch on 12/12/2016.
- * @author Bernd, Mitch
+ * @author Bernd, Mitch, Roel
  *
  */
-angular.module('workshop').controller('CompanyController', function ($scope, $route, alertify, companyService) {
+angular.module('IN2').controller('CompanyController', function ($scope, $route, alertify, companyService) {
 
     var construct = function() {
         companyService.getAll(function(companies){
@@ -17,15 +17,6 @@ angular.module('workshop').controller('CompanyController', function ($scope, $ro
 
     $scope.selectedCompany = {
         id: []
-    };
-
-
-
-
-
-    $scope.ontestClick = function() {
-        companyService.setSelected($scope.selectedCompanyTest.id[0]);
-        companyService.getSelected();
     };
 
     $scope.create = function () {

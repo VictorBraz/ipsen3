@@ -3,6 +3,7 @@ calendar-md {
   max-height: 100%; }
   calendar-md .md-toolbar-tools h2 {
     overflow-x: hidden;
+    overflow-y: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
   calendar-md .md-toolbar-tools .moveNext {

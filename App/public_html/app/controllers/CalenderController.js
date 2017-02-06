@@ -2,7 +2,7 @@
  * Created by vedadpiric on 21-12-16.
  */
 
-angular.module("workshop").controller('CalenderController', function($scope, $filter, $q, $timeout,$http, $log,CalenderService,alertify) {
+angular.module("IN2").controller('CalenderController', function($scope, $filter, $q, $timeout, $http, $log, CalenderService, alertify) {
 
     var eventday = {};
 

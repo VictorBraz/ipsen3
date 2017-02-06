@@ -72,8 +72,7 @@ public class UserService extends BaseService<User>
         //Admin is 1
         if (!authenticator.hasRole("1"))
         {
-            // Vaststellen dat de geauthenticeerde gebruiker
-            // zichzelf aan het aanpassen is
+            // Vaststellen dat de geauthenticeerde gebruiker zichzelf aan het aanpassen is
             assertSelf(authenticator, oldUser);
         }
 

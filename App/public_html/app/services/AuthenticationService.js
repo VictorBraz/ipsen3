@@ -1,12 +1,12 @@
 /**
   * Service for providing authentication logic.
   * 
-  * @author Peter van Vliet <p.van.vliet@anyvation.com>
+  * @author Peter van Vliet <p.van.vliet@anyvation.com>, Victor Machado Braz
   * 
   * @param {object} $window The angular window object.
   * @param {object} $rootScope The angular rootScope object.
   */
-angular.module('workshop').service('authenticationService', function($window, $rootScope)
+angular.module('IN2').service('authenticationService', function($window, $rootScope)
 {
     /**
      * Self-reference used for internal referencing.

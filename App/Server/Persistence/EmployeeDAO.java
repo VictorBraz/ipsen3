@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * Created by Negin Nafissi on 13-12-2016.
+ * @author Negin, Roel
+ *
  */
 public class EmployeeDAO extends DatabaseDAO {
 
@@ -87,7 +89,6 @@ public class EmployeeDAO extends DatabaseDAO {
             note.setText(employee.getNoteText());
             noteDAO.addNote(note);
 
-//            addEmployee.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -127,7 +128,6 @@ public class EmployeeDAO extends DatabaseDAO {
 
                 employees.add(employee);
             }
-//            getAll.close();
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -169,7 +169,7 @@ public class EmployeeDAO extends DatabaseDAO {
                 employee.setNoteText(note.getText());
 
             }
-//            getEmployee.close();
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -210,7 +210,6 @@ public class EmployeeDAO extends DatabaseDAO {
 
             updateEmployee.executeUpdate();
 
-//            updateEmployee.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -234,7 +233,6 @@ public class EmployeeDAO extends DatabaseDAO {
                 deleteEmployee.execute();
             }
 
-//            deleteEmployee.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

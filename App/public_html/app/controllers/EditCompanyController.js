@@ -1,7 +1,7 @@
 /**
  * Created by Roel on 16-1-2017.
  */
-angular.module('workshop').controller('EditCompanyController', function ($scope, alertify, companyService) {
+angular.module('IN2').controller('EditCompanyController', function ($scope, alertify, companyService) {
     var construct = function () {
         companyService.getCompany(function (company) {
             $scope.company = company;

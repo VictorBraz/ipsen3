@@ -1,10 +1,11 @@
 /**
  * Created by Mitch on 12/9/2016.
- * @author Bernd
+ * @author Bernd, Roel
+ *
  */
 
 
-angular.module('workshop').service('companyService', function($http)
+angular.module('IN2').service('companyService', function($http)
 {
     var self = this;
 
@@ -30,7 +31,7 @@ angular.module('workshop').service('companyService', function($http)
         },
 
         function (message, status) {
-            alert("Aanmaken mislukt: " + message);
+            alert("Aanmaken mislukt: " + message + status);
         });
     };
 
@@ -41,7 +42,7 @@ angular.module('workshop').service('companyService', function($http)
             onReceived(response.data);
         },
         function(message, status) {
-            alert("ophalen mislukt: " + message);
+            alert("ophalen mislukt: " + message + status);
         });
     };
 

@@ -45,7 +45,7 @@ public class ClientResource {
     @GET
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Client> retrieveActive(){
+    public Collection<Client> getAll(){
         return service.getAll();
     }
 

@@ -9,12 +9,10 @@
     // Services
     addScript('app/services/AuthenticationService.js');
     addScript('app/services/RequestService.js');
-    // addScript('app/services/AddressService.js');
     addScript('app/services/UserService.js');
     addScript('app/services/CompanyService.js');
     addScript('app/services/ClientService.js');
     addScript('app/services/EmployeeService.js');
-    addScript('app/services/NoteService.js');
     addScript('app/services/CalenderService.js');
     addScript('app/services/SearchService.js');
 
@@ -29,7 +27,6 @@
     addScript('app/controllers/CompaniesController.js');
     addScript('app/controllers/CompanyController.js');
     addScript('app/controllers/ClientController.js');
-    addScript('app/controllers/NoteController.js');
     addScript('app/controllers/EmployeesController.js');
     addScript('app/controllers/EditEmployeeController.js');
     addScript('app/controllers/EditCompanyController.js');

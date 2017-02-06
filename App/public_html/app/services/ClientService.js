@@ -2,7 +2,7 @@
  * Created by Victor Machado Braz, Bernd Oostrum
  */
 
-angular.module('workshop').service('clientService', function($http)
+angular.module('IN2').service('clientService', function($http)
 {
     var self = this;
 
@@ -30,7 +30,7 @@ angular.module('workshop').service('clientService', function($http)
 
         function (message, status)
         {
-            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message);
+            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message + status);
         });
     };
 

@@ -1,4 +1,4 @@
-angular.module('workshop',
+angular.module('IN2',
     [
         'ngRoute',
         'checklist-model',
@@ -51,5 +51,3 @@ angular.module('workshop',
         };
     }]);
 
-
-// Voeg hier meer configuraties toe

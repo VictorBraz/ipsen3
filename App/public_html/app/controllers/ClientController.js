@@ -2,7 +2,7 @@
  * Created by Victor Machado Braz
  */
 
-angular.module('workshop').controller('ClientController', function ($scope, $route, alertify, clientService) {
+angular.module('IN2').controller('ClientController', function ($scope, $route, alertify, clientService) {
 
 
     var construct = function () {
@@ -97,7 +97,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
     $scope.reloadFillSettings = function() {
         $.material.options.autofill = true;
-    }
+    };
 
     var reload = function() {
         $route.reload();

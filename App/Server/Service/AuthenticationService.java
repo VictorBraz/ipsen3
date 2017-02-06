@@ -20,7 +20,7 @@ import Server.Persistence.UserDAO;
 /**
  * The type Authentication service.
  *
- * @author Peter van Vliet, Bernd Oostrum, Negin Nafissi
+ * @author Peter van Vliet, Bernd Oostrum, Negin Nafissi, Victor Machado Braz
  */
 @Singleton
 public class AuthenticationService implements Authenticator<BasicCredentials, User>, Authorizer<User>
@@ -45,7 +45,7 @@ public class AuthenticationService implements Authenticator<BasicCredentials, Us
 
 
 
-        if (user != null && BCrypt.checkpw(credentials.getPassword(), user.getPassword())) {
+        if (user != null && BCrypt.checkpw(credentials.getPassword(), user.getPassword()) && user.getActive()) {
             return Optional.of(user);
         }
 

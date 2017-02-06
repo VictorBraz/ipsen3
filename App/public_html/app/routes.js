@@ -1,5 +1,5 @@
 
-angular.module('workshop').config(function($routeProvider)
+angular.module('IN2').config(function($routeProvider)
 {
     $routeProvider.when('/', { templateUrl: 'assets/partials/home.html', controller: 'HomeController' });
     $routeProvider.when('/register', { templateUrl: 'assets/partials/registration.html', controller: 'RegistrationController' });

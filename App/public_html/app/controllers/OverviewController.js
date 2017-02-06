@@ -1,5 +1,5 @@
 
-angular.module('workshop').controller('OverviewController', function($scope, userService, $route)
+angular.module('IN2').controller('OverviewController', function($scope, userService, $route)
 {
     var construct = function()
     {

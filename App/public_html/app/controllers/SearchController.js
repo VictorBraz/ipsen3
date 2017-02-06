@@ -1,13 +1,13 @@
 /**
  * Created by Victor Machado Braz
  */
-angular.module('workshop').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
+angular.module('IN2').controller('SearchController', function($scope, searchService, clientService, employeeService, companyService) {
 
     $scope.searchTag = '';
 
     $scope.setClient = function (id) {
         clientService.setSelected(id);
-        $scope.gotoEditClient()
+        $scope.gotoViewClient();
     };
 
     $scope.setEmployee = function (id) {
@@ -17,7 +17,7 @@ angular.module('workshop').controller('SearchController', function($scope, searc
 
     $scope.setCompany = function (id) {
         companyService.setSelected(id);
-        $scope.gotoEditCompany();
+        $scope.gotoViewCompany();
     };
 
     $scope.setTag = function (){
