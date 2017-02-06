@@ -30,7 +30,12 @@ public class DocumentService extends BaseService<Document> {
     }
 
 
-    public String download(int id, String filename) {
-        return dao.getFile(id, filename);
-    }
+    /**
+     * Download string.
+     *
+     * @param id       the id
+     * @param filename the filename
+     * @return the string
+     */
+    public String download(int id, String filename) {return dao.getFile(id,filename);}
 }

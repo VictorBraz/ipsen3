@@ -22,15 +22,18 @@ public class DocumentDAO extends DatabaseDAO {
     private String bestandVerwijderenQuery = "DELETE FROM document WHERE id = ?";
 
 
-    public DocumentDAO() throws Exception {
-
+    /**
+     * Instantiates a new Document dao.
+     *
+     * @throws Exception the exception
+     */
+    public DocumentDAO() throws Exception{
         super();
         prepareStatements();
 
     }
 
     private void prepareStatements() {
-
         try {
             bestandSelecteren = conn.prepareStatement(bestandSelecterenQuery);
             bestandToeveogen = conn.prepareStatement(bestandToeveogenQuery);
@@ -41,15 +44,19 @@ public class DocumentDAO extends DatabaseDAO {
         }
     }
 
-    public String getFile(int id, String filename) {
+    /**
+     * Gets file.
+     *
+     * @param id       the id
+     * @param filename the filename
+     * @return the file
+     */
+    public String getFile(int id,String filename) {
 
         byte[] fileBytes;
-
         File file = new File(filename);
-
-        String fileDownloadLink = "http://localhost:8080/fileToDownload/" + file;
-        String filePath = "/Users/vedadpiric/ipsen3/App/filesToDownload/" + file;
-
+        String fileDownloadLink = "http://localhost:8080/fileToDownload/"+file;
+        String filePath ="/Users/vedadpiric/ipsen3/App/filesToDownload/"+file;
         try {
             bestandSelecteren.setInt(1, id);
 
@@ -71,11 +78,15 @@ public class DocumentDAO extends DatabaseDAO {
         return fileDownloadLink;
     }
 
+    /**
+     * Gets all documents.
+     *
+     * @param id the id
+     * @return the all documents
+     */
     public ArrayList<Document> getAllDocuments(int id) {
-
         ArrayList<Document> documentLijst = new ArrayList<Document>();
         Document document;
-
         try {
             bestandSelecteren.setInt(1, id);
             ResultSet set = bestandSelecteren.executeQuery();
