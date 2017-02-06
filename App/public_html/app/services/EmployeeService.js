@@ -2,7 +2,7 @@
  * Created by Negin Nafissi on 13-12-2016.
  */
 
-angular.module('IN2').service('employeeService', function($http)
+angular.module('IN2').service('employeeService', function($http, alertify)
 {
     var self = this;
 
@@ -29,7 +29,7 @@ angular.module('IN2').service('employeeService', function($http)
             },
             function (message, status)
             {
-                alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message + status);
+                alertify.okBtn("OK").confirm("Aanmaken mislukt, neem contact op met uw beheerder!");
             });
     };
 
@@ -41,7 +41,7 @@ angular.module('IN2').service('employeeService', function($http)
                 onReceived(response.data);
         },
         function(message, status){
-            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
+            alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
         });
 
     };
@@ -59,7 +59,7 @@ angular.module('IN2').service('employeeService', function($http)
                 onReceived(response.data);
             },
             function (message, status) {
-                alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
+                alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
             });
     };
 
@@ -70,7 +70,7 @@ angular.module('IN2').service('employeeService', function($http)
                 onReceived(response.data);
             },
             function (message, status) {
-                alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
+                alertify.okBtn("OK").confirm("Aanpassen mislukt, neem contact op met uw beheerder!");
             });
     };
 
@@ -82,7 +82,7 @@ angular.module('IN2').service('employeeService', function($http)
                 self.getAll(onReceived);
             },
             function(message, status) {
-                alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
+                alertify.okBtn("OK").confirm("Verwijderen mislukt, neem contact op met uw beheerder!");
             });
     };
 

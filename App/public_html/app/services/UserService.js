@@ -1,5 +1,5 @@
 
-angular.module('IN2').service('userService', function($http) {
+angular.module('IN2').service('userService', function($http, alertify) {
 
     var self = this;
     self.selectedUser = 0;
@@ -10,7 +10,7 @@ angular.module('IN2').service('userService', function($http) {
             onSuccess(response.data);
         },
         function(message, status) {
-            alert('Inloggen mislukt, neem contact op met uw beheerder: ' + message + status);
+            alertify.okBtn("OK").confirm("Inloggen mislukt, neem contact op met uw beheerder!");
         });
     };
     
@@ -30,7 +30,7 @@ angular.module('IN2').service('userService', function($http) {
         },
         function(message, status)
         {
-            alert('Aanmaken mislukt, neem contact op met uw beheerder: ' + message + status);
+            alertify.okBtn("OK").confirm("Aanmaken mislukt, neem contact op met uw beheerder!");
         });
     };
     
@@ -43,7 +43,7 @@ angular.module('IN2').service('userService', function($http) {
         },
         function(message, status)
         {
-            alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
+            alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
         });
     };
 
@@ -58,8 +58,8 @@ angular.module('IN2').service('userService', function($http) {
                 self.getAll(onReceived);
             },
             function(message, status) {
-                alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
-            });
+                alertify.okBtn("OK").confirm("Verwijderen mislukt, neem contact op met uw beheerder!");
+        });
     };
 
 });

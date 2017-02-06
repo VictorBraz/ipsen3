@@ -1,7 +1,7 @@
 /**
  * Created by vedadpiric on 21-12-16.
  */
-angular.module('IN2').service('CalenderService', function($http)
+angular.module('IN2').service('CalenderService', function($http, alertify)
 {
     var self = this;
 
@@ -21,7 +21,7 @@ angular.module('IN2').service('CalenderService', function($http)
 
             function (message)
             {
-                alert('Aanmaken mislukt: ' + message);
+                alertify.okBtn("OK").confirm("Aanmaken mislukt, neem contact op met uw beheerder!");
             });
     };
 
@@ -33,8 +33,8 @@ angular.module('IN2').service('CalenderService', function($http)
 
             },
             function(message, status){
-                alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message);
-            });
+                alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
+        });
 
     };
 
@@ -50,8 +50,8 @@ angular.module('IN2').service('CalenderService', function($http)
                 onReceived(response.data);
             },
             function (message, status) {
-                alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
-            });
+                alertify.okBtn("OK").confirm("Ophalen mislukt, neem contact op met uw beheerder!");
+        });
     };
 
     self.update = function (event, onReceived) {
@@ -61,8 +61,8 @@ angular.module('IN2').service('CalenderService', function($http)
                 onReceived(response.data);
             },
             function (message, status) {
-                alert('Aanpassen mislukt, neem contact op met uw beheerder: ' + message + status);
-            });
+                alertify.okBtn("OK").confirm("Aanpassen mislukt, neem contact op met uw beheerder!");
+        });
     };
     self.delete = function(id, onReceived) {
         var uri = 'api/calender/' + id + '';
@@ -71,8 +71,8 @@ angular.module('IN2').service('CalenderService', function($http)
                 onReceived(response.data);
             },
             function(message, status) {
-                alert('Verwijderen mislukt, neem contact op met uw beheerder: ' + message + status);
-            });
+                alertify.okBtn("OK").confirm("Verwijderen mislukt, neem contact op met uw beheerder!");
+        });
     };
 
 

@@ -13,21 +13,21 @@
 
                 <li role="presentation" ng-class="{ 'active': isLocation('/') }">
                     <a ng-click="gotoHome()">
-                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="material-icons">home</span>
                         Home
                     </a>
                 </li>
 
                 <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/employees') }">
                     <a ng-click="gotoEmployees()">
-                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="material-icons">sentiment_very_satisfied</span>
                         Medewerkers
                     </a>
                 </li>
 
                 <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/companies') }">
                     <a ng-click="gotoCompanies()">
-                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="material-icons">domain</span>
                         Bedrijven
                     </a>
                 </li>
@@ -35,33 +35,34 @@
 
                 <li role="presentation"  ng-if="authenticated" ng-class="{ 'active': isLocation('/clients') }">
                     <a ng-click="gotoClients()">
-                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="material-icons">people</span>
                         Cliënten
                     </a>
                 </li>
                 <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/overview') }">
                     <a ng-click="gotoOverview()">
-                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="material-icons">settings</span>
                         Accounts
                     </a>
                 </li>
                 <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/calender') }">
                     <a ng-click="gotoCalender()">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="material-icons">date_range</span>
                         Agenda
                     </a>
                 </li>
 
                 <li role="presentation" ng-if="authenticated" ng-class="{ 'active': isLocation('/search') }">
                     <a ng-click="gotoSearch()">
-                        <span class="glyphicon glyphicon-search"></span>
+                        <span class="material-icons">search</span>
                         Zoeken
                     </a>
                 </li>
 
+
                 <li role="presentation" ng-if="authenticated" ng-class="{'active': isLocation('/')}">
                     <a ng-click="logout()">
-                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="material-icons">power_settings_new</span>
                         Uitloggen
                     </a>
                 </li>

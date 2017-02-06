@@ -26,33 +26,73 @@ public class Calender {
     private String contactPersoon;
 
 
-
+    /**
+     * Gets event name.
+     *
+     * @return the event name
+     */
     public String getEventName() {
         return eventName;
     }
 
+    /**
+     * Sets event name.
+     *
+     * @param eventName the event name
+     */
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
 
+    /**
+     * Gets datum.
+     *
+     * @return the datum
+     */
     public Date getDatum() {
         return datum;
     }
 
+    /**
+     * Sets datum.
+     *
+     * @param datum the datum
+     */
     public void setDatum(Date datum) {
         this.datum = datum;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Gets contact persoon.
+     *
+     * @return the contact persoon
+     */
     public String getContactPersoon() {
         return contactPersoon;
     }
+
+    /**
+     * Sets contact persoon.
+     *
+     * @param contactPersoon the contact persoon
+     */
     public void setContactPersoon(String contactPersoon) {this.contactPersoon = contactPersoon; }
 }

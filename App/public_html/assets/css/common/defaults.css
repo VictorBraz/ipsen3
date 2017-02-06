@@ -90,6 +90,10 @@ h1.panel-title {
     padding-left: 100px;
 }
 
+#addbuttongroupcompany {
+    padding-left: 60px;
+}
+
 #addbuttongroupagenda {
     padding-left: 90px;
     padding-top: 178px;
@@ -115,6 +119,11 @@ h1.panel-title {
 
 }
 
+#deletebutton{
+    position: relative;
+    left: 64px;
+}
+
 #addAgendaPoint {
     height: 475px !important;
 }
@@ -122,6 +131,18 @@ h1.panel-title {
 #logo {
     position: relative;
     bottom: 50px;
+}
+
+#backbuttoncompany {
+    padding-top: 50px;
+}
+
+#buttonsinviewcalendar {
+    padding-top: 200px;
+}
+
+#calendarconfirmcancel {
+    padding-top: 200px;
 }
 
 .form-group.label-floating input.form-control:-webkit-autofill ~ label.control-label {
