@@ -14,12 +14,12 @@ import java.util.Collection;
  * @author Victor Machado Braz, Bernd
  */
 @Singleton
-public class ClientService extends BaseService<Client>{
+public class ClientService extends BaseService<Client> {
 
     private final ClientDAO dao;
 
     @Inject
-    private ClientService(ClientDAO dao){
+    private ClientService(ClientDAO dao) {
         this.dao = dao;
     }
 
@@ -28,7 +28,7 @@ public class ClientService extends BaseService<Client>{
      *
      * @return the collection
      */
-    public Collection<Client>  getAll(){
+    public Collection<Client> getAll() {
         return dao.getAll();
     }
 
@@ -38,7 +38,7 @@ public class ClientService extends BaseService<Client>{
      * @param id the id
      * @return the client
      */
-    public Client get(int id){
+    public Client get(int id) {
         return dao.getClient(id);
     }
 
@@ -47,7 +47,7 @@ public class ClientService extends BaseService<Client>{
      *
      * @param client the client
      */
-    public void add(Client client){
+    public void add(Client client) {
         dao.addClient(client);
     }
 

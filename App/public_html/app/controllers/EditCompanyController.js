@@ -2,6 +2,7 @@
  * Created by Roel on 16-1-2017.
  */
 angular.module('IN2').controller('EditCompanyController', function ($scope, alertify, companyService) {
+
     var construct = function () {
         companyService.getCompany(function (company) {
             $scope.company = company;
@@ -19,14 +20,13 @@ angular.module('IN2').controller('EditCompanyController', function ($scope, aler
             }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Bedrijf niet aangepast");
-        });
+            });
     };
 
-    var onUpdated = function()
-    {
+    var onUpdated = function () {
         $scope.gotoCompanies();
     };
 
-
     construct();
+
 });

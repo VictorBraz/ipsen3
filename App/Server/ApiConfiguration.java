@@ -16,7 +16,7 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
 {
     @NotEmpty
     @JsonProperty
-    private String apiName;
+    private String apiName = "IN2";
 
     @Valid
     @NotNull
@@ -26,11 +26,6 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     public String getApiName()
     {
         return apiName;
-    }
-
-    public void setApiName(String apiName)
-    {
-        this.apiName = apiName;
     }
 
     @Override

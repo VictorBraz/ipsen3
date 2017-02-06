@@ -18,7 +18,6 @@ import java.util.ArrayList;
 /**
  * Created by vedadpiric on 05-02-17.
  */
-
 @Singleton
 @Path("/documents")
 @Produces(MediaType.APPLICATION_JSON)
@@ -31,10 +30,9 @@ public class DocumentResource {
      * @param service the service
      */
     @Inject
-    public DocumentResource(DocumentService service){
+    public DocumentResource(DocumentService service) {
         this.service = service;
     }
-
 
 
     /**
@@ -46,16 +44,23 @@ public class DocumentResource {
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    public ArrayList<Document> retrieve(@PathParam("id") int id){
+    public ArrayList<Document> retrieve(@PathParam("id") int id) {
         return service.get(id);
     }
 
+    /**
+     * Gets file.
+     *
+     * @param id       the id
+     * @param filename the filename
+     * @return the file
+     */
     @GET
     @Path("/{id}/{filename}")
     @JsonView(View.Public.class)
-    public String getFile(@PathParam("id") int id, @PathParam("filename") String filename){return service.download(id,filename);}
-
-
+    public String getFile(@PathParam("id") int id, @PathParam("filename") String filename) {
+        return service.download(id, filename);
     }
+}
 
 

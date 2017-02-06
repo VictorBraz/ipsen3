@@ -11,7 +11,7 @@ public class Note {
     /**
      * Instantiates a new Note.
      */
-    public Note(){
+    public Note() {
 
     }
 

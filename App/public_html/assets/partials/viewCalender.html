@@ -5,46 +5,38 @@
 
         <div class="panel-heading">
             <div class="row">
-            <div class="col-md-4">
-                <h1>Agenda Informatie</h1>
-            </div>
-
-
-        <div class="col-md-1 col-md-offset-6 ">
-
-
-                <div class="btn btn-info btn-fab" id="editbutton">
-                        <div role="presentation" ng-class="{ 'active': isLocation('/editCalender') }">
-                            <a ng-click="gotoEditCalender() || reloadFillSettings()"><i
-                            class="material-icons">create</i></a>
-
-                        </div>
+                <div class="col-md-4">
+                    <h1>Agenda Informatie</h1>
                 </div>
 
+                <div class="col-md-1 col-md-offset-6 ">
 
+                        <div class="btn btn-info btn-fab" id="editbutton">
+                                <div role="presentation" ng-class="{ 'active': isLocation('/editCalender') }">
+                                    <a ng-click="gotoEditCalender() || reloadFillSettings()"><i
+                                    class="material-icons">create</i></a>
+
+                                </div>
+                        </div>
+                </div>
             </div>
-
-
-        </div>
         </div>
 
         <form name="registrationForm" class="panel-body"  novalidate>
 
-
             <div class="col-md-4">
+
                 <div class="form-group label-floating">
                     <label class="control-label" for="contactPersoon">Aangemaakt door</label>
                     <input data-ng-model="event.contactPersoon" ng-change="change()" type="text" name="contactPersoon" id="contactPersoon" class="form-control"
                            ng-readonly="true">
                 </div>
 
-
                 <label for="datum" class="control-label">Datum</label>
                 <div class="form-group label-floating">
 
                     <input type="date" class="form-control" id="datum" ng-model="event.datum" ng-readonly="true"/>
                 </div>
-
             </div>
 
             <div class="col-md-5 col-md-offset-2">
@@ -53,8 +45,7 @@
                     <label for="eventName" class="control-label">Agendapunt</label>
                     <textarea id="eventName"  ng-readonly="true" class="form-control" ng-model="event.eventName" rows="7"></textarea>
                 </div>
-
-                </div>
+            </div>
 
             <div class="col-md-1">
 
@@ -64,18 +55,13 @@
                         </a>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="col-md-2 col-md-offset-9" id="buttonsinviewcalendar">
                 <div class="row top-buffer">
-
-            <input type="button" class="btn btn-primary" value="Terug" onClick="history.go(-1);return true;" />
-
-                    </div>
+                    <input type="button" class="btn btn-primary" value="Terug" onClick="history.go(-1);return true;" />
                 </div>
+            </div>
         </form>
-
     </div>
 </div>

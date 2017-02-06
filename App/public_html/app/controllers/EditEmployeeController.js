@@ -2,9 +2,10 @@
  * Created by Negin Nafissi on 10-1-2017.
  */
 
-angular.module('IN2').controller('EditEmployeeController', function($scope, alertify, employeeService) {
+angular.module('IN2').controller('EditEmployeeController', function ($scope, alertify, employeeService) {
+
     var construct = function () {
-        employeeService.getEmployee(function(employees) {
+        employeeService.getEmployee(function (employees) {
             $scope.employees = employees;
         });
     };

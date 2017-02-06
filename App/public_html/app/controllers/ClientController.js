@@ -64,8 +64,6 @@ angular.module('IN2').controller('ClientController', function ($scope, $route, a
     };
 
 
-
-
     $scope.delete = function () {
         alertify
             .okBtn("OK")
@@ -74,10 +72,10 @@ angular.module('IN2').controller('ClientController', function ($scope, $route, a
                 clientService.delete($scope.selectedClient.id[0], reload);
                 ev.preventDefault();
                 alertify.success("Cliënt succesvol verwijderd");
-        }, function (ev) {
+            }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Cliënt niet verwijderd");
-        });
+            });
     };
 
     $scope.restore = function () {
@@ -85,20 +83,20 @@ angular.module('IN2').controller('ClientController', function ($scope, $route, a
             .okBtn("OK")
             .cancelBtn("Annuleren")
             .confirm("Weet u zeker dat u de geselecteerde cliënt wilt herstellen?", function (ev) {
-            clientService.delete($scope.selectedClient.id[0], reload);
+                clientService.delete($scope.selectedClient.id[0], reload);
                 ev.preventDefault();
                 alertify.success("Client succesvol hersteld");
-        }, function (ev) {
+            }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Client niet hersteld");
-        });
+            });
     };
 
-    $scope.reloadFillSettings = function() {
+    $scope.reloadFillSettings = function () {
         $.material.options.autofill = true;
     };
 
-    var reload = function() {
+    var reload = function () {
         $route.reload();
     };
 

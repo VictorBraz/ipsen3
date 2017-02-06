@@ -1,65 +1,52 @@
 /**
  * Created by Victor Machado Braz, Bernd Oostrum, Negin Nafissi, Vedad Piric, Roel van Holsteijn, Mitch van Wijngaarden
  */
-angular.module('IN2').controller('AppController', function($scope, $location, authenticationService)
-{
+angular.module('IN2').controller('AppController', function ($scope, $location, authenticationService) {
 
-    $scope.isLocation = function(location)
-    {
+    $scope.isLocation = function (location) {
         return $location.path() === location;
     };
-    
-    $scope.gotoHome = function()
-    {
+
+    $scope.gotoHome = function () {
         $location.path('/');
     };
-    
-    $scope.gotoRegistration = function()
-    {
+
+    $scope.gotoRegistration = function () {
         $location.path('/register');
     };
-    
-    $scope.gotoOverview = function()
-    {
+
+    $scope.gotoOverview = function () {
         $location.path('/overview');
     };
 
-    $scope.gotoCompanies = function()
-    {
+    $scope.gotoCompanies = function () {
         $location.path('/companies');
     };
 
-    $scope.gotoClients = function ()
-    {
+    $scope.gotoClients = function () {
         $location.path('/clients');
     };
 
-    $scope.gotoViewClient = function ()
-    {
+    $scope.gotoViewClient = function () {
         $location.path('/viewClient');
     };
 
-    $scope.gotoEmployees = function ()
-    {
+    $scope.gotoEmployees = function () {
         $location.path('/employees');
     };
 
-    $scope.gotoAddEmployee = function ()
-    {
+    $scope.gotoAddEmployee = function () {
         $location.path('/addEmployee');
     };
-    $scope.gotoAddCalender = function ()
-    {
+    $scope.gotoAddCalender = function () {
         $location.path('/addcalender');
     };
 
-    $scope.gotoEditEmployee = function ()
-    {
+    $scope.gotoEditEmployee = function () {
         $location.path('/editEmployee');
     };
 
-    $scope.gotoViewEmployee = function ()
-    {
+    $scope.gotoViewEmployee = function () {
         $location.path('/viewEmployee');
     };
 
@@ -98,13 +85,12 @@ angular.module('IN2').controller('AppController', function($scope, $location, au
         $location.path('/deletecompany');
     };
 
-    $scope.logout = function()
-    {
+    $scope.logout = function () {
         authenticationService.deleteAuthentication();
         $scope.gotoHome();
     };
 
-    $scope.gotoSearch = function(){
+    $scope.gotoSearch = function () {
         $location.path('/search');
     };
 });

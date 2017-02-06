@@ -5,15 +5,14 @@
  */
 angular.module('IN2').controller('CompanyController', function ($scope, $route, alertify, companyService) {
 
-    var construct = function() {
-        companyService.getAll(function(companies){
+    var construct = function () {
+        companyService.getAll(function (companies) {
             $scope.companies = companies;
             $scope.activetab = true;
         });
     };
 
     $scope.searchKeyword = '';
-
 
     $scope.selectedCompany = {
         id: []
@@ -41,9 +40,9 @@ angular.module('IN2').controller('CompanyController', function ($scope, $route, 
     };
 
     $scope.isSelected = function () {
-        if($scope.selectedCompany.id.length > 0){
+        if ($scope.selectedCompany.id.length > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     };
@@ -52,14 +51,13 @@ angular.module('IN2').controller('CompanyController', function ($scope, $route, 
         companyService.setSelected($scope.selectedCompany.id[0]);
     };
 
-    var companyCreated = function() {
+    var companyCreated = function () {
         alertify.success("Er is een nieuw bedrijf toegevoegd");
         $scope.gotoCompanies();
     };
 
 
-    var reload = function()
-    {
+    var reload = function () {
         $route.reload();
     };
 
@@ -74,7 +72,7 @@ angular.module('IN2').controller('CompanyController', function ($scope, $route, 
             }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Bedrijf niet verwijderd");
-        });
+            });
     };
 
     $scope.restore = function () {
@@ -88,12 +86,10 @@ angular.module('IN2').controller('CompanyController', function ($scope, $route, 
             }, function (ev) {
                 ev.preventDefault();
                 alertify.error("Bedrijf niet hersteld");
-        });
+            });
     };
 
-
     construct();
-
 
 });
 

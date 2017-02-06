@@ -31,7 +31,9 @@ public class NoteResource {
      * @param service the service
      */
     @Inject
-    public NoteResource(NoteService service){this.service = service;}
+    public NoteResource(NoteService service) {
+        this.service = service;
+    }
 
     /**
      * Retrieve all collection.
@@ -41,7 +43,7 @@ public class NoteResource {
     @GET
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Note> retrieveAll(){
+    public Collection<Note> retrieveAll() {
         return service.getAll();
     }
 
@@ -54,7 +56,7 @@ public class NoteResource {
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    public Note retrieve(@PathParam("id") int id){
+    public Note retrieve(@PathParam("id") int id) {
         return service.get(id);
     }
 
@@ -66,7 +68,7 @@ public class NoteResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    public void create(Note note){
+    public void create(Note note) {
         service.add(note);
     }
 
@@ -82,7 +84,7 @@ public class NoteResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void update(@PathParam("id") int id, @Auth User authenticator, Note note){
+    public void update(@PathParam("id") int id, @Auth User authenticator, Note note) {
         service.update(note);
     }
 }

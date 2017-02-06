@@ -12,8 +12,10 @@ import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.Authorizer;
 import io.dropwizard.auth.basic.BasicCredentials;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
 import Server.Model.User;
 import Server.Persistence.UserDAO;
 
@@ -23,8 +25,7 @@ import Server.Persistence.UserDAO;
  * @author Peter van Vliet, Bernd Oostrum, Negin Nafissi, Victor Machado Braz
  */
 @Singleton
-public class AuthenticationService implements Authenticator<BasicCredentials, User>, Authorizer<User>
-{
+public class AuthenticationService implements Authenticator<BasicCredentials, User>, Authorizer<User> {
     private final UserDAO userDAO;
 
     /**
@@ -33,16 +34,13 @@ public class AuthenticationService implements Authenticator<BasicCredentials, Us
      * @param userDAO the user dao
      */
     @Inject
-    public AuthenticationService(UserDAO userDAO)
-    {
+    public AuthenticationService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
     @Override
-    public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException
-    {
+    public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException {
         User user = userDAO.getByEmailAddress(credentials.getUsername());
-
 
 
         if (user != null && BCrypt.checkpw(credentials.getPassword(), user.getPassword()) && user.getActive()) {
@@ -53,8 +51,7 @@ public class AuthenticationService implements Authenticator<BasicCredentials, Us
     }
 
     @Override
-    public boolean authorize(User user, String roleName)
-    {
+    public boolean authorize(User user, String roleName) {
         return user.hasRole(roleName);
     }
 }

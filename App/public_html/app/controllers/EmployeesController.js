@@ -2,9 +2,9 @@
  * Created by Negin Nafissi on 13-12-2016.
  */
 
-angular.module('IN2').controller('EmployeesController', function($scope, $route, alertify, employeeService)
-{
-    var construct = function() {
+angular.module('IN2').controller('EmployeesController', function ($scope, $route, alertify, employeeService) {
+
+    var construct = function () {
         employeeService.getAll(function (employees) {
             $scope.employees = employees;
             $scope.activetab = true;
@@ -40,9 +40,9 @@ angular.module('IN2').controller('EmployeesController', function($scope, $route,
     };
 
     $scope.isSelected = function () {
-        if($scope.selectedEmployee.id.length > 0){
+        if ($scope.selectedEmployee.id.length > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     };
@@ -51,7 +51,7 @@ angular.module('IN2').controller('EmployeesController', function($scope, $route,
         employeeService.setSelected($scope.selectedEmployee.id[0]);
     };
 
-    var employeeCreated = function() {
+    var employeeCreated = function () {
         alertify.success("Er is een nieuwe medewerker toegevoegd");
         $scope.gotoEmployees();
     };
@@ -84,11 +84,11 @@ angular.module('IN2').controller('EmployeesController', function($scope, $route,
             });
     };
 
-    $scope.reloadFillSettings = function() {
+    $scope.reloadFillSettings = function () {
         $.material.options.autofill = true;
-    }
+    };
 
-    var reload = function() {
+    var reload = function () {
         $route.reload();
     };
 

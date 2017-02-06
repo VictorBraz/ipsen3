@@ -33,7 +33,7 @@ public class ClientResource {
      * @param service the service
      */
     @Inject
-    public ClientResource(ClientService service){
+    public ClientResource(ClientService service) {
         this.service = service;
     }
 
@@ -45,7 +45,7 @@ public class ClientResource {
     @GET
     @JsonView(View.Public.class)
     @PermitAll
-    public Collection<Client> getAll(){
+    public Collection<Client> getAll() {
         return service.getAll();
     }
 
@@ -59,7 +59,7 @@ public class ClientResource {
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
-    public Client retrieve(@PathParam("id") int id){
+    public Client retrieve(@PathParam("id") int id) {
         return service.get(id);
     }
 
@@ -72,7 +72,7 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void create(Client client){
+    public void create(Client client) {
         service.add(client);
     }
 
@@ -86,7 +86,7 @@ public class ClientResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
     @PermitAll
-    public void update(Client client){
+    public void update(Client client) {
         service.update(client);
     }
 

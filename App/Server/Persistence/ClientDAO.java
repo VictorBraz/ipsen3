@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Victor Machado Braz, Bernd
  */
-public class ClientDAO extends DatabaseDAO{
+public class ClientDAO extends DatabaseDAO {
 
     private AddressDAO addressDAO;
     private NoteDAO noteDAO;
@@ -30,29 +30,31 @@ public class ClientDAO extends DatabaseDAO{
      *
      * @throws Exception the exception
      */
-    public ClientDAO() throws Exception{
+    public ClientDAO() throws Exception {
+
         super();
         prepareStatements();
         try {
             this.addressDAO = new AddressDAO();
             this.noteDAO = new NoteDAO();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void prepareStatements(){
-        try{
+    private void prepareStatements() {
+
+        try {
             getClient = conn.prepareStatement("SELECT * FROM client WHERE id=?");
             addClient = conn.prepareStatement("INSERT INTO client (clientaddressid, firstname," +
-                    " lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)",
+                            " lastname, birthdate, study, email, phonenumber, tag) VALUES (?,?,?,?,?,?,?,?)",
                     PreparedStatement.RETURN_GENERATED_KEYS);
             getAll = conn.prepareStatement("SELECT * FROM client");
             updateClient = conn.prepareStatement("UPDATE client SET clientaddressid=?, firstname=?," +
                     " lastname=?, birthdate=?, study=?, email=?, phonenumber=?, tag=? WHERE id=?");
             deleteClient = conn.prepareStatement("UPDATE client SET active=? WHERE id =?");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -62,7 +64,8 @@ public class ClientDAO extends DatabaseDAO{
      *
      * @param client the client
      */
-    public void addClient(Client client){
+    public void addClient(Client client) {
+
         try {
             Address address = new Address();
             address.setAddress(client.getAddress());
@@ -83,7 +86,7 @@ public class ClientDAO extends DatabaseDAO{
             addClient.executeUpdate();
 
             ResultSet rs = addClient.getGeneratedKeys();
-            if (rs.next()){
+            if (rs.next()) {
                 client.setId(rs.getInt("id"));
             }
 
@@ -92,7 +95,7 @@ public class ClientDAO extends DatabaseDAO{
             note.setText(client.getNoteText());
             noteDAO.addNote(note);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -102,12 +105,14 @@ public class ClientDAO extends DatabaseDAO{
      *
      * @return the list
      */
-    public List<Client> getAll(){
+    public List<Client> getAll() {
+
         List<Client> clients = new ArrayList<>();
-        try{
+
+        try {
             ResultSet rs = getAll.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 Client client = new Client();
                 client.setId(rs.getInt(1));
                 client.setClientAddresId(rs.getInt(2));
@@ -132,7 +137,7 @@ public class ClientDAO extends DatabaseDAO{
                 clients.add(client);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return clients;
@@ -145,7 +150,9 @@ public class ClientDAO extends DatabaseDAO{
      * @return the client
      */
     public Client getClient(int id) {
+
         Client client = new Client();
+
         try {
             getClient.setInt(1, id);
             ResultSet rs = getClient.executeQuery();
@@ -171,7 +178,7 @@ public class ClientDAO extends DatabaseDAO{
                 Note note = noteDAO.getNote(client.getId());
                 client.setNoteText(note.getText());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return client;
@@ -182,14 +189,17 @@ public class ClientDAO extends DatabaseDAO{
      *
      * @param client the client
      */
-    public void update(Client client){
+    public void update(Client client) {
+
         Address address = new Address();
+
         address.setAddress(client.getAddress());
         address.setCity(client.getCity());
         address.setPostcode(client.getPostcode());
         address.setId(client.getClientAddresId());
 
         Note note = new Note();
+
         note.setText(client.getNoteText());
         note.setOwnerID(client.getId());
 
@@ -209,7 +219,7 @@ public class ClientDAO extends DatabaseDAO{
             updateClient.setInt(9, client.getId());
             updateClient.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -219,9 +229,10 @@ public class ClientDAO extends DatabaseDAO{
      *
      * @param id the id
      */
-    public void delete (int id) {
+    public void delete(int id) {
+
         try {
-            if( getClient(id).getActive() == true) {
+            if (getClient(id).getActive() == true) {
                 deleteClient.setBoolean(1, false);
                 deleteClient.setInt(2, id);
                 deleteClient.execute();

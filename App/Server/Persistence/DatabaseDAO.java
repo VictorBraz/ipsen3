@@ -23,7 +23,7 @@ public abstract class DatabaseDAO {
      *
      * @throws Exception the exception
      */
-    public DatabaseDAO() throws Exception{
+    public DatabaseDAO() throws Exception {
         this.conn = DatabaseService.getInstance().getConnection("IPSEN3G10", "1");
 
     }

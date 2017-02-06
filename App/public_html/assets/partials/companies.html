@@ -1,17 +1,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <div class="container">
-    <!--<div class="row">-->
-    <!--<div class="col-md-10 col-md-offset-1">-->
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>Bedrijven</h1>
 
         </div>
-
-        <!--<div class="text-field">-->
-        <!--<input type="text" class="form-control" ng-model="searchKeyword"-->
-        <!--layout-padding="10px ,10px ,0px,0px">-->
-
 
         <!--header boven tabellen-->
         <div class="row">
@@ -33,7 +27,6 @@
 
 
         </div>
-
 
         <!--inhoud van de tabellen-->
 
@@ -109,7 +102,7 @@
         </div>
         <div class="col-md-2 col-md-offset-11">
             <div class="row"  id="buttonrow">
-                <!--<div class="btn-group">-->
+
                 <!--Toevoegen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab && selectedCompany.id.length == 0">
                     <div role="presentation" ng-class="{ 'active': isLocation('/companies') }">
@@ -117,23 +110,13 @@
                     </div>
                 </div>
 
-                <!--Aanpassen knop-->
-
-
-                <!--<div class="btn btn-info btn-fab">-->
-                <!--<div role="presentation" ng-class="{'disabled':!isSelected()}">-->
-                <!--<a ng-click="!isSelected() || gotoEditcompany()"><i-->
-                <!--class="material-icons">launch</i></a>-->
-                <!--</div>-->
-                <!--</div>-->
-
+                <!--Herstellen knop-->
                 <div class="btn btn-info btn-fab" ng-show="activetab == false">
                     <div role="presentation" ng-class="{'disabled':!isSelected()}">
                         <a ng-click="!isSelected() || restore()"><i
                                 class="material-icons">restore</i></a>
                     </div>
                 </div>
-
 
                 <!--Verwijderen knop-->
                 <div class="btn btn-info btn-fab"ng-show="activetab && selectedCompany.id.length >0">

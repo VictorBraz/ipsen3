@@ -1,10 +1,7 @@
+angular.module('IN2').controller('OverviewController', function ($scope, userService, alertify, $route) {
 
-angular.module('IN2').controller('OverviewController', function($scope, userService, alertify, $route)
-{
-    var construct = function()
-    {
-        userService.getAll(function(users)
-        {
+    var construct = function () {
+        userService.getAll(function (users) {
             $scope.users = users;
             $scope.activetab = true;
         });
@@ -59,8 +56,7 @@ angular.module('IN2').controller('OverviewController', function($scope, userServ
     };
 
 
-    var reload = function()
-    {
+    var reload = function () {
         $route.reload();
     };
 

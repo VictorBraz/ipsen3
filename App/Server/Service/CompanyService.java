@@ -11,8 +11,8 @@ import java.util.Collection;
  * Created by Mitch on 12/9/2016.
  */
 @Singleton
-public class CompanyService extends BaseService<Company>
-{
+public class CompanyService extends BaseService<Company> {
+
     private final CompanyDAO dao;
 
     /**
@@ -21,8 +21,7 @@ public class CompanyService extends BaseService<Company>
      * @param dao the dao
      */
     @Inject
-    public CompanyService(CompanyDAO dao)
-    {
+    public CompanyService(CompanyDAO dao) {
         this.dao = dao;
     }
 
@@ -59,7 +58,7 @@ public class CompanyService extends BaseService<Company>
      *
      * @param comp the comp
      */
-    public void add(Company comp){
+    public void add(Company comp) {
         dao.addCompany(comp);
     }
 
@@ -68,8 +67,7 @@ public class CompanyService extends BaseService<Company>
      *
      * @param id the id
      */
-    public void delete(int id)
-    {
+    public void delete(int id) {
         dao.delete(id);
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Roel on 15-12-2016.
  */
 @Singleton
-public class NoteService extends BaseService<Note>{
+public class NoteService extends BaseService<Note> {
 
     private final NoteDAO dao;
 
@@ -21,7 +21,7 @@ public class NoteService extends BaseService<Note>{
      * @param dao the dao
      */
     @Inject
-    public NoteService(NoteDAO dao){
+    public NoteService(NoteDAO dao) {
         this.dao = dao;
     }
 
@@ -31,7 +31,7 @@ public class NoteService extends BaseService<Note>{
      * @param id the id
      * @return the note
      */
-    public Note get(int id){
+    public Note get(int id) {
         return dao.getNote(id);
     }
 
@@ -40,7 +40,7 @@ public class NoteService extends BaseService<Note>{
      *
      * @param note the note
      */
-    public void add(Note note){
+    public void add(Note note) {
         dao.addNote(note);
     }
 
@@ -49,7 +49,7 @@ public class NoteService extends BaseService<Note>{
      *
      * @param note the note
      */
-    public void update(Note note){
+    public void update(Note note) {
         dao.update(note);
     }
 
@@ -58,5 +58,7 @@ public class NoteService extends BaseService<Note>{
      *
      * @return the list
      */
-    public List<Note>getAll(){ return dao.getAll();}
+    public List<Note> getAll() {
+        return dao.getAll();
+    }
 }
