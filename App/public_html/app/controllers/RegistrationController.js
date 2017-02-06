@@ -1,5 +1,5 @@
 
-angular.module('IN2').controller('RegistrationController', function($scope, userService)
+angular.module('IN2').controller('RegistrationController', function($scope, alertify, userService)
 {
 
     $scope.register = function() {
@@ -15,7 +15,7 @@ angular.module('IN2').controller('RegistrationController', function($scope, user
 
     var userCreated = function()
     {
-        alert('Uw account is aangemaakt, u kunt nu inloggen');
+        alertify.success("Er is een nieuwe medewerker toegevoegd");
         $scope.gotoOverview();
     };
 });

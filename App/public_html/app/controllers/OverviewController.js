@@ -1,5 +1,5 @@
 
-angular.module('IN2').controller('OverviewController', function($scope, userService, $route)
+angular.module('IN2').controller('OverviewController', function($scope, userService, alertify, $route)
 {
     var construct = function()
     {
@@ -31,22 +31,31 @@ angular.module('IN2').controller('OverviewController', function($scope, userServ
     };
 
     $scope.delete = function () {
-        var confirmation = confirm("Weet u zeker dat u geselecteerde account wilt deactiveren?");
-        if (confirmation == true) {
-            userService.delete($scope.selectedUser.id[0], reload);
-        }
-        else {
-            alert("Gegevens niet deactiveerd");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde account wilt verwijderen?", function (ev) {
+                userService.delete($scope.selectedUser.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Account succesvol verwijderd");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Account niet verwijderd");
+            });
     };
 
     $scope.restore = function () {
-        var confirmation = confirm("Weet u zeker dat u geselecteerde account wilt herstellen?");
-        if (confirmation == true) {
-            userService.delete($scope.selectedUser.id[0], reload);
-        } else{
-            ("Gegevens niet hersteld");
-        }
+        alertify
+            .okBtn("OK")
+            .cancelBtn("Annuleren")
+            .confirm("Weet u zeker dat u de geselecteerde account wilt herstellen?", function (ev) {
+                userService.delete($scope.selectedUser.id[0], reload);
+                ev.preventDefault();
+                alertify.success("Account succesvol hersteld");
+            }, function (ev) {
+                ev.preventDefault();
+                alertify.error("Account niet hersteld");
+            });
     };
 
 
