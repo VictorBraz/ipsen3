@@ -4,7 +4,6 @@ angular.module('IN2').controller('RegistrationController', function($scope, user
 
     $scope.register = function() {
 
-
         userService.create(
             $scope.emailAddress,
             $scope.password,
