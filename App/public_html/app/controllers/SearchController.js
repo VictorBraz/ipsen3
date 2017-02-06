@@ -7,7 +7,7 @@ angular.module('workshop').controller('SearchController', function($scope, searc
 
     $scope.setClient = function (id) {
         clientService.setSelected(id);
-        $scope.gotoEditClient()
+        $scope.gotoViewClient();
     };
 
     $scope.setEmployee = function (id) {
@@ -17,7 +17,7 @@ angular.module('workshop').controller('SearchController', function($scope, searc
 
     $scope.setCompany = function (id) {
         companyService.setSelected(id);
-        $scope.gotoEditCompany();
+        $scope.gotoViewCompany();
     };
 
     $scope.setTag = function (){

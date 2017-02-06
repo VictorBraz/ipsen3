@@ -89,7 +89,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
     $scope.reloadFillSettings = function() {
         $.material.options.autofill = true;
-    }
+    };
 
     var reload = function() {
         $route.reload();
