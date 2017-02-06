@@ -69,6 +69,7 @@ angular.module('IN2').service('clientService', function($http)
 
         $http.get(uri).then(function(response){
                 onReceived(response.data);
+                console.log("received");
             },
             function (message, status) {
                 alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);

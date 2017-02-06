@@ -10,12 +10,6 @@ angular.module('IN2').controller('ClientController', function ($scope, $route, a
             $scope.clients = clients;
             $scope.activetab = true;
         });
-        clientService.getClientFiles(function (documents) {
-            $scope.documents = documents;
-
-        });
-
-
     };
 
     $scope.searchKeyword = '';
@@ -40,6 +34,9 @@ angular.module('IN2').controller('ClientController', function ($scope, $route, a
 
     $scope.viewSettedClient = function (id) {
         clientService.setSelected(id);
+        clientService.getClientFiles(function (documents) {
+            $scope.documents = documents;
+        });
 
         $scope.gotoViewClient();
     };

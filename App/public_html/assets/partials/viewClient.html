@@ -99,9 +99,9 @@
                 <div class="form-group label-floating">
                     <label for="files" class="control-label">Documenten</label>
                 </div>
-                </br>
-                    <select id="files" ng-repeat="document in documents" name="files">
-                        <option value="{{document.documentname}}">{{document.documentname}}</option>
+
+                    <select id="files" name="Files" >
+                        <option ng-repeat="document in documents" value="{{document.documentname}}">{{document.documentname}}</option>
 
                     </select>
 

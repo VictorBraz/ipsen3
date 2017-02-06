@@ -95,7 +95,7 @@ public class DocumentDAO extends DatabaseDAO {
             while (set.next()) {
                 document = new Document();
 
-                document.setDocument_Titel(set.getString("documentname"));
+                document.setDocumentname(set.getString("documentname"));
                 documentLijst.add(document);
             }
         } catch (Exception e) {

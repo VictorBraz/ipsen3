@@ -8,8 +8,9 @@ angular.module('IN2').controller('EditClientController', function($scope, alerti
         clientService.getClient(function(client)
         {
             $scope.client = client;
-
-
+            clientService.getClientFiles(function (documents) {
+                $scope.documents = documents;
+            });
         });
 
     };
