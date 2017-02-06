@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html ng-app="IN2">
+
+
+    <head>
+        <link rel="shortcut icon" href="assets/images/In2Logo.ico"  type="image/ico"/>
+
+        <title>IN2</title>
+
+        <base href="/">
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
+
+
+        <!-- Material Design fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- Bootstrap Material Design -->
+        <link rel="stylesheet" type="text/css" href="assets/materialdesign/css/bootstrap-material-design.css">
+        <link rel="stylesheet" type="text/css" href="assets/materialdesign/css/ripples.min.css">
+
+        <script type="text/javascript" src="assets/libraries.js"></script>
+        <script type="text/javascript" src="app/app.js"></script>
+
+        <add key="webpages:Enabled" value="true" />
+
+
+
+    </head>
+
+    <body ng-controller="AppController">
+
+
+        <header ng-include="'assets/partials/header.html'"></header>
+
+        <main ng-view></main>
+
+    </body>
+
+</html>
