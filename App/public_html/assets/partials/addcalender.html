@@ -7,18 +7,22 @@
             <h1>Toevoegen Agendapunt</h1>
         </div>
 
-        <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
+        <form name="registrationForm" id="addAgendaPoint" class="panel-body" ng-submit="register()" novalidate>
 
             <div class="col-md-4">
                 <div class="form-group label-floating">
-
                     <label class="control-label" for="contactPersoon">Aangemaakt door</label>
                     <input type="text" id="contactPersoon" class="form-control" ng-model="contactPersoon" ng-required="true">
                 </div>
-                <label for="datum" class="control-label">Datum</label>
+
+
+
+
+
                 <div class="form-group label-floating">
 
                     <input type="date" class="form-control" id="datum" ng-model="datum" ng-required="true"/>
+
                 </div>
 
             </div>
@@ -33,7 +37,7 @@
             </div>
 
 
-            <div class="col-md-4 col-md-offset-4" id="addbuttongroup">
+            <div class="col-md-5 col-md-offset-7" id="addbuttongroupagenda">
                 <div class="row top-buffer">
 
                     <input type="button" class="btn btn-primary" value="Annuleren"

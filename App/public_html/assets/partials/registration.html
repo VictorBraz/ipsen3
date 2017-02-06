@@ -1,47 +1,57 @@
-
 <div class="container">
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h1>Aanmelden</h1>
+            <h1>Account aanmaken</h1>
         </div>
 
         <form name="registrationForm" class="panel-body" ng-submit="register()" novalidate>
 
-            <div class="form-group">
-                <label class="control-label">E-mailadres</label>
-                <input type="email" class="form-control" ng-model="emailAddress" ng-required="true" />
-            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label" for="email">E-mailadres</label>
+                    <input type="email" class="form-control" id="email" ng-model="emailAddress" ng-required="true"/>
+                </div>
 
-            <div class="form-group">
-                <label class="control-label">Wachtwoord</label>
-                <input type="password" class="form-control" ng-model="password" ng-required="true" />
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Rechten</label>
-                <div class="selectContainer" >
-                    <select class="form-control" ng-model="privilege" ng-required="true">
-                        <option value="3">Gast</option>
-                        <option value="1">Admin</option>
-                    </select>
+                <div class="form-group label-floating">
+                    <label for="password" class="control-label">Wachtwoord</label>
+                    <input type="password" class="form-control" id="password" ng-model="password" ng-required="true"/>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Gebruiker</label>
-                <div class="selectContainer" >
-                    <select class="form-control" ng-model="userId" ng-required="true">
-                        <option value="3">Medewerker</option>
-                        <option value="2">Bedrijf</option>
-                        <option value="1">Client</option>
-                    </select>
+            <!--<div class="form-group">-->
+            <!--<label class="control-label">Rechten</label>-->
+            <!--<div class="selectContainer" >-->
+            <!--<select class="form-control" ng-model="privilege" ng-required="true">-->
+            <!--<option value="3">Gast</option>-->
+            <!--<option value="1">Admin</option>-->
+            <!--</select>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <div class="col-md-5 col-md-offset-2" id="radiobuttons">
+                <div class="radio radio-primary">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="3" checked="">
+                        Werknemer
+                    </label>
+                </div>
+                <div class="radio radio-primary">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="1">
+                        Admin
+                    </label>
                 </div>
             </div>
 
-            <div class="button">
-                <input type="submit" class="btn btn-primary" value="Aanmelden" ng-disabled="registrationForm.$invalid" />
-                <input type="button" class="btn btn-primary" value="Annuleren" onClick="history.go(-1);return true;" />
+            <div class="col-md-5 col-md-offset-3" id="addbuttongroupaccount">
+                <div class="row top-buffer">
+
+                    <input type="button" class="btn btn-primary" value="Annuleren"
+                           onClick="history.go(-1);return true;"/>
+                    <input type="submit" class="btn btn-primary" value="Aanmaken"
+                           ng-disabled="registrationForm.$invalid"/>
+                </div>
             </div>
 
 

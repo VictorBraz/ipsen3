@@ -4,11 +4,12 @@ angular.module('workshop').controller('RegistrationController', function($scope,
 
     $scope.register = function() {
 
+
         userService.create(
             $scope.emailAddress,
             $scope.password,
             $scope.privilege,
-            $scope.userId,
+            $scope.userId = 1,
             userCreated
         );
     };

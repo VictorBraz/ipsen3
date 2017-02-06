@@ -6,7 +6,8 @@ angular.module('workshop',
         'materialCalendar',
         'ngAlertify',
         'ngAnimate',
-        'chart.js'
+        'chart.js',
+        'ngMaterialDatePicker'
 
 
 

@@ -90,6 +90,20 @@ h1.panel-title {
     padding-left: 100px;
 }
 
+#addbuttongroupagenda {
+    padding-left: 90px;
+    padding-top: 178px;
+}
+
+#radiobuttons {
+    padding-top:20px;
+}
+
+#addbuttongroupaccount {
+    padding-top: 300px;
+    padding-left: 170px;
+}
+
 #buttonsinform {
     padding-left: 100px;
     padding-top: 50px;
@@ -99,6 +113,10 @@ h1.panel-title {
     position: relative;
     left: 145px;
 
+}
+
+#addAgendaPoint {
+    height: 475px !important;
 }
 
 #logo {
@@ -112,6 +130,13 @@ h1.panel-title {
     font-size: 12px;
     line-height: 1.07142857;
 }
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    background-color: #FFFFFF !important;
+}
+
+
+
 
 @media (min-width: 996px) {
     #homecontent{
