@@ -17,6 +17,12 @@ public class CalenderDAO extends DatabaseDAO{
     private PreparedStatement updateEvent;
     private PreparedStatement deleteEvent;
     private PreparedStatement getAll;
+
+    /**
+     * Instantiates a new Calender dao.
+     *
+     * @throws Exception the exception
+     */
     public CalenderDAO() throws Exception{
         super();
         prepareStatements();
@@ -34,6 +40,12 @@ public class CalenderDAO extends DatabaseDAO{
         }
     }
 
+    /**
+     * Get event calender.
+     *
+     * @param id the id
+     * @return the calender
+     */
     public Calender getEVENT(int id){
         Calender calender = new Calender();
         try{
@@ -56,6 +68,11 @@ public class CalenderDAO extends DatabaseDAO{
 
     }
 
+    /**
+     * Get all list.
+     *
+     * @return the list
+     */
     public List<Calender> getAll(){
         List<Calender> calenderList = new ArrayList<>();
         try{
@@ -80,6 +97,12 @@ public class CalenderDAO extends DatabaseDAO{
     }
 
 
+    /**
+     * Add events calender.
+     *
+     * @param calender the calender
+     * @return the calender
+     */
     public Calender addEvents(Calender calender){
 
         java.util.Date util_StartDate = calender.getDatum();
@@ -96,6 +119,11 @@ public class CalenderDAO extends DatabaseDAO{
         return calender;
     }
 
+    /**
+     * Update events.
+     *
+     * @param calender the calender
+     */
     public void UpdateEvents(Calender calender){
         java.util.Date util_StartDate = calender.getDatum();
         java.sql.Date sql_StartDate = new java.sql.Date( util_StartDate.getTime() );
@@ -111,6 +139,12 @@ public class CalenderDAO extends DatabaseDAO{
                 e.printStackTrace();
         }
     }
+
+    /**
+     * Delete event.
+     *
+     * @param id the id
+     */
     public void deleteEvent (int id) {
         try {
 
