@@ -87,8 +87,7 @@
                     <label for="file" class="control-label">Document</label>
                     <input type="file" id="file" multiple="">
                     <div class="input-group">
-                        <input type="text" readonly="" class="form-control"
-                        >
+                        <input type="text" readonly="" class="form-control">
                         <span class="input-group-btn input-group-sm">
                              <button type="button" class="btn btn-fab btn-fab-mini">
                                 <i class="material-icons">attach_file</i>
@@ -98,10 +97,15 @@
                 </div>
 
                 <div class="form-group label-floating">
-                    <label for="files" class="control-label"></label>
-                    <textarea readonly id="files" class="form-control"
-                              rows="3"></textarea>
+                    <label for="files" class="control-label">Documenten</label>
                 </div>
+                </br>
+                    <select id="files" ng-repeat="document in documents" name="files">
+                        <option value="{{document.documentname}}">{{document.documentname}}</option>
+
+                    </select>
+
+
 
             <div class="form-group label-floating">
                 <label for="note" class="control-label">Notitie</label>

@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * The type Client.
  *
- * @author Victor Machado Braz
+ * @author Victor Machado Braz & Vedad Piric
  */
 public class Client {
 
@@ -305,4 +305,6 @@ public class Client {
     public void setActive(Boolean active) {
         this.active = active;
     }
+
+
 }

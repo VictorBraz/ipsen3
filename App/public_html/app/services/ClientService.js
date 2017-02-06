@@ -64,6 +64,17 @@ angular.module('workshop').service('clientService', function($http)
         });
     };
 
+    self.getClientFiles = function (onReceived) {
+        var uri = 'api/documents/' + self.selectedClient + '';
+
+        $http.get(uri).then(function(response){
+                onReceived(response.data);
+            },
+            function (message, status) {
+                alert('Ophalen mislukt, neem contact op met uw beheerder: ' + message + status);
+            });
+    };
+
     self.update = function (client, onReceived) {
         var uri = 'api/clients/' + client.id + '';
 

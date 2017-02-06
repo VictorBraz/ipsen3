@@ -10,6 +10,12 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
             $scope.clients = clients;
             $scope.activetab = true;
         });
+        clientService.getClientFiles(function (documents) {
+            $scope.documents = documents;
+
+        });
+
+
     };
 
     $scope.searchKeyword = '';
@@ -34,6 +40,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
     $scope.viewSettedClient = function (id) {
         clientService.setSelected(id);
+
         $scope.gotoViewClient();
     };
 
@@ -51,6 +58,7 @@ angular.module('workshop').controller('ClientController', function ($scope, $rou
 
     $scope.selectClient = function () {
         clientService.setSelected($scope.selectedClient.id[0]);
+
     };
 
     var clientCreated = function () {
