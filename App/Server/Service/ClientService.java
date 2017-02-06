@@ -11,7 +11,7 @@ import java.util.Collection;
 /**
  * The type Client service.
  *
- * @author Victor Machado Braz
+ * @author Victor Machado Braz, Bernd
  */
 @Singleton
 public class ClientService extends BaseService<Client>{
@@ -69,12 +69,4 @@ public class ClientService extends BaseService<Client>{
         dao.delete(id);
     }
 
-    /**
-     * Restore.
-     *
-     * @param id the id
-     */
-    public void restore(int id) {
-        dao.restore(id);
-    }
 }

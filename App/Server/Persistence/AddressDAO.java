@@ -33,7 +33,6 @@ public class AddressDAO extends DatabaseDAO{
             addAddress = conn.prepareStatement("INSERT INTO address (address, zipcode, city) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             updateAddress = conn.prepareStatement("UPDATE address SET address = ? , zipcode = ?, city = ? WHERE addressid = ?");
         }catch (Exception e){
-
         }
     }
 
@@ -58,7 +57,6 @@ public class AddressDAO extends DatabaseDAO{
 
 
         }catch (Exception e){
-
         }
         return address;
 
@@ -96,7 +94,6 @@ public class AddressDAO extends DatabaseDAO{
             }
             addAddress.close();
         }catch(Exception e){
-
         }
         return address;
     }

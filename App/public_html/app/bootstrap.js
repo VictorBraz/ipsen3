@@ -6,8 +6,7 @@ angular.module('IN2',
         'materialCalendar',
         'ngAlertify',
         'ngAnimate',
-        'chart.js',
-        'ngMaterialDatePicker'
+        'chart.js'
 
 
 

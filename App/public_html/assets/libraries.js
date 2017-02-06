@@ -28,7 +28,6 @@
     addScript('assets/materialdesign/js/material.min.js');
     addScript('assets/materialdesign/js/ripples.min.js');
     addScript('assets/materialdesign/js/initBootstrap.js');
-    addScript('assets/materialdesign/js/angular-material-datetimepicker.js');
 
     //calender
     addScript('assets/libraries/angular-animate.min.js');

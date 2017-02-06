@@ -28,7 +28,3 @@ calender
 @import url('components/angular-material-calendar.css');
 @import url('components/angular-material-min.css');
 
-/*
-* datepicker
-*/
-@import url("../materialdesign/css/material-datetimepicker.css");
