@@ -99,7 +99,6 @@ public class AddressDAO extends DatabaseDAO {
                 int id = rs.getInt(1);
                 address.setId(id);
             }
-            addAddress.close();
 
         } catch (Exception e) {
             e.printStackTrace();
